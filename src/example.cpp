@@ -3,6 +3,7 @@
 #include "example.h"
 #include "triangle.h"
 #include "add_remove_child.h"
+#include "raycast.h"
 #include "physics.h"
 
 class GMenuEntry: public GButton {
@@ -98,10 +99,10 @@ const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = ".",
     .windowMode = WINDOW_MODE_WINDOWED,
-    .windowWidth = 1024,
-    .windowHeight = 768,
+    .windowWidth = 800,
+    .windowHeight = 600,
     .defaultFontName = "res/Signwood.ttf",
     .defaultFontSize = 20
 };
 
-Z0_APP(applicationConfig, make_shared<ExampleMainScene>())
+Z0_APP(applicationConfig, make_shared<RaycastMainScene>())

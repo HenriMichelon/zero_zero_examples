@@ -32,37 +32,45 @@ endif()
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
 
 # compile GLSL shaders
-file(GLOB_RECURSE Z0_GLSL_SOURCE_FILES
-		"${Z0_SHADERS_DIR}/*.frag"
-		"${Z0_SHADERS_DIR}/*.vert"
-)
-add_shaders(${PROJECT_NAME}_z0_shaders  ${Z0_SHADERS_BUILD_DIR} ${Z0_SHADERS_DIR} ${Z0_GLSL_SOURCE_FILES})
 file(GLOB_RECURSE GLSL_SOURCE_FILES
 		"${SHADERS_DIR}/*.frag"
 		"${SHADERS_DIR}/*.vert"
 )
-add_shaders(${PROJECT_NAME}_project_shaders  ${SHADERS_BUILD_DIR} ${Z0_SHADERS_DIR} ${GLSL_SOURCE_FILES})
+add_shaders(${PROJECT_NAME}_shaders  ${SHADERS_BUILD_DIR} ${Z0_SHADERS_DIR} ${GLSL_SOURCE_FILES})
 
 add_executable(${PROJECT_NAME}
+		${INCLUDE_DIR}/example.h
 		${SRC_DIR}/example.cpp
+
 		${INCLUDE_DIR}/triangle.h
 		${SRC_DIR}/triangle.cpp
+
 		${INCLUDE_DIR}/add_remove_child.h
 		${SRC_DIR}/add_remove_child.cpp
+
 		${INCLUDE_DIR}/physics.h
 		${SRC_DIR}/physics.cpp
+
 		${INCLUDE_DIR}/ui.h
 		${SRC_DIR}/ui.cpp
+
 		${INCLUDE_DIR}/topbar.h
 		${SRC_DIR}/topbar.cpp
+
 		${INCLUDE_DIR}/player.h
 		${SRC_DIR}/player.cpp
+
+		${INCLUDE_DIR}/raycast.h
+		${SRC_DIR}/raycast.cpp
+
+		${INCLUDE_DIR}/crate.h
+		${SRC_DIR}/crate.cpp
+
 		${INCLUDE_DIR}/layers.h
 		${INCLUDE_DIR}/includes.h
-		${INCLUDE_DIR}/example.h
 )
 
-add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_z0_shaders  ${PROJECT_NAME}_project_shaders)
+add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_shaders)
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} ${Z0_SHARED_LIB} Xinput dinput8 dxguid)
 #add_compile_definitions(USE_PCH)

@@ -35,4 +35,7 @@ private:
     void releaseMouse();
 
     shared_ptr<Node> model;
+    shared_ptr<ShaderMaterial> material;
+    float gradientSpeed{0.5f};
+    float gradient{0.0f};
 };
