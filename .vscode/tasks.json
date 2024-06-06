@@ -1,0 +1,51 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cmake",
+			"label": "CMake Build",
+			"command": "build",
+			"targets": [
+				"all"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "CMake template build task"
+		},
+		{
+            "label": "CMake Configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-S", "${workspaceFolder}",
+                "-B", "${workspaceFolder}/build"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "detail": "Configure CMake project"
+        },
+        {
+            "label": "Debug examples",
+            "type": "shell",
+            "dependsOn": "CMake Build",
+            "command": "${command:workbench.action.debug.start}",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+		{
+            "label": "Run examples",
+            "type": "shell",
+            "command": "${workspaceFolder}/build/examples.exe",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+			"dependsOn": ["CMake Build"]
+        }
+	]
+}
