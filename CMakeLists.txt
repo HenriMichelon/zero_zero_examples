@@ -70,13 +70,14 @@ add_executable(${PROJECT_NAME}
 		${INCLUDE_DIR}/includes.h
 )
 
-add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_shaders)
+add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_shaders ${Z0_SHARED_LIB})
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} ${Z0_SHARED_LIB} Xinput dinput8 dxguid)
 #add_compile_definitions(USE_PCH)
 target_precompile_headers(${PROJECT_NAME} PRIVATE
 		${Z0_INCLUDE_DIR}/z0/z0.h
 )
+
 
 if(WIN32)
 	set_target_properties(${PROJECT_NAME} PROPERTIES

@@ -7,7 +7,7 @@ void TriangleMainScene::onReady() {
     addChild(camera);
     app().activateCamera(camera);
     addChild(make_shared<Triangle>());
-    printTree(cout);
+    printTree();
 }
 
 void Triangle::onReady() {

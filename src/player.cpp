@@ -141,7 +141,7 @@ void Player::onReady() {
     if (gamepad != -1) {
         cout << "Using gamepad " << Input::getGamepadName(gamepad) << endl;
     }
-    printTree(cout);
+    printTree();
 }
 
 void Player::captureMouse() {

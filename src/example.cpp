@@ -22,6 +22,7 @@ private:
 };
 
 void ExampleMainScene::onReady() {
+    log("Example starting");
     addChild(make_shared<Camera>());
     auto skybox = make_shared<Skybox>("res/textures/sky", ".jpg");
     addChild(skybox);
@@ -105,4 +106,4 @@ const ApplicationConfig applicationConfig {
     .defaultFontSize = 20
 };
 
-Z0_APP(applicationConfig, make_shared<RaycastMainScene>())
+Z0_APP(applicationConfig, make_shared<ExampleMainScene>())
