@@ -9,12 +9,6 @@
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-            "environment": [
-                {
-                    "name": "PATH",
-                    "value":  "${env:PATH};${workspaceFolder}/build/external_lib_build"
-                }
-            ],
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -23,7 +17,7 @@
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ]
+            ],
         }
     ]
 }

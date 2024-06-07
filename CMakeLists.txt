@@ -76,12 +76,18 @@ add_executable(${PROJECT_NAME}
 
 add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_shaders ${Z0_SHARED_LIB})
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DIR})
-target_link_libraries(${PROJECT_NAME} ${Z0_SHARED_LIB} Xinput dinput8 dxguid)
-add_compile_definitions(USE_PCH)
+target_link_libraries(${PROJECT_NAME} ${Z0_SHARED_LIB})
+#add_compile_definitions(USE_PCH)
 target_precompile_headers(${PROJECT_NAME} PRIVATE
 		${Z0_INCLUDE_DIR}/z0/z0.h
 )
 
+set(SOURCE_FILE "${CMAKE_BINARY_DIR}/external_lib_build/lib${Z0_SHARED_LIB}.dll")
+add_custom_command(
+    TARGET ${PROJECT_NAME}
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_FILE} ${CMAKE_BINARY_DIR}
+)
 
 if(WIN32)
 	set_target_properties(${PROJECT_NAME} PROPERTIES

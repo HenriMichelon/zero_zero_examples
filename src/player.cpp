@@ -102,7 +102,7 @@ void Player::onProcess(float alpha) {
 
 void Player::onCollisionStarts(PhysicsNode *node) {
     if (!isGround(node)) {
-        cout << "Start Collide with " << *node << " (" << node->getId() << ")" << endl;
+        //log("Start Colliding with ", node->toString(), " (", to_string(node->getId()), ")");
     }
 }
 
@@ -128,7 +128,7 @@ void Player::onReady() {
     cameraPivot->addChild(camera);
     app().activateCamera(camera);
 
-    cout << Input::getConnectedJoypads() << " connected gamepad(s)" << endl;
+    log(to_string(Input::getConnectedJoypads()), " connected gamepad(s)");
     for (int i = 0; i < Input::getConnectedJoypads(); i++) {
         cout << Input::getGamepadName(i) << endl;
     }
@@ -139,7 +139,7 @@ void Player::onReady() {
         }
     }
     if (gamepad != -1) {
-        cout << "Using gamepad " << Input::getGamepadName(gamepad) << endl;
+        log("Using gamepad ", Input::getGamepadName(gamepad));
     }
     printTree();
 }

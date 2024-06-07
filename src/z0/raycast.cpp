@@ -1,8 +1,9 @@
 #include "z0/z0.h"
 #ifndef USE_PCH
 #include "z0/nodes/node.h"
-#include "z0/nodes/raycast.h"
+//#include "z0/nodes/raycast.h"
 #endif
+#include "z0/raycast.h"
 
 namespace z0 {
 
