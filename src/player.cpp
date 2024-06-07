@@ -102,7 +102,7 @@ void Player::onProcess(float alpha) {
 
 void Player::onCollisionStarts(PhysicsNode *node) {
     if (!isGround(node)) {
-        //log("Start Colliding with ", node->toString(), " (", to_string(node->getId()), ")");
+        log("Start Colliding with ", node->toString(), " (", to_string(node->getId()), ")");
     }
 }
 
@@ -110,7 +110,7 @@ void Player::onReady() {
     captureMouse();
 
     model = Loader::loadModelFromFile("res/models/capsule.glb", true);
-    model->setPosition({0.0, -1.8/2, 0.0});
+    model->setPosition({0.0, -1.8/2.0, 0.0});
     addChild(model);
     material = make_shared<ShaderMaterial>("examples/uv_gradient.frag");
     material->getParameters()[0] = 0.0;
@@ -130,7 +130,7 @@ void Player::onReady() {
 
     log(to_string(Input::getConnectedJoypads()), " connected gamepad(s)");
     for (int i = 0; i < Input::getConnectedJoypads(); i++) {
-        cout << Input::getGamepadName(i) << endl;
+        log(Input::getGamepadName(i));
     }
     for (int i = 0; i < Input::getConnectedJoypads(); i++) {
         if (Input::isGamepad(i)) {

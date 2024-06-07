@@ -105,4 +105,4 @@ const ApplicationConfig applicationConfig {
     .defaultFontSize = 20
 };
 
-Z0_APP(applicationConfig, make_shared<ExampleMainScene>())
+Z0_APP(applicationConfig, make_shared<RaycastMainScene>())

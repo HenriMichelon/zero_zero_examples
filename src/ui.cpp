@@ -20,7 +20,7 @@ void Window2::onCreate() {
 }
 
 void Window2::onButtonClic(GWidget &, GEvent *) {
-    cout << "BUTTON CLIC" << endl;
+    log("BUTTON CLIC");
 }
 
 bool UIMainScene::onInput(InputEvent &inputEvent) {
@@ -32,7 +32,6 @@ bool UIMainScene::onInput(InputEvent &inputEvent) {
         }
     } else if (inputEvent.getType() == INPUT_EVENT_MOUSE_BUTTON) {
         auto &mouseInputEvent = dynamic_cast<InputEventMouseButton&>(inputEvent);
-        //cout << mouseInputEvent.getX() << " " << mouseInputEvent.getY() << endl;
     }
     return false;
 }

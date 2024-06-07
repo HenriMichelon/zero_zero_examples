@@ -8,6 +8,7 @@ namespace z0 {
 
     private:
         vec3 target{0.0};
+        unique_ptr<JPH::BroadPhase> broadPhase;
 
     public:
         void _physicsUpdate() override;
