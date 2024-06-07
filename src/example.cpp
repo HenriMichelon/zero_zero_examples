@@ -22,7 +22,6 @@ private:
 };
 
 void ExampleMainScene::onReady() {
-    log("Example starting");
     addChild(make_shared<Camera>());
     auto skybox = make_shared<Skybox>("res/textures/sky", ".jpg");
     addChild(skybox);
