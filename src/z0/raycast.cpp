@@ -4,12 +4,13 @@
 //#include "z0/nodes/raycast.h"
 #endif
 #include "z0/raycast.h"
+#include <Jolt/Physics/Collision/BroadPhase/BroadPhaseQuadTree.h>
 
 namespace z0 {
 
     RayCast::RayCast(const string& name): Node(name) {
-        broadPhase = make_unique<JPH::BroadPhaseQuadTree>();
-	    broadPhase->Init(mBodyManager, mBroadPhaseLayerInterface);
+        //broadPhase = make_unique<JPH::BroadPhaseQuadTree>();
+	    //broadPhase->Init(mBodyManager, mBroadPhaseLayerInterface);
     }
 
     void RayCast::_physicsUpdate() {

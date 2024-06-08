@@ -8,15 +8,14 @@ include(.env.cmake)
 add_subdirectory(${Z0_PROJECT_DIR} external_lib_build)
 set(Z0_INCLUDE_DIR ${Z0_PROJECT_DIR}/include)
 set(Z0_SHADERS_DIR ${Z0_PROJECT_DIR}/src/z0/shaders)
-set(Z0_SHADERS_BUILD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shaders)
+set(Z0_SHADERS_BUILD_DIR ${Z0_PROJECT_DIR}/shaders)
 set(Z0_SHARED_LIB ZeroZero)
-file(MAKE_DIRECTORY ${Z0_SHADERS_BUILD_DIR})
 
 # Project sources
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(SHADERS_DIR ${SRC_DIR}/shaders)
-set(SHADERS_BUILD_DIR ${Z0_SHADERS_BUILD_DIR}/examples)
+set(SHADERS_BUILD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shaders)
 file(MAKE_DIRECTORY ${SHADERS_BUILD_DIR})
 
 include(FetchContent)
@@ -36,7 +35,7 @@ file(GLOB_RECURSE GLSL_SOURCE_FILES
 		"${SHADERS_DIR}/*.frag"
 		"${SHADERS_DIR}/*.vert"
 )
-add_shaders(${PROJECT_NAME}_shaders  ${SHADERS_BUILD_DIR} ${Z0_SHADERS_DIR} ${GLSL_SOURCE_FILES})
+add_shaders(${PROJECT_NAME}_shaders ${SHADERS_BUILD_DIR}/examples ${Z0_SHADERS_DIR} ${GLSL_SOURCE_FILES})
 
 add_executable(${PROJECT_NAME}
 		${INCLUDE_DIR}/example.h
@@ -79,14 +78,15 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DI
 target_link_libraries(${PROJECT_NAME} ${Z0_SHARED_LIB})
 #add_compile_definitions(USE_PCH)
 target_precompile_headers(${PROJECT_NAME} PRIVATE
+		${Z0_INCLUDE_DIR}/z0/libraries.h
 		${Z0_INCLUDE_DIR}/z0/z0.h
 )
-
 set(SOURCE_FILE "${CMAKE_BINARY_DIR}/external_lib_build/lib${Z0_SHARED_LIB}.dll")
 add_custom_command(
     TARGET ${PROJECT_NAME}
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_FILE} ${CMAKE_BINARY_DIR}
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${Z0_SHADERS_BUILD_DIR} ${SHADERS_BUILD_DIR} 
 )
 
 if(WIN32)
