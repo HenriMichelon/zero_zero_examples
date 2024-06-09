@@ -68,9 +68,6 @@ add_executable(${PROJECT_NAME}
 		${INCLUDE_DIR}/layers.h
 		${INCLUDE_DIR}/includes.h
 
-
-		${INCLUDE_DIR}/z0/raycast.h
-		${SRC_DIR}/z0/raycast.cpp
 )
 
 add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_shaders ${Z0_SHARED_LIB})
