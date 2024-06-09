@@ -36,14 +36,22 @@ void RaycastMainScene::onReady() {
     floor->addChild(Loader::loadModelFromFile("res/models/floor.glb", true));
     floor->setPosition({0.0, -2.0, 0.0});
     game->addChild(floor);
+    printTree();
 }
 
 void RaycastMainScene::onProcess(float alpha) {
+    if (previousSelection != nullptr) {
+        previousSelection->setOutlined(false);
+        previousSelection = nullptr;
+    }
     if (raycast->isColliding()) {
         const auto& collider = *(raycast->getCollider());
         log("Raycast hit", 
             to_string(collider.getId()), 
             collider.toString(), 
             z0::toString(raycast->getCollisionPoint()));
+        auto* meshInstance = dynamic_cast<MeshInstance*>(collider.getNode("res_models_crate.glb/Sketchfab_model/Collada visual scene group/g/defaultMaterial").get());
+        meshInstance->setOutlined(true);
+        previousSelection = meshInstance;
     }
 }

@@ -7,4 +7,5 @@ public:
     void onProcess(float alpha) override;
 private:
     shared_ptr<z0::RayCast> raycast;
+    MeshInstance* previousSelection{nullptr};
 };

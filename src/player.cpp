@@ -141,7 +141,7 @@ void Player::onReady() {
     if (gamepad != -1) {
         log("Using gamepad", Input::getGamepadName(gamepad));
     }
-    printTree();
+    //printTree();
 }
 
 void Player::captureMouse() {
