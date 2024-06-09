@@ -20,8 +20,8 @@ void RaycastMainScene::onReady() {
     player->addChild(raycast);
 
     auto crateModel = Loader::loadModelFromFile("res/models/crate.glb", true);
-    for (int x = 0; x < 1; x++) {
-        for (int z = 0; z < 1; z++) {
+    for (int x = 0; x < 5; x++) {
+        for (int z = 0; z < 5; z++) {
             auto model = make_shared<Crate>(crateModel->duplicate());
             model->setPosition({x * 5 - 1.5 * 5, 1.0 + rand() % 5, -z * 5 - 5});
             game->addChild(model);
@@ -36,19 +36,14 @@ void RaycastMainScene::onReady() {
     floor->addChild(Loader::loadModelFromFile("res/models/floor.glb", true));
     floor->setPosition({0.0, -2.0, 0.0});
     game->addChild(floor);
-
-    topbar = make_shared<TopBar>(this, GEventFunction(&RaycastMainScene::onMenuQuit));
-    app().addWindow(topbar);
-    topbar->show();
 }
 
 void RaycastMainScene::onProcess(float alpha) {
-    topbar->updateFPS();
     if (raycast->isColliding()) {
-        log("Raycast hit ", raycast->getCollider()->toString(), z0::toString(raycast->getCollisionPoint()));
+        const auto& collider = *(raycast->getCollider());
+        log("Raycast hit", 
+            to_string(collider.getId()), 
+            collider.toString(), 
+            z0::toString(raycast->getCollisionPoint()));
     }
-}
-
-void RaycastMainScene::onMenuQuit(GWidget &, GEvent *) {
-    app().quit();
 }

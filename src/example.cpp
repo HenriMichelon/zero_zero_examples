@@ -4,7 +4,6 @@
 #include "triangle.h"
 #include "add_remove_child.h"
 #include "raycast.h"
-#include "physics.h"
 
 class GMenuEntry: public GButton {
 public:
@@ -43,10 +42,10 @@ void ExampleMainScene::onReady() {
     menu->getWidget().add(entryAddRemoveChild, GWidget::TOPCENTER);
     height += entryAddRemoveChild->getHeight();
 
-    auto entryPhysics = make_shared<GMenuEntry>("Physics");
-    entryPhysics->connect(GEvent::OnClick, this, GEventFunction(&ExampleMainScene::onMenuPhysics));
-    menu->getWidget().add(entryPhysics, GWidget::TOPCENTER);
-    height += entryPhysics->getHeight();
+    auto entreRaycast = make_shared<GMenuEntry>("Physics & RayCast");
+    entreRaycast->connect(GEvent::OnClick, this, GEventFunction(&ExampleMainScene::onMenuRaycast));
+    menu->getWidget().add(entreRaycast, GWidget::TOPCENTER);
+    height += entreRaycast->getHeight();
 
     auto entryQuit = make_shared<GMenuEntry>("Quit");
     entryQuit->connect(GEvent::OnClick, this, GEventFunction(&ExampleMainScene::onMenuQuit));
@@ -89,10 +88,10 @@ void ExampleMainScene::onMenuAddRemoveChild(GWidget &, GEvent *) {
     scene->addChild(make_shared<AddRemoveChildMainScene>());
 }
 
-void ExampleMainScene::onMenuPhysics(GWidget &, GEvent *) {
+void ExampleMainScene::onMenuRaycast(GWidget &, GEvent *) {
     menu->hide();
     topbar->show();
-    scene->addChild(make_shared<PhysicsMainScene>());
+    scene->addChild(make_shared<RaycastMainScene>());
 }
 
 const ApplicationConfig applicationConfig {
@@ -102,7 +101,7 @@ const ApplicationConfig applicationConfig {
     .windowWidth = 1280,
     .windowHeight = 960,
     .defaultFontName = "res/Signwood.ttf",
-    .defaultFontSize = 20
+    .defaultFontSize = 16
 };
 
-Z0_APP(applicationConfig, make_shared<RaycastMainScene>())
+Z0_APP(applicationConfig, make_shared<ExampleMainScene>())

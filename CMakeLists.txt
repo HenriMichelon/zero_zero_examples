@@ -47,9 +47,6 @@ add_executable(${PROJECT_NAME}
 		${INCLUDE_DIR}/add_remove_child.h
 		${SRC_DIR}/add_remove_child.cpp
 
-		${INCLUDE_DIR}/physics.h
-		${SRC_DIR}/physics.cpp
-
 		${INCLUDE_DIR}/ui.h
 		${SRC_DIR}/ui.cpp
 

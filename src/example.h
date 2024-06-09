@@ -15,4 +15,5 @@ private:
     void onMenuTriangle(GWidget&, GEvent*);
     void onMenuAddRemoveChild(GWidget&, GEvent*);
     void onMenuPhysics(GWidget&, GEvent*);
+    void onMenuRaycast(GWidget&, GEvent*);
 };
