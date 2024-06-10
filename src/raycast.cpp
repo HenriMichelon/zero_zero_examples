@@ -46,10 +46,10 @@ void RaycastMainScene::onProcess(float alpha) {
     }
     if (raycast->isColliding()) {
         const auto& collider = *(raycast->getCollider());
-        log("Raycast hit", 
+        /*log("Raycast hit", 
             to_string(collider.getId()), 
             collider.toString(), 
-            z0::toString(raycast->getCollisionPoint()));
+            z0::toString(raycast->getCollisionPoint()));*/
         auto* meshInstance = dynamic_cast<MeshInstance*>(collider.getNode("res_models_crate.glb/Sketchfab_model/Collada visual scene group/g/defaultMaterial").get());
         meshInstance->setOutlined(true);
         previousSelection = meshInstance;

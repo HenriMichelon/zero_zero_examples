@@ -84,7 +84,7 @@ void Player::onPhysicsProcess(float delta) {
         gradient = 0.0f;
         gradientSpeed = -gradientSpeed;
     }
-    material->getParameters()[0] = gradient;
+    material->setParameter(0, vec4{gradient});
 }
 
 void Player::onProcess(float alpha) {
@@ -113,7 +113,7 @@ void Player::onReady() {
     model->setPosition({0.0, -1.8/2.0, 0.0});
     addChild(model);
     material = make_shared<ShaderMaterial>("examples/uv_gradient.frag");
-    material->getParameters()[0] = 0.0;
+    material->setParameter(0, vec4{0.0});
     auto mesh = dynamic_cast<MeshInstance*>(
         model->getNode("Sketchfab_model/root/GLTF_SceneRootNode/Sphere_0/Object_4").get())
         ->getMesh();

@@ -98,8 +98,8 @@ const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = ".",
     .windowMode = WINDOW_MODE_WINDOWED,
-    .windowWidth = 1280,
-    .windowHeight = 960,
+    .windowWidth = 800,
+    .windowHeight = 600,
     .defaultFontName = "res/Signwood.ttf",
     .defaultFontSize = 16
 };

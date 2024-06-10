@@ -40,7 +40,7 @@ void Triangle::onReady() {
     material2 = make_shared<ShaderMaterial>("examples/uv_gradient.frag");
     material2->setTransparency(TRANSPARENCY_ALPHA);
     material2->setCullMode(CULLMODE_DISABLED);
-    material2->getParameters()[0] = 0.0;
+    material2->setParameter(0, vec4{0.0f});
     mesh2->setSurfaceMaterial(0, material2);
     triangle2 = make_shared<MeshInstance>(mesh2);
     triangle2->setPosition({-1.0, 0.0, 0.0});
@@ -63,7 +63,7 @@ void Triangle::onPhysicsProcess(float delta) {
         gradient = 0.0f;
         gradientSpeed = -gradientSpeed;
     }
-    material2->getParameters()[0] = gradient;
+    material2->setParameter(0, vec4{gradient});
 }
 
 void Triangle::onProcess(float alpha) {
