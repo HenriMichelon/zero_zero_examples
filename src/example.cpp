@@ -104,4 +104,4 @@ const ApplicationConfig applicationConfig {
     .defaultFontSize = 16
 };
 
-Z0_APP(applicationConfig, make_shared<RaycastMainScene>())
+Z0_APP(applicationConfig, make_shared<TriangleMainScene>())
