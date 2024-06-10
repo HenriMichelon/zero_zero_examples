@@ -102,7 +102,14 @@ void Player::onProcess(float alpha) {
 
 void Player::onCollisionStarts(PhysicsNode *node) {
     if (!isGround(node)) {
+         if (previousCollision != nullptr) {
+            previousCollision->setOutlined(false);
+        }
         log("Start Colliding with", node->toString(), "(", to_string(node->getId()), ")");
+        auto* meshInstance = dynamic_cast<MeshInstance*>(node->getNode("res_models_crate.glb/Sketchfab_model/Collada visual scene group/g/defaultMaterial").get());
+        meshInstance->setOutlined(true);
+        meshInstance->setOutlineMaterial(collisionOutlineMaterial);
+        previousCollision = meshInstance;
     }
 }
 
@@ -141,6 +148,12 @@ void Player::onReady() {
     if (gamepad != -1) {
         log("Using gamepad", Input::getGamepadName(gamepad));
     }
+
+    collisionOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get().get(0));
+    collisionOutlineMaterial->setParameter(0, {0.0,1.0,0.0,1.0});
+    collisionOutlineMaterial->setParameter(1, vec4{0.1});
+    OutlineMaterials::get().add(collisionOutlineMaterial);
+
     //printTree();
 }
 

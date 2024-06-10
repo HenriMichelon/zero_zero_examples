@@ -6,6 +6,7 @@ public:
     void onReady() override;
     void onProcess(float alpha) override;
 private:
-    shared_ptr<z0::RayCast> raycast;
+    shared_ptr<RayCast> raycast;
+    shared_ptr<ShaderMaterial> raycastOutlineMaterial;
     MeshInstance* previousSelection{nullptr};
 };

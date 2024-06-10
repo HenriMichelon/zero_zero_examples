@@ -36,12 +36,20 @@ void RaycastMainScene::onReady() {
     floor->addChild(Loader::loadModelFromFile("res/models/floor.glb", true));
     floor->setPosition({0.0, -2.0, 0.0});
     game->addChild(floor);
+
+    raycastOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get().get(0));
+    raycastOutlineMaterial->setParameter(0, {1.0,0.0,0.0,1.0});
+    raycastOutlineMaterial->setParameter(1, vec4{0.02});
+    OutlineMaterials::get().add(raycastOutlineMaterial);
+
     printTree();
 }
 
 void RaycastMainScene::onProcess(float alpha) {
     if (previousSelection != nullptr) {
-        previousSelection->setOutlined(false);
+        if (previousSelection->getOutlineMaterial() == raycastOutlineMaterial) {
+            previousSelection->setOutlined(false);
+        }
         previousSelection = nullptr;
     }
     if (raycast->isColliding()) {
@@ -51,7 +59,10 @@ void RaycastMainScene::onProcess(float alpha) {
             collider.toString(), 
             z0::toString(raycast->getCollisionPoint()));*/
         auto* meshInstance = dynamic_cast<MeshInstance*>(collider.getNode("res_models_crate.glb/Sketchfab_model/Collada visual scene group/g/defaultMaterial").get());
-        meshInstance->setOutlined(true);
-        previousSelection = meshInstance;
+        if (!meshInstance->isOutlined()) {
+            meshInstance->setOutlined(true);
+            meshInstance->setOutlineMaterial(raycastOutlineMaterial);
+            previousSelection = meshInstance;
+        }
     }
 }

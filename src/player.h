@@ -36,6 +36,8 @@ private:
 
     shared_ptr<Node> model;
     shared_ptr<ShaderMaterial> material;
+    shared_ptr<ShaderMaterial> collisionOutlineMaterial;
+    MeshInstance* previousCollision{nullptr};
     float gradientSpeed{0.5f};
     float gradient{0.0f};
 };
