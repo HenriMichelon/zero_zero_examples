@@ -1,6 +1,7 @@
 #include "includes.h"
 #include "player.h"
 #include "layers.h"
+#include "crate.h"
 
 Player::Player(): Character{make_shared<BoxShape>(vec3{1.0f,2.0f, 1.0f}),
                                 Layers::PLAYER,
@@ -106,7 +107,7 @@ void Player::onCollisionStarts(PhysicsNode *node) {
             previousCollision->setOutlined(false);
         }
         log("Start Colliding with", node->toString(), "(", to_string(node->getId()), ")");
-        auto* meshInstance = dynamic_cast<MeshInstance*>(node->getNode("res_models_crate.glb/Sketchfab_model/Collada visual scene group/g/defaultMaterial").get());
+        auto* meshInstance = dynamic_cast<MeshInstance*>(node->getNode(Crate::MESH_PATH).get());
         meshInstance->setOutlined(true);
         meshInstance->setOutlineMaterial(collisionOutlineMaterial);
         previousCollision = meshInstance;
@@ -151,7 +152,7 @@ void Player::onReady() {
 
     collisionOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get().get(0));
     collisionOutlineMaterial->setParameter(0, {0.0,1.0,0.0,1.0});
-    collisionOutlineMaterial->setParameter(1, vec4{0.1});
+    collisionOutlineMaterial->setParameter(1, vec4{0.05});
     OutlineMaterials::get().add(collisionOutlineMaterial);
 
     //printTree();

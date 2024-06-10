@@ -14,7 +14,7 @@ void RaycastMainScene::onReady() {
     
     auto player = make_shared<Player>();
     game->addChild(player);
-    player->setPosition({0.0, 0.5, 0.0});
+    player->setPosition({0.0, 2.0, 0.0});
 
     raycast = make_shared<RayCast>(vec3{0.0f, 0.0f, -100.0f}, Layers::BODIES);
     player->addChild(raycast);
@@ -42,7 +42,7 @@ void RaycastMainScene::onReady() {
     raycastOutlineMaterial->setParameter(1, vec4{0.02});
     OutlineMaterials::get().add(raycastOutlineMaterial);
 
-    printTree();
+    //printTree();
 }
 
 void RaycastMainScene::onProcess(float alpha) {
@@ -58,7 +58,7 @@ void RaycastMainScene::onProcess(float alpha) {
             to_string(collider.getId()), 
             collider.toString(), 
             z0::toString(raycast->getCollisionPoint()));*/
-        auto* meshInstance = dynamic_cast<MeshInstance*>(collider.getNode("res_models_crate.glb/Sketchfab_model/Collada visual scene group/g/defaultMaterial").get());
+        auto* meshInstance = dynamic_cast<MeshInstance*>(collider.getNode(Crate::MESH_PATH).get());
         if (!meshInstance->isOutlined()) {
             meshInstance->setOutlined(true);
             meshInstance->setOutlineMaterial(raycastOutlineMaterial);
