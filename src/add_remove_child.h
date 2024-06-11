@@ -12,4 +12,5 @@ private:
     list<shared_ptr<Node>> rotatingNodes;
     shared_ptr<Camera> camera1;
     shared_ptr<Camera> camera2;
+    shared_ptr<Camera> currentCamera;
 };

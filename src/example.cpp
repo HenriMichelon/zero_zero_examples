@@ -98,10 +98,10 @@ const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = ".",
     .windowMode = WINDOW_MODE_WINDOWED,
-    .windowWidth = 800,
-    .windowHeight = 600,
+    .windowWidth = 640,
+    .windowHeight = 480,
     .defaultFontName = "res/Signwood.ttf",
     .defaultFontSize = 16
 };
 
-Z0_APP(applicationConfig, make_shared<TriangleMainScene>())
+Z0_APP(applicationConfig, make_shared<RaycastMainScene>())

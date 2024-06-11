@@ -30,6 +30,7 @@ private:
     State previousState;
     State currentState;
     shared_ptr<Node> cameraPivot;
+    shared_ptr<Camera> camera;
 
     void captureMouse();
     void releaseMouse();

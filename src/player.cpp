@@ -9,7 +9,7 @@ Player::Player(): Character{make_shared<BoxShape>(vec3{1.0f,2.0f, 1.0f}),
 }
 
 bool Player::onInput(InputEvent& event) {
-    if ((event.getType() == INPUT_EVENT_MOUSE_MOTION) && mouseCaptured) {
+    if (mouseCaptured && (event.getType() == INPUT_EVENT_MOUSE_MOTION)) {
         auto& eventMouseMotion = dynamic_cast<InputEventMouseMotion&>(event);
         rotateY(-eventMouseMotion.getRelativeX() * mouseSensitivity);
         cameraPivot->rotateX(eventMouseMotion.getRelativeY() * mouseSensitivity * mouseInvertedAxisY);
@@ -132,7 +132,7 @@ void Player::onReady() {
     cameraPivot->rotateX(radians(-20.0));
     addChild(cameraPivot);
 
-    auto camera = make_shared<Camera>();
+    camera = make_shared<Camera>();
     cameraPivot->addChild(camera);
     app().activateCamera(camera);
 
