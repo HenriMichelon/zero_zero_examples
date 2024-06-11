@@ -28,12 +28,15 @@ void RaycastMainScene::onReady() {
         }
     }
 
+    auto floorModel = Loader::loadModelFromFile("res/models/floor.glb", true);
+    auto floorMesh = floorModel->findFirstChild<MeshInstance>()->getMesh();
     auto floor = make_shared<StaticBody>(
-            make_shared<BoxShape>(vec3{200.0f, 0.2f, 200.0f}),
+            //make_shared<BoxShape>(vec3{200.0f, 0.2f, 200.0f}),
+            make_shared<ConvexHullShape>(floorMesh->getVertices()),
             Layers::WORLD,
             0,
             "Floor");
-    floor->addChild(Loader::loadModelFromFile("res/models/floor.glb", true));
+    floor->addChild(floorModel);
     floor->setPosition({0.0, -2.0, 0.0});
     game->addChild(floor);
 
