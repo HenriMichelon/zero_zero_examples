@@ -102,7 +102,7 @@ void Player::onProcess(float alpha) {
 }
 
 void Player::onCollisionStarts(PhysicsNode *node) {
-    if (!isGround(node)) {
+    /*if (!isGround(node)) {
          if (previousCollision != nullptr) {
             previousCollision->setOutlined(false);
         }
@@ -111,7 +111,7 @@ void Player::onCollisionStarts(PhysicsNode *node) {
         meshInstance->setOutlined(true);
         meshInstance->setOutlineMaterial(collisionOutlineMaterial);
         previousCollision = meshInstance;
-    }
+    }*/
 }
 
 void Player::onReady() {
