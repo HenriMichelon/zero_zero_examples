@@ -35,8 +35,17 @@ void RaycastMainScene::onReady() {
     OutlineMaterials::get().add(raycastOutlineMaterial);
 
     auto floorModel = Loader::loadModelFromFile("res/models/floor.glb", true);
+
+    vector<SubShape> floorSubShapes;
+    floorSubShapes.push_back(SubShape{make_shared<ConvexHullShape>(floorModel)});
+    // virtual walls
+    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{100.0, 10.0, 1.0}), vec3{0.0, 5.0, -100.0}});
+    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{100.0, 10.0, 1.0}), vec3{0.0, 5.0, 100.0}});
+    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{1.0, 10.0, 100.0}), vec3{100.0, 5.0, 0.0}});
+    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{1.0, 10.0, 100.0}), vec3{-100.0, 5.0, 0.0}});
+
     auto floor = make_shared<StaticBody>(
-            make_shared<ConvexHullShape>(floorModel),
+            make_shared<StaticCompoundShape>(floorSubShapes),
             Layers::WORLD,
             0,
             "Floor");
