@@ -36,8 +36,7 @@ void RaycastMainScene::onReady() {
 
     auto floorModel = Loader::loadModelFromFile("res/models/floor.glb", true);
     auto floor = make_shared<StaticBody>(
-            //make_shared<BoxShape>(vec3{200.0f, 0.2f, 200.0f}),
-            make_shared<ConvexHullShape>(*floorModel->findFirstChild<MeshInstance>()),
+            make_shared<ConvexHullShape>(floorModel),
             Layers::WORLD,
             0,
             "Floor");
@@ -46,6 +45,7 @@ void RaycastMainScene::onReady() {
     game->addChild(floor);
     printTree();
 }
+
 
 void RaycastMainScene::onProcess(float alpha) {
     if (previousSelection != nullptr) {
@@ -56,7 +56,7 @@ void RaycastMainScene::onProcess(float alpha) {
     }
     if (raycast->isColliding()) {
         const auto& collider = *(raycast->getCollider());
-        auto* meshInstance = dynamic_cast<MeshInstance*>(collider.getNode(Crate::MESH_PATH).get());
+        auto* meshInstance = collider.findFirstChild<MeshInstance>();
         if (!meshInstance->isOutlined()) {
             meshInstance->setOutlined(true);
             meshInstance->setOutlineMaterial(raycastOutlineMaterial);
