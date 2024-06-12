@@ -4,7 +4,6 @@
 
 Crate::Crate(const shared_ptr<Node>& model):
     RigidBody{
-        //make_shared<BoxShape>(vec3{2.0f,2.0f, 2.0f}),
         make_shared<ConvexHullShape>(model),
         Layers::BODIES,
         Layers::WORLD | Layers::BODIES | Layers::PLAYER,
