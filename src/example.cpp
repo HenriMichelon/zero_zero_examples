@@ -22,8 +22,7 @@ private:
 
 void ExampleMainScene::onReady() {
     addChild(make_shared<Camera>());
-    auto skybox = make_shared<Skybox>("res/textures/sky", ".jpg");
-    addChild(skybox);
+    addChild(make_shared<Skybox>("res/textures/sky", ".jpg"));
 
     menu = make_shared<GWindow>(Rect{250, 0, 500, 1000});
     app().addWindow(menu);
@@ -98,8 +97,8 @@ const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = ".",
     .windowMode = WINDOW_MODE_WINDOWED,
-    .windowWidth = 640,
-    .windowHeight = 480,
+    .windowWidth = 1280,
+    .windowHeight = 960,
     .defaultFontName = "res/Signwood.ttf",
     .defaultFontSize = 16
 };

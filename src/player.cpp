@@ -137,7 +137,7 @@ void Player::onReady() {
 
     log(to_string(Input::getConnectedJoypads()), "connected gamepad(s)");
     for (int i = 0; i < Input::getConnectedJoypads(); i++) {
-        log(Input::getGamepadName(i));
+        log(Input::getJoypadName(i));
     }
     for (int i = 0; i < Input::getConnectedJoypads(); i++) {
         if (Input::isGamepad(i)) {
@@ -146,13 +146,13 @@ void Player::onReady() {
         }
     }
     if (gamepad != -1) {
-        log("Using gamepad", Input::getGamepadName(gamepad));
+        log("Using gamepad", Input::getJoypadName(gamepad));
     }
 
-    collisionOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get().get(0));
+    collisionOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get(0));
     collisionOutlineMaterial->setParameter(0, {0.0,1.0,0.0,1.0});
-    collisionOutlineMaterial->setParameter(1, vec4{0.05});
-    OutlineMaterials::get().add(collisionOutlineMaterial);
+    collisionOutlineMaterial->setParameter(1, vec4{0.02});
+    OutlineMaterials::add(collisionOutlineMaterial);
 
     //printTree();
 }

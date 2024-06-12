@@ -6,6 +6,16 @@
 #include "raycast.h"
 
 void RaycastMainScene::onReady() {
+    if (parent == nullptr) {
+        addChild(make_shared<Skybox>("res/textures/sky", ".jpg"));
+    }
+    addChild(make_shared<Environment>(vec4{1.0,1.0,1.0,0.25f}));
+    auto directionalLight1 = make_shared<DirectionalLight>(
+        vec3{-1.0f, -1.0f, 0.0f},
+        vec4{1.0f, 1.0f, 1.0f, 1.0f}
+    );
+    addChild(directionalLight1);
+    directionalLight1->setPosition(vec3{10.0f, 10.0f, -5.0f});
 
     setProcessMode(PROCESS_MODE_ALWAYS);
 
@@ -29,10 +39,10 @@ void RaycastMainScene::onReady() {
         }
     }
 
-    raycastOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get().get(0));
+    raycastOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get(0));
     raycastOutlineMaterial->setParameter(0, {1.0,0.0,0.0,1.0});
-    raycastOutlineMaterial->setParameter(1, vec4{0.02});
-    OutlineMaterials::get().add(raycastOutlineMaterial);
+    raycastOutlineMaterial->setParameter(1, vec4{0.005});
+    OutlineMaterials::add(raycastOutlineMaterial);
 
     auto floorModel = Loader::loadModelFromFile("res/models/floor.glb", true);
 
@@ -52,7 +62,7 @@ void RaycastMainScene::onReady() {
     floor->addChild(floorModel);
     floor->setPosition({0.0, -2.0, 0.0});
     game->addChild(floor);
-    printTree();
+    //printTree();
 }
 
 
