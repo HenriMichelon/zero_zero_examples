@@ -20,14 +20,14 @@ void RaycastMainScene::onReady() {
     raycast = make_shared<RayCast>(vec3{0.0f, 0.0f, -100.0f}, Layers::BODIES);
     player->addChild(raycast);
 
-    /*auto crateModel = Loader::loadModelFromFile("res/models/crate.glb", true);
+    auto crateModel = Loader::loadModelFromFile("res/models/crate.glb", true);
     for (int x = 0; x < 5; x++) {
         for (int z = 0; z < 5; z++) {
             auto model = make_shared<Crate>(crateModel->duplicate());
             model->setPosition({x * 5 - 1.5 * 5, 1.0 + rand() % 5, -z * 5 - 5});
             game->addChild(model);
         }
-    }*/
+    }
 
     raycastOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get().get(0));
     raycastOutlineMaterial->setParameter(0, {1.0,0.0,0.0,1.0});
@@ -35,10 +35,9 @@ void RaycastMainScene::onReady() {
     OutlineMaterials::get().add(raycastOutlineMaterial);
 
     auto floorModel = Loader::loadModelFromFile("res/models/floor.glb", true);
-    auto floorMesh = floorModel->findFirstChild<MeshInstance>()->getMesh();
     auto floor = make_shared<StaticBody>(
             //make_shared<BoxShape>(vec3{200.0f, 0.2f, 200.0f}),
-            make_shared<ConvexHullShape>(floorMesh->getVertices()),
+            make_shared<ConvexHullShape>(*floorModel->findFirstChild<MeshInstance>()),
             Layers::WORLD,
             0,
             "Floor");
@@ -46,11 +45,10 @@ void RaycastMainScene::onReady() {
     floor->setPosition({0.0, -2.0, 0.0});
     game->addChild(floor);
     printTree();
-
 }
 
 void RaycastMainScene::onProcess(float alpha) {
-    /*if (previousSelection != nullptr) {
+    if (previousSelection != nullptr) {
         if (previousSelection->getOutlineMaterial() == raycastOutlineMaterial) {
             previousSelection->setOutlined(false);
         }
@@ -64,5 +62,5 @@ void RaycastMainScene::onProcess(float alpha) {
             meshInstance->setOutlineMaterial(raycastOutlineMaterial);
             previousSelection = meshInstance;
         }
-    }*/
+    }
 }

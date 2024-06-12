@@ -102,16 +102,15 @@ void Player::onProcess(float alpha) {
 }
 
 void Player::onCollisionStarts(PhysicsNode *node) {
-    /*if (!isGround(node)) {
+    if (!isGround(node)) {
          if (previousCollision != nullptr) {
             previousCollision->setOutlined(false);
         }
-        log("Start Colliding with", node->toString(), "(", to_string(node->getId()), ")");
-        auto* meshInstance = dynamic_cast<MeshInstance*>(node->getNode(Crate::MESH_PATH).get());
+        auto* meshInstance = node->findFirstChild<MeshInstance>();
         meshInstance->setOutlined(true);
         meshInstance->setOutlineMaterial(collisionOutlineMaterial);
         previousCollision = meshInstance;
-    }*/
+    }
 }
 
 void Player::onReady() {
