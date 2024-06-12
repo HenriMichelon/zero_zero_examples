@@ -14,7 +14,7 @@ public:
     void onPhysicsProcess(float delta) override;
     void onProcess(float alpha) override;
     void onReady() override;
-    void onCollisionStarts(PhysicsNode* node) override;
+    void onCollisionStarts(CollisionObject* node) override;
 
 private:
     struct State {

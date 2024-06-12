@@ -19,8 +19,7 @@
 #include <z0/loader.h>
 
 #include <z0/nodes/camera.h>
-#include <z0/nodes/collision_node.h>
-#include <z0/nodes/physics_node.h>
+#include <z0/nodes/collision_object.h>
 #include <z0/nodes/physics_body.h>
 #include <z0/nodes/rigid_body.h>
 #include <z0/nodes/kinematic_body.h>
