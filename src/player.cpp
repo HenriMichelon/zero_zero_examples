@@ -42,6 +42,7 @@ bool Player::onInput(InputEvent& event) {
 
 void Player::onPhysicsProcess(float delta) {
     previousState = currentState;
+    currentState = State{};
     vec2 input = VEC2ZERO;
     if (gamepad != -1) {
         input = Input::getGamepadVector(gamepad, GAMEPAD_AXIS_LEFT);
@@ -50,25 +51,34 @@ void Player::onPhysicsProcess(float delta) {
         input = Input::getKeyboardVector(KEY_A, KEY_D, KEY_W, KEY_S);
     }
 
-    currentState = State{
-        .velocity = getVelocity()
-    };
-    if (input != VEC2ZERO) {
-        captureMouse();
-        auto direction = TRANSFORM_BASIS * vec3{input.x, 0, input.y};
-        currentState.velocity.x = direction.x * movementsSpeed;
-        currentState.velocity.z = direction.z * movementsSpeed;
-    }
-    if (!isOnGround()) {
-        currentState.velocity.y = app().getGravity().y;
-    } else {
-         if (Input::isKeyPressed(KEY_SPACE) || Input::isGamepadButtonPressed(gamepad, GAMEPAD_BUTTON_A)) {
-            currentState.velocity.y = jumpHeight;
-        } else {
-            currentState.velocity.y = 0;
+    // Determine news basic velocity
+    auto onGround = isOnGround();
+    auto currentVerticalVelocity = dot(getVelocity(), getUp()) * getUp();
+    auto movingTowardsGround = (currentVerticalVelocity.y - currentState.velocity.y) < 0.1f;
+    if (onGround && movingTowardsGround) {
+        currentState.velocity = getGroundVelocity();
+        if (Input::isKeyPressed(KEY_SPACE) || Input::isGamepadButtonPressed(gamepad, GAMEPAD_BUTTON_A)) {
+            currentState.velocity += jumpHeight * getUp();
         }
+    } else {
+        currentState.velocity = currentVerticalVelocity;
     }
-   
+    // Apply gravity
+    currentState.velocity += app().getGravity() * getUp() * delta;
+
+    if (input != VEC2ZERO) {
+        if (!mouseCaptured) { captureMouse(); }
+        if (onGround && movingTowardsGround) {
+            // Apply user input
+            auto direction = TRANSFORM_BASIS * vec3{input.x, 0, input.y};
+            currentState.velocity += direction * movementsSpeed;
+        }
+    } else if (!onGround) {
+        // Preserve horizontal velocity
+        auto currentHorizontalVelocity = previousState.velocity - currentVerticalVelocity;
+		currentState.velocity += currentHorizontalVelocity;
+    }
+
     if (mouseCaptured) {
         vec2 inputDir = VEC2ZERO;
         if (gamepad != -1) {
@@ -96,10 +106,8 @@ void Player::onPhysicsProcess(float delta) {
 
 void Player::onProcess(float alpha) {
     if (currentState.velocity != VEC3ZERO) {
-        auto interpolatedVelocity = previousState.velocity * (1.0f-alpha) + currentState.velocity * alpha;
-        setVelocity({interpolatedVelocity.x, interpolatedVelocity.y, interpolatedVelocity.z});
-    } else {
-        setVelocity(VEC3ZERO);
+        // set interpolated velocity
+        setVelocity(previousState.velocity * (1.0f-alpha) + currentState.velocity * alpha);
     }
     
     if (currentState.lookDir != VEC2ZERO) {
