@@ -54,11 +54,10 @@ void Player::onPhysicsProcess(float delta) {
     // Determine news basic velocity
     auto onGround = isOnGround();
     auto currentVerticalVelocity = dot(getVelocity(), getUp()) * getUp();
-    auto movingTowardsGround = (currentVerticalVelocity.y - currentState.velocity.y) < 0.1f;
-    if (onGround && movingTowardsGround) {
+    if (onGround) {
         currentState.velocity = getGroundVelocity();
         if (Input::isKeyPressed(KEY_SPACE) || Input::isGamepadButtonPressed(gamepad, GAMEPAD_BUTTON_A)) {
-            currentState.velocity += jumpHeight * getUp();
+            currentState.velocity += (jumpSpeed + currentMovementSpeed/2.0f) * getUp();
         }
     } else {
         currentState.velocity = currentVerticalVelocity;
@@ -68,12 +67,21 @@ void Player::onPhysicsProcess(float delta) {
 
     if (input != VEC2ZERO) {
         if (!mouseCaptured) { captureMouse(); }
-        if (onGround && movingTowardsGround) {
+        if (onGround) {
             // Apply user input
             auto direction = TRANSFORM_BASIS * vec3{input.x, 0, input.y};
-            currentState.velocity += direction * movementsSpeed;
+            if (currentMovementSpeed == 0) {
+                currentMovementSpeed = minMovementsSpeed;
+            } else {
+                currentMovementSpeed += acceleration * delta;
+                currentMovementSpeed = std::min(currentMovementSpeed, maxMovementsSpeed);
+            }
+            currentState.velocity += direction * currentMovementSpeed;
         }
-    } else if (!onGround) {
+    } else {
+        currentMovementSpeed = 0;
+    }
+    if (!onGround) {
         // Preserve horizontal velocity
         auto currentHorizontalVelocity = previousState.velocity - currentVerticalVelocity;
 		currentState.velocity += currentHorizontalVelocity;

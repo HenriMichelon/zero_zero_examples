@@ -2,12 +2,15 @@
 
 class Player: public Character {
 public:
-    const float movementsSpeed = 4;
-    const float jumpHeight = 8;
-    const float mouseSensitivity = 0.008;
-    const float viewSensitivity = 0.2;
+    const float minMovementsSpeed = 1.5f;
+    const float maxMovementsSpeed = 4.0f;
+    const float acceleration = 2.0f;
+    const float jumpSpeed = 5.5f;
+    const float mouseSensitivity = 0.008f;
+    const float viewSensitivity = 0.2f;
     const float maxCameraAngleUp = radians(60.0);
     const float maxCameraAngleDown = -radians(45.0);
+
     Player();
 
     bool onInput(InputEvent& event) override;
@@ -29,6 +32,7 @@ private:
     float keyboardInvertedAxisY{1.0};
     State previousState;
     State currentState;
+    float currentMovementSpeed;
     shared_ptr<Node> cameraPivot;
     shared_ptr<Camera> camera;
 
