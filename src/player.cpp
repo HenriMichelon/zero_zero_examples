@@ -3,9 +3,9 @@
 #include "layers.h"
 #include "crate.h"
 
-Player::Player(): Character{make_shared<BoxShape>(vec3{1.0f,2.0f, 1.0f}),
-                                Layers::PLAYER,
-                                Layers::WORLD | Layers::BODIES} {
+Player::Player(): Character{make_shared<BoxShape>(vec3{0.8f,2.0f, 0.8f}),
+                            Layers::PLAYER,
+                            Layers::WORLD | Layers::BODIES} {
 }
 
 bool Player::onInput(InputEvent& event) {
@@ -59,11 +59,16 @@ void Player::onPhysicsProcess(float delta) {
         currentState.velocity.x = direction.x * movementsSpeed;
         currentState.velocity.z = direction.z * movementsSpeed;
     }
-    if ((Input::isKeyPressed(KEY_SPACE) || (Input::isGamepadButtonPressed(gamepad, GAMEPAD_BUTTON_A)))
-        && isOnGround()) {
-        currentState.velocity.y = jumpHeight;
+    if (!isOnGround()) {
+        currentState.velocity.y = app().getGravity().y;
+    } else {
+         if (Input::isKeyPressed(KEY_SPACE) || Input::isGamepadButtonPressed(gamepad, GAMEPAD_BUTTON_A)) {
+            currentState.velocity.y = jumpHeight;
+        } else {
+            currentState.velocity.y = 0;
+        }
     }
-
+   
     if (mouseCaptured) {
         vec2 inputDir = VEC2ZERO;
         if (gamepad != -1) {
@@ -76,7 +81,8 @@ void Player::onPhysicsProcess(float delta) {
             currentState.lookDir = inputDir * viewSensitivity * delta;
         }
     }
-     gradient += gradientSpeed * delta;
+
+    gradient += gradientSpeed * delta;
     if (gradient > 1.0f) {
         gradient = 1.0f;
         gradientSpeed = -gradientSpeed;
@@ -89,10 +95,13 @@ void Player::onPhysicsProcess(float delta) {
 }
 
 void Player::onProcess(float alpha) {
-    if ((currentState.velocity != VEC3ZERO) && isOnGround()) {
+    if (currentState.velocity != VEC3ZERO) {
         auto interpolatedVelocity = previousState.velocity * (1.0f-alpha) + currentState.velocity * alpha;
         setVelocity({interpolatedVelocity.x, interpolatedVelocity.y, interpolatedVelocity.z});
+    } else {
+        setVelocity(VEC3ZERO);
     }
+    
     if (currentState.lookDir != VEC2ZERO) {
         auto interpolatedLookDir = previousState.lookDir * (1.0f-alpha) + currentState.lookDir * alpha;
         rotateY(-interpolatedLookDir.x * 2.0f);
@@ -121,9 +130,7 @@ void Player::onReady() {
     addChild(model);
     material = make_shared<ShaderMaterial>("examples/uv_gradient.frag");
     material->setParameter(0, vec4{0.0});
-    auto mesh = dynamic_cast<MeshInstance*>(
-        model->getNode("Sketchfab_model/root/GLTF_SceneRootNode/Sphere_0/Object_4").get())
-        ->getMesh();
+    auto mesh = model->findFirstChild<MeshInstance>()->getMesh();
     mesh->setSurfaceMaterial(0, material);
 
     cameraPivot = make_shared<Node>("CameraPivot");

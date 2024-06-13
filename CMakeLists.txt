@@ -71,6 +71,7 @@ add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_shaders ${Z0_SHARED_LIB})
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} ${Z0_SHARED_LIB})
 add_compile_definitions(JPH_DISABLE_CUSTOM_ALLOCATOR)
+#add_compile_definitions(NDEBUG)
 #add_compile_definitions(USE_PCH)
 target_precompile_headers(${PROJECT_NAME} PRIVATE
 		${Z0_INCLUDE_DIR}/z0/libraries.h
