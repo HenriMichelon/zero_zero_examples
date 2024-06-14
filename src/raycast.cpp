@@ -21,11 +21,11 @@ void RaycastMainScene::onReady() {
         vec3{-1.0f, -1.0f, 1.0f},
         vec4{1.0f, 1.0f, 1.0f, 0.5f}
     );
-    //directionalLight1->setCastShadow(true);
-    //game->addChild(directionalLight1);
+    directionalLight1->setCastShadow(true);
+    game->addChild(directionalLight1);
 
     auto omniLight1 = make_shared<OmniLight>(0.14, 0.07);
-    omniLight1->setPosition({2.0f, 0.5f, -8.0f});
+    omniLight1->setPosition({-6.0f, 0.5f, -8.0f});
     omniLight1->setColorAndIntensity({0.0f, 1.0f, .0f, 1.0f});
     game->addChild(omniLight1);
     
@@ -36,7 +36,7 @@ void RaycastMainScene::onReady() {
     );
     spotLight1->setPosition({14.0, 3.0, 0.0});
     spotLight1->setColorAndIntensity({1.0f, 0.0f, 0.0f, 2.0f});
-    //spotLight1->setCastShadow(true);
+    spotLight1->setCastShadow(true);
     game->addChild(spotLight1);
 
     auto player = make_shared<Player>();
