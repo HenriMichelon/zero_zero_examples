@@ -372,3 +372,4 @@ _deps
 .env.cmake
 # Blender backup files
 *.blend1
+./log.txt
