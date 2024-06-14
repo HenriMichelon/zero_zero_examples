@@ -9,7 +9,7 @@ void RaycastMainScene::onReady() {
     if (parent == nullptr) {
         addChild(make_shared<Skybox>("res/textures/sky", ".jpg"));
     }
-    addChild(make_shared<Environment>(vec4{1.0,1.0,1.0,0.25f}));
+    addChild(make_shared<Environment>(vec4{1.0,1.0,1.0,0.1f}));
 
     setProcessMode(PROCESS_MODE_ALWAYS);
 
@@ -18,12 +18,27 @@ void RaycastMainScene::onReady() {
     addChild(game);
 
     auto directionalLight1 = make_shared<DirectionalLight>(
-        vec3{0.0f, -1.0f, -.5f},
-        vec4{1.0f, 1.0f, 1.0f, 1.0f}
+        vec3{-1.0f, -1.0f, 1.0f},
+        vec4{1.0f, 1.0f, 1.0f, 0.5f}
     );
-    game->addChild(directionalLight1);
-    directionalLight1->setCastShadow(true);
+    //directionalLight1->setCastShadow(true);
+    //game->addChild(directionalLight1);
+
+    auto omniLight1 = make_shared<OmniLight>(0.14, 0.07);
+    omniLight1->setPosition({2.0f, 0.5f, -8.0f});
+    omniLight1->setColorAndIntensity({0.0f, 1.0f, .0f, 1.0f});
+    game->addChild(omniLight1);
     
+    auto spotLight1 = make_shared<SpotLight>(
+        vec3{-0.8f,-0.5f, -1.0f},
+        25.0f, 35.0f,
+        0.027, 0.0028
+    );
+    spotLight1->setPosition({14.0, 3.0, 0.0});
+    spotLight1->setColorAndIntensity({1.0f, 0.0f, 0.0f, 2.0f});
+    //spotLight1->setCastShadow(true);
+    game->addChild(spotLight1);
+
     auto player = make_shared<Player>();
     game->addChild(player);
     player->setPosition({0.0, 2.0, 0.0});
