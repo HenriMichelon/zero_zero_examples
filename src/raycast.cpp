@@ -18,12 +18,11 @@ void RaycastMainScene::onReady() {
     addChild(game);
 
     auto directionalLight1 = make_shared<DirectionalLight>(
-        vec3{.0f, -1.0f, 0.0f},
+        vec3{0.0f, -1.0f, -.5f},
         vec4{1.0f, 1.0f, 1.0f, 1.0f}
     );
     game->addChild(directionalLight1);
     directionalLight1->setCastShadow(true);
-    directionalLight1->setPosition(vec3{0.0f, 100.0f, 0.0f});
     
     auto player = make_shared<Player>();
     game->addChild(player);
