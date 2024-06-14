@@ -37,6 +37,8 @@
 #include <z0/renderers/base_renderpass.h>
 #include <z0/renderers/skybox_renderer.h>
 #include <z0/renderers/shadowmap_renderer.h>
+#include <z0/renderers/base_postprocessing_renderer.h>
+#include <z0/renderers/simple_postprocessing_renderer.h>
 #include <z0/renderers/base_models_renderer.h>
 #include <z0/renderers/scene_renderer.h>
 #include <z0/renderers/vector_renderer.h>

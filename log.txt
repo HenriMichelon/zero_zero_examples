@@ -1,5 +1,5 @@
-11:34:06 Log starting 
-11:34:08 Using camera  Camera 
-11:34:08 0 connected gamepad(s) 
-11:34:08 Using environment Environment 
-11:34:08 Using directional light DirectionalLight 
+14:18:57 Log starting 
+14:18:58 Using camera  Camera 
+14:18:58 0 connected gamepad(s) 
+14:18:58 Using environment Environment 
+14:18:58 Using directional light DirectionalLight 

@@ -10,19 +10,20 @@ void RaycastMainScene::onReady() {
         addChild(make_shared<Skybox>("res/textures/sky", ".jpg"));
     }
     addChild(make_shared<Environment>(vec4{1.0,1.0,1.0,0.25f}));
-    auto directionalLight1 = make_shared<DirectionalLight>(
-        vec3{.0f, -1.0f, 0.0f},
-        vec4{1.0f, 1.0f, 1.0f, 1.0f}
-    );
-    addChild(directionalLight1);
-    directionalLight1->setCastShadow(true);
-    directionalLight1->setPosition(vec3{0.0f, 10.0f, 0.0f});
 
     setProcessMode(PROCESS_MODE_ALWAYS);
 
     auto game = make_shared<Node>("Game");
     game->setProcessMode(PROCESS_MODE_PAUSABLE);
     addChild(game);
+
+    auto directionalLight1 = make_shared<DirectionalLight>(
+        vec3{.0f, -1.0f, 0.0f},
+        vec4{1.0f, 1.0f, 1.0f, 1.0f}
+    );
+    game->addChild(directionalLight1);
+    directionalLight1->setCastShadow(true);
+    directionalLight1->setPosition(vec3{0.0f, 100.0f, 0.0f});
     
     auto player = make_shared<Player>();
     game->addChild(player);
