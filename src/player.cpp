@@ -99,17 +99,6 @@ void Player::onPhysicsProcess(float delta) {
             currentState.lookDir = inputDir * viewSensitivity * delta;
         }
     }
-
-    gradient += gradientSpeed * delta;
-    if (gradient > 1.0f) {
-        gradient = 1.0f;
-        gradientSpeed = -gradientSpeed;
-    }
-    if (gradient < 0.0f) {
-        gradient = 0.0f;
-        gradientSpeed = -gradientSpeed;
-    }
-    material->setParameter(0, vec4{gradient});
 }
 
 void Player::onProcess(float alpha) {
@@ -144,10 +133,6 @@ void Player::onReady() {
     model = Loader::loadModelFromFile("res/models/capsule.glb", true);
     model->setPosition({0.0, -1.8/2.0, 0.0});
     addChild(model);
-    material = make_shared<ShaderMaterial>("examples/uv_gradient.frag");
-    material->setParameter(0, vec4{0.0});
-    auto mesh = model->findFirstChild<MeshInstance>()->getMesh();
-    mesh->setSurfaceMaterial(0, material);
 
     cameraPivot = make_shared<Node>("CameraPivot");
     cameraPivot->setPosition({0.0, 1.8, 2.0});

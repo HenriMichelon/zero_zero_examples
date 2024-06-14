@@ -20,6 +20,7 @@ private:
     }
 };
 
+
 void ExampleMainScene::onReady() {
     addChild(make_shared<Camera>());
     addChild(make_shared<Skybox>("res/textures/sky", ".jpg"));

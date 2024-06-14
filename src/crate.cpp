@@ -11,7 +11,7 @@ Crate::Crate(const shared_ptr<Node>& model):
         "Crate" } {
     addChild(model);
     setBounce(0.8);
-    setGravityScale(0.5);
+    setGravityScale(0.1);
 }
 
 void Crate::onReady() {

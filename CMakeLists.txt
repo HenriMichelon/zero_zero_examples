@@ -36,6 +36,10 @@ file(GLOB_RECURSE GLSL_SOURCE_FILES
 		"${SHADERS_DIR}/*.vert"
 )
 add_shaders(${PROJECT_NAME}_shaders ${SHADERS_BUILD_DIR}/examples ${Z0_SHADERS_DIR} ${GLSL_SOURCE_FILES})
+add_custom_target(AlwaysExecute ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${Z0_SHADERS_BUILD_DIR} ${SHADERS_BUILD_DIR} 
+)
+add_dependencies(AlwaysExecute ${PROJECT_NAME}_shaders)
 
 add_executable(${PROJECT_NAME}
 		${INCLUDE_DIR}/example.h
@@ -67,7 +71,7 @@ add_executable(${PROJECT_NAME}
 
 )
 
-add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_shaders ${Z0_SHARED_LIB})
+add_dependencies(${PROJECT_NAME} ${Z0_SHARED_LIB} AlwaysExecute)
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} ${Z0_SHARED_LIB})
 add_compile_definitions(JPH_DISABLE_CUSTOM_ALLOCATOR)
@@ -82,7 +86,6 @@ add_custom_command(
     TARGET ${PROJECT_NAME}
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_FILE} ${CMAKE_BINARY_DIR}
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${Z0_SHADERS_BUILD_DIR} ${SHADERS_BUILD_DIR} 
 )
 
 if(WIN32)
