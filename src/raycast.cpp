@@ -25,7 +25,7 @@ void RaycastMainScene::onReady() {
     
     auto player = make_shared<Player>();
     game->addChild(player);
-    player->setPosition({0.0, 5.0, 0.0});
+    player->setPosition({0.0, 2.0, 0.0});
 
     raycast = make_shared<RayCast>(vec3{0.0f, 0.0f, -100.0f}, Layers::BODIES);
     player->addChild(raycast);
