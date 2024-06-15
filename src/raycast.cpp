@@ -81,7 +81,6 @@ void RaycastMainScene::onReady() {
     //printTree();
 }
 
-
 void RaycastMainScene::onProcess(float alpha) {
     if (previousSelection != nullptr) {
         if (previousSelection->getOutlineMaterial() == raycastOutlineMaterial) {

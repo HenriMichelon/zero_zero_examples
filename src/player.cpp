@@ -29,6 +29,8 @@ bool Player::onInput(InputEvent& event) {
             releaseMouse();
             return true;
         }
+        pushing = (eventKey.getKeyCode() == KEY_P) && eventKey.isPressed();
+        pulling = (eventKey.getKeyCode() == KEY_O) && eventKey.isPressed();
     }
     if ((event.getType() == INPUT_EVENT_GAMEPAD_BUTTON) && mouseCaptured) {
         auto& eventGamepadButton = dynamic_cast<InputEventGamepadButton&>(event);
@@ -53,17 +55,17 @@ void Player::onPhysicsProcess(float delta) {
 
     // Determine news basic velocity
     auto onGround = isOnGround();
-    auto currentVerticalVelocity = dot(getVelocity(), getUp()) * getUp();
+    auto currentVerticalVelocity = dot(getVelocity(), getUpVector()) * getUpVector();
     if (onGround) {
         currentState.velocity = getGroundVelocity();
         if (Input::isKeyPressed(KEY_SPACE) || Input::isGamepadButtonPressed(gamepad, GAMEPAD_BUTTON_A)) {
-            currentState.velocity += (jumpSpeed + currentMovementSpeed/2.0f) * getUp();
+            currentState.velocity += (jumpSpeed + currentMovementSpeed/2.0f) * getUpVector();
         }
     } else {
         currentState.velocity = currentVerticalVelocity;
     }
     // Apply gravity
-    currentState.velocity += app().getGravity() * getUp() * delta;
+    currentState.velocity += app().getGravity() * getUpVector() * delta;
 
     if (input != VEC2ZERO) {
         if (!mouseCaptured) { captureMouse(); }
@@ -106,24 +108,33 @@ void Player::onProcess(float alpha) {
         // set interpolated velocity
         setVelocity(previousState.velocity * (1.0f-alpha) + currentState.velocity * alpha);
     }
-    
     if (currentState.lookDir != VEC2ZERO) {
         auto interpolatedLookDir = previousState.lookDir * (1.0f-alpha) + currentState.lookDir * alpha;
         rotateY(-interpolatedLookDir.x * 2.0f);
         cameraPivot->rotateX(interpolatedLookDir.y * keyboardInvertedAxisY);
         cameraPivot->setRotationX(std::clamp(cameraPivot->getRotationX() , maxCameraAngleDown, maxCameraAngleUp));
     }
+    for (const auto& collision: previousCollisions) {
+         collision.object->findFirstChild<MeshInstance>()->setOutlined(false);
+    }
+    previousCollisions.clear();
+    for(const auto& collision : getCollisions()) {
+        if (!isGround(collision.object)) {
+            if (pushing || pulling) {
+                collision.object->applyForce(vec3{10000.0, 10000.0, 10000.0} * collision.normal * (pushing ? -1.0f : 1.0f),
+                collision.position);
+            }
+            auto* meshInstance = collision.object->findFirstChild<MeshInstance>();
+            meshInstance->setOutlined(true);
+            meshInstance->setOutlineMaterial(collisionOutlineMaterial);
+            previousCollisions.push_back(collision);
+        }
+    }
 }
 
-void Player::onCollisionStarts(CollisionObject *node) {
-    if (!isGround(node)) {
-         if (previousCollision != nullptr) {
-            previousCollision->setOutlined(false);
-        }
-        auto* meshInstance = node->findFirstChild<MeshInstance>();
-        meshInstance->setOutlined(true);
-        meshInstance->setOutlineMaterial(collisionOutlineMaterial);
-        previousCollision = meshInstance;
+void Player::onCollisionStarts(const Collision collision) {
+    if (!isGround(collision.object)) {
+        //log("Player start colliding with", collision.object->toString(), to_string(collision.object->getId()));
     }
 }
 

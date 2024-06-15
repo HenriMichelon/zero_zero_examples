@@ -17,7 +17,7 @@ public:
     void onPhysicsProcess(float delta) override;
     void onProcess(float alpha) override;
     void onReady() override;
-    void onCollisionStarts(CollisionObject* node) override;
+    void onCollisionStarts(const CollisionObject::Collision collision) override;
 
 private:
     struct State {
@@ -40,6 +40,8 @@ private:
     void releaseMouse();
 
     shared_ptr<Node> model;
+    bool pushing{false};
+    bool pulling{false};
     shared_ptr<ShaderMaterial> collisionOutlineMaterial;
-    MeshInstance* previousCollision{nullptr};
+    list<CollisionObject::Collision> previousCollisions;
 };
