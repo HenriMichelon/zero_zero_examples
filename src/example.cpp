@@ -3,7 +3,7 @@
 #include "example.h"
 #include "triangle.h"
 #include "add_remove_child.h"
-#include "raycast.h"
+#include "physics.h"
 
 class GMenuEntry: public GButton {
 public:
@@ -92,7 +92,7 @@ void ExampleMainScene::onMenuAddRemoveChild(GWidget*, GEvent *) {
 void ExampleMainScene::onMenuRaycast(GWidget*, GEvent *) {
     menu->hide();
     topbar->show();
-    scene->addChild(make_shared<RaycastMainScene>());
+    scene->addChild(make_shared<PhysicsMainScene>());
 }
 
 const ApplicationConfig applicationConfig {
@@ -105,4 +105,4 @@ const ApplicationConfig applicationConfig {
     .defaultFontSize = 16
 };
 
-Z0_APP(applicationConfig, make_shared<RaycastMainScene>())
+Z0_APP(applicationConfig, make_shared<ExampleMainScene>())

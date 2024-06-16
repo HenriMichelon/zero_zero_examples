@@ -121,7 +121,8 @@ void Player::onProcess(float alpha) {
     }
     currentCollisions.clear();
     for(const auto& collision : getCollisions()) {
-        if (!isGround(collision.object)) {
+        if ((!isGround(collision.object) && 
+            (collision.normal.y < 0.8))) { // do not select when on top of a crate
             if (pushing || pulling) {
                 collision.object->applyForce(
                     force * collision.normal * (pushing ? -1.0f : 1.0f),
@@ -187,8 +188,6 @@ void Player::onReady() {
     collisionOutlineMaterial->setParameter(0, {0.0,1.0,0.0,1.0});
     collisionOutlineMaterial->setParameter(1, vec4{0.02});
     OutlineMaterials::add(collisionOutlineMaterial);
-
-    //printTree();
 }
 
 void Player::captureMouse() {
@@ -213,6 +212,6 @@ void Player::onEnterScene() {
     actionsText = make_shared<GText>("[P][RB] : Push   [O][LB] : Pull");
     actionsText->setTextColor({0.5f, 0.5f, 0.5f, 1.0f});
     infoBox->getWidget().add(actionsText, GWidget::TOPCENTER);
-    infoBox->getWidget().setTransparency(0.05);
+    infoBox->getWidget().setTransparency(0.2);
     infoBox->getWidget().setPadding(5);
 }

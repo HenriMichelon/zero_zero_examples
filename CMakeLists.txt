@@ -60,8 +60,8 @@ add_executable(${PROJECT_NAME}
 		${INCLUDE_DIR}/player.h
 		${SRC_DIR}/player.cpp
 
-		${INCLUDE_DIR}/raycast.h
-		${SRC_DIR}/raycast.cpp
+		${INCLUDE_DIR}/physics.h
+		${SRC_DIR}/physics.cpp
 
 		${INCLUDE_DIR}/crate.h
 		${SRC_DIR}/crate.cpp

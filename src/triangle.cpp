@@ -23,11 +23,11 @@ void TriangleMainScene::onEnterScene() {
     
     auto menuRotate = make_shared<GButton>();
     menu->getWidget().add(menuRotate, GWidget::TOPCENTER, "200,40");
-    menuRotate->add(make_shared<GText>("Toggle rotation (SPACE)"), GWidget::CENTER);
+    menuRotate->add(make_shared<GText>("[SPACE] Toggle rotation"), GWidget::CENTER);
     menuRotate->connect(GEvent::OnClick, this, GEventFunction(&TriangleMainScene::onMenuRotate));
     auto menuShader = make_shared<GButton>();
     menu->getWidget().add(menuShader, GWidget::TOPCENTER, "200,40");
-    menuShader->add(make_shared<GText>("Toggle Shader (ENTER)"), GWidget::CENTER);
+    menuShader->add(make_shared<GText>("[ENTER] Toggle Shader"), GWidget::CENTER);
     menuShader->connect(GEvent::OnClick, this, GEventFunction(&TriangleMainScene::onMenuShader));
 }
 

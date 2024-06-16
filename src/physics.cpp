@@ -3,9 +3,9 @@
 #include "crate.h"
 #include "layers.h"
 #include "topbar.h"
-#include "raycast.h"
+#include "physics.h"
 
-void RaycastMainScene::onReady() {
+void PhysicsMainScene::onReady() {
     if (parent == nullptr) {
         addChild(make_shared<Skybox>("res/textures/sky", ".jpg"));
     }
@@ -24,10 +24,10 @@ void RaycastMainScene::onReady() {
     directionalLight1->setCastShadow(true);
     game->addChild(directionalLight1);
 
-    /*auto omniLight1 = make_shared<OmniLight>(0.14, 0.07);
+    auto omniLight1 = make_shared<OmniLight>(0.14, 0.07);
     omniLight1->setPosition({-6.0f, 0.5f, -8.0f});
     omniLight1->setColorAndIntensity({0.0f, 1.0f, .0f, 2.0f});
-    game->addChild(omniLight1);*/
+    game->addChild(omniLight1);
     
     auto spotLight1 = make_shared<SpotLight>(
         vec3{-0.8f,-0.5f, -1.0f},
@@ -81,7 +81,7 @@ void RaycastMainScene::onReady() {
     //printTree();
 }
 
-void RaycastMainScene::onProcess(float alpha) {
+void PhysicsMainScene::onProcess(float alpha) {
     if (previousSelection != nullptr) {
         if (previousSelection->getOutlineMaterial() == raycastOutlineMaterial) {
             previousSelection->setOutlined(false);
@@ -97,4 +97,19 @@ void RaycastMainScene::onProcess(float alpha) {
             previousSelection = meshInstance;
         }
     }
+}
+
+void PhysicsMainScene::onEnterScene() {
+    menu = make_shared<GWindow>(Rect{0, 900, 130, 45});
+    app().addWindow(menu);
+    menu->getWidget().setPadding(5);
+    menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(),
+                                                menu->getWidget().getFont()->getFontSize() / 1.5));
+    menu->getWidget().setTransparency(0.2f);
+    menu->getWidget().add(make_shared<GText>("[SPACE] Jump"), GWidget::TOP);
+    menu->getWidget().add(make_shared<GText>("[ESC] Toggle mouse"), GWidget::TOP);
+}
+
+void PhysicsMainScene::onExitScene() {
+    app().removeWindow(menu);
 }

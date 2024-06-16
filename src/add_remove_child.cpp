@@ -11,15 +11,15 @@ void AddRemoveChildMainScene::onEnterScene() {
     
     auto menuAdd = make_shared<GButton>();
     menu->getWidget().add(menuAdd, GWidget::TOPCENTER, "200,40");
-    menuAdd->add(make_shared<GText>("Add node (ENTER)"), GWidget::CENTER);
+    menuAdd->add(make_shared<GText>("[ENTER] Add node"), GWidget::CENTER);
     menuAdd->connect(GEvent::OnClick, this, GEventFunction(&AddRemoveChildMainScene::onMenuAdd));
     auto menuRemove = make_shared<GButton>();
     menu->getWidget().add(menuRemove, GWidget::TOPCENTER, "200,40");
-    menuRemove->add(make_shared<GText>("Remove node (BACKSPACE)"), GWidget::CENTER);
+    menuRemove->add(make_shared<GText>("[BACKSPACE] Remove node"), GWidget::CENTER);
     menuRemove->connect(GEvent::OnClick, this, GEventFunction(&AddRemoveChildMainScene::onMenuRemove));
     auto menuCamera = make_shared<GButton>();
     menu->getWidget().add(menuCamera, GWidget::TOPCENTER, "200,40");
-    menuCamera->add(make_shared<GText>("Toggle camera (SPACE)"), GWidget::CENTER);
+    menuCamera->add(make_shared<GText>("[SPACE] Toggle camera"), GWidget::CENTER);
     menuCamera->connect(GEvent::OnClick, this, GEventFunction(&AddRemoveChildMainScene::onMenuCamera));
 }
 
