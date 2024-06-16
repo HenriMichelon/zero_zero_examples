@@ -116,10 +116,10 @@ void Player::onProcess(float alpha) {
         cameraPivot->rotateX(interpolatedLookDir.y * keyboardInvertedAxisY);
         cameraPivot->setRotationX(std::clamp(cameraPivot->getRotationX() , maxCameraAngleDown, maxCameraAngleUp));
     }
-    for (const auto& collision: previousCollisions) {
+    for (const auto& collision: currentCollisions) {
          collision.object->findFirstChild<MeshInstance>()->setOutlined(false);
     }
-    previousCollisions.clear();
+    currentCollisions.clear();
     for(const auto& collision : getCollisions()) {
         if (!isGround(collision.object)) {
             if (pushing || pulling) {
@@ -130,14 +130,26 @@ void Player::onProcess(float alpha) {
             auto* meshInstance = collision.object->findFirstChild<MeshInstance>();
             meshInstance->setOutlined(true);
             meshInstance->setOutlineMaterial(collisionOutlineMaterial);
-            previousCollisions.push_back(collision);
+            currentCollisions.push_back(collision);
         }
+    }
+    if (!currentCollisions.empty()) {
+        if (!infoBox->isVisible()) {
+            infoText->setText(currentCollisions.front().object->toString());
+            auto width = std::max(infoText->getWidth(), actionsText->getWidth());
+            infoBox->setWidth(width + infoBox->getWidget().getPadding() * 2);
+            infoBox->setX((VECTOR_SCALE.x - width) / 2);
+            infoBox->show();
+        }
+    } else if (infoBox->isVisible()) {
+        infoBox->hide();
     }
 }
 
 void Player::onCollisionStarts(const Collision collision) {
     if (!isGround(collision.object)) {
         //log("Player start colliding with", collision.object->toString(), to_string(collision.object->getId()));
+        //log(to_string(collision.position), to_string(camera->unproject(collision.position)));
     }
 }
 
@@ -189,4 +201,18 @@ void Player::captureMouse() {
 void Player::releaseMouse() {
     Input::setMouseMode(MOUSE_MODE_VISIBLE);
     mouseCaptured = false;
+}
+
+void Player::onEnterScene() {
+    infoBox = make_shared<GWindow>(Rect{0, 800, 300, 45});
+    infoBox->hide();
+    app().addWindow(infoBox);
+    infoText = make_shared<GText>("Info");
+    infoText->setTextColor({0.5f, 0.5f, 0.0f, 1.0f});
+    infoBox->getWidget().add(infoText, GWidget::TOPCENTER);
+    actionsText = make_shared<GText>("[P][RB] : Push   [O][LB] : Pull");
+    actionsText->setTextColor({0.5f, 0.5f, 0.5f, 1.0f});
+    infoBox->getWidget().add(actionsText, GWidget::TOPCENTER);
+    infoBox->getWidget().setTransparency(0.05);
+    infoBox->getWidget().setPadding(5);
 }

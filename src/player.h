@@ -18,6 +18,7 @@ public:
     void onPhysicsProcess(float delta) override;
     void onProcess(float alpha) override;
     void onReady() override;
+    void onEnterScene() override;
     void onCollisionStarts(const CollisionObject::Collision collision) override;
 
 private:
@@ -36,13 +37,16 @@ private:
     float currentMovementSpeed;
     shared_ptr<Node> cameraPivot;
     shared_ptr<Camera> camera;
+    bool pushing{false};
+    bool pulling{false};
+    shared_ptr<Node> model;
+    shared_ptr<GWindow> infoBox;
+    shared_ptr<GText> infoText;
+    shared_ptr<GText> actionsText;
 
     void captureMouse();
     void releaseMouse();
 
-    shared_ptr<Node> model;
-    bool pushing{false};
-    bool pulling{false};
     shared_ptr<ShaderMaterial> collisionOutlineMaterial;
-    list<CollisionObject::Collision> previousCollisions;
+    list<CollisionObject::Collision> currentCollisions;
 };
