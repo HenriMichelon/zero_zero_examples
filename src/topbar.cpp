@@ -40,7 +40,7 @@ void TopBar::onCreate() {
     hide();
 }
 
-void TopBar::onPauseToggle(GWidget&, GEvent*) {
+void TopBar::onPauseToggle(GWidget*, GEvent*) {
     Application::get().setPaused(!app().isPaused());
     log("Pause ", to_string(Application::get().isPaused()));
 }

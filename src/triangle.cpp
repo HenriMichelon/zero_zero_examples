@@ -1,16 +1,46 @@
 #include "includes.h"
 #include "triangle.h"
 
+void TriangleMainScene::onMenuRotate(GWidget*, GEvent*) {
+    rotate = !rotate;
+}
+
+void TriangleMainScene::onMenuShader(GWidget*, GEvent*) {
+  if (triangle1->getMesh()->getSurfaceMaterial(0).get() == material1.get()) {
+        triangle1->getMesh()->setSurfaceMaterial(0, material2);
+    } else {
+        triangle1->getMesh()->setSurfaceMaterial(0, material1);
+    }
+}
+
+void TriangleMainScene::onEnterScene() {
+    menu = make_shared<GWindow>(Rect{0, 1000-550, 200, 500});
+    app().addWindow(menu);
+    menu->getWidget().setPadding(5);
+    menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(),
+                                                menu->getWidget().getFont()->getFontSize() / 1.5));
+    menu->getWidget().setDrawBackground(false);
+    
+    auto menuRotate = make_shared<GButton>();
+    menu->getWidget().add(menuRotate, GWidget::TOPCENTER, "200,40");
+    menuRotate->add(make_shared<GText>("Toggle rotation (SPACE)"), GWidget::CENTER);
+    menuRotate->connect(GEvent::OnClick, this, GEventFunction(&TriangleMainScene::onMenuRotate));
+    auto menuShader = make_shared<GButton>();
+    menu->getWidget().add(menuShader, GWidget::TOPCENTER, "200,40");
+    menuShader->add(make_shared<GText>("Toggle Shader (ENTER)"), GWidget::CENTER);
+    menuShader->connect(GEvent::OnClick, this, GEventFunction(&TriangleMainScene::onMenuShader));
+}
+
+void TriangleMainScene::onExitScene() {
+    app().removeWindow(menu);
+}
+
 void TriangleMainScene::onReady() {
     auto camera = make_shared<Camera>();
     camera->setPosition({0.0f, 0.0f, 2.0f});
     addChild(camera);
     app().activateCamera(camera);
-    addChild(make_shared<Triangle>());
-    printTree();
-}
 
-void Triangle::onReady() {
     const vector<Vertex> vertices {
             {.position = {0.0, 0.5, 0.0}, .uv = {0.5, 0.25}},
             {.position = {0.5, -0.5, 0.0}, .uv = {0.75, 0.75}},
@@ -48,7 +78,7 @@ void Triangle::onReady() {
     addChild(triangle2);
 }
 
-void Triangle::onPhysicsProcess(float delta) {
+void TriangleMainScene::onPhysicsProcess(float delta) {
     if (rotate) {
         auto angle = delta * radians(90.0f) / 2;
         triangle1->rotateY(angle);
@@ -68,21 +98,17 @@ void Triangle::onPhysicsProcess(float delta) {
     material2->setParameter(1, vec4{gradient});
 }
 
-void Triangle::onProcess(float alpha) {
+void TriangleMainScene::onProcess(float alpha) {
     if (Input::isKeyJustPressed(KEY_ENTER)) {
-        if (triangle1->getMesh()->getSurfaceMaterial(0).get() == material1.get()) {
-            triangle1->getMesh()->setSurfaceMaterial(0, material2);
-        } else {
-            triangle1->getMesh()->setSurfaceMaterial(0, material1);
-        }
+        onMenuShader();
     }
 }
 
-bool Triangle::onInput(InputEvent &inputEvent) {
+bool TriangleMainScene::onInput(InputEvent &inputEvent) {
     if (inputEvent.getType() == INPUT_EVENT_KEY) {
         auto& eventKey = dynamic_cast<InputEventKey&>(inputEvent);
         if ((eventKey.getKey() == KEY_SPACE) && !eventKey.isPressed()) {
-            rotate = !rotate;
+            onMenuRotate();
             return true;
         }
     }

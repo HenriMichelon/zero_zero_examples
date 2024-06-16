@@ -26,7 +26,7 @@ void Window2::onButtonClic(GWidget &, GEvent *) {
 bool UIMainScene::onInput(InputEvent &inputEvent) {
     if (inputEvent.getType() == INPUT_EVENT_KEY) {
         auto& keyInputEvent = dynamic_cast<InputEventKey&>(inputEvent);
-        if ((keyInputEvent.getKeyCode() == KEY_ENTER) && keyInputEvent.isPressed()) {
+        if ((keyInputEvent.getKey() == KEY_ENTER) && keyInputEvent.isPressed()) {
             window2->setVisible(!window2->isVisible());
             return true;
         }

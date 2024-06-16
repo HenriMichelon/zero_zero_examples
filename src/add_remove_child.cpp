@@ -1,6 +1,52 @@
 #include "includes.h"
 #include "add_remove_child.h"
 
+void AddRemoveChildMainScene::onEnterScene() {
+    menu = make_shared<GWindow>(Rect{0, 1000-550, 200, 500});
+    app().addWindow(menu);
+    menu->getWidget().setPadding(5);
+    menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(),
+                                                menu->getWidget().getFont()->getFontSize() / 1.5));
+    menu->getWidget().setDrawBackground(false);
+    
+    auto menuAdd = make_shared<GButton>();
+    menu->getWidget().add(menuAdd, GWidget::TOPCENTER, "200,40");
+    menuAdd->add(make_shared<GText>("Add node (ENTER)"), GWidget::CENTER);
+    menuAdd->connect(GEvent::OnClick, this, GEventFunction(&AddRemoveChildMainScene::onMenuAdd));
+    auto menuRemove = make_shared<GButton>();
+    menu->getWidget().add(menuRemove, GWidget::TOPCENTER, "200,40");
+    menuRemove->add(make_shared<GText>("Remove node (BACKSPACE)"), GWidget::CENTER);
+    menuRemove->connect(GEvent::OnClick, this, GEventFunction(&AddRemoveChildMainScene::onMenuRemove));
+    auto menuCamera = make_shared<GButton>();
+    menu->getWidget().add(menuCamera, GWidget::TOPCENTER, "200,40");
+    menuCamera->add(make_shared<GText>("Toggle camera (SPACE)"), GWidget::CENTER);
+    menuCamera->connect(GEvent::OnClick, this, GEventFunction(&AddRemoveChildMainScene::onMenuCamera));
+}
+
+void AddRemoveChildMainScene::onExitScene() {
+    app().removeWindow(menu);
+}
+
+void AddRemoveChildMainScene::onMenuAdd(GWidget*, GEvent*) {
+    auto newNode = (randomi(1) == 0) ? crateModel->duplicate() : sphereModel->duplicate();
+    newNode->setPosition({randomf(10.0f) - 5, randomf(10.0f) - 5, -10.0f});
+    if (addChild(newNode))  { rotatingNodes.push_back(newNode); }
+}
+
+void AddRemoveChildMainScene::onMenuRemove(GWidget*, GEvent*) {
+    if (removeChild(rotatingNodes.back())) { rotatingNodes.pop_back(); }
+}
+
+void AddRemoveChildMainScene::onMenuCamera(GWidget*, GEvent*) {
+    if (camera1->isActive()) {
+            currentCamera = camera2;
+        app().activateCamera(camera2);
+    } else {
+        currentCamera = camera1;
+        app().activateCamera(camera1);
+    }
+}
+
 void AddRemoveChildMainScene::onReady() {
     camera1 = make_shared<Camera>("Camera 1");
     camera1->setPosition({0.0f, 0.0f, 1.0f});
@@ -27,23 +73,15 @@ void AddRemoveChildMainScene::onReady() {
 bool AddRemoveChildMainScene::onInput(InputEvent& event) {
     bool consumed = false;
     if (Input::isKeyJustPressed(KEY_ENTER)) {
-        auto newNode = (randomi(1) == 0) ? crateModel->duplicate() : sphereModel->duplicate();
-        newNode->setPosition({randomf(10.0f) - 5, randomf(10.0f) - 5, -10.0f});
-        if (addChild(newNode)) rotatingNodes.push_back(newNode);
+        onMenuAdd();
         consumed = true;
     }
     if (Input::isKeyJustPressed(KEY_BACKSPACE)) {
-        if (removeChild(rotatingNodes.back())) rotatingNodes.pop_back();
+        onMenuRemove();
         consumed = true;
     }
     if (Input::isKeyJustPressed(KEY_SPACE)) {
-        if (camera1->isActive()) {
-            currentCamera = camera2;
-            app().activateCamera(camera2);
-        } else {
-            currentCamera = camera1;
-            app().activateCamera(camera1);
-        }
+        onMenuCamera();
         consumed = true;
     }
     return consumed;

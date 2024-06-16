@@ -11,5 +11,5 @@ private:
     shared_ptr<GText> textFPS;
     GEventHandler* onQuitHandler;
     GEventFunction onQuit;
-    void onPauseToggle(GWidget&, GEvent*);
+    void onPauseToggle(GWidget*, GEvent*);
 };

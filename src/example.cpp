@@ -20,11 +20,7 @@ private:
     }
 };
 
-
-void ExampleMainScene::onReady() {
-    addChild(make_shared<Camera>());
-    addChild(make_shared<Skybox>("res/textures/sky", ".jpg"));
-
+void ExampleMainScene::onEnterScene() {
     menu = make_shared<GWindow>(Rect{250, 0, 500, 1000});
     app().addWindow(menu);
 
@@ -57,7 +53,11 @@ void ExampleMainScene::onReady() {
 
     topbar = make_shared<TopBar>(this, GEventFunction(&ExampleMainScene::onMenu));
     app().addWindow(topbar);
+}
 
+void ExampleMainScene::onReady() {
+    addChild(make_shared<Camera>());
+    addChild(make_shared<Skybox>("res/textures/sky", ".jpg"));
     scene = make_shared<Node>();
     addChild(scene);
 }
@@ -66,29 +66,30 @@ void ExampleMainScene::onProcess(float alpha) {
     topbar->updateFPS();
 }
 
-void ExampleMainScene::onMenu(GWidget &, GEvent *) {
+void ExampleMainScene::onMenu(GWidget*, GEvent *) {
     scene->removeAllChildren();
     topbar->hide();
     menu->show();
+    app().setPaused(false);
 }
 
-void ExampleMainScene::onMenuQuit(GWidget &, GEvent *) {
+void ExampleMainScene::onMenuQuit(GWidget*, GEvent *) {
     app().quit();
 }
 
-void ExampleMainScene::onMenuTriangle(GWidget &, GEvent *) {
+void ExampleMainScene::onMenuTriangle(GWidget*, GEvent *) {
     menu->hide();
     topbar->show();
     scene->addChild(make_shared<TriangleMainScene>());
 }
 
-void ExampleMainScene::onMenuAddRemoveChild(GWidget &, GEvent *) {
+void ExampleMainScene::onMenuAddRemoveChild(GWidget*, GEvent *) {
     menu->hide();
     topbar->show();
     scene->addChild(make_shared<AddRemoveChildMainScene>());
 }
 
-void ExampleMainScene::onMenuRaycast(GWidget &, GEvent *) {
+void ExampleMainScene::onMenuRaycast(GWidget*, GEvent *) {
     menu->hide();
     topbar->show();
     scene->addChild(make_shared<RaycastMainScene>());
@@ -104,4 +105,4 @@ const ApplicationConfig applicationConfig {
     .defaultFontSize = 16
 };
 
-Z0_APP(applicationConfig, make_shared<RaycastMainScene>())
+Z0_APP(applicationConfig, make_shared<ExampleMainScene>())

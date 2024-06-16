@@ -1,9 +1,11 @@
 #pragma once
 
-class Triangle: public Node {
+class TriangleMainScene: public Node, public GEventHandler {
 public:
-    Triangle(): Node{"Multicolor triangle"} {};
+    TriangleMainScene(): Node{"Main Scene"} {};
     void onReady() override;
+    void onEnterScene() override;
+    void onExitScene() override;
     void onPhysicsProcess(float delta) override;
     void onProcess(float alpha) override;
     bool onInput(InputEvent& inputEvent) override;
@@ -16,10 +18,8 @@ private:
     float gradientSpeed{0.5f};
     float gradient{0.0f};
     bool rotate{true};
-};
+    shared_ptr<GWindow> menu;
 
-class TriangleMainScene: public Node {
-public:
-    TriangleMainScene(): Node{"Main Scene"} {};
-    void onReady() override;
+    void onMenuRotate(GWidget*w=nullptr, GEvent*e=nullptr);
+    void onMenuShader(GWidget*w=nullptr, GEvent*e=nullptr);
 };
