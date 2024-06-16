@@ -10,6 +10,7 @@ public:
     const float viewSensitivity = 0.2f;
     const float maxCameraAngleUp = radians(60.0);
     const float maxCameraAngleDown = -radians(45.0);
+    const vec3  force = vec3{5000.0f};
 
     Player();
 

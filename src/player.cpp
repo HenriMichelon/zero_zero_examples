@@ -38,6 +38,8 @@ bool Player::onInput(InputEvent& event) {
             releaseMouse();
             return true;
         }
+        pushing = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_RB) && eventGamepadButton.isPressed();
+        pulling = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_LB) && eventGamepadButton.isPressed();
     }
     return false;
 }
@@ -121,8 +123,9 @@ void Player::onProcess(float alpha) {
     for(const auto& collision : getCollisions()) {
         if (!isGround(collision.object)) {
             if (pushing || pulling) {
-                collision.object->applyForce(vec3{10000.0, 10000.0, 10000.0} * collision.normal * (pushing ? -1.0f : 1.0f),
-                collision.position);
+                collision.object->applyForce(
+                    force * collision.normal * (pushing ? -1.0f : 1.0f),
+                    collision.position);
             }
             auto* meshInstance = collision.object->findFirstChild<MeshInstance>();
             meshInstance->setOutlined(true);
