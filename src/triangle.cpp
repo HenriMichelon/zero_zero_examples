@@ -81,7 +81,7 @@ void Triangle::onProcess(float alpha) {
 bool Triangle::onInput(InputEvent &inputEvent) {
     if (inputEvent.getType() == INPUT_EVENT_KEY) {
         auto& eventKey = dynamic_cast<InputEventKey&>(inputEvent);
-        if ((eventKey.getKeyCode() == KEY_SPACE) && !eventKey.isPressed()) {
+        if ((eventKey.getKey() == KEY_SPACE) && !eventKey.isPressed()) {
             rotate = !rotate;
             return true;
         }

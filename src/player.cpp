@@ -25,12 +25,12 @@ bool Player::onInput(InputEvent& event) {
     }
     if ((event.getType() == INPUT_EVENT_KEY) && mouseCaptured) {
         auto& eventKey = dynamic_cast<InputEventKey&>(event);
-        if ((eventKey.getKeyCode() == KEY_ESCAPE) && !eventKey.isPressed()) {
+        if ((eventKey.getKey() == KEY_ESCAPE) && !eventKey.isPressed()) {
             releaseMouse();
             return true;
         }
-        pushing = (eventKey.getKeyCode() == KEY_P) && eventKey.isPressed();
-        pulling = (eventKey.getKeyCode() == KEY_O) && eventKey.isPressed();
+        pushing = (eventKey.getKey() == KEY_P) && eventKey.isPressed();
+        pulling = (eventKey.getKey() == KEY_O) && eventKey.isPressed();
     }
     if ((event.getType() == INPUT_EVENT_GAMEPAD_BUTTON) && mouseCaptured) {
         auto& eventGamepadButton = dynamic_cast<InputEventGamepadButton&>(event);
