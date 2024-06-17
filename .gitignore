@@ -373,3 +373,4 @@ _deps
 # Blender backup files
 *.blend1
 log.txt
+/shaders/
