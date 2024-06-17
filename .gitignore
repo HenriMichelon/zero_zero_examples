@@ -374,3 +374,4 @@ _deps
 *.blend1
 log.txt
 /shaders/
+.vscode

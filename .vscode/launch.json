@@ -8,7 +8,7 @@
             "program": "${workspaceFolder}/build/examples.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/build",
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
