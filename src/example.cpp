@@ -97,12 +97,12 @@ void ExampleMainScene::onMenuRaycast(GWidget*, GEvent *) {
 
 const ApplicationConfig applicationConfig {
     .appName = "Example App",
-    .appDir = ".",
+    .appDir = "..",
     .windowMode = WINDOW_MODE_FULLSCREEN,
     .windowWidth = 1920,
     .windowHeight = 1080,
     .defaultFontName = "res/Signwood.ttf",
-    .defaultFontSize = 16
+    .defaultFontSize = 20
 };
 
 Z0_APP(applicationConfig, make_shared<ExampleMainScene>()) 

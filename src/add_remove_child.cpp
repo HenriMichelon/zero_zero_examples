@@ -6,7 +6,7 @@ void AddRemoveChildMainScene::onEnterScene() {
     app().addWindow(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(),
-                                                menu->getWidget().getFont()->getFontSize() / 1.5));
+                                                menu->getWidget().getFont()->getFontSize() / 2));
     menu->getWidget().setDrawBackground(false);
     
     auto menuAdd = make_shared<GButton>();

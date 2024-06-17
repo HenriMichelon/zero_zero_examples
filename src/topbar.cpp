@@ -10,7 +10,7 @@ TopBar::TopBar(GEventHandler* handler, GEventFunction handlerQuit):
 void TopBar::onCreate() {
     getWidget().setDrawBackground(false);
     getWidget().setFont(make_shared<Font>(getWidget().getFont()->getFontName(),
-                                          getWidget().getFont()->getFontSize() / 1.5));
+                                          getWidget().getFont()->getFontSize() / 2));
 
     auto rightPadding = make_shared<GPanel>();
     rightPadding->setDrawBackground(false);
