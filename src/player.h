@@ -35,8 +35,6 @@ private:
     bool mouseCaptured{false};
     float mouseInvertedAxisY{1.0};
     float keyboardInvertedAxisY{1.0};
-    bool pushing{false};
-    bool pulling{false};
     State previousState;
     State currentState;
     float currentMovementSpeed;

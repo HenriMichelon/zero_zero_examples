@@ -8,7 +8,7 @@ public:
     void onEnterScene() override;
     void onExitScene() override;
 private:
-    const vec3  force = vec3{5000.0f};
+    const vec3  force = vec3{10000.0f};
 
     shared_ptr<GWindow> menu;
     shared_ptr<Player> player;

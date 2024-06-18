@@ -29,9 +29,10 @@ bool Player::onInput(InputEvent& event) {
             releaseMouse();
             return true;
         }
-        pushing = (eventKey.getKey() == KEY_P) && eventKey.isPressed();
-        pulling = (eventKey.getKey() == KEY_O) && eventKey.isPressed();
-        auto params = PushOrPullAction{ .push = pushing, .pull = pulling };
+        auto params = PushOrPullAction{ 
+            .push = (eventKey.getKey() == KEY_P) && eventKey.isPressed(), 
+            .pull = (eventKey.getKey() == KEY_O) && eventKey.isPressed() 
+        };
         emit("pushpull", &params);
     }
     if ((event.getType() == INPUT_EVENT_GAMEPAD_BUTTON) && mouseCaptured) {
@@ -40,9 +41,9 @@ bool Player::onInput(InputEvent& event) {
             releaseMouse();
             return true;
         }
-        pushing = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_RB) && eventGamepadButton.isPressed();
-        pulling = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_LB) && eventGamepadButton.isPressed();
-        auto params = PushOrPullAction{ .push = pushing, .pull = pulling };
+        auto params = PushOrPullAction{ 
+            .push = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_RB) && eventGamepadButton.isPressed(), 
+            .pull = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_LB) && eventGamepadButton.isPressed() };
         emit("pushpull", &params);
     }
     return false;

@@ -100,8 +100,8 @@ const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = "..",
     .windowMode = WINDOW_MODE_WINDOWED,
-    .windowWidth = 640,
-    .windowHeight = 480,
+    .windowWidth = 800,
+    .windowHeight = 600,
     .defaultFontName = "res/OpenSans-Regular.ttf",
     .defaultFontSize = 16,
     .loggingMode = static_cast<LoggingMode>(LOGGING_FILE | LOGGING_WINDOW)
