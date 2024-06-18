@@ -39,7 +39,7 @@ void PhysicsMainScene::onReady() {
     spotLight1->setCastShadow(true);
     game->addChild(spotLight1);
 
-    auto player = make_shared<Player>();
+    player = make_shared<Player>();
     game->addChild(player);
     player->setPosition({0.0, 2.0, 0.0});
 
@@ -59,6 +59,10 @@ void PhysicsMainScene::onReady() {
     raycastOutlineMaterial->setParameter(0, {1.0,0.0,0.0,1.0});
     raycastOutlineMaterial->setParameter(1, vec4{0.005});
     OutlineMaterials::add(raycastOutlineMaterial);
+    collisionOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get(0));
+    collisionOutlineMaterial->setParameter(0, {0.0,1.0,0.0,1.0});
+    collisionOutlineMaterial->setParameter(1, vec4{0.02});
+    OutlineMaterials::add(collisionOutlineMaterial); 
 
     auto floorModel = Loader::loadModelFromFile("res/models/floor.glb", true);
 
@@ -79,6 +83,8 @@ void PhysicsMainScene::onReady() {
     floor->setPosition({0.0, -2.0, 0.0});
     game->addChild(floor);
     //printTree();
+
+    connect("player_pushpull", this, reinterpret_cast<Signal::Handler>(&onPushOrPull));
 }
 
 void PhysicsMainScene::onProcess(float alpha) {
@@ -97,6 +103,40 @@ void PhysicsMainScene::onProcess(float alpha) {
             previousSelection = meshInstance;
         }
     }
+    for (const auto& collision: currentCollisions) {
+         collision.object->findFirstChild<MeshInstance>()->setOutlined(false);
+    }
+    currentCollisions.clear();
+    for(const auto& collision : player->getCollisions()) {
+        if ((!player->isGround(collision.object) && 
+            (collision.normal.y < 0.8))) { // do not select when on top of a crate
+            if (pushing || pulling) {
+                collision.object->applyForce(
+                    force * collision.normal * (pushing ? -1.0f : 1.0f),
+                    collision.position);
+            }
+            auto* meshInstance = collision.object->findFirstChild<MeshInstance>();
+            meshInstance->setOutlined(true);
+            meshInstance->setOutlineMaterial(collisionOutlineMaterial);
+            currentCollisions.push_back(collision);
+        }
+    }
+    if (!currentCollisions.empty()) {
+        if (!infoBox->isVisible()) {
+            infoText->setText(currentCollisions.front().object->toString());
+            auto width = std::max(infoText->getWidth(), actionsText->getWidth());
+            infoBox->setWidth(width + infoBox->getWidget().getPadding() * 2);
+            infoBox->setX((VECTOR_SCALE.x - width) / 2);
+            infoBox->show();
+        }
+    } else if (infoBox->isVisible()) {
+        infoBox->hide();
+    } 
+}
+
+void PhysicsMainScene::onPushOrPull(Player::PushOrPullAction* action) {
+    pushing = action->push;
+    pulling = action->pull;
 }
 
 void PhysicsMainScene::onEnterScene() {
@@ -108,6 +148,18 @@ void PhysicsMainScene::onEnterScene() {
     menu->getWidget().setTransparency(0.2f);
     menu->getWidget().add(make_shared<GText>("[SPACE] Jump"), GWidget::TOP);
     menu->getWidget().add(make_shared<GText>("[ESC] Toggle mouse"), GWidget::TOP);
+
+    infoBox = make_shared<GWindow>(Rect{0, 800, 300, 45});
+    infoBox->hide();
+    app().addWindow(infoBox);
+    infoText = make_shared<GText>("Info");
+    infoText->setTextColor({0.5f, 0.5f, 0.0f, 1.0f});
+    infoBox->getWidget().add(infoText, GWidget::TOPCENTER);
+    actionsText = make_shared<GText>("[P][RB] : Push   [O][LB] : Pull");
+    actionsText->setTextColor({0.5f, 0.5f, 0.5f, 1.0f});
+    infoBox->getWidget().add(actionsText, GWidget::TOPCENTER);
+    infoBox->getWidget().setTransparency(0.2);
+    infoBox->getWidget().setPadding(5);
 }
 
 void PhysicsMainScene::onExitScene() {

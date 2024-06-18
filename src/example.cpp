@@ -1,5 +1,6 @@
 #include "includes.h"
 #include "topbar.h"
+#include "player.h"
 #include "example.h"
 #include "triangle.h"
 #include "add_remove_child.h"
@@ -99,10 +100,10 @@ const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = "..",
     .windowMode = WINDOW_MODE_WINDOWED,
-    .windowWidth = 1280,
-    .windowHeight = 720,
+    .windowWidth = 640,
+    .windowHeight = 480,
     .defaultFontName = "res/OpenSans-Regular.ttf",
-    .defaultFontSize = 20,
+    .defaultFontSize = 16,
     .loggingMode = static_cast<LoggingMode>(LOGGING_FILE | LOGGING_WINDOW)
 };
 

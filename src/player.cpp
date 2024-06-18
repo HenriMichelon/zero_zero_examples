@@ -31,6 +31,8 @@ bool Player::onInput(InputEvent& event) {
         }
         pushing = (eventKey.getKey() == KEY_P) && eventKey.isPressed();
         pulling = (eventKey.getKey() == KEY_O) && eventKey.isPressed();
+        auto params = PushOrPullAction{ .push = pushing, .pull = pulling };
+        emit("player_pushpull", &params);
     }
     if ((event.getType() == INPUT_EVENT_GAMEPAD_BUTTON) && mouseCaptured) {
         auto& eventGamepadButton = dynamic_cast<InputEventGamepadButton&>(event);
@@ -40,6 +42,8 @@ bool Player::onInput(InputEvent& event) {
         }
         pushing = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_RB) && eventGamepadButton.isPressed();
         pulling = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_LB) && eventGamepadButton.isPressed();
+        auto params = PushOrPullAction{ .push = pushing, .pull = pulling };
+        emit("player_pushpull", &params);
     }
     return false;
 }
@@ -116,35 +120,6 @@ void Player::onProcess(float alpha) {
         cameraPivot->rotateX(interpolatedLookDir.y * keyboardInvertedAxisY);
         cameraPivot->setRotationX(std::clamp(cameraPivot->getRotationX() , maxCameraAngleDown, maxCameraAngleUp));
     }
-    for (const auto& collision: currentCollisions) {
-         collision.object->findFirstChild<MeshInstance>()->setOutlined(false);
-    }
-    currentCollisions.clear();
-    for(const auto& collision : getCollisions()) {
-        if ((!isGround(collision.object) && 
-            (collision.normal.y < 0.8))) { // do not select when on top of a crate
-            if (pushing || pulling) {
-                collision.object->applyForce(
-                    force * collision.normal * (pushing ? -1.0f : 1.0f),
-                    collision.position);
-            }
-            auto* meshInstance = collision.object->findFirstChild<MeshInstance>();
-            meshInstance->setOutlined(true);
-            meshInstance->setOutlineMaterial(collisionOutlineMaterial);
-            currentCollisions.push_back(collision);
-        }
-    }
-    if (!currentCollisions.empty()) {
-        if (!infoBox->isVisible()) {
-            infoText->setText(currentCollisions.front().object->toString());
-            auto width = std::max(infoText->getWidth(), actionsText->getWidth());
-            infoBox->setWidth(width + infoBox->getWidget().getPadding() * 2);
-            infoBox->setX((VECTOR_SCALE.x - width) / 2);
-            infoBox->show();
-        }
-    } else if (infoBox->isVisible()) {
-        infoBox->hide();
-    }
 }
 
 void Player::onCollisionStarts(const Collision collision) {
@@ -183,11 +158,6 @@ void Player::onReady() {
     if (gamepad != -1) {
         log("Using gamepad", Input::getJoypadName(gamepad));
     }
-
-    collisionOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get(0));
-    collisionOutlineMaterial->setParameter(0, {0.0,1.0,0.0,1.0});
-    collisionOutlineMaterial->setParameter(1, vec4{0.02});
-    OutlineMaterials::add(collisionOutlineMaterial);
 }
 
 void Player::captureMouse() {
@@ -200,18 +170,4 @@ void Player::captureMouse() {
 void Player::releaseMouse() {
     Input::setMouseMode(MOUSE_MODE_VISIBLE);
     mouseCaptured = false;
-}
-
-void Player::onEnterScene() {
-    infoBox = make_shared<GWindow>(Rect{0, 800, 300, 45});
-    infoBox->hide();
-    app().addWindow(infoBox);
-    infoText = make_shared<GText>("Info");
-    infoText->setTextColor({0.5f, 0.5f, 0.0f, 1.0f});
-    infoBox->getWidget().add(infoText, GWidget::TOPCENTER);
-    actionsText = make_shared<GText>("[P][RB] : Push   [O][LB] : Pull");
-    actionsText->setTextColor({0.5f, 0.5f, 0.5f, 1.0f});
-    infoBox->getWidget().add(actionsText, GWidget::TOPCENTER);
-    infoBox->getWidget().setTransparency(0.2);
-    infoBox->getWidget().setPadding(5);
 }
