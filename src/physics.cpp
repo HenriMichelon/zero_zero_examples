@@ -84,7 +84,7 @@ void PhysicsMainScene::onReady() {
     game->addChild(floor);
     //printTree();
 
-    player->connect("pushpull", this, reinterpret_cast<Signal::Handler>(&onPushOrPull));
+    player->connect("pushpull", this, Signal::Handler(&PhysicsMainScene::onPushOrPull));
 }
 
 void PhysicsMainScene::onProcess(float alpha) {
@@ -144,7 +144,7 @@ void PhysicsMainScene::onEnterScene() {
     app().addWindow(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(),
-                                                menu->getWidget().getFont()->getFontSize() / 2));
+                                                menu->getWidget().getFont()->getFontSize() / 1.5));
     menu->getWidget().setTransparency(0.2f);
     menu->getWidget().add(make_shared<GText>("[SPACE] Jump"), GWidget::TOP);
     menu->getWidget().add(make_shared<GText>("[ESC] Toggle mouse"), GWidget::TOP);
@@ -153,10 +153,10 @@ void PhysicsMainScene::onEnterScene() {
     infoBox->hide();
     app().addWindow(infoBox);
     infoText = make_shared<GText>("Info");
-    infoText->setTextColor({0.5f, 0.5f, 0.0f, 1.0f});
+    //infoText->setTextColor({0.5f, 0.5f, 0.0f, 1.0f});
     infoBox->getWidget().add(infoText, GWidget::TOPCENTER);
     actionsText = make_shared<GText>("[P][RB] : Push   [O][LB] : Pull");
-    actionsText->setTextColor({0.5f, 0.5f, 0.5f, 1.0f});
+    //actionsText->setTextColor({0.5f, 0.5f, 0.5f, 1.0f});
     infoBox->getWidget().add(actionsText, GWidget::TOPCENTER);
     infoBox->getWidget().setTransparency(0.2);
     infoBox->getWidget().setPadding(5);

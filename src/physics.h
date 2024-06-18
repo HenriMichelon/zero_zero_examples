@@ -1,6 +1,6 @@
 #pragma once
 
-class PhysicsMainScene: public Node, public GEventHandler {
+class PhysicsMainScene: public Node {
 public:
     PhysicsMainScene(): Node{"Main Scene"} {};
     void onReady() override;
@@ -8,7 +8,7 @@ public:
     void onEnterScene() override;
     void onExitScene() override;
 private:
-    const vec3  force = vec3{10000.0f};
+    const vec3  force = vec3{7500.0f};
 
     shared_ptr<GWindow> menu;
     shared_ptr<Player> player;

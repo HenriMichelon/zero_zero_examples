@@ -1,6 +1,6 @@
 #pragma once
 
-class ExampleMainScene: public Node, public GEventHandler {
+class ExampleMainScene: public Node {
 public:
     void onReady() override;
     void onProcess(float alpha) override;
@@ -11,10 +11,10 @@ private:
     shared_ptr<TopBar> topbar;
     shared_ptr<Node> scene;
 
-    void onMenu(GWidget*, GEvent*);
-    void onMenuQuit(GWidget*, GEvent*);
-    void onMenuTriangle(GWidget*, GEvent*);
-    void onMenuAddRemoveChild(GWidget*, GEvent*);
-    void onMenuPhysics(GWidget*, GEvent*);
-    void onMenuRaycast(GWidget*, GEvent*);
+    void onMenu(GEventClick*);
+    void onMenuQuit(GEventClick*);
+    void onMenuTriangle(GEventClick*);
+    void onMenuAddRemoveChild(GEventClick*);
+    void onMenuPhysics(GEventClick*);
+    void onMenuRaycast(GEventClick*);
 };

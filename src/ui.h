@@ -5,7 +5,7 @@ public:
     explicit Window2(Rect rect) : GWindow{rect} {}
     void onCreate() override;
 private:
-    void onButtonClic(GWidget&, GEvent*);
+    void onButtonClic(GEventClick*);
 };
 
 class UIMainScene: public Node {

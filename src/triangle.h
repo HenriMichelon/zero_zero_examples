@@ -1,6 +1,6 @@
 #pragma once
 
-class TriangleMainScene: public Node, public GEventHandler {
+class TriangleMainScene: public Node {
 public:
     TriangleMainScene(): Node{"Main Scene"} {};
     void onReady() override;
@@ -20,6 +20,6 @@ private:
     bool rotate{true};
     shared_ptr<GWindow> menu;
 
-    void onMenuRotate(GWidget*w=nullptr, GEvent*e=nullptr);
-    void onMenuShader(GWidget*w=nullptr, GEvent*e=nullptr);
+    void onMenuRotate(GEventClick*e=nullptr);
+    void onMenuShader(GEventClick*e=nullptr);
 };

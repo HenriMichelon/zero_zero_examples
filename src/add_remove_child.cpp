@@ -6,38 +6,38 @@ void AddRemoveChildMainScene::onEnterScene() {
     app().addWindow(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(),
-                                                menu->getWidget().getFont()->getFontSize() / 2));
+                                                menu->getWidget().getFont()->getFontSize() / 1.5));
     menu->getWidget().setDrawBackground(false);
     
     auto menuAdd = make_shared<GButton>();
     menu->getWidget().add(menuAdd, GWidget::TOPCENTER, "200,40");
     menuAdd->add(make_shared<GText>("[ENTER] Add node"), GWidget::CENTER);
-    menuAdd->connect(GEvent::OnClick, this, GEventFunction(&AddRemoveChildMainScene::onMenuAdd));
+    menuAdd->connect(GEvent::OnClick, this, Signal::Handler(&AddRemoveChildMainScene::onMenuAdd));
     auto menuRemove = make_shared<GButton>();
     menu->getWidget().add(menuRemove, GWidget::TOPCENTER, "200,40");
     menuRemove->add(make_shared<GText>("[BACKSPACE] Remove node"), GWidget::CENTER);
-    menuRemove->connect(GEvent::OnClick, this, GEventFunction(&AddRemoveChildMainScene::onMenuRemove));
+    menuRemove->connect(GEvent::OnClick, this, Signal::Handler(&AddRemoveChildMainScene::onMenuRemove));
     auto menuCamera = make_shared<GButton>();
     menu->getWidget().add(menuCamera, GWidget::TOPCENTER, "200,40");
     menuCamera->add(make_shared<GText>("[SPACE] Toggle camera"), GWidget::CENTER);
-    menuCamera->connect(GEvent::OnClick, this, GEventFunction(&AddRemoveChildMainScene::onMenuCamera));
+    menuCamera->connect(GEvent::OnClick, this, Signal::Handler(&AddRemoveChildMainScene::onMenuCamera));
 }
 
 void AddRemoveChildMainScene::onExitScene() {
     app().removeWindow(menu);
 }
 
-void AddRemoveChildMainScene::onMenuAdd(GWidget*, GEvent*) {
+void AddRemoveChildMainScene::onMenuAdd(GEventClick*) {
     auto newNode = (randomi(1) == 0) ? crateModel->duplicate() : sphereModel->duplicate();
     newNode->setPosition({randomf(10.0f) - 5, randomf(10.0f) - 5, -10.0f});
     if (addChild(newNode))  { rotatingNodes.push_back(newNode); }
 }
 
-void AddRemoveChildMainScene::onMenuRemove(GWidget*, GEvent*) {
+void AddRemoveChildMainScene::onMenuRemove(GEventClick*) {
     if (removeChild(rotatingNodes.back())) { rotatingNodes.pop_back(); }
 }
 
-void AddRemoveChildMainScene::onMenuCamera(GWidget*, GEvent*) {
+void AddRemoveChildMainScene::onMenuCamera(GEventClick*) {
     if (camera1->isActive()) {
             currentCamera = camera2;
         app().activateCamera(camera2);

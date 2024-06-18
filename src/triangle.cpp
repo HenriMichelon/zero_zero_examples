@@ -1,11 +1,11 @@
 #include "includes.h"
 #include "triangle.h"
 
-void TriangleMainScene::onMenuRotate(GWidget*, GEvent*) {
+void TriangleMainScene::onMenuRotate(GEventClick*) {
     rotate = !rotate;
 }
 
-void TriangleMainScene::onMenuShader(GWidget*, GEvent*) {
+void TriangleMainScene::onMenuShader(GEventClick*) {
   if (triangle1->getMesh()->getSurfaceMaterial(0).get() == material1.get()) {
         triangle1->getMesh()->setSurfaceMaterial(0, material2);
     } else {
@@ -24,11 +24,11 @@ void TriangleMainScene::onEnterScene() {
     auto menuRotate = make_shared<GButton>();
     menu->getWidget().add(menuRotate, GWidget::TOPCENTER, "200,40");
     menuRotate->add(make_shared<GText>("[SPACE] Toggle rotation"), GWidget::CENTER);
-    menuRotate->connect(GEvent::OnClick, this, GEventFunction(&TriangleMainScene::onMenuRotate));
+    menuRotate->connect(GEvent::OnClick, this, Signal::Handler(&TriangleMainScene::onMenuRotate));
     auto menuShader = make_shared<GButton>();
     menu->getWidget().add(menuShader, GWidget::TOPCENTER, "200,40");
     menuShader->add(make_shared<GText>("[ENTER] Toggle Shader"), GWidget::CENTER);
-    menuShader->connect(GEvent::OnClick, this, GEventFunction(&TriangleMainScene::onMenuShader));
+    menuShader->connect(GEvent::OnClick, this, Signal::Handler(&TriangleMainScene::onMenuShader));
 }
 
 void TriangleMainScene::onExitScene() {

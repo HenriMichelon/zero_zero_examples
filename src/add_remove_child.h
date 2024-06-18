@@ -1,6 +1,6 @@
 using namespace z0;
 
-class AddRemoveChildMainScene: public Node, public GEventHandler {
+class AddRemoveChildMainScene: public Node {
 public:
     AddRemoveChildMainScene(): Node{"Main Scene"} {};
     void onReady() override;
@@ -17,7 +17,7 @@ private:
     shared_ptr<Camera> currentCamera;
     shared_ptr<GWindow> menu;
 
-    void onMenuAdd(GWidget*w=nullptr, GEvent*e=nullptr);
-    void onMenuRemove(GWidget*w=nullptr, GEvent*e=nullptr);
-    void onMenuCamera(GWidget*w=nullptr, GEvent*e=nullptr);
+    void onMenuAdd(GEventClick*e=nullptr);
+    void onMenuRemove(GEventClick*e=nullptr);
+    void onMenuCamera(GEventClick*e=nullptr);
 };

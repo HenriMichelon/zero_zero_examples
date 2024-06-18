@@ -1,16 +1,16 @@
 #include "includes.h"
 #include "topbar.h"
 
-TopBar::TopBar(GEventHandler* handler, GEventFunction handlerQuit):
+TopBar::TopBar(Object* obj, Signal::Handler _onQuit):
     GWindow(Rect{0, 945, 1000, 55}),
-    onQuitHandler{handler},
-    onQuit{handlerQuit}
+    onQuitHandler{obj},
+    onQuit{_onQuit}
 {}
 
 void TopBar::onCreate() {
     getWidget().setDrawBackground(false);
     getWidget().setFont(make_shared<Font>(getWidget().getFont()->getFontName(),
-                                          getWidget().getFont()->getFontSize() / 2));
+                                          getWidget().getFont()->getFontSize() / 1.5));
 
     auto rightPadding = make_shared<GPanel>();
     rightPadding->setDrawBackground(false);
@@ -29,7 +29,7 @@ void TopBar::onCreate() {
     setHeight(buttonQuit->getHeight());
     
     auto buttonPause = make_shared<GButton>();
-    buttonPause->connect(GEvent::OnClick, this, GEventFunction(&TopBar::onPauseToggle));
+    buttonPause->connect(GEvent::OnClick, this, Signal::Handler(&TopBar::onPauseToggle));
     getWidget().add(buttonPause, GWidget::LEFTCENTER, "10,10");
     auto textPause = make_shared<GText>("Pause");
     buttonPause->add(textPause, GWidget::CENTER, "");
@@ -40,9 +40,10 @@ void TopBar::onCreate() {
     hide();
 }
 
-void TopBar::onPauseToggle(GWidget*, GEvent*) {
+void TopBar::onPauseToggle(GEventClick* event) {
     Application::get().setPaused(!app().isPaused());
     log("Pause ", to_string(Application::get().isPaused()));
+    event->consumed = true;
 }
 
 void TopBar::updateFPS() {
