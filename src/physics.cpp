@@ -84,7 +84,7 @@ void PhysicsMainScene::onReady() {
     game->addChild(floor);
     //printTree();
 
-    connect("player_pushpull", this, reinterpret_cast<Signal::Handler>(&onPushOrPull));
+    player->connect("pushpull", this, reinterpret_cast<Signal::Handler>(&onPushOrPull));
 }
 
 void PhysicsMainScene::onProcess(float alpha) {

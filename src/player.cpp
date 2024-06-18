@@ -32,7 +32,7 @@ bool Player::onInput(InputEvent& event) {
         pushing = (eventKey.getKey() == KEY_P) && eventKey.isPressed();
         pulling = (eventKey.getKey() == KEY_O) && eventKey.isPressed();
         auto params = PushOrPullAction{ .push = pushing, .pull = pulling };
-        emit("player_pushpull", &params);
+        emit("pushpull", &params);
     }
     if ((event.getType() == INPUT_EVENT_GAMEPAD_BUTTON) && mouseCaptured) {
         auto& eventGamepadButton = dynamic_cast<InputEventGamepadButton&>(event);
@@ -43,7 +43,7 @@ bool Player::onInput(InputEvent& event) {
         pushing = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_RB) && eventGamepadButton.isPressed();
         pulling = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_LB) && eventGamepadButton.isPressed();
         auto params = PushOrPullAction{ .push = pushing, .pull = pulling };
-        emit("player_pushpull", &params);
+        emit("pushpull", &params);
     }
     return false;
 }
