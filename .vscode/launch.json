@@ -5,10 +5,10 @@
             "name": "Debug examples",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/examples.exe",
+            "program": "C:/Users/hmich/Documents/GitHub/zero_zero_examples/build/examples.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/build",
+            "cwd": "C:/Users/hmich/Documents/GitHub/zero_zero_examples/build",
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
