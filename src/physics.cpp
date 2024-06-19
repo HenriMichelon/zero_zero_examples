@@ -6,10 +6,7 @@
 #include "physics.h"
 
 void PhysicsMainScene::onReady() {
-    if (parent == nullptr) {
-        addChild(make_shared<Skybox>("res/textures/sky", ".jpg"));
-    }
-    addChild(make_shared<Environment>(vec4{1.0,1.0,1.0,0.25f}));
+    addChild(make_shared<Environment>(vec4{1.0,1.0,1.0,0.8f}));
 
     setProcessMode(PROCESS_MODE_ALWAYS);
 
@@ -19,12 +16,12 @@ void PhysicsMainScene::onReady() {
 
     auto directionalLight1 = make_shared<DirectionalLight>(
         vec3{-1.0f, -1.0f, -1.0f},
-        vec4{1.0f, 1.0f, 1.0f, 1.0f}
+        vec4{1.0f, 1.0f, 1.0f, 1.2f}
     );
     directionalLight1->setCastShadow(true);
     game->addChild(directionalLight1);
 
-    auto omniLight1 = make_shared<OmniLight>(0.14, 0.07);
+    /*auto omniLight1 = make_shared<OmniLight>(0.14, 0.07);
     omniLight1->setPosition({-6.0f, 0.5f, -8.0f});
     omniLight1->setColorAndIntensity({0.0f, 1.0f, .0f, 2.0f});
     game->addChild(omniLight1);
@@ -37,7 +34,7 @@ void PhysicsMainScene::onReady() {
     spotLight1->setPosition({14.0, 3.0, 0.0});
     spotLight1->setColorAndIntensity({1.0f, 0.0f, 0.0f, 2.0f});
     spotLight1->setCastShadow(true);
-    game->addChild(spotLight1);
+    game->addChild(spotLight1);*/
 
     player = make_shared<Player>();
     game->addChild(player);
@@ -154,12 +151,12 @@ void PhysicsMainScene::onEnterScene() {
     infoBox->hide();
     app().addWindow(infoBox);
     infoText = make_shared<GText>("Info");
-    //infoText->setTextColor({1.0f, 1.0f, 0.0f, 1.0f});
+    infoText->setTextColor({0.8f, 0.2f, 0.2f, 1.0f});
     infoBox->getWidget().add(infoText, GWidget::TOPCENTER);
     actionsText = make_shared<GText>("[P][RB] : Push   [O][LB] : Pull");
-    //actionsText->setTextColor({0.5f, 0.5f, 0.5f, 1.0f});
+    actionsText->setTextColor({0.2f, 0.2f, 0.8f, 1.0f});
     infoBox->getWidget().add(actionsText, GWidget::TOPCENTER);
-    infoBox->getWidget().setTransparency(0.2);
+    infoBox->getWidget().setTransparency(0.8);
     infoBox->getWidget().setPadding(5);
     infoBox->setHeight(infoText->getHeight() + actionsText->getHeight() + infoBox->getWidget().getPadding() * 3);
 }
