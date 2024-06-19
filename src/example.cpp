@@ -24,7 +24,7 @@ private:
 void ExampleMainScene::onEnterScene() {
     menu = make_shared<GWindow>(Rect{250, 0, 500, 1000});
     app().addWindow(menu);
-    menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(), 20));
+    menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(), 40));
     menu->getWidget().setDrawBackground(false);
     menu->getWidget().setPadding(10);
     float height = menu->getWidget().getPadding() * 8;
@@ -99,11 +99,11 @@ void ExampleMainScene::onMenuRaycast(GEventClick*) {
 const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = "..",
-    .windowMode = WINDOW_MODE_FULLSCREEN,
+    .windowMode = WINDOW_MODE_WINDOWED_FULLSCREEN,
     .windowWidth = 1920,
     .windowHeight = 1080,
     .defaultFontName = "res/OpenSans-Regular.ttf",
-    .defaultFontSize = 12,
+    .defaultFontSize = 20,
     .loggingMode = static_cast<LoggingMode>(LOGGING_FILE | LOGGING_WINDOW)
 };
 
