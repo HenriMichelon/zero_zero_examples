@@ -144,8 +144,11 @@ void PhysicsMainScene::onEnterScene() {
     app().addWindow(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setTransparency(0.2f);
-    menu->getWidget().add(make_shared<GText>("[SPACE] Jump"), GWidget::TOP);
-    menu->getWidget().add(make_shared<GText>("[ESC] Toggle mouse"), GWidget::TOP);
+    auto textJump = make_shared<GText>("[SPACE] Jump");
+    auto textMouse = make_shared<GText>("[ESC] Toggle mouse");
+    menu->getWidget().add(textJump, GWidget::TOP);
+    menu->getWidget().add(textMouse, GWidget::TOP);
+    menu->setHeight(textJump->getHeight() + textMouse->getHeight() + menu->getWidget().getPadding() * 3);
 
     infoBox = make_shared<GWindow>(Rect{0, 800, 10, 10});
     infoBox->hide();

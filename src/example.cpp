@@ -99,11 +99,11 @@ void ExampleMainScene::onMenuRaycast(GEventClick*) {
 const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = "..",
-    .windowMode = WINDOW_MODE_WINDOWED,
-    .windowWidth = 800,
-    .windowHeight = 600,
+    .windowMode = WINDOW_MODE_FULLSCREEN,
+    .windowWidth = 1920,
+    .windowHeight = 1080,
     .defaultFontName = "res/OpenSans-Regular.ttf",
-    .defaultFontSize = 14,
+    .defaultFontSize = 12,
     .loggingMode = static_cast<LoggingMode>(LOGGING_FILE | LOGGING_WINDOW)
 };
 

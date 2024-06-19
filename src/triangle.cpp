@@ -14,7 +14,7 @@ void TriangleMainScene::onMenuShader(GEventClick*) {
 }
 
 void TriangleMainScene::onEnterScene() {
-    menu = make_shared<GWindow>(Rect{0, 1000-550, 200, 500});
+    menu = make_shared<GWindow>(Rect{0, 1000-550, 150, 500});
     app().addWindow(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setDrawBackground(false);
