@@ -17,8 +17,6 @@ void TriangleMainScene::onEnterScene() {
     menu = make_shared<GWindow>(Rect{0, 1000-550, 200, 500});
     app().addWindow(menu);
     menu->getWidget().setPadding(5);
-    menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(),
-                                                menu->getWidget().getFont()->getFontSize() / 1.5));
     menu->getWidget().setDrawBackground(false);
     
     auto menuRotate = make_shared<GButton>();

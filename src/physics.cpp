@@ -126,7 +126,7 @@ void PhysicsMainScene::onProcess(float alpha) {
             infoText->setText(currentCollisions.front().object->toString());
             auto width = std::max(infoText->getWidth(), actionsText->getWidth());
             infoBox->setWidth(width + infoBox->getWidget().getPadding() * 2);
-            infoBox->setX((VECTOR_SCALE.x - width) / 2);
+            infoBox->setX((VECTOR_SCALE.x - infoBox->getWidth()) / 2);
             infoBox->show();
         }
     } else if (infoBox->isVisible()) {
@@ -143,23 +143,22 @@ void PhysicsMainScene::onEnterScene() {
     menu = make_shared<GWindow>(Rect{0, 900, 130, 45});
     app().addWindow(menu);
     menu->getWidget().setPadding(5);
-    menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(),
-                                                menu->getWidget().getFont()->getFontSize() / 1.5));
     menu->getWidget().setTransparency(0.2f);
     menu->getWidget().add(make_shared<GText>("[SPACE] Jump"), GWidget::TOP);
     menu->getWidget().add(make_shared<GText>("[ESC] Toggle mouse"), GWidget::TOP);
 
-    infoBox = make_shared<GWindow>(Rect{0, 800, 300, 45});
+    infoBox = make_shared<GWindow>(Rect{0, 800, 10, 10});
     infoBox->hide();
     app().addWindow(infoBox);
     infoText = make_shared<GText>("Info");
-    //infoText->setTextColor({0.5f, 0.5f, 0.0f, 1.0f});
+    //infoText->setTextColor({1.0f, 1.0f, 0.0f, 1.0f});
     infoBox->getWidget().add(infoText, GWidget::TOPCENTER);
     actionsText = make_shared<GText>("[P][RB] : Push   [O][LB] : Pull");
     //actionsText->setTextColor({0.5f, 0.5f, 0.5f, 1.0f});
     infoBox->getWidget().add(actionsText, GWidget::TOPCENTER);
     infoBox->getWidget().setTransparency(0.2);
     infoBox->getWidget().setPadding(5);
+    infoBox->setHeight(infoText->getHeight() + actionsText->getHeight() + infoBox->getWidget().getPadding() * 3);
 }
 
 void PhysicsMainScene::onExitScene() {

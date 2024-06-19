@@ -9,8 +9,6 @@ TopBar::TopBar(Object* obj, Signal::Handler _onQuit):
 
 void TopBar::onCreate() {
     getWidget().setDrawBackground(false);
-    getWidget().setFont(make_shared<Font>(getWidget().getFont()->getFontName(),
-                                          getWidget().getFont()->getFontSize() / 1.5));
 
     auto rightPadding = make_shared<GPanel>();
     rightPadding->setDrawBackground(false);

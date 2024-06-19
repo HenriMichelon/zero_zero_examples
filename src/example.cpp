@@ -24,7 +24,7 @@ private:
 void ExampleMainScene::onEnterScene() {
     menu = make_shared<GWindow>(Rect{250, 0, 500, 1000});
     app().addWindow(menu);
-
+    menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(), 20));
     menu->getWidget().setDrawBackground(false);
     menu->getWidget().setPadding(10);
     float height = menu->getWidget().getPadding() * 8;
@@ -100,10 +100,10 @@ const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = "..",
     .windowMode = WINDOW_MODE_WINDOWED,
-    .windowWidth = 1280,
-    .windowHeight = 960,
+    .windowWidth = 800,
+    .windowHeight = 600,
     .defaultFontName = "res/OpenSans-Regular.ttf",
-    .defaultFontSize = 16,
+    .defaultFontSize = 14,
     .loggingMode = static_cast<LoggingMode>(LOGGING_FILE | LOGGING_WINDOW)
 };
 
