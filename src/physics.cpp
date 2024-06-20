@@ -22,22 +22,16 @@ void PhysicsMainScene::onReady() {
     game->addChild(directionalLight1);
     
     player = make_shared<Player>();
-    player->setPosition({0.0, 0.0, -30.0});
-    player->rotateY(radians(180.0));
     game->addChild(player);
 
-    auto omniLight1 = make_shared<OmniLight>(0.14, 0.07);
-    omniLight1->setColorAndIntensity({0.0f, 1.0f, 0.0f, 0.8f});
-    player->addChild(omniLight1);
-
     auto spotLight1 = make_shared<SpotLight>(
-        vec3{0.0f, -0.5f, -1.0f},
-        15.0f, 25.0f,
-        0.027, 0.0028
+        vec3{0.0f, -0.25f, -1.0f},
+        10.0f, 12.0f,
+        0.022, 0.0019
     );
     spotLight1->setPosition({0.0,1.0,-0.1});
     spotLight1->setColorAndIntensity({1.0f, 1.0f, 0.0f, 2.0f});
-    spotLight1->setCastShadow(true);
+    //spotLight1->setCastShadow(true);
     player->addChild(spotLight1);
 
     raycast = make_shared<RayCast>(vec3{0.0f, 0.0f, -100.0f}, Layers::BODIES);
