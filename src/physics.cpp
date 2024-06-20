@@ -15,7 +15,7 @@ void PhysicsMainScene::onReady() {
     addChild(game);
 
     auto directionalLight1 = make_shared<DirectionalLight>(
-        vec3{-1.0f, -1.0f, -1.0f},
+        vec3{0.25f, -0.25f, 1.0f},
         vec4{1.0f, 1.0f, 1.0f, 1.2f}
     );
     directionalLight1->setCastShadow(true);
@@ -37,8 +37,9 @@ void PhysicsMainScene::onReady() {
     game->addChild(spotLight1);*/
 
     player = make_shared<Player>();
+    player->setPosition({50.0, 2.0, 0.0});
+    //player->rotateY(radians(180.0));
     game->addChild(player);
-    player->setPosition({0.0, 2.0, 0.0});
 
     raycast = make_shared<RayCast>(vec3{0.0f, 0.0f, -100.0f}, Layers::BODIES);
     player->addChild(raycast);
@@ -137,7 +138,7 @@ void PhysicsMainScene::onPushOrPull(Player::PushOrPullAction* action) {
 }
 
 void PhysicsMainScene::onEnterScene() {
-    menu = make_shared<GWindow>(Rect{0, 900, 130, 45});
+    menu = make_shared<GWindow>(Rect{0, 850, 130, 45});
     app().addWindow(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setTransparency(0.2f);
@@ -163,4 +164,5 @@ void PhysicsMainScene::onEnterScene() {
 
 void PhysicsMainScene::onExitScene() {
     app().removeWindow(menu);
+    app().removeWindow(infoBox);
 }
