@@ -138,8 +138,7 @@ void Player::onReady() {
     addChild(model);
 
     cameraPivot = make_shared<Node>("CameraPivot");
-    cameraPivot->setPosition({0.0, 1.8, 2.0});
-    cameraPivot->rotateX(radians(-20.0));
+    cameraPivot->setPosition({0.0, 1.6, 2.0});
     addChild(cameraPivot);
 
     camera = make_shared<Camera>();

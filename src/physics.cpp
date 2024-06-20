@@ -6,7 +6,7 @@
 #include "physics.h"
 
 void PhysicsMainScene::onReady() {
-    addChild(make_shared<Environment>(vec4{1.0,1.0,1.0,0.8f}));
+    addChild(make_shared<Environment>(vec4{1.0,1.0,1.0,0.6f}));
 
     setProcessMode(PROCESS_MODE_ALWAYS);
 
@@ -15,31 +15,30 @@ void PhysicsMainScene::onReady() {
     addChild(game);
 
     auto directionalLight1 = make_shared<DirectionalLight>(
-        vec3{0.25f, -0.25f, 1.0f},
-        vec4{1.0f, 1.0f, 1.0f, 1.2f}
+        vec3{0.0f, -0.25f, 1.0f},
+        vec4{1.0f, 1.0f, 1.0f, 0.5f}
     );
     directionalLight1->setCastShadow(true);
     game->addChild(directionalLight1);
-
-    /*auto omniLight1 = make_shared<OmniLight>(0.14, 0.07);
-    omniLight1->setPosition({-6.0f, 0.5f, -8.0f});
-    omniLight1->setColorAndIntensity({0.0f, 1.0f, .0f, 2.0f});
-    game->addChild(omniLight1);
     
+    player = make_shared<Player>();
+    player->setPosition({0.0, 0.0, -30.0});
+    player->rotateY(radians(180.0));
+    game->addChild(player);
+
+    auto omniLight1 = make_shared<OmniLight>(0.14, 0.07);
+    omniLight1->setColorAndIntensity({0.0f, 1.0f, 0.0f, 0.8f});
+    player->addChild(omniLight1);
+
     auto spotLight1 = make_shared<SpotLight>(
-        vec3{-0.8f,-0.5f, -1.0f},
-        25.0f, 35.0f,
+        vec3{0.0f, -0.5f, -1.0f},
+        15.0f, 25.0f,
         0.027, 0.0028
     );
-    spotLight1->setPosition({14.0, 3.0, 0.0});
-    spotLight1->setColorAndIntensity({1.0f, 0.0f, 0.0f, 2.0f});
+    spotLight1->setPosition({0.0,1.0,-0.1});
+    spotLight1->setColorAndIntensity({1.0f, 1.0f, 0.0f, 2.0f});
     spotLight1->setCastShadow(true);
-    game->addChild(spotLight1);*/
-
-    player = make_shared<Player>();
-    player->setPosition({50.0, 2.0, 0.0});
-    //player->rotateY(radians(180.0));
-    game->addChild(player);
+    player->addChild(spotLight1);
 
     raycast = make_shared<RayCast>(vec3{0.0f, 0.0f, -100.0f}, Layers::BODIES);
     player->addChild(raycast);
@@ -78,7 +77,7 @@ void PhysicsMainScene::onReady() {
             0,
             "Floor");
     floor->addChild(floorModel);
-    floor->setPosition({0.0, -2.0, 0.0});
+    floor->setPosition({0.0, -1.0, 0.0});
     game->addChild(floor);
     //printTree();
 

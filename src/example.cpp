@@ -99,12 +99,12 @@ void ExampleMainScene::onMenuRaycast(GEventClick*) {
 const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = "..",
-    .windowMode = WINDOW_MODE_FULLSCREEN,
-    .windowWidth = 1920,
-    .windowHeight = 1080,
+    .windowMode = WINDOW_MODE_WINDOWED,
+    .windowWidth = 1028,
+    .windowHeight = 768,
     .defaultFontName = "res/Signwood.ttf",
     .defaultFontSize = 25,
     .loggingMode = static_cast<LoggingMode>(LOGGING_FILE | LOGGING_WINDOW)
 };
 
-Z0_APP(applicationConfig, make_shared<PhysicsMainScene>())
+Z0_APP(applicationConfig, make_shared<ExampleMainScene>())
