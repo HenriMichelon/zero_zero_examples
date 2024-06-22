@@ -17,4 +17,5 @@ private:
     void onMenuAddRemoveChild(GEventClick*);
     void onMenuPhysics(GEventClick*);
     void onMenuRaycast(GEventClick*);
+    void onMenuTerrain(GEventClick*);
 };

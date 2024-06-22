@@ -2,6 +2,7 @@
 
 class Player: public Character {
 public:
+    static const Signal::signal on_push_pull;
     struct PushOrPullAction : public Signal::Parameters {
         bool push;
         bool pull;
@@ -13,7 +14,6 @@ public:
     void onPhysicsProcess(float delta) override;
     void onProcess(float alpha) override;
     void onReady() override;
-    void onCollisionStarts(const CollisionObject::Collision collision) override;
 
 private:
     struct State {
@@ -41,7 +41,12 @@ private:
     shared_ptr<Node> cameraPivot;
     shared_ptr<Camera> camera;
     shared_ptr<Node> model;
+    shared_ptr<CollisionArea> cameraCollisionNode;
+    CollisionObject* cameraCollisionTarget{nullptr};
+    bool rightDirectionBlocked{false};
+    bool leftDirectionBlocked{false};
 
     void captureMouse();
     void releaseMouse();
+    void onCameraCollisionStarts(CollisionObject::Collision* collision);
 };

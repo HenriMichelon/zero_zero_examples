@@ -1,7 +1,8 @@
 #include "includes.h"
-#include "player.h"
 #include "layers.h"
-#include "crate.h"
+#include "player.h"
+
+const Signal::signal Player::on_push_pull = "on_push_pull";
 
 Player::Player(): Character{make_shared<BoxShape>(vec3{0.8f,2.0f, 0.8f}),
                             Layers::PLAYER,
@@ -11,7 +12,14 @@ Player::Player(): Character{make_shared<BoxShape>(vec3{0.8f,2.0f, 0.8f}),
 bool Player::onInput(InputEvent& event) {
     if (mouseCaptured && (event.getType() == INPUT_EVENT_MOUSE_MOTION)) {
         auto& eventMouseMotion = dynamic_cast<InputEventMouseMotion&>(event);
-        rotateY(-eventMouseMotion.getRelativeX() * mouseSensitivity);
+        auto yRot = -eventMouseMotion.getRelativeX() * mouseSensitivity;
+        if ((yRot > 0) && rightDirectionBlocked) {
+            return false;
+        }
+        if ((yRot < 0) && leftDirectionBlocked) {
+            return false;
+        }
+        rotateY(yRot);
         cameraPivot->rotateX(eventMouseMotion.getRelativeY() * mouseSensitivity * mouseInvertedAxisY);
         cameraPivot->setRotationX(std::clamp(cameraPivot->getRotationX(), maxCameraAngleDown, maxCameraAngleUp));
         return true;
@@ -33,7 +41,7 @@ bool Player::onInput(InputEvent& event) {
             .push = (eventKey.getKey() == KEY_P) && eventKey.isPressed(), 
             .pull = (eventKey.getKey() == KEY_O) && eventKey.isPressed() 
         };
-        emit("pushpull", &params);
+        emit(on_push_pull, &params);
     }
     if ((event.getType() == INPUT_EVENT_GAMEPAD_BUTTON) && mouseCaptured) {
         auto& eventGamepadButton = dynamic_cast<InputEventGamepadButton&>(event);
@@ -44,7 +52,7 @@ bool Player::onInput(InputEvent& event) {
         auto params = PushOrPullAction{ 
             .push = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_RB) && eventGamepadButton.isPressed(), 
             .pull = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_LB) && eventGamepadButton.isPressed() };
-        emit("pushpull", &params);
+        emit(on_push_pull, &params);
     }
     return false;
 }
@@ -70,9 +78,9 @@ void Player::onPhysicsProcess(float delta) {
         }
     } else {
         currentState.velocity = currentVerticalVelocity;
+        // Apply gravity
+        currentState.velocity += app().getGravity() * getUpVector() * delta;
     }
-    // Apply gravity
-    currentState.velocity += app().getGravity() * getUpVector() * delta;
 
     if (input != VEC2ZERO) {
         if (!mouseCaptured) { captureMouse(); }
@@ -111,22 +119,36 @@ void Player::onPhysicsProcess(float delta) {
 }
 
 void Player::onProcess(float alpha) {
+    if ((cameraCollisionTarget != nullptr) && (!cameraCollisionNode->wereInContact(cameraCollisionTarget))) {
+        cameraCollisionTarget = nullptr;
+        rightDirectionBlocked = false;
+        leftDirectionBlocked = false;
+    }
     if (currentState.velocity != VEC3ZERO) {
+        if ((currentState.velocity.z > 0) && (cameraCollisionTarget != nullptr)) {
+            currentState.velocity.z = 0;
+        }
+        if (((currentState.velocity.x > 0) && (rightDirectionBlocked))
+         || ((currentState.velocity.x < 0) && (leftDirectionBlocked))) {
+            currentState.velocity.x = 0;
+        }
         // set interpolated velocity
         setVelocity(previousState.velocity * (1.0f-alpha) + currentState.velocity * alpha);
+    } else {
+        setVelocity(VEC3ZERO);
     }
     if (currentState.lookDir != VEC2ZERO) {
         auto interpolatedLookDir = previousState.lookDir * (1.0f-alpha) + currentState.lookDir * alpha;
-        rotateY(-interpolatedLookDir.x * 2.0f);
+         auto yRot = -interpolatedLookDir.x * 2.0f;
+        if ((yRot > 0) && rightDirectionBlocked) {
+            return;
+        }
+        if ((yRot < 0) && leftDirectionBlocked) {
+            return;
+        }
+        rotateY(yRot);
         cameraPivot->rotateX(interpolatedLookDir.y * keyboardInvertedAxisY);
         cameraPivot->setRotationX(std::clamp(cameraPivot->getRotationX() , maxCameraAngleDown, maxCameraAngleUp));
-    }
-}
-
-void Player::onCollisionStarts(const Collision collision) {
-    if (!isGround(collision.object)) {
-        //log("Player start colliding with", collision.object->toString(), to_string(collision.object->getId()));
-        //log(to_string(collision.position), to_string(camera->unproject(collision.position)));
     }
 }
 
@@ -137,18 +159,26 @@ void Player::onReady() {
     model->setPosition({0.0, -1.8/2.0, 0.0});
     addChild(model);
 
-    cameraPivot = make_shared<Node>("CameraPivot");
-    cameraPivot->setPosition({0.0, 1.6, 2.0});
+    cameraPivot = make_shared<Node>();
+    cameraPivot->setPosition({0.0, 2.0, 2.0});
     addChild(cameraPivot);
 
+    cameraCollisionNode = make_shared<CollisionArea>(
+        make_shared<SphereShape>(0.4f),
+        Layers::NONE,
+        Layers::WORLD | Layers::BODIES,
+        "cameraCollisionNode"
+    );
+    cameraCollisionNode->connect(CollisionObject::on_collision_starts, this, Signal::Handler(&Player::onCameraCollisionStarts));
+    cameraCollisionNode->connect(CollisionObject::on_collision_persists, this, Signal::Handler(&Player::onCameraCollisionStarts));
+    cameraPivot->addChild(cameraCollisionNode);
+
     camera = make_shared<Camera>();
+    camera->setPerspectiveProjection(75.0, 0.1, 200.0);
     cameraPivot->addChild(camera);
     app().activateCamera(camera);
 
     log(to_string(Input::getConnectedJoypads()), "connected gamepad(s)");
-    for (int i = 0; i < Input::getConnectedJoypads(); i++) {
-        log(Input::getJoypadName(i));
-    }
     for (int i = 0; i < Input::getConnectedJoypads(); i++) {
         if (Input::isGamepad(i)) {
             gamepad = i;
@@ -158,6 +188,13 @@ void Player::onReady() {
     if (gamepad != -1) {
         log("Using gamepad", Input::getJoypadName(gamepad));
     }
+}
+
+void Player::onCameraCollisionStarts(CollisionObject::Collision* collision) {
+    cameraCollisionTarget = collision->object;
+    float dotProduct = dot(getRightVector(), collision->position - getPositionGlobal());
+    rightDirectionBlocked = dotProduct > 0;
+    leftDirectionBlocked = dotProduct < 0;
 }
 
 void Player::captureMouse() {

@@ -14,6 +14,7 @@
 #include <z0/nodes/mesh_instance.h>
 #include <z0/resources/convex_hull_shape.h>
 #include <z0/resources/sub_shape.h>
+#include <z0/resources/mesh_shape.h>
 #include <z0/resources/static_compound_shape.h>
 
 #include <z0/application.h>
@@ -22,6 +23,7 @@
 
 #include <z0/nodes/camera.h>
 #include <z0/nodes/collision_object.h>
+#include <z0/nodes/collision_area.h>
 #include <z0/nodes/physics_body.h>
 #include <z0/nodes/rigid_body.h>
 #include <z0/nodes/kinematic_body.h>

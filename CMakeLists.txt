@@ -42,33 +42,15 @@ add_custom_target(AlwaysExecute ALL
 add_dependencies(AlwaysExecute ${PROJECT_NAME}_shaders)
 
 add_executable(${PROJECT_NAME}
-		${INCLUDE_DIR}/example.h
 		${SRC_DIR}/example.cpp
-
-		${INCLUDE_DIR}/triangle.h
 		${SRC_DIR}/triangle.cpp
-
-		${INCLUDE_DIR}/add_remove_child.h
 		${SRC_DIR}/add_remove_child.cpp
-
-		${INCLUDE_DIR}/ui.h
 		${SRC_DIR}/ui.cpp
-
-		${INCLUDE_DIR}/topbar.h
 		${SRC_DIR}/topbar.cpp
-
-		${INCLUDE_DIR}/player.h
 		${SRC_DIR}/player.cpp
-
-		${INCLUDE_DIR}/physics.h
 		${SRC_DIR}/physics.cpp
-
-		${INCLUDE_DIR}/crate.h
 		${SRC_DIR}/crate.cpp
-
-		${INCLUDE_DIR}/layers.h
-		${INCLUDE_DIR}/includes.h
-
+		${SRC_DIR}/terrain.cpp
 )
 
 add_dependencies(${PROJECT_NAME} ${Z0_SHARED_LIB} AlwaysExecute)

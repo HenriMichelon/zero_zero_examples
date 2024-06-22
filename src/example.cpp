@@ -5,6 +5,7 @@
 #include "triangle.h"
 #include "add_remove_child.h"
 #include "physics.h"
+#include "terrain.h"
 
 class GMenuEntry: public GButton {
 public:
@@ -39,10 +40,15 @@ void ExampleMainScene::onEnterScene() {
     menu->getWidget().add(entryAddRemoveChild, GWidget::TOPCENTER);
     height += entryAddRemoveChild->getHeight();
 
-    auto entreRaycast = make_shared<GMenuEntry>("Physics & RayCast");
-    entreRaycast->connect(GEvent::OnClick, this, Signal::Handler(&ExampleMainScene::onMenuRaycast));
-    menu->getWidget().add(entreRaycast, GWidget::TOPCENTER);
-    height += entreRaycast->getHeight();
+    auto entryRaycast = make_shared<GMenuEntry>("Physics & RayCast");
+    entryRaycast->connect(GEvent::OnClick, this, Signal::Handler(&ExampleMainScene::onMenuRaycast));
+    menu->getWidget().add(entryRaycast, GWidget::TOPCENTER);
+    height += entryRaycast->getHeight();
+
+        auto entryTerrain = make_shared<GMenuEntry>("Static terrain");
+    entryTerrain->connect(GEvent::OnClick, this, Signal::Handler(&ExampleMainScene::onMenuTerrain));
+    menu->getWidget().add(entryTerrain, GWidget::TOPCENTER);
+    height += entryTerrain->getHeight();
 
     auto entryQuit = make_shared<GMenuEntry>("Quit");
     entryQuit->connect(GEvent::OnClick, this, Signal::Handler(&ExampleMainScene::onMenuQuit));
@@ -50,7 +56,7 @@ void ExampleMainScene::onEnterScene() {
     height += entryQuit->getHeight();
 
     menu->setHeight(height);
-    menu->setY((1000 - height)/2);
+    menu->setY((VECTOR_SCALE.y - height)/2);
 
     topbar = make_shared<TopBar>(this, Signal::Handler(&ExampleMainScene::onMenu));
     app().addWindow(topbar);
@@ -94,6 +100,12 @@ void ExampleMainScene::onMenuRaycast(GEventClick*) {
     menu->hide();
     topbar->show();
     scene->addChild(make_shared<PhysicsMainScene>());
+}
+
+void ExampleMainScene::onMenuTerrain(GEventClick*) {
+    menu->hide();
+    topbar->show();
+    scene->addChild(make_shared<TerrainScene>());
 }
 
 const ApplicationConfig applicationConfig {
