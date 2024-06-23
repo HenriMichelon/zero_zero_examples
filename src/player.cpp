@@ -160,14 +160,13 @@ void Player::onReady() {
     addChild(model);
 
     cameraAttachement = make_shared<Node>("cameraAttachement");
-    auto attachementZOffset = 1.2f;
+    auto attachementZOffset = 1.4f;
     auto attachementYOffset = 1.4f;
     cameraAttachement->setPosition({0.0, attachementYOffset, attachementZOffset});
     addChild(cameraAttachement);
 
     cameraCollisionNode = make_shared<CollisionArea>(
         make_shared<SphereShape>(attachementZOffset+0.1f),
-        Layers::NONE,
         Layers::WORLD | Layers::BODIES,
         "cameraCollisionNode"
     );
@@ -194,12 +193,12 @@ void Player::onReady() {
     if (gamepad != -1) {
         log("Using gamepad", Input::getJoypadName(gamepad));
     }
-    printTree();
+    //printTree();
 }
 
 void Player::onCameraCollision(CollisionObject::Collision* collision) {
     cameraCollisionTarget = collision->object;
-    cameraCollisionCounter = 500;
+    cameraCollisionCounter = 10;
 }
 
 void Player::captureMouse() {
