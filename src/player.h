@@ -8,7 +8,7 @@ public:
         bool pull;
     };
 
-    Player();
+    Player(int cameraCollisionCounter);
 
     bool onInput(InputEvent& event) override;
     void onPhysicsProcess(float delta) override;
@@ -38,14 +38,17 @@ private:
     State previousState;
     State currentState;
     float currentMovementSpeed;
+    shared_ptr<Node> model;
+    
     shared_ptr<Camera> camera;
     shared_ptr<Node> cameraPivot;
     shared_ptr<Node> cameraAttachement;
-    shared_ptr<Node> model;
-    shared_ptr<CollisionArea> cameraCollisionNode;
+    shared_ptr<CollisionArea> cameraCollisionSensor;
     CollisionObject* cameraCollisionTarget{nullptr};
+    int cameraCollisionCounterMax;
     int cameraCollisionCounter{0};
-    shared_ptr<Tween> cameraTween;
+    shared_ptr<Tween> cameraInTween;
+    shared_ptr<Tween> cameraOutTween;
 
     void captureMouse();
     void releaseMouse();

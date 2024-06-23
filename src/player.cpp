@@ -4,9 +4,11 @@
 
 const Signal::signal Player::on_push_pull = "on_push_pull";
 
-Player::Player(): Character{make_shared<BoxShape>(vec3{0.8f,2.0f, 0.8f}),
-                            Layers::PLAYER,
-                            Layers::WORLD | Layers::BODIES} {
+Player::Player(int count): 
+    Character{make_shared<BoxShape>(vec3{0.8f,2.0f, 0.8f}),
+             Layers::PLAYER,
+            Layers::WORLD | Layers::BODIES},
+    cameraCollisionCounterMax{count} {
 }
 
 bool Player::onInput(InputEvent& event) {
@@ -52,15 +54,16 @@ bool Player::onInput(InputEvent& event) {
 }
 
 void Player::onPhysicsProcess(float delta) {
-    if ((cameraCollisionTarget != nullptr) && ((cameraTween == nullptr) || (!cameraTween->isRunning()))) {
+    if ((cameraCollisionTarget != nullptr) && ((cameraInTween == nullptr) || (!cameraInTween->isRunning()))) {
         const auto pos = cameraAttachement->getPosition();
         const auto dest = vec3{0.0f, 0.0f, -pos.z};
         if (cameraPivot->getPosition() != dest) {
-            cameraTween = cameraPivot->createPropertyTween(
+            cameraInTween = cameraPivot->createPropertyTween(
                 PropertyTween<vec3>::Setter(&Node::setPosition), 
                 cameraPivot->getPosition(),
                 dest, 
                 0.5f);
+            cameraPivot->killTween(cameraOutTween);
         }
     }
 
@@ -125,14 +128,15 @@ void Player::onPhysicsProcess(float delta) {
 }
 
 void Player::onProcess(float alpha) {
-    if ((cameraCollisionTarget != nullptr) && (!cameraCollisionNode->wereInContact(cameraCollisionTarget))) {
+    if ((cameraCollisionTarget != nullptr) && (!cameraCollisionSensor->wereInContact(cameraCollisionTarget))) {
         cameraCollisionCounter -= 1;
         if (cameraCollisionCounter == 0) {
-            cameraTween = cameraPivot->createPropertyTween(
+            cameraOutTween = cameraPivot->createPropertyTween(
                 PropertyTween<vec3>::Setter(&Node::setPosition), 
                 cameraPivot->getPosition(),
                 VEC3ZERO, 
                 0.5f);
+            cameraPivot->killTween(cameraInTween);
             cameraCollisionTarget = nullptr;
         }
     }
@@ -165,15 +169,15 @@ void Player::onReady() {
     cameraAttachement->setPosition({0.0, attachementYOffset, attachementZOffset});
     addChild(cameraAttachement);
 
-    cameraCollisionNode = make_shared<CollisionArea>(
+    cameraCollisionSensor = make_shared<CollisionArea>(
         make_shared<SphereShape>(attachementZOffset+0.1f),
         Layers::WORLD | Layers::BODIES,
         "cameraCollisionNode"
     );
-    cameraCollisionNode->setPosition({0.0, attachementYOffset, 0.0});
-    cameraCollisionNode->connect(CollisionObject::on_collision_starts, this, Signal::Handler(&Player::onCameraCollision));
-    cameraCollisionNode->connect(CollisionObject::on_collision_persists, this, Signal::Handler(&Player::onCameraCollision));
-    addChild(cameraCollisionNode);
+    cameraCollisionSensor->setPosition({0.0, attachementYOffset, 0.0});
+    cameraCollisionSensor->connect(CollisionObject::on_collision_starts, this, Signal::Handler(&Player::onCameraCollision));
+    cameraCollisionSensor->connect(CollisionObject::on_collision_persists, this, Signal::Handler(&Player::onCameraCollision));
+    addChild(cameraCollisionSensor);
 
     cameraPivot = make_shared<Node>("cameraPivot");
     cameraAttachement->addChild(cameraPivot);
@@ -198,7 +202,7 @@ void Player::onReady() {
 
 void Player::onCameraCollision(CollisionObject::Collision* collision) {
     cameraCollisionTarget = collision->object;
-    cameraCollisionCounter = 10;
+    cameraCollisionCounter = cameraCollisionCounterMax;
 }
 
 void Player::captureMouse() {

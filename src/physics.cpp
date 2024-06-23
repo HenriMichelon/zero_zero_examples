@@ -21,7 +21,7 @@ void PhysicsMainScene::onReady() {
     directionalLight1->setCastShadow(true);
     game->addChild(directionalLight1);
     
-    player = make_shared<Player>();
+    player = make_shared<Player>(1000);
     game->addChild(player);
 
     auto spotLight1 = make_shared<SpotLight>(

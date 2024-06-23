@@ -16,7 +16,7 @@ void TerrainScene::onReady() {
     directionalLight->setCastShadow(true);
     game->addChild(directionalLight);
 
-    player = make_shared<Player>();
+    player = make_shared<Player>(10);
     player->setPosition({10.0f, 10.0f, 5.0f});
     game->addChild(player);
 
