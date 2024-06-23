@@ -13,12 +13,6 @@ bool Player::onInput(InputEvent& event) {
     if (mouseCaptured && (event.getType() == INPUT_EVENT_MOUSE_MOTION)) {
         auto& eventMouseMotion = dynamic_cast<InputEventMouseMotion&>(event);
         auto yRot = -eventMouseMotion.getRelativeX() * mouseSensitivity;
-        if ((yRot > 0) && rightDirectionBlocked) {
-            return false;
-        }
-        if ((yRot < 0) && leftDirectionBlocked) {
-            return false;
-        }
         rotateY(yRot);
         cameraPivot->rotateX(eventMouseMotion.getRelativeY() * mouseSensitivity * mouseInvertedAxisY);
         cameraPivot->setRotationX(std::clamp(cameraPivot->getRotationX(), maxCameraAngleDown, maxCameraAngleUp));
@@ -58,6 +52,18 @@ bool Player::onInput(InputEvent& event) {
 }
 
 void Player::onPhysicsProcess(float delta) {
+    if ((cameraCollisionTarget != nullptr) && ((cameraTween == nullptr) || (!cameraTween->isRunning()))) {
+        const auto pos = cameraAttachement->getPosition();
+        const auto dest = vec3{0.0f, 0.0f, -pos.z};
+        if (cameraPivot->getPosition() != dest) {
+            cameraTween = cameraPivot->createPropertyTween(
+                PropertyTween<vec3>::Setter(&Node::setPosition), 
+                cameraPivot->getPosition(),
+                dest, 
+                0.5f);
+        }
+    }
+
     previousState = currentState;
     currentState = State{};
     vec2 input = VEC2ZERO;
@@ -120,32 +126,26 @@ void Player::onPhysicsProcess(float delta) {
 
 void Player::onProcess(float alpha) {
     if ((cameraCollisionTarget != nullptr) && (!cameraCollisionNode->wereInContact(cameraCollisionTarget))) {
-        cameraCollisionTarget = nullptr;
-        rightDirectionBlocked = false;
-        leftDirectionBlocked = false;
+        cameraCollisionCounter -= 1;
+        if (cameraCollisionCounter == 0) {
+            cameraTween = cameraPivot->createPropertyTween(
+                PropertyTween<vec3>::Setter(&Node::setPosition), 
+                cameraPivot->getPosition(),
+                VEC3ZERO, 
+                0.5f);
+            cameraCollisionTarget = nullptr;
+        }
     }
+
     if (currentState.velocity != VEC3ZERO) {
-        if ((currentState.velocity.z > 0) && (cameraCollisionTarget != nullptr)) {
-            currentState.velocity.z = 0;
-        }
-        if (((currentState.velocity.x > 0) && (rightDirectionBlocked))
-         || ((currentState.velocity.x < 0) && (leftDirectionBlocked))) {
-            currentState.velocity.x = 0;
-        }
         // set interpolated velocity
-        setVelocity(previousState.velocity * (1.0f-alpha) + currentState.velocity * alpha);
+        setVelocity(previousState.velocity * (1.0f - alpha) + currentState.velocity * alpha);
     } else {
         setVelocity(VEC3ZERO);
     }
     if (currentState.lookDir != VEC2ZERO) {
         auto interpolatedLookDir = previousState.lookDir * (1.0f-alpha) + currentState.lookDir * alpha;
          auto yRot = -interpolatedLookDir.x * 2.0f;
-        if ((yRot > 0) && rightDirectionBlocked) {
-            return;
-        }
-        if ((yRot < 0) && leftDirectionBlocked) {
-            return;
-        }
         rotateY(yRot);
         cameraPivot->rotateX(interpolatedLookDir.y * keyboardInvertedAxisY);
         cameraPivot->setRotationX(std::clamp(cameraPivot->getRotationX() , maxCameraAngleDown, maxCameraAngleUp));
@@ -159,21 +159,27 @@ void Player::onReady() {
     model->setPosition({0.0, -1.8/2.0, 0.0});
     addChild(model);
 
-    cameraPivot = make_shared<Node>();
-    cameraPivot->setPosition({0.0, 2.0, 2.0});
-    addChild(cameraPivot);
+    cameraAttachement = make_shared<Node>("cameraAttachement");
+    auto attachementZOffset = 1.2f;
+    auto attachementYOffset = 1.4f;
+    cameraAttachement->setPosition({0.0, attachementYOffset, attachementZOffset});
+    addChild(cameraAttachement);
 
     cameraCollisionNode = make_shared<CollisionArea>(
-        make_shared<SphereShape>(0.4f),
+        make_shared<SphereShape>(attachementZOffset+0.1f),
         Layers::NONE,
         Layers::WORLD | Layers::BODIES,
         "cameraCollisionNode"
     );
-    cameraCollisionNode->connect(CollisionObject::on_collision_starts, this, Signal::Handler(&Player::onCameraCollisionStarts));
-    cameraCollisionNode->connect(CollisionObject::on_collision_persists, this, Signal::Handler(&Player::onCameraCollisionStarts));
-    cameraPivot->addChild(cameraCollisionNode);
+    cameraCollisionNode->setPosition({0.0, attachementYOffset, 0.0});
+    cameraCollisionNode->connect(CollisionObject::on_collision_starts, this, Signal::Handler(&Player::onCameraCollision));
+    cameraCollisionNode->connect(CollisionObject::on_collision_persists, this, Signal::Handler(&Player::onCameraCollision));
+    addChild(cameraCollisionNode);
 
-    camera = make_shared<Camera>();
+    cameraPivot = make_shared<Node>("cameraPivot");
+    cameraAttachement->addChild(cameraPivot);
+
+    camera = make_shared<Camera>("camera");
     camera->setPerspectiveProjection(75.0, 0.1, 200.0);
     cameraPivot->addChild(camera);
     app().activateCamera(camera);
@@ -188,13 +194,12 @@ void Player::onReady() {
     if (gamepad != -1) {
         log("Using gamepad", Input::getJoypadName(gamepad));
     }
+    printTree();
 }
 
-void Player::onCameraCollisionStarts(CollisionObject::Collision* collision) {
+void Player::onCameraCollision(CollisionObject::Collision* collision) {
     cameraCollisionTarget = collision->object;
-    float dotProduct = dot(getRightVector(), collision->position - getPositionGlobal());
-    rightDirectionBlocked = dotProduct > 0;
-    leftDirectionBlocked = dotProduct < 0;
+    cameraCollisionCounter = 500;
 }
 
 void Player::captureMouse() {

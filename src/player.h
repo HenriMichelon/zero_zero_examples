@@ -38,15 +38,16 @@ private:
     State previousState;
     State currentState;
     float currentMovementSpeed;
-    shared_ptr<Node> cameraPivot;
     shared_ptr<Camera> camera;
+    shared_ptr<Node> cameraPivot;
+    shared_ptr<Node> cameraAttachement;
     shared_ptr<Node> model;
     shared_ptr<CollisionArea> cameraCollisionNode;
     CollisionObject* cameraCollisionTarget{nullptr};
-    bool rightDirectionBlocked{false};
-    bool leftDirectionBlocked{false};
+    int cameraCollisionCounter{0};
+    shared_ptr<Tween> cameraTween;
 
     void captureMouse();
     void releaseMouse();
-    void onCameraCollisionStarts(CollisionObject::Collision* collision);
+    void onCameraCollision(CollisionObject::Collision* collision);
 };
