@@ -170,11 +170,11 @@ void Player::onReady() {
     addChild(cameraAttachement);
 
     cameraCollisionSensor = make_shared<CollisionArea>(
-        make_shared<SphereShape>(attachementZOffset+0.1f),
+        make_shared<SphereShape>(attachementZOffset),
         Layers::WORLD | Layers::BODIES,
         "cameraCollisionNode"
     );
-    cameraCollisionSensor->setPosition({0.0, attachementYOffset, 0.0});
+    cameraCollisionSensor->setPosition({0.0, attachementYOffset, attachementZOffset / 2.0f});
     cameraCollisionSensor->connect(CollisionObject::on_collision_starts, this, Signal::Handler(&Player::onCameraCollision));
     cameraCollisionSensor->connect(CollisionObject::on_collision_persists, this, Signal::Handler(&Player::onCameraCollision));
     addChild(cameraCollisionSensor);
