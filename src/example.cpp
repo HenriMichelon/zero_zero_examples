@@ -67,6 +67,8 @@ void ExampleMainScene::onReady() {
     addChild(make_shared<Skybox>("res/textures/cubemap.png"));
     scene = make_shared<Node>();
     addChild(scene);
+    auto usage = (app().getVideoMemoryUsage() / static_cast<float>(app().getDedicatedVideoMemory())) * 100.0f;
+    log("VRAM usage after onReady():", to_string(usage)+"%");
 }
 
 void ExampleMainScene::onProcess(float alpha) {
