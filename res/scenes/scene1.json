@@ -1,0 +1,54 @@
+{
+    "nodes": [
+        {
+            "id" : "crateModel",
+            "resource": "res/models/crate.glb",
+            "type": "model"
+        },
+        {
+            "id" : "terrainModel",
+            "resource": "res/models/terrain.glb",
+            "type": "model"
+        },
+        {
+            "id" : "sun",
+            "class": "Sun"
+        },
+        {
+            "id" : "player",
+            "class": "Player",
+            "properties": {
+                "position": "-30.0f, 0.0f, 0.0f"
+            }
+        },
+        {
+            "id" : "terrain",
+            "class": "Terrain",
+            "children": [ { "id": "terrainModel"}
+            ],
+            "properties": {
+                "position": "0.0, -1.0, 0.0"
+            }
+        },
+        {
+            "id" : "crate1",
+            "class": "Crate",
+            "children": [ { "id": "crateModel"}
+            ],
+            "properties": {
+                "position": "-30.0,0.0,-2.0"
+            }
+        },
+        {
+            "id" : "crate2",
+            "class": "Crate",
+            "children": [ { "id": "crateModel"}
+            ],
+            "properties": {
+                "position": "-38.0,0.0,-2.0",
+                "rotation": "0.0,45.0,0.0"
+            }
+        }
+
+    ]
+}

@@ -43,14 +43,15 @@ add_dependencies(AlwaysExecute ${PROJECT_NAME}_shaders)
 
 add_executable(${PROJECT_NAME}
 		${SRC_DIR}/example.cpp
-		${SRC_DIR}/triangle.cpp
-		${SRC_DIR}/add_remove_child.cpp
-		${SRC_DIR}/ui.cpp
 		${SRC_DIR}/topbar.cpp
-		${SRC_DIR}/player.cpp
-		${SRC_DIR}/physics.cpp
-		${SRC_DIR}/crate.cpp
-		${SRC_DIR}/terrain.cpp
+		${SRC_DIR}/scenes/triangle.cpp
+		${SRC_DIR}/scenes/add_remove_child.cpp
+		${SRC_DIR}/scenes/ui.cpp
+		${SRC_DIR}/scenes/physics.cpp
+		${SRC_DIR}/scenes/terrain.cpp
+		${SRC_DIR}/nodes/player.cpp
+		${SRC_DIR}/nodes/crate.h
+		${SRC_DIR}/nodes/terrain.h
 )
 
 add_dependencies(${PROJECT_NAME} ${Z0_SHARED_LIB} AlwaysExecute)

@@ -1,9 +1,9 @@
 #include "includes.h"
-#include "player.h"
-#include "crate.h"
 #include "layers.h"
+#include "nodes/player.h"
+#include "nodes/crate.h"
 #include "topbar.h"
-#include "physics.h"
+#include "scenes/physics.h"
 
 void PhysicsMainScene::onReady() {
     addChild(make_shared<Environment>(vec4{1.0,1.0,1.0,0.6f}));
@@ -21,7 +21,7 @@ void PhysicsMainScene::onReady() {
     directionalLight1->setCastShadow(true);
     game->addChild(directionalLight1);
     
-    player = make_shared<Player>(1000);
+    player = make_shared<Player>();
     game->addChild(player);
 
     auto spotLight1 = make_shared<SpotLight>(
@@ -40,7 +40,8 @@ void PhysicsMainScene::onReady() {
     auto crateModel = Loader::loadModelFromFile("res/models/crate.glb", true);
     for (int x = 0; x < 5; x++) {
         for (int z = 0; z < 5; z++) {
-            auto model = make_shared<Crate>(crateModel->duplicate());
+            auto model = make_shared<Crate>();
+            model->addChild(crateModel->duplicate());
             model->setPosition({x * 5 - 1.5 * 5, 1.0 + rand() % 5, -z * 5 - 5});
             game->addChild(model);
         }
@@ -68,7 +69,6 @@ void PhysicsMainScene::onReady() {
     auto floor = make_shared<StaticBody>(
             make_shared<StaticCompoundShape>(floorSubShapes),
             Layers::WORLD,
-            0,
             "Floor");
     floor->addChild(floorModel);
     floor->setPosition({0.0, -1.0, 0.0});

@@ -1,11 +1,11 @@
 #include "includes.h"
 #include "topbar.h"
-#include "player.h"
+#include "nodes/player.h"
 #include "example.h"
-#include "triangle.h"
-#include "add_remove_child.h"
-#include "physics.h"
-#include "terrain.h"
+#include "scenes/triangle.h"
+#include "scenes/add_remove_child.h"
+#include "scenes/physics.h"
+#include "scenes/terrain.h"
 
 class GMenuEntry: public GButton {
 public:
@@ -45,7 +45,7 @@ void ExampleMainScene::onEnterScene() {
     menu->getWidget().add(entryRaycast, GWidget::TOPCENTER);
     height += entryRaycast->getHeight();
 
-        auto entryTerrain = make_shared<GMenuEntry>("Static terrain");
+    auto entryTerrain = make_shared<GMenuEntry>("Scenes files");
     entryTerrain->connect(GEvent::OnClick, this, Signal::Handler(&ExampleMainScene::onMenuTerrain));
     menu->getWidget().add(entryTerrain, GWidget::TOPCENTER);
     height += entryTerrain->getHeight();
@@ -113,9 +113,9 @@ void ExampleMainScene::onMenuTerrain(GEventClick*) {
 const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = "..",
-    .windowMode = WINDOW_MODE_WINDOWED_FULLSCREEN,
-    .windowWidth = 1920,
-    .windowHeight = 1080,
+    .windowMode = WINDOW_MODE_WINDOWED,
+    .windowWidth = 800,
+    .windowHeight = 600,
     .defaultFontName = "res/Signwood.ttf",
     .defaultFontSize = 25,
     .loggingMode = static_cast<LoggingMode>(LOGGING_FILE | LOGGING_WINDOW)

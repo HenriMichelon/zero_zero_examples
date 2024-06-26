@@ -8,7 +8,7 @@ public:
         bool pull;
     };
 
-    Player(int cameraCollisionCounter);
+    Player();
 
     bool onInput(InputEvent& event) override;
     void onPhysicsProcess(float delta) override;
@@ -54,3 +54,5 @@ private:
     void releaseMouse();
     void onCameraCollision(CollisionObject::Collision* collision);
 };
+
+Z0_REGISTER_TYPE(Player)

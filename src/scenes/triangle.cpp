@@ -1,5 +1,5 @@
 #include "includes.h"
-#include "triangle.h"
+#include "scenes/triangle.h"
 
 void TriangleMainScene::onMenuRotate(GEventClick*) {
     rotate = !rotate;

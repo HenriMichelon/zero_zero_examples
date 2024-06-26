@@ -1,5 +1,5 @@
 #include "includes.h"
-#include "add_remove_child.h"
+#include "scenes/add_remove_child.h"
 
 void AddRemoveChildMainScene::onEnterScene() {
     menu = make_shared<GWindow>(Rect{0, 1000-550, 150, 500});

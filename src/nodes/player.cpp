@@ -4,11 +4,11 @@
 
 const Signal::signal Player::on_push_pull = "on_push_pull";
 
-Player::Player(int count): 
+Player::Player(): 
     Character{make_shared<BoxShape>(vec3{0.8f,2.0f, 0.8f}),
              Layers::PLAYER,
             Layers::WORLD | Layers::BODIES},
-    cameraCollisionCounterMax{count} {
+    cameraCollisionCounterMax{100} {
 }
 
 bool Player::onInput(InputEvent& event) {
@@ -164,17 +164,17 @@ void Player::onReady() {
     addChild(model);
 
     cameraAttachement = make_shared<Node>("cameraAttachement");
-    auto attachementZOffset = 1.4f;
-    auto attachementYOffset = 1.4f;
+    auto attachementZOffset = 2.0f;
+    auto attachementYOffset = 1.6f;
     cameraAttachement->setPosition({0.0, attachementYOffset, attachementZOffset});
     addChild(cameraAttachement);
 
     cameraCollisionSensor = make_shared<CollisionArea>(
-        make_shared<SphereShape>(attachementZOffset),
+        make_shared<SphereShape>(attachementZOffset - 0.6f),
         Layers::WORLD | Layers::BODIES,
         "cameraCollisionNode"
     );
-    cameraCollisionSensor->setPosition({0.0, attachementYOffset, attachementZOffset / 2.0f});
+    cameraCollisionSensor->setPosition({0.0, attachementYOffset, attachementZOffset / 2.0f - 0.5f});
     cameraCollisionSensor->connect(CollisionObject::on_collision_starts, this, Signal::Handler(&Player::onCameraCollision));
     cameraCollisionSensor->connect(CollisionObject::on_collision_persists, this, Signal::Handler(&Player::onCameraCollision));
     addChild(cameraCollisionSensor);
