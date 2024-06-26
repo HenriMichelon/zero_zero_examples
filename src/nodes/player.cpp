@@ -182,7 +182,7 @@ void Player::onReady() {
     cameraPivot = make_shared<Node>("cameraPivot");
     cameraAttachement->addChild(cameraPivot);
 
-    camera = make_shared<Camera>("camera");
+    camera = make_shared<Camera>("Player camera");
     camera->setPerspectiveProjection(75.0, 0.1, 200.0);
     cameraPivot->addChild(camera);
     app().activateCamera(camera);

@@ -63,7 +63,7 @@ void ExampleMainScene::onEnterScene() {
 }
 
 void ExampleMainScene::onReady() {
-    addChild(make_shared<Camera>());
+    addChild(make_shared<Camera>("Menu camera"));
     addChild(make_shared<Skybox>("res/textures/cubemap.png"));
     scene = make_shared<Node>();
     addChild(scene);
@@ -113,9 +113,9 @@ void ExampleMainScene::onMenuTerrain(GEventClick*) {
 const ApplicationConfig applicationConfig {
     .appName = "Example App",
     .appDir = "..",
-    .windowMode = WINDOW_MODE_WINDOWED,
-    .windowWidth = 800,
-    .windowHeight = 600,
+    .windowMode = WINDOW_MODE_WINDOWED_FULLSCREEN,
+    .windowWidth = 1980,
+    .windowHeight = 1020,
     .defaultFontName = "res/Signwood.ttf",
     .defaultFontSize = 25,
     .loggingMode = static_cast<LoggingMode>(LOGGING_FILE | LOGGING_WINDOW)

@@ -7,48 +7,67 @@
         },
         {
             "id" : "terrainModel",
-            "resource": "res/models/terrain.glb",
+            "resource": "res/models/terrain1.glb",
             "type": "model"
         },
         {
+            "id" : "env",
+            "class": "Environment",
+            "properties": {
+                "ambient_color": "1.0,1.0,1.0,1.0f"
+            }
+        },
+        {
             "id" : "sun",
-            "class": "Sun"
-        },
-        {
-            "id" : "player",
-            "class": "Player",
+            "class": "DirectionalLight",
             "properties": {
-                "position": "-30.0f, 0.0f, 0.0f"
+                "color": "1.0f, 1.0f, 1.0f, 1.0f",
+                "direction": "-0.2f, -0.8f, 1.0f",
+                "cast_shadow" : "true"
             }
         },
         {
-            "id" : "terrain",
-            "class": "Terrain",
-            "children": [ { "id": "terrainModel"}
-            ],
+            "id" : "game",
             "properties": {
-                "position": "0.0, -1.0, 0.0"
-            }
-        },
-        {
-            "id" : "crate1",
-            "class": "Crate",
-            "children": [ { "id": "crateModel"}
-            ],
-            "properties": {
-                "position": "-30.0,0.0,-2.0"
-            }
-        },
-        {
-            "id" : "crate2",
-            "class": "Crate",
-            "children": [ { "id": "crateModel"}
-            ],
-            "properties": {
-                "position": "-38.0,0.0,-2.0",
-                "rotation": "0.0,45.0,0.0"
-            }
+                "process_mode": "pausable"
+            },
+            "children": [ 
+                {
+                    "id" : "player",
+                    "class": "Player",
+                    "properties": {
+                        "position": "-33.0f, 0.0f, 0.0f"
+                    }
+                },
+                {
+                    "id" : "terrain",
+                    "class": "Terrain",
+                    "children": [ { "id": "terrainModel"}
+                    ],
+                    "properties": {
+                        "position": "0.0, -1.0, 0.0"
+                    }
+                },
+                {
+                    "id" : "crate1",
+                    "class": "Crate",
+                    "children": [ { "id": "crateModel"}
+                    ],
+                    "properties": {
+                        "position": "-30.0,0.0,-2.0"
+                    }
+                },
+                {
+                    "id" : "crate2",
+                    "class": "Crate",
+                    "children": [ { "id": "crateModel"}
+                    ],
+                    "properties": {
+                        "position": "-38.0,0.0,-2.0",
+                        "rotation": "0.0,45.0,0.0"
+                    }
+                }
+            ]
         }
-
     ]
 }
