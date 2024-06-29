@@ -118,7 +118,7 @@ const ApplicationConfig applicationConfig {
     .windowHeight = 1020,
     .defaultFontName = "res/Signwood.ttf",
     .defaultFontSize = 25,
-    .loggingMode = static_cast<LoggingMode>(LOGGING_FILE | LOGGING_WINDOW)
+    .loggingMode = LOGGING_FILE | LOGGING_WINDOW
 };
 
 Z0_APP(applicationConfig, make_shared<ExampleMainScene>())
