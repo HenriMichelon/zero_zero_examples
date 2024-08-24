@@ -2,13 +2,14 @@
 #include "topbar.h"
 
 TopBar::TopBar(Object* obj, Signal::Handler _onQuit):
-    GWindow(Rect{0, 945, 1000, 55}),
+    GWindow(Rect{0, 900, 1000, 100}),
     onQuitHandler{obj},
     onQuit{_onQuit}
 {}
 
 void TopBar::onCreate() {
-    getWidget().setDrawBackground(false);
+    //getWidget().setDrawBackground(false);
+    //getWidget().setFont(make_shared<Font>(getWidget().getFont()->getFontName(), 40));
 
     auto rightPadding = make_shared<GPanel>();
     rightPadding->setDrawBackground(false);
@@ -33,7 +34,7 @@ void TopBar::onCreate() {
     buttonPause->add(textPause, GWidget::CENTER, "");
     buttonPause->setSize(textPause->getWidth() + 20, textPause->getHeight() + 20);
     
-    setHeight(buttonQuit->getHeight());
+    //setHeight(buttonQuit->getHeight());
     setY(1000 - getHeight());
     hide();
 }
