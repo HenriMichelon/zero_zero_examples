@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.29)
 cmake_policy(SET CMP0002 NEW)
 
 project(examples)
@@ -6,6 +6,7 @@ include(.env.cmake)
 
 # Engine sources
 add_subdirectory(${Z0_PROJECT_DIR} external_lib_build)
+set(Z0_SRC_DIR ${Z0_PROJECT_DIR}/src)
 set(Z0_INCLUDE_DIR ${Z0_PROJECT_DIR}/include)
 set(Z0_SHADERS_DIR ${Z0_PROJECT_DIR}/src/z0/shaders)
 set(Z0_SHADERS_BUILD_DIR ${Z0_PROJECT_DIR}/shaders)
@@ -23,12 +24,8 @@ include(cmake/shaders.cmake)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_COMPILE_WARNING_AS_ERROR OFF) # disabled due to fastgltf and VMA
+set(CMAKE_COMPILE_WARNING_AS_ERROR OFF) 
 set(CMAKE_CXX_EXTENSIONS OFF)
-if(MINGW)
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -mwindows")
-endif()
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
 
 # compile GLSL shaders
 file(GLOB_RECURSE GLSL_SOURCE_FILES
@@ -43,27 +40,26 @@ add_dependencies(AlwaysExecute ${PROJECT_NAME}_shaders)
 
 add_executable(${PROJECT_NAME}
 		${SRC_DIR}/example.cpp
-		${SRC_DIR}/topbar.cpp
-		${SRC_DIR}/scenes/triangle.cpp
-		${SRC_DIR}/scenes/add_remove_child.cpp
-		${SRC_DIR}/scenes/ui.cpp
-		${SRC_DIR}/scenes/physics.cpp
-		${SRC_DIR}/scenes/terrain.cpp
-		${SRC_DIR}/nodes/player.cpp
-		${SRC_DIR}/nodes/crate.h
-		${SRC_DIR}/nodes/terrain.h
+)
+target_sources(${PROJECT_NAME}
+	PUBLIC
+	FILE_SET CXX_MODULES
+	FILES
+		${SRC_DIR}/example.cppm
+		${SRC_DIR}/topbar.cppm
+		${SRC_DIR}/scenes/triangle.cppm
+		${SRC_DIR}/scenes/add_remove_child.cppm
+		${SRC_DIR}/scenes/physics.cppm
+		${SRC_DIR}/scenes/terrain.cppm
+		${SRC_DIR}/nodes/crate.cppm
+		${SRC_DIR}/nodes/player.cppm
+		${SRC_DIR}/nodes/terrain.cppm
 )
 
 add_dependencies(${PROJECT_NAME} ${Z0_SHARED_LIB} AlwaysExecute)
-target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DIR} ${Z0_SRC_DIR})
 target_link_libraries(${PROJECT_NAME} ${Z0_SHARED_LIB})
 add_compile_definitions(JPH_DISABLE_CUSTOM_ALLOCATOR)
-#add_compile_definitions(NDEBUG)
-#add_compile_definitions(USE_PCH)
-target_precompile_headers(${PROJECT_NAME} PRIVATE
-		${Z0_INCLUDE_DIR}/z0/libraries.h
-		${Z0_INCLUDE_DIR}/z0/z0.h
-)
 set(SOURCE_FILE "${CMAKE_BINARY_DIR}/external_lib_build/lib${Z0_SHARED_LIB}.dll")
 add_custom_command(
     TARGET ${PROJECT_NAME}
@@ -79,3 +75,4 @@ endif()
 
 include(cmake/jolt.cmake)
 include(cmake/libraries.cmake)
+include(cmake/std.cmake)

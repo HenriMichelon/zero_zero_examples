@@ -1,9 +1,14 @@
-#include "includes.h"
-#include "layers.h"
-#include "nodes/player.h"
-#include "nodes/crate.h"
-#include "nodes/terrain.h"
-#include "scenes/terrain.h"
+module;
+#include <z0/z0.h>
+using namespace z0;
+
+export module Example:TerrainScene;
+
+export class TerrainScene: public Node {
+public:
+    void onReady() override;
+    virtual ~TerrainScene() {};
+};
 
 void TerrainScene::onReady() {
     setProcessMode(PROCESS_MODE_ALWAYS);

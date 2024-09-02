@@ -1,6 +1,11 @@
-#pragma once
+module;
+#include <z0/z0.h>
+using namespace z0;
+#include "layers.h"
 
-class Terrain: public StaticBody {
+export module Example:Terrain;
+
+export class Terrain: public StaticBody {
 public:
     Terrain(): StaticBody{Layers::WORLD, "terrain"} {}
         

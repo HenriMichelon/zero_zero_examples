@@ -1,9 +1,40 @@
-#include "includes.h"
+module;
+#include <z0/z0.h>
+using namespace z0;
 #include "layers.h"
-#include "nodes/player.h"
-#include "nodes/crate.h"
-#include "topbar.h"
-#include "scenes/physics.h"
+
+export module Example:PhysicsMainScene;
+
+import :Player;
+import :Crate;
+
+export class PhysicsMainScene: public Node {
+public:
+    PhysicsMainScene(): Node{"Main Scene"} {};
+    void onReady() override;
+    void onProcess(float alpha) override;
+    void onEnterScene() override;
+    void onExitScene() override;
+private:
+    const vec3  force = vec3{7500.0f};
+
+    shared_ptr<GWindow> menu;
+    shared_ptr<Player> player;
+
+    shared_ptr<RayCast> raycast;
+    shared_ptr<ShaderMaterial> raycastOutlineMaterial;
+    MeshInstance* previousSelection{nullptr};
+    
+    shared_ptr<GWindow> infoBox;
+    shared_ptr<GText> infoText;
+    shared_ptr<GText> actionsText;
+    shared_ptr<ShaderMaterial> collisionOutlineMaterial;
+    list<CollisionObject::Collision> currentCollisions;
+
+    bool pushing{false};
+    bool pulling{false};
+    void onPushOrPull(Player::PushOrPullAction* action);
+};
 
 void PhysicsMainScene::onReady() {
     addChild(make_shared<Environment>(vec4{1.0,1.0,1.0,0.6f}));
@@ -20,7 +51,7 @@ void PhysicsMainScene::onReady() {
     );
     directionalLight1->setCastShadow(true);
     game->addChild(directionalLight1);
-    
+
     player = make_shared<Player>();
     game->addChild(player);
 
@@ -54,7 +85,7 @@ void PhysicsMainScene::onReady() {
     collisionOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get(0));
     collisionOutlineMaterial->setParameter(0, {0.0,1.0,0.0,1.0});
     collisionOutlineMaterial->setParameter(1, vec4{0.02});
-    OutlineMaterials::add(collisionOutlineMaterial); 
+    OutlineMaterials::add(collisionOutlineMaterial);
 
     auto floorModel = Loader::loadModelFromFile("res/models/floor.glb", true);
 
@@ -99,7 +130,7 @@ void PhysicsMainScene::onProcess(float alpha) {
     }
     currentCollisions.clear();
     for(const auto& collision : player->getCollisions()) {
-        if ((!player->isGround(collision.object) && 
+        if ((!player->isGround(collision.object) &&
             (collision.normal.y < 0.8))) { // do not select when on top of a crate
             if (pushing || pulling) {
                 collision.object->applyForce(
@@ -122,7 +153,7 @@ void PhysicsMainScene::onProcess(float alpha) {
         }
     } else if (infoBox->isVisible()) {
         infoBox->hide();
-    } 
+    }
 }
 
 void PhysicsMainScene::onPushOrPull(Player::PushOrPullAction* action) {

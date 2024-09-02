@@ -1,5 +1,22 @@
-#include "includes.h"
-#include "topbar.h"
+module;
+#include <z0/z0.h>
+using namespace z0;
+
+export module Example:TopBar;
+
+class TopBar: public GWindow {
+public:
+    TopBar(Object* obj, Signal::Handler onQuit);
+    void onCreate() override;
+    void updateFPS();
+
+private:
+    uint32_t fps{0};
+    shared_ptr<GText> textFPS;
+    Object* onQuitHandler;
+    Signal::Handler onQuit;
+    void onPauseToggle(GEventClick*);
+};
 
 TopBar::TopBar(Object* obj, Signal::Handler _onQuit):
     GWindow(Rect{0, 900, 1000, 100}),
@@ -26,14 +43,14 @@ void TopBar::onCreate() {
     buttonQuit->add(textQuit, GWidget::CENTER, "");
     buttonQuit->setSize(textQuit->getWidth() + 20, textQuit->getHeight() + 20);
     setHeight(buttonQuit->getHeight());
-    
+
     auto buttonPause = make_shared<GButton>();
     buttonPause->connect(GEvent::OnClick, this, Signal::Handler(&TopBar::onPauseToggle));
     getWidget().add(buttonPause, GWidget::LEFTCENTER, "10,10");
     auto textPause = make_shared<GText>("Pause");
     buttonPause->add(textPause, GWidget::CENTER, "");
     buttonPause->setSize(textPause->getWidth() + 20, textPause->getHeight() + 20);
-    
+
     //setHeight(buttonQuit->getHeight());
     setY(1000 - getHeight());
     hide();
@@ -56,5 +73,5 @@ void TopBar::updateFPS() {
                 textFPS->setText(to_string(fps));
             }
         }
-    } 
+    }
 }

@@ -1,10 +1,70 @@
-#include "includes.h"
+module;
+#include <z0/z0.h>
+using namespace z0;
 #include "layers.h"
-#include "player.h"
+
+export module Example:Player;
+
+export class Player: public Character {
+public:
+    static const Signal::signal on_push_pull;
+    struct PushOrPullAction : public Signal::Parameters {
+        bool push;
+        bool pull;
+    };
+
+    Player();
+
+    bool onInput(InputEvent& event) override;
+    void onPhysicsProcess(float delta) override;
+    void onProcess(float alpha) override;
+    void onReady() override;
+
+private:
+    struct State {
+        vec3 velocity = VEC3ZERO;
+        vec2 lookDir = VEC2ZERO;
+        State& operator=(const State& other) = default;
+    };
+
+    const float minMovementsSpeed = 1.5f;
+    const float maxMovementsSpeed = 4.0f;
+    const float acceleration = 2.0f;
+    const float jumpSpeed = 5.5f;
+    const float mouseSensitivity = 0.008f;
+    const float viewSensitivity = 0.2f;
+    const float maxCameraAngleUp = radians(60.0);
+    const float maxCameraAngleDown = -radians(45.0);
+
+    int gamepad{-1};
+    bool mouseCaptured{false};
+    float mouseInvertedAxisY{1.0};
+    float keyboardInvertedAxisY{1.0};
+    State previousState;
+    State currentState;
+    float currentMovementSpeed;
+    shared_ptr<Node> model;
+    
+    shared_ptr<Camera> camera;
+    shared_ptr<Node> cameraPivot;
+    shared_ptr<Node> cameraAttachement;
+    shared_ptr<CollisionArea> cameraCollisionSensor;
+    CollisionObject* cameraCollisionTarget{nullptr};
+    int cameraCollisionCounterMax;
+    int cameraCollisionCounter{0};
+    shared_ptr<Tween> cameraInTween;
+    shared_ptr<Tween> cameraOutTween;
+
+    void captureMouse();
+    void releaseMouse();
+    void onCameraCollision(CollisionObject::Collision* collision);
+};
+
+Z0_REGISTER_TYPE(Player)
 
 const Signal::signal Player::on_push_pull = "on_push_pull";
 
-Player::Player(): 
+Player::Player():
     Character{make_shared<BoxShape>(vec3{0.8f,2.0f, 0.8f}),
              Layers::PLAYER,
             Layers::WORLD | Layers::BODIES},
@@ -33,9 +93,9 @@ bool Player::onInput(InputEvent& event) {
             releaseMouse();
             return true;
         }
-        auto params = PushOrPullAction{ 
-            .push = (eventKey.getKey() == KEY_P) && eventKey.isPressed(), 
-            .pull = (eventKey.getKey() == KEY_O) && eventKey.isPressed() 
+        auto params = PushOrPullAction{
+            .push = (eventKey.getKey() == KEY_P) && eventKey.isPressed(),
+            .pull = (eventKey.getKey() == KEY_O) && eventKey.isPressed()
         };
         emit(on_push_pull, &params);
     }
@@ -45,8 +105,8 @@ bool Player::onInput(InputEvent& event) {
             releaseMouse();
             return true;
         }
-        auto params = PushOrPullAction{ 
-            .push = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_RB) && eventGamepadButton.isPressed(), 
+        auto params = PushOrPullAction{
+            .push = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_RB) && eventGamepadButton.isPressed(),
             .pull = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_LB) && eventGamepadButton.isPressed() };
         emit(on_push_pull, &params);
     }
@@ -59,9 +119,9 @@ void Player::onPhysicsProcess(float delta) {
         const auto dest = vec3{0.0f, 0.0f, -pos.z};
         if (cameraPivot->getPosition() != dest) {
             cameraInTween = cameraPivot->createPropertyTween(
-                PropertyTween<vec3>::Setter(&Node::setPosition), 
+                PropertyTween<vec3>::Setter(&Node::setPosition),
                 cameraPivot->getPosition(),
-                dest, 
+                dest,
                 0.5f);
             cameraPivot->killTween(cameraOutTween);
         }
@@ -132,9 +192,9 @@ void Player::onProcess(float alpha) {
         cameraCollisionCounter -= 1;
         if (cameraCollisionCounter == 0) {
             cameraOutTween = cameraPivot->createPropertyTween(
-                PropertyTween<vec3>::Setter(&Node::setPosition), 
+                PropertyTween<vec3>::Setter(&Node::setPosition),
                 cameraPivot->getPosition(),
-                VEC3ZERO, 
+                VEC3ZERO,
                 0.5f);
             cameraPivot->killTween(cameraInTween);
             cameraCollisionTarget = nullptr;
