@@ -1,6 +1,5 @@
 module;
 #include <z0/z0.h>
-using namespace z0;
 
 export module Example:TriangleMainScene;
 

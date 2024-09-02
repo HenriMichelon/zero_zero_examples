@@ -1,5 +1,5 @@
+#include <z0/macros.h>
 #include <z0/z0.h>
-using namespace z0;
 
 import Example;
 
@@ -13,5 +13,9 @@ const ApplicationConfig applicationConfig {
     .defaultFontSize = 25,
     .loggingMode = LOGGING_FILE | LOGGING_WINDOW | LOGGING_STDOUT
 };
+
+Z0_REGISTER_TYPE(Crate)
+Z0_REGISTER_TYPE(Player)
+Z0_REGISTER_TYPE(Terrain)
 
 Z0_APP(applicationConfig, make_shared<ExampleMainScene>())

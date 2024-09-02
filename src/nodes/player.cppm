@@ -1,6 +1,5 @@
 module;
 #include <z0/z0.h>
-using namespace z0;
 #include "layers.h"
 
 export module Example:Player;
@@ -60,7 +59,6 @@ private:
     void onCameraCollision(CollisionObject::Collision* collision);
 };
 
-Z0_REGISTER_TYPE(Player)
 
 const Signal::signal Player::on_push_pull = "on_push_pull";
 

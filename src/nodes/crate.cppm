@@ -1,6 +1,5 @@
 module;
 #include <z0/z0.h>
-using namespace z0;
 #include "layers.h"
 
 export module Example:Crate;
@@ -14,4 +13,3 @@ public:
         "Crate" } {}
 };
 
-Z0_REGISTER_TYPE(Crate)

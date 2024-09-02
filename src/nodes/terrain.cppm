@@ -1,6 +1,5 @@
 module;
 #include <z0/z0.h>
-using namespace z0;
 #include "layers.h"
 
 export module Example:Terrain;
@@ -22,4 +21,3 @@ public:
     }
 };
 
-Z0_REGISTER_TYPE(Terrain)

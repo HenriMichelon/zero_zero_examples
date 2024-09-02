@@ -1,6 +1,5 @@
 module;
 #include <z0/z0.h>
-using namespace z0;
 
 export module Example;
 
@@ -9,6 +8,9 @@ import :TriangleMainScene;
 import :AddRemoveChildMainScene;
 import :PhysicsMainScene;
 import :TerrainScene;
+export import :Crate;
+export import :Player;
+export import :Terrain;
 
 class GMenuEntry: public GButton {
 public:
