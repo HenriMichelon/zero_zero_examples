@@ -1,6 +1,6 @@
-#pragma once
+export module Example:Layers;
 
-enum Layers {
+export enum Layers {
     NONE        = 0b0000,
     WORLD       = 0b0001,
     BODIES      = 0b0010,

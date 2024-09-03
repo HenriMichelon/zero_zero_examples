@@ -45,6 +45,7 @@ target_sources(${PROJECT_NAME}
 	PUBLIC
 	FILE_SET CXX_MODULES
 	FILES
+		${SRC_DIR}/layers.cppm
 		${SRC_DIR}/example.cppm
 		${SRC_DIR}/topbar.cppm
 		${SRC_DIR}/scenes/triangle.cppm

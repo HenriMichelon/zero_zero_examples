@@ -1,8 +1,9 @@
 module;
 #include <z0/z0.h>
-#include "layers.h"
 
 export module Example:Terrain;
+
+import :Layers;
 
 export class Terrain: public StaticBody {
 public:
