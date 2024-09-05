@@ -24,7 +24,7 @@ include(cmake/shaders.cmake)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_COMPILE_WARNING_AS_ERROR OFF) 
+set(CMAKE_COMPILE_WARNING_AS_ERROR OFF)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # compile GLSL shaders
@@ -40,6 +40,7 @@ add_dependencies(AlwaysExecute ${PROJECT_NAME}_shaders)
 
 add_executable(${PROJECT_NAME}
 		${SRC_DIR}/example.cpp
+		src/z0.h
 )
 target_sources(${PROJECT_NAME}
 	PUBLIC
@@ -60,7 +61,6 @@ target_sources(${PROJECT_NAME}
 add_dependencies(${PROJECT_NAME} ${Z0_SHARED_LIB} AlwaysExecute)
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DIR} ${Z0_SRC_DIR})
 target_link_libraries(${PROJECT_NAME} ${Z0_SHARED_LIB})
-add_compile_definitions(JPH_DISABLE_CUSTOM_ALLOCATOR)
 set(SOURCE_FILE "${CMAKE_BINARY_DIR}/external_lib_build/lib${Z0_SHARED_LIB}.dll")
 add_custom_command(
     TARGET ${PROJECT_NAME}
@@ -74,6 +74,5 @@ if(WIN32)
 	)
 endif()
 
-include(cmake/jolt.cmake)
 include(cmake/libraries.cmake)
-include(cmake/std.cmake)
+target_link_libraries(${PROJECT_NAME} std-cxx-modules)

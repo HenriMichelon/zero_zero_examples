@@ -1,5 +1,5 @@
 #include <z0/macros.h>
-#include <z0/z0.h>
+#include "libraries.h"
 
 import Example;
 
