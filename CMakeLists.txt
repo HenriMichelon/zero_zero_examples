@@ -45,6 +45,7 @@ target_sources(${PROJECT_NAME}
 		${SRC_DIR}/scenes/add_remove_child.cppm
 		${SRC_DIR}/scenes/physics.cppm
 		${SRC_DIR}/scenes/terrain.cppm
+		${SRC_DIR}/scenes/platforms.cppm
 		${SRC_DIR}/nodes/crate.cppm
 		${SRC_DIR}/nodes/player.cppm
 		${SRC_DIR}/nodes/terrain.cppm

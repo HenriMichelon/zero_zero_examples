@@ -11,10 +11,11 @@ import :TerrainScene;
 export import :Crate;
 export import :Player;
 export import :Terrain;
+export import :Platforms;
 
 class GMenuEntry : public GButton {
 public:
-    explicit GMenuEntry(const string& _label): GButton{}, label{_label} {
+    explicit GMenuEntry(const string& _label): label{_label} {
         this->connect(GEvent::OnCreate, this, Signal::Handler(&GMenuEntry::onCreate));
     }
 
@@ -30,8 +31,7 @@ private:
 
 export class ExampleMainScene : public Node {
 public:
-    ~ExampleMainScene() override {
-    };
+    ~ExampleMainScene() override = default;
 
     void onReady() override {
         addChild(make_shared<Camera>("Menu camera"));
@@ -84,6 +84,10 @@ public:
 
         topbar = make_shared<TopBar>(this, Signal::Handler(&ExampleMainScene::onMenu));
         app().addWindow(topbar);
+
+        menu->hide();
+        topbar->show();
+        scene->addChild(make_shared<PlatformsScene>());
     }
 
 private:

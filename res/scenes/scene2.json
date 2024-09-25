@@ -1,0 +1,92 @@
+{
+    "nodes": [
+        {
+            "id" : "cratesResource",
+            "type": "model",
+            "resource": "res/models/crates.glb"
+        },
+        {
+            "id" : "floorModel",
+            "resource": "res/models/floor.glb",
+            "type": "model"
+        },
+        {
+            "id" : "crateModel1",
+            "type" : "mesh",
+            "resource" : "cratesResource",
+            "path" : "pasted__pCube14_lambert2_0"
+        },
+        {
+            "id" : "crateModel2",
+            "type" : "mesh",
+            "resource" : "cratesResource",
+            "path" : "pasted__pCube14_lambert3_0"
+        },
+        {
+            "id" : "crateModel3",
+            "type" : "mesh",
+            "resource" : "cratesResource",
+            "path" : "pCube14_lambert1_0"
+        },
+        {
+            "id" : "env",
+            "class": "Environment",
+            "properties": {
+                "ambient_color": "1.0,1.0,1.0,1.0f"
+            }
+        },
+        {
+            "id" : "sun",
+            "class": "DirectionalLight",
+            "properties": {
+                "color": "1.0f, 1.0f, 1.0f, 1.0f",
+                "direction": "-0.2f, -0.8f, 1.0f",
+                "cast_shadow" : "true"
+            }
+        },
+        {
+            "id" : "game",
+            "properties": {
+                "process_mode": "pausable"
+            },
+            "children": [
+                {
+                    "id" : "player",
+                    "class": "Player",
+                    "properties": {
+                        "position": "0.0f, 0.0f, 50.0f"
+                    }
+                },
+                {
+                    "id" : "floor",
+                    "class": "StaticBody",
+                    "children": [ { "id": "floorModel"} ],
+                    "properties": {
+                        "layer": "1",
+                        "shape": "ConvexHullShape,floorModel",
+                        "position": "0.0f, -30.0f, 0.0f"
+                    }
+                },
+                {
+                    "id" : "crate1",
+                    "class": "Crate",
+                    "custom": true,
+                    "mesh": {"id": "crateModel1" }
+                },
+                {
+                    "id" : "crate2",
+                    "class": "Crate",
+                    "custom": true,
+                    "mesh": {"id": "crateModel2" }
+                },
+                {
+                    "id" : "crate3",
+                    "class": "Crate",
+                    "custom": true,
+                    "mesh": {"id": "crateModel3" }
+                }
+
+            ]
+        }
+    ]
+}
