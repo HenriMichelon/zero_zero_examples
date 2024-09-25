@@ -54,7 +54,7 @@
                     "id" : "player",
                     "class": "Player",
                     "properties": {
-                        "position": "0.0f, 0.0f, 50.0f"
+                        "position": "0.0f, -40.0f, 50.0f"
                     }
                 },
                 {
@@ -63,29 +63,21 @@
                     "children": [ { "id": "floorModel"} ],
                     "properties": {
                         "layer": "1",
-                        "shape": "ConvexHullShape,floorModel",
-                        "position": "0.0f, -30.0f, 0.0f"
+                        "shape": "ConvexHullShape;floorModel",
+                        "position": "0.0f, -40.0f, 0.0f"
                     }
                 },
                 {
                     "id" : "crate1",
-                    "class": "Crate",
-                    "custom": true,
-                    "mesh": {"id": "crateModel1" }
-                },
-                {
-                    "id" : "crate2",
-                    "class": "Crate",
-                    "custom": true,
-                    "mesh": {"id": "crateModel2" }
-                },
-                {
-                    "id" : "crate3",
-                    "class": "Crate",
-                    "custom": true,
-                    "mesh": {"id": "crateModel3" }
+                    "class": "StaticBody",
+                    "children": [ {"id": "crateModel1" } ],
+                    "properties": {
+                        "layer": "2",
+                        "mask": "255",
+                        "shape": "BoxShape;2.0f, 2.0f, 2.0f",
+                        "position": "0.0f, -40.0f, 0.0f"
+                    }
                 }
-
             ]
         }
     ]
