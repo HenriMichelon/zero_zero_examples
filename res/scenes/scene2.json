@@ -29,13 +29,13 @@
                     "id" : "player",
                     "class": "Player",
                     "properties": {
-                        "position": "-45.0f, 1.0f, 50.0f"
+                        "position": "-45.0f, 0.0f, 50.0f"
                     }
                 },
                 {
                     "id" : "floor",
                     "class": "StaticBody",
-                    "child": { "id": "floorModel"},
+                    "child": { "id": "Floor"},
                     "properties": {
                         "shape": "ConvexHullShape;Floor",
                         "layer": "1"
@@ -44,7 +44,7 @@
                 {
                     "id" : "crate1",
                     "class": "RigidBody",
-                    "child": { "id" : "crateModel1" },
+                    "child": { "id" : "pCube14_lambert1_0" },
                     "properties": {
                         "shape": "BoxShape;24.0f, 24.0f, 24.0f",
                         "layer": "2",
@@ -54,22 +54,22 @@
                 {
                     "id" : "crate2",
                     "class": "RigidBody",
-                    "child": { "id" : "crateModel2" },
+                    "child": { "id" : "pasted__pCube14_lambert2_0" },
                     "properties": {
                         "shape": "BoxShape;24.0f, 24.0f, 24.0f",
                         "layer": "2",
-                        "mask": "15",
-                        "bounce" : "1.0f"
+                        "mask": "15"
                     }
                 },
                 {
                     "id" : "crate3",
                     "class": "RigidBody",
-                    "child": { "id" : "crateModel3" },
+                    "child": { "id" : "pasted__pCube14_lambert3_0" },
                     "properties": {
                         "shape": "BoxShape;24.0f, 24.0f, 24.0f",
                         "layer": "2",
-                        "mask": "15"
+                        "mask": "15",
+                        "bounce" : "1.0f"
                     }
                 }
             ]

@@ -6,28 +6,28 @@
       "resource": "res/models/crates.glb"
     },
     {
-      "id": "floorModel",
+      "id": "pCube14_lambert1_0",
       "type": "mesh",
       "resource": "sceneResources",
-      "path": "Floor"
+      "path": "pCube14_lambert1_0"
     },
     {
-      "id": "crateModel1",
+      "id": "pasted__pCube14_lambert2_0",
       "type": "mesh",
       "resource": "sceneResources",
       "path": "pasted__pCube14_lambert2_0"
     },
     {
-      "id": "crateModel2",
+      "id": "pasted__pCube14_lambert3_0",
       "type": "mesh",
       "resource": "sceneResources",
       "path": "pasted__pCube14_lambert3_0"
     },
     {
-      "id": "crateModel3",
+      "id": "Floor",
       "type": "mesh",
       "resource": "sceneResources",
-      "path": "pCube14_lambert1_0"
+      "path": "Floor"
     }
   ]
 }

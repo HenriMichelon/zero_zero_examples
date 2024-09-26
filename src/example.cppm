@@ -40,7 +40,7 @@ public:
         addChild(make_shared<Skybox>("res/textures/cubemap.png"));
         scene = make_shared<Node>();
         addChild(scene);
-        auto usage = (app().getVideoMemoryUsage() / static_cast<float>(app().getDedicatedVideoMemory())) * 100.0f;
+        const auto usage = (app().getVideoMemoryUsage() / static_cast<float>(app().getDedicatedVideoMemory())) * 100.0f;
         log("VRAM usage after onReady():", to_string(usage) + "%");
     }
 
@@ -87,9 +87,10 @@ public:
         topbar = make_shared<TopBar>(this, Signal::Handler(&ExampleMainScene::onMenu));
         app().addWindow(topbar);
 
-        menu->hide();
-        topbar->show();
-        scene->addChild(make_shared<PlatformsScene>());
+        // menu->hide();
+        // topbar->show();
+        // scene->addChild(make_shared<TriangleMainScene>());
+        onMenuTriangle(nullptr);
     }
 
 private:

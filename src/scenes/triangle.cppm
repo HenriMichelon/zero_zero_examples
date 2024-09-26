@@ -30,7 +30,7 @@ public:
         };
         auto mesh1 = make_shared<Mesh>(vertices, indices, surfaces1);
         material1 = make_shared<StandardMaterial>();
-        material1->setAlbedoColor(Color(vec4{0.5, 0.5, 0.5, 0.5}));
+        material1->setAlbedoColor(Color(vec4{0.75, 0.75, 0.75, 0.75}));
         material1->setTransparency(TRANSPARENCY_ALPHA);
         material1->setCullMode(CULLMODE_DISABLED);
         mesh1->setSurfaceMaterial(0, material1);
@@ -63,6 +63,7 @@ public:
         menu->getWidget().add(menuRotate, GWidget::TOPCENTER, "200,40");
         menuRotate->add(make_shared<GText>("[SPACE] Toggle rotation"), GWidget::CENTER);
         menuRotate->connect(GEvent::OnClick, this, Signal::Handler(&TriangleMainScene::onMenuRotate));
+
         const auto menuShader = make_shared<GButton>();
         menu->getWidget().add(menuShader, GWidget::TOPCENTER, "200,40");
         menuShader->add(make_shared<GText>("[ENTER] Toggle Shader"), GWidget::CENTER);
@@ -73,7 +74,7 @@ public:
         app().removeWindow(menu);
     }
 
-    void onPhysicsProcess(float delta) override {
+    void onPhysicsProcess(const float delta) override {
         if (rotate) {
             const auto angle = delta * radians(90.0f) / 2;
             triangle1->rotateY(angle);
@@ -93,7 +94,7 @@ public:
         material2->setParameter(1, vec4{gradient});
     }
 
-    void onProcess(float alpha) override {
+    void onProcess(const float alpha) override {
         if (Input::isKeyJustPressed(KEY_ENTER)) {
             onMenuShader();
         }
@@ -101,7 +102,7 @@ public:
 
     bool onInput(InputEvent& inputEvent) override {
         if (inputEvent.getType() == INPUT_EVENT_KEY) {
-            auto& eventKey = dynamic_cast<InputEventKey&>(inputEvent);
+            const auto& eventKey = dynamic_cast<InputEventKey&>(inputEvent);
             if ((eventKey.getKey() == KEY_SPACE) && !eventKey.isPressed()) {
                 onMenuRotate();
                 return true;
@@ -124,7 +125,7 @@ private:
         rotate = !rotate;
     }
 
-    void onMenuShader(GEventClick* e = nullptr) {
+    void onMenuShader(GEventClick* e = nullptr) const {
         if (triangle1->getMesh()->getSurfaceMaterial(0).get() == material1.get()) {
             triangle1->getMesh()->setSurfaceMaterial(0, material2);
         }

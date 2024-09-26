@@ -7,8 +7,8 @@ export module Example:TopBar;
 
 class TopBar : public GWindow {
 public:
-    TopBar(Object* obj, Signal::Handler _onQuit):
-        GWindow(Rect{0, 900, 1000, 100}),
+    TopBar(Object* obj, const Signal::Handler _onQuit):
+        GWindow(Rect{0, 100, 1000, 100}),
         onQuitHandler{obj},
         onQuit{_onQuit} {
     }
@@ -41,8 +41,8 @@ public:
         buttonPause->setSize(textPause->getWidth() + 20, textPause->getHeight() + 20);
 
         //setHeight(buttonQuit->getHeight());
-        setY(1000 - getHeight());
-        hide();
+        //setY(1000 - getHeight());
+        // hide();
     }
 
     void updateFPS() {
@@ -66,7 +66,7 @@ private:
     Object* onQuitHandler;
     Signal::Handler onQuit;
 
-    void onPauseToggle(GEventClick* event) {
+    void onPauseToggle(GEventClick* event) const {
         Application::get().setPaused(!app().isPaused());
         log("Pause ", to_string(Application::get().isPaused()));
         event->consumed = true;
