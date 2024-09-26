@@ -1,31 +1,32 @@
 {
     "nodes": [
         {
-            "id" : "cratesResource",
+            "id" : "sceneResources",
             "type": "model",
             "resource": "res/models/crates.glb"
         },
         {
             "id" : "floorModel",
-            "resource": "res/models/floor.glb",
-            "type": "model"
+            "type" : "mesh",
+            "resource" : "sceneResources",
+            "path" : "Floor"
         },
         {
             "id" : "crateModel1",
             "type" : "mesh",
-            "resource" : "cratesResource",
+            "resource" : "sceneResources",
             "path" : "pasted__pCube14_lambert2_0"
         },
         {
             "id" : "crateModel2",
             "type" : "mesh",
-            "resource" : "cratesResource",
+            "resource" : "sceneResources",
             "path" : "pasted__pCube14_lambert3_0"
         },
         {
             "id" : "crateModel3",
             "type" : "mesh",
-            "resource" : "cratesResource",
+            "resource" : "sceneResources",
             "path" : "pCube14_lambert1_0"
         },
         {
@@ -54,28 +55,26 @@
                     "id" : "player",
                     "class": "Player",
                     "properties": {
-                        "position": "0.0f, -40.0f, 50.0f"
+                        "position": "-45.0f, 0.0f, 50.0f"
                     }
                 },
                 {
                     "id" : "floor",
                     "class": "StaticBody",
-                    "children": [ { "id": "floorModel"} ],
+                    "child": { "id": "floorModel"},
                     "properties": {
                         "layer": "1",
-                        "shape": "ConvexHullShape;floorModel",
-                        "position": "0.0f, -40.0f, 0.0f"
+                        "shape": "ConvexHullShape;Floor"
                     }
                 },
                 {
                     "id" : "crate1",
                     "class": "StaticBody",
-                    "children": [ {"id": "crateModel1" } ],
+                    "child": { "id" : "crateModel1" },
                     "properties": {
                         "layer": "2",
-                        "mask": "255",
-                        "shape": "BoxShape;2.0f, 2.0f, 2.0f",
-                        "position": "0.0f, -40.0f, 0.0f"
+                        "mask": "7",
+                        "shape": "BoxShape;24.0f, 24.0f, 24.0f"
                     }
                 }
             ]
