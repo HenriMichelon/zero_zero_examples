@@ -1,11 +1,13 @@
 module;
 #include "libraries.h"
+import Z0;
+using namespace z0;
 
 export module Example:Player;
 
 import :Layers;
 
-export class Player : public Character {
+export class Player : public z0::Character {
 public:
     static const Signal::signal on_push_pull;
 
@@ -72,7 +74,7 @@ public:
             const auto dest = vec3{0.0f, 0.0f, -pos.z};
             if (cameraPivot->getPosition() != dest) {
                 cameraInTween = cameraPivot->createPropertyTween(
-                    PropertyTween<vec3>::Setter(&Node::setPosition),
+                    static_cast<PropertyTween<vec3>::Setter>(&Node::setPosition),
                     cameraPivot->getPosition(),
                     dest,
                     0.5f);
@@ -122,6 +124,7 @@ public:
         }
         else {
             currentMovementSpeed = 0;
+            currentState.velocity = VEC3ZERO;
         }
         if (!onGround) {
             // Preserve horizontal velocity
@@ -226,11 +229,11 @@ private:
         State& operator=(const State& other) = default;
     };
 
-    const float minMovementsSpeed {2.0f};
-    const float maxMovementsSpeed {6.0f};
+    const float minMovementsSpeed {1.5f};
+    const float maxMovementsSpeed {4.0f};
     const float acceleration {2.0f};
     const float jumpSpeed {5.5f};
-    const float mouseSensitivity {0.008f};
+    const float mouseSensitivity {0.004f};
     const float viewSensitivity {0.2f};
     const float maxCameraAngleUp {radians(60.0)};
     const float maxCameraAngleDown {-radians(45.0)};
@@ -241,7 +244,7 @@ private:
     float keyboardInvertedAxisY{1.0};
     State previousState;
     State currentState;
-    float currentMovementSpeed{0.0f};
+    float currentMovementSpeed{minMovementsSpeed};
     shared_ptr<Node> model;
 
     shared_ptr<Camera> camera;

@@ -1,5 +1,7 @@
 module;
 #include "libraries.h"
+import Z0;
+using namespace z0;
 
 export module Example;
 

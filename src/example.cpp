@@ -1,5 +1,7 @@
 #include <z0/macros.h>
 #include "libraries.h"
+import Z0;
+using namespace z0;
 
 import Example;
 

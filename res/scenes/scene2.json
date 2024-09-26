@@ -55,7 +55,7 @@
                     "id" : "player",
                     "class": "Player",
                     "properties": {
-                        "position": "-45.0f, 0.0f, 50.0f"
+                        "position": "-45.0f, 1.0f, 50.0f"
                     }
                 },
                 {
@@ -63,18 +63,39 @@
                     "class": "StaticBody",
                     "child": { "id": "floorModel"},
                     "properties": {
-                        "layer": "1",
-                        "shape": "ConvexHullShape;Floor"
+                        "shape": "ConvexHullShape;Floor",
+                        "layer": "1"
                     }
                 },
                 {
                     "id" : "crate1",
-                    "class": "StaticBody",
+                    "class": "RigidBody",
                     "child": { "id" : "crateModel1" },
                     "properties": {
+                        "shape": "BoxShape;24.0f, 24.0f, 24.0f",
                         "layer": "2",
-                        "mask": "7",
-                        "shape": "BoxShape;24.0f, 24.0f, 24.0f"
+                        "mask": "15"
+                    }
+                },
+                {
+                    "id" : "crate2",
+                    "class": "RigidBody",
+                    "child": { "id" : "crateModel2" },
+                    "properties": {
+                        "shape": "BoxShape;24.0f, 24.0f, 24.0f",
+                        "layer": "2",
+                        "mask": "15",
+                        "bounce" : "1.0f"
+                    }
+                },
+                {
+                    "id" : "crate3",
+                    "class": "RigidBody",
+                    "child": { "id" : "crateModel3" },
+                    "properties": {
+                        "shape": "BoxShape;24.0f, 24.0f, 24.0f",
+                        "layer": "2",
+                        "mask": "15"
                     }
                 }
             ]
