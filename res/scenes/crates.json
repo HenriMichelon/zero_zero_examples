@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    {
+      "id": "sceneResources",
+      "type": "model",
+      "resource": "res/models/crates.glb"
+    },
+    {
+      "id": "floorModel",
+      "type": "mesh",
+      "resource": "sceneResources",
+      "path": "Floor"
+    },
+    {
+      "id": "crateModel1",
+      "type": "mesh",
+      "resource": "sceneResources",
+      "path": "pasted__pCube14_lambert2_0"
+    },
+    {
+      "id": "crateModel2",
+      "type": "mesh",
+      "resource": "sceneResources",
+      "path": "pasted__pCube14_lambert3_0"
+    },
+    {
+      "id": "crateModel3",
+      "type": "mesh",
+      "resource": "sceneResources",
+      "path": "pCube14_lambert1_0"
+    }
+  ]
+}
