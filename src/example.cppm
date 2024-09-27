@@ -17,7 +17,8 @@ export import :Platforms;
 
 class GMenuEntry : public GButton {
 public:
-    explicit GMenuEntry(const string& _label): label{_label} {
+    explicit GMenuEntry(const string &_label) :
+        label{_label} {
         this->connect(GEvent::OnCreate, this, Signal::Handler(&GMenuEntry::onCreate));
     }
 
@@ -44,9 +45,7 @@ public:
         log("VRAM usage after onReady():", to_string(usage) + "%");
     }
 
-    void onProcess(float alpha) override {
-        topbar->updateFPS();
-    }
+    void onProcess(float alpha) override { topbar->updateFPS(); }
 
     void onEnterScene() override {
         menu = make_shared<GWindow>(Rect{250, 0, 500, 1000});
@@ -95,39 +94,37 @@ public:
 
 private:
     shared_ptr<GWindow> menu;
-    shared_ptr<TopBar> topbar;
-    shared_ptr<Node> scene;
+    shared_ptr<TopBar>  topbar;
+    shared_ptr<Node>    scene;
 
-    void onMenu(GEventClick*) {
+    void onMenu(GEventClick *) {
         scene->removeAllChildren();
         topbar->hide();
         menu->show();
         app().setPaused(false);
     }
 
-    void onMenuQuit(GEventClick*) {
-        app().quit();
-    }
+    void onMenuQuit(GEventClick *) { app().quit(); }
 
-    void onMenuTriangle(GEventClick*) const {
+    void onMenuTriangle(GEventClick *) const {
         menu->hide();
         topbar->show();
         scene->addChild(make_shared<TriangleMainScene>());
     }
 
-    void onMenuAddRemoveChild(GEventClick*) const {
+    void onMenuAddRemoveChild(GEventClick *) const {
         menu->hide();
         topbar->show();
         scene->addChild(make_shared<AddRemoveChildMainScene>());
     }
 
-    void onMenuRaycast(GEventClick*) const {
+    void onMenuRaycast(GEventClick *) const {
         menu->hide();
         topbar->show();
         scene->addChild(make_shared<PhysicsMainScene>());
     }
 
-    void onMenuTerrain(GEventClick*) const {
+    void onMenuTerrain(GEventClick *) const {
         menu->hide();
         topbar->show();
         scene->addChild(make_shared<TerrainScene>());
