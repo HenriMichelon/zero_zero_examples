@@ -138,7 +138,7 @@ public:
 
     void onEnterScene() override {
         menu = make_shared<GWindow>(Rect{0, 850, 130, 45});
-        app().addWindow(menu);
+        app().add(menu);
         menu->getWidget().setPadding(5);
         menu->getWidget().setTransparency(0.2f);
         auto textJump = make_shared<GText>("[SPACE] Jump");
@@ -149,7 +149,7 @@ public:
 
         infoBox = make_shared<GWindow>(Rect{0, 800, 10, 10});
         infoBox->hide();
-        app().addWindow(infoBox);
+        app().add(infoBox);
         infoText = make_shared<GText>("Info");
         infoText->setTextColor({0.8f, 0.2f, 0.2f, 1.0f});
         infoBox->getWidget().add(infoText, GWidget::TOPCENTER);
@@ -162,8 +162,8 @@ public:
     }
 
     void onExitScene() override {
-        app().removeWindow(menu);
-        app().removeWindow(infoBox);
+        app().remove(menu);
+        app().remove(infoBox);
     }
 
 private:

@@ -7,8 +7,9 @@ export module Example:AddRemoveChildMainScene;
 
 export class AddRemoveChildMainScene : public Node {
 public:
-    AddRemoveChildMainScene(): Node{"Main Scene"} {
-    };
+    AddRemoveChildMainScene():
+        Node{"Main Scene"} {
+    }
 
     void onReady() override {
         camera1 = make_shared<Camera>("Camera 1");
@@ -22,7 +23,7 @@ public:
         currentCamera = camera1;
 
         sphereModel = Loader::loadModelFromFile("res/models/sphere.glb");
-        crateModel = Loader::loadModelFromFile("res/models/crate.glb");
+        crateModel  = Loader::loadModelFromFile("res/models/crate.glb");
 
         /*crateModel->setPosition({-5.0f, 0.0f, -10.0f});
         addChild(crateModel);
@@ -33,7 +34,7 @@ public:
         rotatingNodes.push_back(sphereModel);*/
     }
 
-    bool onInput(InputEvent& event) override {
+    bool onInput(InputEvent &event) override {
         bool consumed = false;
         if (Input::isKeyJustPressed(KEY_ENTER)) {
             onMenuAdd();
@@ -52,7 +53,7 @@ public:
 
     void onPhysicsProcess(float delta) override {
         const auto angle = delta * radians(90.0f) / 2;
-        for (auto& crate : rotatingNodes) {
+        for (auto &crate : rotatingNodes) {
             crate->rotateY(angle);
             crate->rotateX(angle);
         }
@@ -60,7 +61,7 @@ public:
 
     void onEnterScene() override {
         menu = make_shared<GWindow>(Rect{0, 1000 - 550, 150, 500});
-        app().addWindow(menu);
+        app().add(menu);
         menu->getWidget().setPadding(5);
         menu->getWidget().setDrawBackground(false);
 
@@ -79,34 +80,33 @@ public:
     }
 
     void onExitScene() override {
-        app().removeWindow(menu);
+        app().remove(menu);
     }
 
 private:
-    shared_ptr<Node> crateModel;
-    shared_ptr<Node> sphereModel;
+    shared_ptr<Node>       crateModel;
+    shared_ptr<Node>       sphereModel;
     list<shared_ptr<Node>> rotatingNodes;
-    shared_ptr<Camera> camera1;
-    shared_ptr<Camera> camera2;
-    shared_ptr<Camera> currentCamera;
-    shared_ptr<GWindow> menu;
+    shared_ptr<Camera>     camera1;
+    shared_ptr<Camera>     camera2;
+    shared_ptr<Camera>     currentCamera;
+    shared_ptr<GWindow>    menu;
 
-    void onMenuAdd(GEventClick* e = nullptr) {
+    void onMenuAdd(GEventClick *e = nullptr) {
         const auto newNode = (randomi(1) == 0) ? crateModel->duplicate() : sphereModel->duplicate();
         newNode->setPosition({randomf(10.0f) - 5, randomf(10.0f) - 5, -10.0f});
         if (addChild(newNode)) { rotatingNodes.push_back(newNode); }
     }
 
-    void onMenuRemove(GEventClick* e = nullptr) {
+    void onMenuRemove(GEventClick *e = nullptr) {
         if (removeChild(rotatingNodes.back())) { rotatingNodes.pop_back(); }
     }
 
-    void onMenuCamera(GEventClick* e = nullptr) {
+    void onMenuCamera(GEventClick *e = nullptr) {
         if (camera1->isActive()) {
             currentCamera = camera2;
             app().activateCamera(camera2);
-        }
-        else {
+        } else {
             currentCamera = camera1;
             app().activateCamera(camera1);
         }

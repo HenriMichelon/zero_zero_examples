@@ -49,7 +49,7 @@ public:
 
     void onEnterScene() override {
         menu = make_shared<GWindow>(Rect{250, 0, 500, 1000});
-        app().addWindow(menu);
+        app().add(menu);
         menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(), 40));
         menu->getWidget().setDrawBackground(false);
         menu->getWidget().setPadding(10);
@@ -84,12 +84,12 @@ public:
         menu->setY((VECTOR_SCALE.y - height) / 2);
 
         topbar = make_shared<TopBar>(this, Signal::Handler(&ExampleMainScene::onMenu));
-        app().addWindow(topbar);
+        app().add(topbar);
 
         // menu->hide();
         // topbar->show();
-        // scene->addChild(make_shared<TriangleMainScene>());
-        onMenuTriangle(nullptr);
+        // scene->addChild(make_shared<PlatformsScene>());
+        // onMenuTriangle(nullptr);
     }
 
 private:

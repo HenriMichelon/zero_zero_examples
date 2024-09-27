@@ -16,6 +16,5 @@ public:
         printTree();
     }
 
-    ~TerrainScene() override {
-    };
+    ~TerrainScene() override = default;
 };
