@@ -1,7 +1,5 @@
 module;
 #include "libraries.h"
-import Z0;
-using namespace z0;
 
 export module Example;
 
@@ -15,6 +13,7 @@ export import :Player;
 export import :Terrain;
 export import :Platforms;
 
+// class for all the main menu entries
 class GMenuEntry : public GButton {
 public:
     explicit GMenuEntry(const string &_label) :
@@ -32,21 +31,28 @@ private:
     }
 };
 
+// Main menu scene
 export class ExampleMainScene : public Node {
 public:
     ~ExampleMainScene() override = default;
 
     void onReady() override {
+        // create a camera to view the skybox
         addChild(make_shared<Camera>("Menu camera"));
+        // create a beautiul skybox
         addChild(make_shared<Skybox>("res/textures/cubemap.png"));
+        // create a scene to start the other scenes
         scene = make_shared<Node>();
         addChild(scene);
+        // display some video memory stats
         const auto usage = (app().getVideoMemoryUsage() / static_cast<float>(app().getDedicatedVideoMemory())) * 100.0f;
         log("VRAM usage after onReady():", to_string(usage) + "%");
     }
 
+    // update the FPS displayed in the topbar
     void onProcess(float alpha) override { topbar->updateFPS(); }
 
+    // build the main menu and the top bar (displayed in the examples)
     void onEnterScene() override {
         menu = make_shared<GWindow>(Rect{250, 0, 500, 1000});
         app().add(menu);
@@ -89,7 +95,7 @@ public:
         // menu->hide();
         // topbar->show();
         // scene->addChild(make_shared<PlatformsScene>());
-        // onMenuTriangle(nullptr);
+        onMenuAddRemoveChild(nullptr);
     }
 
 private:

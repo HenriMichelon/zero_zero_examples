@@ -1,10 +1,11 @@
 module;
 #include "libraries.h"
-import Z0;
-using namespace z0;
 
 export module Example:TriangleMainScene;
 
+using namespace z0;
+
+// Two nice rotating triangles, look like an advanced Vulkan tutorial :)
 export class TriangleMainScene : public Node {
 public:
     TriangleMainScene():
@@ -98,7 +99,7 @@ public:
     }
 
     void onPhysicsProcess(const float delta) override {
-        // If rotation is enabled rotates the triangles
+        // If rotation is enabled rotate the triangles
         if (rotate) {
             const auto angle = delta * radians(90.0f) / 2;
             triangle1->rotateY(angle);

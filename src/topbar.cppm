@@ -1,7 +1,5 @@
 module;
 #include "libraries.h"
-import Z0;
-using namespace z0;
 
 export module Example:TopBar;
 
@@ -15,7 +13,7 @@ public:
 
     void onCreate() override {
         getWidget().setDrawBackground(false);
-        //getWidget().setFont(make_shared<Font>(getWidget().getFont()->getFontName(), 40));
+        getWidget().setFont(make_shared<Font>(getWidget().getFont()->getFontName(), 30));
 
         const auto rightPadding = make_shared<GPanel>();
         rightPadding->setDrawBackground(false);

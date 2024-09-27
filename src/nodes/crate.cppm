@@ -1,17 +1,16 @@
 module;
 #include "libraries.h"
-import Z0;
-using namespace z0;
 
 export module Example:Crate;
 import :Layers;
 
-export class Crate : public RigidBody {
+// a crate with a colliding body
+export class Crate : public z0::RigidBody {
 public:
     Crate(): RigidBody{
-        make_shared<BoxShape>(vec3{2.0f, 2.0f, 2.0f}),
-        Layers::BODIES,
-        Layers::WORLD | Layers::BODIES | Layers::PLAYER,
+        make_shared<z0::BoxShape>(vec3{2.0f, 2.0f, 2.0f}),
+        BODIES,
+        WORLD | BODIES | PLAYER,
         "Crate"
     } {
     }

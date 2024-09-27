@@ -1,15 +1,16 @@
 module;
 #include "libraries.h"
-import Z0;
-using namespace z0;
 
 export module Example:Terrain;
 
 import :Layers;
 
+using namespace z0;
+
+// Physic body for the terrain
 export class Terrain : public StaticBody {
 public:
-    Terrain(): StaticBody{Layers::WORLD, "terrain"} {
+    Terrain(): StaticBody{WORLD, "terrain"} {
     }
 
     void onReady() override {

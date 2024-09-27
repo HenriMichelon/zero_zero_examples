@@ -1,10 +1,11 @@
 module;
 #include "libraries.h"
-import Z0;
-using namespace z0;
 
 export module Example:TerrainScene;
 
+using namespace z0;
+
+// Example of JSON scene file
 export class TerrainScene : public Node {
 public:
     void onReady() override {
