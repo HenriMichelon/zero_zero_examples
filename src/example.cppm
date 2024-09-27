@@ -95,7 +95,7 @@ public:
         // menu->hide();
         // topbar->show();
         // scene->addChild(make_shared<PlatformsScene>());
-        onMenuAddRemoveChild(nullptr);
+        // onMenuRaycast(nullptr);
     }
 
 private:
