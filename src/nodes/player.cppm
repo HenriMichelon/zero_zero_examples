@@ -31,8 +31,8 @@ public:
     bool onInput(InputEvent &event) override {
         // if the mouse is captured the player can rotate the view with the mouse
         if (mouseCaptured && (event.getType() == INPUT_EVENT_MOUSE_MOTION)) {
-            auto &eventMouseMotion = dynamic_cast<InputEventMouseMotion &>(event);
-            auto  yRot             = -eventMouseMotion.getRelativeX() * mouseSensitivity;
+            const auto &eventMouseMotion = dynamic_cast<InputEventMouseMotion &>(event);
+            const auto  yRot             = -eventMouseMotion.getRelativeX() * mouseSensitivity;
             rotateY(yRot);
             cameraPivot->rotateX(eventMouseMotion.getRelativeY() * mouseSensitivity * mouseInvertedAxisY);
             cameraPivot->setRotationX(std::clamp(cameraPivot->getRotationX(), maxCameraAngleDown, maxCameraAngleUp));
@@ -40,7 +40,7 @@ public:
         }
         // capture the mouse on the first click if not already captured
         if ((event.getType() == INPUT_EVENT_MOUSE_BUTTON) && (!mouseCaptured)) {
-            auto &eventMouseButton = dynamic_cast<InputEventMouseButton &>(event);
+            const auto &eventMouseButton = dynamic_cast<InputEventMouseButton &>(event);
             if (!eventMouseButton.isPressed()) {
                 captureMouse();
                 return true;
@@ -48,7 +48,7 @@ public:
         }
         // if the mouse is captured process the player keyboard events
         if ((event.getType() == INPUT_EVENT_KEY) && mouseCaptured) {
-            auto &eventKey = dynamic_cast<InputEventKey &>(event);
+            const auto &eventKey = dynamic_cast<InputEventKey &>(event);
             // release the mouse with the ESC key
             if ((eventKey.getKey() == KEY_ESCAPE) && !eventKey.isPressed()) {
                 releaseMouse();
@@ -64,7 +64,7 @@ public:
         }
         // if the mouse is captured process the game pad events
         if ((event.getType() == INPUT_EVENT_GAMEPAD_BUTTON) && mouseCaptured) {
-            auto &eventGamepadButton = dynamic_cast<InputEventGamepadButton &>(event);
+            const auto &eventGamepadButton = dynamic_cast<InputEventGamepadButton &>(event);
             // release the mouse with the START button
             if ((eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_START) && !eventGamepadButton.isPressed()) {
                 releaseMouse();
@@ -116,8 +116,8 @@ public:
         }
 
         // Determine news basic velocity
-        auto onGround                = isOnGround();
-        auto currentVerticalVelocity = dot(getVelocity(), getUpVector()) * getUpVector();
+        const auto onGround                = isOnGround();
+        const auto currentVerticalVelocity = dot(getVelocity(), getUpVector()) * getUpVector();
         if (onGround) {
             // we move if the player is on the ground or on an object
             currentState.velocity = getGroundVelocity();
@@ -138,7 +138,7 @@ public:
             if (!mouseCaptured) { captureMouse(); }
             if (onGround) {
                 // if the player is on the ground or on an object we move in the input direction
-                auto direction = TRANSFORM_BASIS * vec3{input.x, 0, input.y};
+                const auto direction = TRANSFORM_BASIS * vec3{input.x, 0, input.y};
                 if (currentMovementSpeed == 0) {
                     // player start moving
                     currentMovementSpeed = minMovementsSpeed;
@@ -152,12 +152,12 @@ public:
             }
         } else {
             // stop all movements
-            currentMovementSpeed  = 0;
+            currentMovementSpeed = 0;
         }
         if (!onGround) {
             // Player doing a jump, preserve horizontal velocity.
             // We can't stop while in the air !
-            auto currentHorizontalVelocity = previousState.velocity - currentVerticalVelocity;
+            const auto currentHorizontalVelocity = previousState.velocity - currentVerticalVelocity;
             currentState.velocity += currentHorizontalVelocity;
         }
 
@@ -197,16 +197,16 @@ public:
         }
 
         // if ((currentState.velocity != VEC3ZERO) || (!isOnGround())) {
-            // move the player using an interpolation of the velocity computed during onPhysicsProcess()
-            setVelocity(previousState.velocity * (1.0f - alpha) + currentState.velocity * alpha);
+        // move the player using an interpolation of the velocity computed during onPhysicsProcess()
+        setVelocity(previousState.velocity * (1.0f - alpha) + currentState.velocity * alpha);
         // } else {
         //     // stop the player
         //     setVelocity(VEC3ZERO);
         // }
         // rotate the view
         if (currentState.lookDir != VEC2ZERO) {
-            auto interpolatedLookDir = previousState.lookDir * (1.0f - alpha) + currentState.lookDir * alpha;
-            auto yRot                = -interpolatedLookDir.x * 2.0f;
+            const auto interpolatedLookDir = previousState.lookDir * (1.0f - alpha) + currentState.lookDir * alpha;
+            const auto yRot                = -interpolatedLookDir.x * 2.0f;
             rotateY(yRot);
             cameraPivot->rotateX(interpolatedLookDir.y * keyboardInvertedAxisY);
             cameraPivot->setRotationX(std::clamp(cameraPivot->getRotationX(), maxCameraAngleDown, maxCameraAngleUp));
@@ -295,7 +295,7 @@ private:
     // jump height
     const float jumpSpeed{5.5f};
     // view rotation speed when the mouse is used
-    const float mouseSensitivity{0.004f};
+    const float mouseSensitivity{0.007f};
     // view rotaion speed when the gamepad or keyboard is used
     const float viewSensitivity{0.2f};
     // max camera vertical angle

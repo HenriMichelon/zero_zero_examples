@@ -1,0 +1,75 @@
+{
+  "nodes": [
+    {
+      "id": "sceneResources",
+      "type": "model",
+      "resource": "res/models/level_1.glb"
+    },
+    {
+      "id": "Clouds",
+      "type": "node",
+      "resource": "sceneResources",
+      "path": "Clouds"
+    },
+      {
+      "id": "Clouds.001",
+      "type": "mesh",
+      "resource": "sceneResources",
+      "path": "Clouds/Clouds.001"
+      },
+      {
+      "id": "Clouds.002",
+      "type": "mesh",
+      "resource": "sceneResources",
+      "path": "Clouds/Clouds.002"
+      },
+      {
+      "id": "Clouds.003",
+      "type": "mesh",
+      "resource": "sceneResources",
+      "path": "Clouds/Clouds.003"
+      },
+    {
+      "id": "Mountains",
+      "type": "node",
+      "resource": "sceneResources",
+      "path": "Mountains"
+    },
+      {
+      "id": "Mountain1",
+      "type": "node",
+      "resource": "sceneResources",
+      "path": "Mountains/Mountain1"
+      },
+        {
+      "id": "rock.001",
+      "type": "mesh",
+      "resource": "sceneResources",
+      "path": "Mountains/Mountain1/rock.001"
+        },
+        {
+      "id": "rock.002",
+      "type": "mesh",
+      "resource": "sceneResources",
+      "path": "Mountains/Mountain1/rock.002"
+        },
+        {
+      "id": "rock.003",
+      "type": "mesh",
+      "resource": "sceneResources",
+      "path": "Mountains/Mountain1/rock.003"
+        },
+        {
+      "id": "rock.004",
+      "type": "mesh",
+      "resource": "sceneResources",
+      "path": "Mountains/Mountain1/rock.004"
+        },
+    {
+      "id": "SpawnPoint",
+      "type": "node",
+      "resource": "sceneResources",
+      "path": "SpawnPoint"
+    }
+  ]
+}
