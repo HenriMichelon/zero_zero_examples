@@ -44,9 +44,6 @@ public:
         // create a scene to start the other scenes
         scene = make_shared<Node>();
         addChild(scene);
-        // display some video memory stats
-        const auto usage = (app().getVideoMemoryUsage() / static_cast<float>(app().getDedicatedVideoMemory())) * 100.0f;
-        log("VRAM usage after onReady():", to_string(usage) + "%");
     }
 
     // update the FPS displayed in the topbar
