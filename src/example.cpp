@@ -17,6 +17,7 @@ const ApplicationConfig applicationConfig{
 // Register the examples node classes for the JSON loading
 Z0_REGISTER_TYPE(Crate)
 Z0_REGISTER_TYPE(Player)
+Z0_REGISTER_TYPE(Player2)
 Z0_REGISTER_TYPE(Terrain)
 
 Z0_APP(applicationConfig, make_shared<ExampleMainScene>())
