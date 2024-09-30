@@ -1,0 +1,97 @@
+{
+    "includes" : [
+        "rocks.json"
+    ],
+    "nodes": [
+        {
+            "id": "floorModel",
+            "type": "model",
+            "resource": "res/models/floor.glb"
+        },
+        {
+            "id" : "env",
+            "class": "Environment",
+            "properties": {
+                "ambient_color": "1.0,1.0,1.0,1.0f"
+            }
+        },
+        {
+            "id" : "sun",
+            "class": "DirectionalLight",
+            "properties": {
+                "color": "1.0f, 1.0f, 1.0f, 1.0f",
+                "direction": "-0.2f, -0.8f, 1.0f",
+                "cast_shadow" : "true"
+            }
+        },
+        {
+            "id" : "game",
+            "properties": {
+                "process_mode": "pausable"
+            },
+            "children": [
+                {
+                    "id" : "player",
+                    "class": "Player2",
+                    "properties": {
+                        "position": "0.0f, 0.0f, 2.0f"
+                    }
+                },
+                {
+                    "id" : "floor",
+                    "class": "StaticBody",
+                    "child": { "id": "floorModel"},
+                    "properties": {
+                        "shape": "ConvexHullShape;floorModel",
+                        "layer": "1"
+                    }
+                },
+                {
+                    "id" : "rock1",
+                    "child": { "id" : "Rock1" },
+                    "class": "StaticBody",
+                    "properties": {
+                        "shape": "ConvexHullShape;Rock1",
+                        "layer": "1"
+                    }
+                },
+                {
+                    "id" : "rock2",
+                    "child": { "id" : "Rock2" },
+                    "class": "StaticBody",
+                    "properties": {
+                        "shape": "ConvexHullShape;Rock2",
+                        "layer": "1"
+                    }
+                },
+                {
+                    "id" : "rock3",
+                    "child": { "id" : "Rock3" },
+                    "class": "StaticBody",
+                    "properties": {
+                        "shape": "ConvexHullShape;Rock3",
+                        "layer": "1"
+                    }
+                },
+                {
+                    "id" : "rock4",
+                    "child": { "id" : "Rock4" },
+                    "class": "StaticBody",
+                    "properties": {
+                        "shape": "ConvexHullShape;Rock4",
+                        "layer": "1"
+                    }
+                },
+                {
+                    "id" : "rock5",
+                    "child": { "id" : "Rock5" },
+                    "class": "StaticBody",
+                    "properties": {
+                        "shape": "ConvexHullShape;Rock5",
+                        "layer": "1"
+                    }
+                }
+            ]
+        }
+    ]
+}

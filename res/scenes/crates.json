@@ -3,7 +3,7 @@
     {
       "id": "sceneResources",
       "type": "model",
-      "resource": "models/crates.glb"
+      "resource": "res/models/crates.glb"
     },
     {
       "id": "pCube14_lambert1_0",

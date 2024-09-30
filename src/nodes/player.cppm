@@ -153,7 +153,6 @@ public:
         } else {
             // stop all movements
             currentMovementSpeed  = 0;
-            currentState.velocity = VEC3ZERO;
         }
         if (!onGround) {
             // Player doing a jump, preserve horizontal velocity.
@@ -197,13 +196,13 @@ public:
             }
         }
 
-        if (currentState.velocity != VEC3ZERO) {
+        // if ((currentState.velocity != VEC3ZERO) || (!isOnGround())) {
             // move the player using an interpolation of the velocity computed during onPhysicsProcess()
             setVelocity(previousState.velocity * (1.0f - alpha) + currentState.velocity * alpha);
-        } else {
-            // stop the player
-            setVelocity(VEC3ZERO);
-        }
+        // } else {
+        //     // stop the player
+        //     setVelocity(VEC3ZERO);
+        // }
         // rotate the view
         if (currentState.lookDir != VEC2ZERO) {
             auto interpolatedLookDir = previousState.lookDir * (1.0f - alpha) + currentState.lookDir * alpha;
@@ -231,19 +230,21 @@ public:
         addChild(cameraAttachement);
 
         // create the collision sensor used to detect if the camera view area collide with something
-        cameraCollisionSensor = make_shared<CollisionArea>(
-                make_shared<SphereShape>(attachementZOffset - 0.6f),
-                WORLD | BODIES,
-                "cameraCollisionNode"
-                );
-        cameraCollisionSensor->setPosition({0.0, attachementYOffset, attachementZOffset / 2.0f - 0.5f});
-        cameraCollisionSensor->connect(on_collision_starts,
-                                       this,
-                                       Signal::Handler(&Player::onCameraCollision));
-        cameraCollisionSensor->connect(on_collision_persists,
-                                       this,
-                                       Signal::Handler(&Player::onCameraCollision));
-        addChild(cameraCollisionSensor);
+        if (cameraCollisions) {
+            cameraCollisionSensor = make_shared<CollisionArea>(
+                    make_shared<SphereShape>(attachementZOffset - 0.6f),
+                    WORLD | BODIES,
+                    "cameraCollisionNode"
+                    );
+            cameraCollisionSensor->setPosition({0.0, attachementYOffset, attachementZOffset / 2.0f - 0.5f});
+            cameraCollisionSensor->connect(on_collision_starts,
+                                           this,
+                                           Signal::Handler(&Player::onCameraCollision));
+            cameraCollisionSensor->connect(on_collision_persists,
+                                           this,
+                                           Signal::Handler(&Player::onCameraCollision));
+            addChild(cameraCollisionSensor);
+        }
 
         // create the pivot used to rotate the camera
         cameraPivot = make_shared<Node>("cameraPivot");
@@ -269,6 +270,9 @@ public:
         }
         //printTree();
     }
+
+protected:
+    bool cameraCollisions{true};
 
 private:
     // movement and view state
@@ -352,3 +356,10 @@ private:
 };
 
 const Signal::signal Player::on_push_pull = "on_push_pull";
+
+export class Player2 : public Player {
+public:
+    Player2() {
+        cameraCollisions = false;
+    }
+};

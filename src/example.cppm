@@ -92,9 +92,9 @@ public:
         topbar = make_shared<TopBar>(this, Signal::Handler(&ExampleMainScene::onMenu));
         app().add(topbar);
 
-        // menu->hide();
-        // topbar->show();
-        // scene->addChild(make_shared<PlatformsScene>());
+        menu->hide();
+        topbar->show();
+        scene->addChild(make_shared<PlatformsScene>());
         // onMenuRaycast(nullptr);
     }
 
