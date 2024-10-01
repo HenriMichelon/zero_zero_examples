@@ -356,10 +356,3 @@ private:
 };
 
 const Signal::signal Player::on_push_pull = "on_push_pull";
-
-export class Player2 : public Player {
-public:
-    Player2() {
-        cameraCollisions = false;
-    }
-};

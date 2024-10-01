@@ -49,6 +49,7 @@ target_sources(${PROJECT_NAME}
 		${SRC_DIR}/nodes/crate.cppm
 		${SRC_DIR}/nodes/player.cppm
 		${SRC_DIR}/nodes/terrain.cppm
+		${SRC_DIR}/nodes/platform_player.cppm
 )
 
 add_shaders(${PROJECT_NAME}_shaders ${SHADERS_PROJECT_BUILD_DIR} ${Z0_SHADERS_DIR} ${GLSL_SOURCE_FILES})

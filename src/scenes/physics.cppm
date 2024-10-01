@@ -1,4 +1,6 @@
 module;
+#include <simdjson.h>
+
 #include "libraries.h"
 
 export module Example:PhysicsMainScene;
@@ -54,13 +56,15 @@ public:
         player->addChild(raycast);
 
         // generates crates nodes with random positions
-        auto crateModel = Loader::loadModelFromFile("res/models/crate.glb", true);
+        const auto crateScene = Loader::loadModelFromFile("res/models/crate.glb", true);
+        const auto& crateModel = crateScene->getChild("Crate");
         for (int x = 0; x < 5; x++) {
             for (int z = 0; z < 5; z++) {
-                auto model = make_shared<Crate>();
-                model->addChild(crateModel->duplicate());
-                model->setPosition({x * 5 - 1.5 * 5, 1.0 + rand() % 5, -z * 5 - 5});
-                game->addChild(model);
+                auto body = make_shared<Crate>();
+                auto model = crateModel->duplicate();
+                body->addChild(model);
+                body->setPosition({x * 5 - 1.5 * 5, 1.0 + rand() % 5, -z * 5 - 5});
+                game->addChild(body);
             }
         }
 
@@ -77,7 +81,9 @@ public:
         OutlineMaterials::add(collisionOutlineMaterial);
 
         // build the scene floor node and associated static body
-        auto floorModel = Loader::loadModelFromFile("res/models/floor.glb", true);
+        const auto floorScene = Loader::loadModelFromFile("res/models/floor.glb", true);
+        const auto floorModel = floorScene->getChild("Cube");
+        floorScene->removeChild(floorModel);
         vector<SubShape> floorSubShapes;
         floorSubShapes.push_back(SubShape{make_shared<ConvexHullShape>(floorModel)});
         // add virtual walls
@@ -93,7 +99,7 @@ public:
         floor->addChild(floorModel);
         floor->setPosition({0.0, -1.0, 0.0});
         game->addChild(floor);
-        //printTree();
+        printTree();
 
         // connect the player signals for the "push" and "pull" actions
         player->connect(Player::on_push_pull, this, Signal::Handler(&PhysicsMainScene::onPushOrPull));

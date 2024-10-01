@@ -12,6 +12,7 @@ export import :Crate;
 export import :Player;
 export import :Terrain;
 export import :Platforms;
+export import :PlatformPlayer;
 
 // class for all the main menu entries
 class GMenuEntry : public GButton {

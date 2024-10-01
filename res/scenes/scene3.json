@@ -1,11 +1,6 @@
 {
     "nodes": [
         {
-            "id": "level1Resources",
-            "type": "model",
-            "resource": "res/models/level_1.glb"
-        },
-        {
             "id" : "env",
             "class": "Environment",
             "properties": {
@@ -29,11 +24,10 @@
             "children": [
                 {
                     "id" : "player",
-                    "class": "Player2"
+                    "class": "PlatformPlayer"
                 },
                 {
-                    "id" : "level1",
-                    "child": { "id": "level1Resources"}
+                    "id" : "level"
                 }
             ]
         }

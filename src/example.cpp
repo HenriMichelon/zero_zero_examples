@@ -7,8 +7,8 @@ const ApplicationConfig applicationConfig{
         .appName = "Example App",
         .appDir = "..",
         .windowMode = WINDOW_MODE_WINDOWED,
-        .windowWidth = 1280,
-        .windowHeight = 720,
+        .windowWidth = 800,
+        .windowHeight = 600,
         .defaultFontName = "res/Signwood.ttf",
         .defaultFontSize = 25,
         .loggingMode = LOGGING_FILE | LOGGING_WINDOW | LOGGING_STDOUT
@@ -17,7 +17,7 @@ const ApplicationConfig applicationConfig{
 // Register the examples node classes for the JSON loading
 Z0_REGISTER_TYPE(Crate)
 Z0_REGISTER_TYPE(Player)
-Z0_REGISTER_TYPE(Player2)
+Z0_REGISTER_TYPE(PlatformPlayer)
 Z0_REGISTER_TYPE(Terrain)
 
 Z0_APP(applicationConfig, make_shared<ExampleMainScene>())
