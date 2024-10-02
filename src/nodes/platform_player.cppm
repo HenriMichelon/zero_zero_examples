@@ -1,5 +1,4 @@
 module;
-#include "libraries.h"
 
 export module Example:PlatformPlayer;
 
@@ -10,4 +9,5 @@ public:
     PlatformPlayer() {
         cameraCollisions = false;
     }
+
 };

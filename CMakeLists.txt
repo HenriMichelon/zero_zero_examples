@@ -33,6 +33,7 @@ file(GLOB_RECURSE GLSL_SOURCE_FILES
 )
 add_executable(${PROJECT_NAME}
 		${SRC_DIR}/example.cpp
+		${SRC_DIR}/scenes/platforms.cpp
 )
 target_sources(${PROJECT_NAME}
 	PUBLIC

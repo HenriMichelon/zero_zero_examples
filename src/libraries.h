@@ -7,5 +7,5 @@ using namespace std;
 import glm;
 using namespace glm;
 
-import Z0;
+import z0;
 using namespace z0;

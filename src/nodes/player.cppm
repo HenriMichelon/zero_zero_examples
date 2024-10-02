@@ -271,6 +271,12 @@ public:
         //printTree();
     }
 
+    // release the mouse to access the menus
+    void releaseMouse() {
+        Input::setMouseMode(MOUSE_MODE_VISIBLE);
+        mouseCaptured = false;
+    }
+
 protected:
     bool cameraCollisions{true};
 
@@ -340,12 +346,6 @@ private:
             Input::setMouseMode(MOUSE_MODE_HIDDEN_CAPTURED);
             mouseCaptured = true;
         }
-    }
-
-    // release the mouse to access the menus
-    void releaseMouse() {
-        Input::setMouseMode(MOUSE_MODE_VISIBLE);
-        mouseCaptured = false;
     }
 
     // signal handler called when the camera collide or stop collinding with something
