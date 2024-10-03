@@ -34,10 +34,10 @@ void TriangleMainScene::onReady() {
     };
     // Mesh for the first triangle
     auto mesh1 = make_shared<Mesh>(vertices, indices, surfaces1);
-    // Standard material for the first trianle
+    // Standard material for the first triangle
     // With only a color and alpha transparency enabled
     material1 = make_shared<StandardMaterial>();
-    material1->setAlbedoColor(Color(vec4{0.75, 0.75, 0.75, 0.75}));
+    material1->setAlbedoColor(Color{0.75, 0.75, 0.75, 0.75});
     material1->setTransparency(TRANSPARENCY_ALPHA);
     material1->setCullMode(CULLMODE_DISABLED);
     // We apply the material to the unique surface
@@ -47,13 +47,13 @@ void TriangleMainScene::onReady() {
     triangle1->setPosition({1.0, 0.0, 0.0});
     addChild(triangle1);
 
-    // Index-based surface for the seconde triangle
+    // Index-based surface for the second triangle
     const vector surfaces2{
             make_shared<Surface>(0, indices.size())
     };
-    // Mesh for the sconde triangle
+    // Mesh for the second triangle
     auto mesh2 = make_shared<Mesh>(vertices, indices, surfaces2);
-    // Shader based material for the second trianle
+    // Shader based material for the second triangle
     // With a fragment shader, a vertex shader and alpha transparency enabled
     material2 = make_shared<ShaderMaterial>(
             "examples/uv_gradient.frag",
@@ -104,7 +104,7 @@ void TriangleMainScene::onPhysicsProcess(const float delta) {
     }
     // Rotate the color gradient used by the fragment shader
     gradient += gradientSpeed * delta;
-    // Ensure the color component remains within the range [0, 1]
+    // Ensure the color gradient remains within the range [0, 1]
     gradient = std::clamp(gradient, 0.0f, 1.0f);
     if (gradient == 1.0f || gradient == 0.0f) {
         gradientSpeed = -gradientSpeed;
@@ -123,7 +123,7 @@ void TriangleMainScene::onProcess(const float alpha) {
     }
 }
 
-// Input example wit the input event system
+// Input example with the input event system
 bool TriangleMainScene::onInput(InputEvent &inputEvent) {
     if (inputEvent.getType() == INPUT_EVENT_KEY) {
         const auto &eventKey = dynamic_cast<InputEventKey &>(inputEvent);
