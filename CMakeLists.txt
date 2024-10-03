@@ -32,25 +32,34 @@ file(GLOB_RECURSE GLSL_SOURCE_FILES
 		"${SHADERS_DIR}/*.vert"
 )
 add_executable(${PROJECT_NAME}
-		${SRC_DIR}/example.cpp
+		${SRC_DIR}/main.cpp
+		${SRC_DIR}/ui/topbar.cpp
+		${SRC_DIR}/scenes/add_remove_child.cpp
+		${SRC_DIR}/scenes/example.cpp
 		${SRC_DIR}/scenes/platforms.cpp
+		${SRC_DIR}/scenes/physics.cpp
+		${SRC_DIR}/scenes/terrain.cpp
+		${SRC_DIR}/scenes/triangle.cpp
+		${SRC_DIR}/nodes/crate.cpp
+		${SRC_DIR}/nodes/player.cpp
+		${SRC_DIR}/nodes/terrain.cpp
 )
 target_sources(${PROJECT_NAME}
 	PUBLIC
 	FILE_SET CXX_MODULES
 	FILES
 		${SRC_DIR}/layers.cppm
-		${SRC_DIR}/example.cppm
-		${SRC_DIR}/topbar.cppm
-		${SRC_DIR}/scenes/triangle.cppm
+		${SRC_DIR}/ui/topbar.cppm
 		${SRC_DIR}/scenes/add_remove_child.cppm
+		${SRC_DIR}/scenes/example.cppm
 		${SRC_DIR}/scenes/physics.cppm
-		${SRC_DIR}/scenes/terrain.cppm
 		${SRC_DIR}/scenes/platforms.cppm
+		${SRC_DIR}/scenes/terrain.cppm
+		${SRC_DIR}/scenes/triangle.cppm
 		${SRC_DIR}/nodes/crate.cppm
+		${SRC_DIR}/nodes/platform_player.cppm
 		${SRC_DIR}/nodes/player.cppm
 		${SRC_DIR}/nodes/terrain.cppm
-		${SRC_DIR}/nodes/platform_player.cppm
 )
 
 add_shaders(${PROJECT_NAME}_shaders ${SHADERS_PROJECT_BUILD_DIR} ${Z0_SHADERS_DIR} ${GLSL_SOURCE_FILES})

@@ -51,8 +51,7 @@
                 {
                     "id" : "crate1",
                     "class": "Crate",
-                    "children": [ { "id": "crateModel"}
-                    ],
+                    "child": { "id": "crateModel", "duplicate":"true"},
                     "properties": {
                         "position": "-30.0,0.0,-2.0"
                     }
@@ -60,8 +59,7 @@
                 {
                     "id" : "crate2",
                     "class": "Crate",
-                    "children": [ { "id": "crateModel"}
-                    ],
+                    "child": { "id": "crateModel", "duplicate":"true"},
                     "properties": {
                         "position": "-38.0,0.0,-2.0",
                         "rotation": "0.0,45.0,0.0"

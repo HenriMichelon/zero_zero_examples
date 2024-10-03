@@ -1,7 +1,7 @@
 module;
 #include "libraries.h"
 
-export module Example:Platforms;
+export module Example:PlatformsScene;
 
 import :Layers;
 import :PlatformPlayer;

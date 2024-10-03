@@ -4,7 +4,7 @@ module;
 module Example;
 import :Layers;
 import :PlatformPlayer;
-import :Platforms;
+import :PlatformsScene;
 
 using namespace z0;
 
