@@ -16,10 +16,10 @@ public:
 
     void onExitScene() override;
 
-    void onPhysicsProcess(const float delta) override;
+    void onPhysicsProcess(float delta) override;
 
     // input example with the Input singleton
-    void onProcess(const float alpha) override;
+    void onProcess(float alpha) override;
 
     // Input example wit the input event system
     bool onInput(InputEvent &inputEvent) override;
