@@ -75,7 +75,7 @@ void ExampleMainScene::onEnterScene() {
     // topbar->show();
     // scene->addChild(make_shared<PlatformsScene>());
     // onMenuRaycast(nullptr);
-    onMenuTerrain(nullptr);
+    // onMenuTerrain(nullptr);
 }
 
 void ExampleMainScene::onMenu(GEventClick *) {
