@@ -185,13 +185,7 @@ void Player::onProcess(const float alpha) {
         }
     }
 
-    // if ((currentState.velocity != VEC3ZERO) || (!isOnGround())) {
-    // move the player using an interpolation of the velocity computed during onPhysicsProcess()
     setVelocity(previousState.velocity * (1.0f - alpha) + currentState.velocity * alpha);
-    // } else {
-    //     // stop the player
-    //     setVelocity(VEC3ZERO);
-    // }
     // rotate the view
     if (currentState.lookDir != VEC2ZERO) {
         const auto interpolatedLookDir = previousState.lookDir * (1.0f - alpha) + currentState.lookDir * alpha;

@@ -14,15 +14,15 @@
             "id" : "env",
             "class": "Environment",
             "properties": {
-                "ambient_color": "1.0,1.0,1.0,1.0f"
+                "ambient_color": "1.0,1.0,1.0,0.1f"
             }
         },
         {
             "id" : "sun",
             "class": "DirectionalLight",
             "properties": {
-                "color": "1.0f, 1.0f, 1.0f, 1.0f",
-                "direction": "-0.2f, -0.8f, 1.0f",
+                "color": "1.0f, 1.0f, 1.0f, 4.0f",
+                "direction": "-0.25f, -0.8f, 1.0f",
                 "cast_shadow" : "true"
             }
         },
@@ -36,7 +36,7 @@
                     "id" : "player",
                     "class": "Player",
                     "properties": {
-                        "position": "-33.0f, 0.0f, 0.0f"
+                        "position": "-25.0f, 10.0f, 0.0f"
                     }
                 },
                 {

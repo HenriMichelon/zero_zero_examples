@@ -6,9 +6,9 @@ import Example;
 const ApplicationConfig applicationConfig{
         .appName = "Example App",
         .appDir = "..",
-        .windowMode = WINDOW_MODE_WINDOWED,
-        .windowWidth = 1280,
-        .windowHeight = 768,
+        .windowMode = WINDOW_MODE_WINDOWED_FULLSCREEN,
+        .windowWidth = 1920,
+        .windowHeight = 1080,
         .defaultFontName = "res/Signwood.ttf",
         .defaultFontSize = 25,
         .loggingMode = LOGGING_FILE | LOGGING_WINDOW | LOGGING_STDOUT
