@@ -25,7 +25,7 @@ void ExampleMainScene::onReady() {
     // create a camera to view the skybox
     addChild(make_shared<Camera>("Menu camera"));
     // create a beautiul skybox
-    addChild(make_shared<Skybox>("res/textures/cubemap.png"));
+    addChild(make_shared<Skybox>("res/textures/StandardCubeMap.jpg"));
     // create a scene to start the other scenes
     scene = make_shared<Node>();
     addChild(scene);
@@ -71,11 +71,12 @@ void ExampleMainScene::onEnterScene() {
     topbar = make_shared<TopBar>(this, Signal::Handler(&ExampleMainScene::onMenu));
     app().add(topbar);
 
-    // menu->hide();
-    // topbar->show();
+    menu->hide();
+    topbar->show();
     // scene->addChild(make_shared<PlatformsScene>());
     // onMenuRaycast(nullptr);
     // onMenuTerrain(nullptr);
+    onMenuTriangle(nullptr);
 }
 
 void ExampleMainScene::onMenu(GEventClick *) {

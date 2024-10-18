@@ -43,7 +43,7 @@ void TriangleMainScene::onReady() {
     // We apply the material to the unique surface
     mesh1->setSurfaceMaterial(0, material1);
     // Create, place and add the Node to the scene
-    triangle1 = make_shared<MeshInstance>(mesh1);
+    triangle1 = make_shared<MeshInstance>(mesh1, "Triangle 1");
     triangle1->setPosition({1.0, 0.0, 0.0});
     addChild(triangle1);
 
@@ -65,7 +65,7 @@ void TriangleMainScene::onReady() {
     // We apply the material to the unique surface
     mesh2->setSurfaceMaterial(0, material2);
     // Create, place and add the Node to the scene
-    triangle2 = make_shared<MeshInstance>(mesh2);
+    triangle2 = make_shared<MeshInstance>(mesh2, "Triangle 2");
     triangle2->setPosition({-1.0, 0.0, 0.0});
     addChild(triangle2);
 }
