@@ -71,13 +71,13 @@ void ExampleMainScene::onEnterScene() {
     topbar = make_shared<TopBar>(this, Signal::Handler(&ExampleMainScene::onMenu));
     app().add(topbar);
 
-    menu->hide();
-    topbar->show();
+    // menu->hide();
+    // topbar->show();
     // scene->addChild(make_shared<PlatformsScene>());
     // onMenuTriangle(nullptr);
     // onMenuAddRemoveChild(nullptr);
     // onMenuRaycast(nullptr);
-    onMenuTerrain(nullptr);
+    // onMenuTerrain(nullptr);
 }
 
 void ExampleMainScene::onMenu(GEventClick *) {
