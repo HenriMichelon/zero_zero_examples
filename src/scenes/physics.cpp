@@ -16,7 +16,7 @@ void PhysicsMainScene::onReady() {
     // make the scene node not pauseable
     setProcessMode(PROCESS_MODE_ALWAYS);
     // add the global environement
-    addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, 0.1f}));
+    addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, 0.2f}));
 
     // add a game node and make it pausable since the scene can't be paused
     const auto game = make_shared<Node>("Game");
@@ -25,8 +25,9 @@ void PhysicsMainScene::onReady() {
 
     // add the Sun
     const auto directionalLight1 = make_shared<DirectionalLight>(vec4{1.0f, 1.0f, 1.0f, 1.0f});
-    directionalLight1->rotateX(radians(-45.0f));
-    directionalLight1->rotateY(radians(45.0f));
+    directionalLight1->rotateX(radians(-75.0f));
+    directionalLight1->rotateY(radians(-45.0f));
+    directionalLight1->setShadowMapCascadesCount(4);
     directionalLight1->setCastShadows(true);
     game->addChild(directionalLight1);
 
@@ -36,13 +37,10 @@ void PhysicsMainScene::onReady() {
 
     // add an optional spotlight
     const auto spotLight1 = make_shared<SpotLight>(
-            8.0f, 12.0f,
-            0.022, 0.0019, 1.0f,
-            vec4{1.0f, 1.0f, 0.0f, 5.0f}
-            );
+            8.0f, 12.0f, 10.0f,
+            vec4{1.0f, 1.0f, 0.0f, 2.0f});
     spotLight1->setPosition({0.0, 1.0, -0.5});
     spotLight1->rotateX(radians(-20.0f));
-    spotLight1->setCastShadows(true);
     player->addChild(spotLight1);
 
     // raycast used to detect crates in front of the palyer

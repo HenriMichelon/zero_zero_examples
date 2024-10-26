@@ -22,8 +22,9 @@
             "class": "DirectionalLight",
             "properties": {
                 "color": "1.0f, 1.0f, 1.0f, 4.0f",
-                "rotation": "-25.0f, 180.0f, 0.0f",
-                "cast_shadow" : "true"
+                "rotation": "-25.0f, .0f, 0.0f",
+                "cast_shadow" : "true",
+                "shadow_map_cascade_count" : "3"
             }
         },
         {

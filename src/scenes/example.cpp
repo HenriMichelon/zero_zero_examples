@@ -25,7 +25,7 @@ void ExampleMainScene::onReady() {
     // create a camera to view the skybox
     addChild(make_shared<Camera>("Menu camera"));
     // create a beautiul skybox
-    addChild(make_shared<Skybox>("res/textures/StandardCubeMap.jpg"));
+    addChild(make_shared<Skybox>("res/textures/kloofendal_48d_partly_cloudy_puresky_2k.hdr"));
     // create a scene to start the other scenes
     scene = make_shared<Node>();
     addChild(scene);
@@ -77,7 +77,7 @@ void ExampleMainScene::onEnterScene() {
     // onMenuTriangle(nullptr);
     // onMenuAddRemoveChild(nullptr);
     // onMenuRaycast(nullptr);
-    // onMenuTerrain(nullptr);
+//    onMenuTerrain(nullptr);
 }
 
 void ExampleMainScene::onMenu(GEventClick *) {

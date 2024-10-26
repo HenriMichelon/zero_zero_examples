@@ -235,7 +235,7 @@ void Player::onReady() {
 
     // create the player camera and attach it to the pivot
     camera = make_shared<Camera>("Player camera");
-    camera->setPerspectiveProjection(75.0, 0.1, 200.0);
+    camera->setPerspectiveProjection(75.0, 0.1, 500.0);
     cameraPivot->addChild(camera);
     // replace the current camera with the player camera
     app().activateCamera(camera);
