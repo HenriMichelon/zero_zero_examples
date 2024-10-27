@@ -12,7 +12,7 @@ import :PlatformsScene;
 
 GMenuEntry::GMenuEntry(const string &_label) :
     label{_label} {
-    this->connect(GEvent::OnCreate, this, Signal::Handler(&GMenuEntry::onCreate));
+    this->connect(GEvent::OnCreate, this, SignalHandler(&GMenuEntry::onCreate));
 }
 
 void GMenuEntry::onCreate() {
@@ -41,40 +41,40 @@ void ExampleMainScene::onEnterScene() {
     float height = menu->getWidget().getPadding() * 8;
 
     const auto entryTriangle = make_shared<GMenuEntry>("Triangles & shaders");
-    entryTriangle->connect(GEvent::OnClick, this, Signal::Handler(&ExampleMainScene::onMenuTriangle));
+    entryTriangle->connect(GEvent::OnClick, this, SignalHandler(&ExampleMainScene::onMenuTriangle));
     menu->getWidget().add(entryTriangle, GWidget::TOPCENTER);
     height += entryTriangle->getHeight();
 
     const auto entryAddRemoveChild = make_shared<GMenuEntry>("Add & remove child");
-    entryAddRemoveChild->connect(GEvent::OnClick, this, Signal::Handler(&ExampleMainScene::onMenuAddRemoveChild));
+    entryAddRemoveChild->connect(GEvent::OnClick, this, SignalHandler(&ExampleMainScene::onMenuAddRemoveChild));
     menu->getWidget().add(entryAddRemoveChild, GWidget::TOPCENTER);
     height += entryAddRemoveChild->getHeight();
 
     const auto entryRaycast = make_shared<GMenuEntry>("Physics & RayCast");
-    entryRaycast->connect(GEvent::OnClick, this, Signal::Handler(&ExampleMainScene::onMenuRaycast));
+    entryRaycast->connect(GEvent::OnClick, this, SignalHandler(&ExampleMainScene::onMenuRaycast));
     menu->getWidget().add(entryRaycast, GWidget::TOPCENTER);
     height += entryRaycast->getHeight();
 
     const auto entryTerrain = make_shared<GMenuEntry>("Scenes files");
-    entryTerrain->connect(GEvent::OnClick, this, Signal::Handler(&ExampleMainScene::onMenuTerrain));
+    entryTerrain->connect(GEvent::OnClick, this, SignalHandler(&ExampleMainScene::onMenuTerrain));
     menu->getWidget().add(entryTerrain, GWidget::TOPCENTER);
     height += entryTerrain->getHeight();
 
     const auto entryQuit = make_shared<GMenuEntry>("Quit");
-    entryQuit->connect(GEvent::OnClick, this, Signal::Handler(&ExampleMainScene::onMenuQuit));
+    entryQuit->connect(GEvent::OnClick, this, SignalHandler(&ExampleMainScene::onMenuQuit));
     menu->getWidget().add(entryQuit, GWidget::TOPCENTER);
     height += entryQuit->getHeight();
 
     menu->setHeight(height);
     menu->setY((VECTOR_SCALE.y - height) / 2);
 
-    topbar = make_shared<TopBar>(this, Signal::Handler(&ExampleMainScene::onMenu));
+    topbar = make_shared<TopBar>(this, SignalHandler(&ExampleMainScene::onMenu));
     app().add(topbar);
 
-    // menu->hide();
-    // topbar->show();
+    menu->hide();
+    topbar->show();
     // scene->addChild(make_shared<PlatformsScene>());
-    // onMenuTriangle(nullptr);
+    onMenuTriangle(nullptr);
     // onMenuAddRemoveChild(nullptr);
     // onMenuRaycast(nullptr);
 //    onMenuTerrain(nullptr);

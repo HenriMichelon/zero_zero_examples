@@ -94,7 +94,7 @@ void PhysicsMainScene::onReady() {
     // printTree();
 
     // connect the player signals for the "push" and "pull" actions
-    player->connect(Player::on_push_pull, this, Signal::Handler(&PhysicsMainScene::onPushOrPull));
+    player->connect(Player::on_push_pull, this, SignalHandler(&PhysicsMainScene::onPushOrPull));
 }
 
 void PhysicsMainScene::onProcess(float alpha) {
