@@ -74,8 +74,8 @@ void ExampleMainScene::onEnterScene() {
     menu->hide();
     topbar->show();
     // scene->addChild(make_shared<PlatformsScene>());
-    onMenuTriangle(nullptr);
-    // onMenuAddRemoveChild(nullptr);
+    // onMenuTriangle(nullptr);
+    onMenuAddRemoveChild(nullptr);
     // onMenuRaycast(nullptr);
 //    onMenuTerrain(nullptr);
 }

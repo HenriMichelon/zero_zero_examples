@@ -11,13 +11,6 @@
             "type": "model"
         },
         {
-            "id" : "env",
-            "class": "Environment",
-            "properties": {
-                "ambient_color": "1.0,1.0,1.0,0.1f"
-            }
-        },
-        {
             "id" : "sun",
             "class": "DirectionalLight",
             "properties": {

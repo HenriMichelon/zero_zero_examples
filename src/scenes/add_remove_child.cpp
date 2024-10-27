@@ -10,6 +10,13 @@ AddRemoveChildMainScene::AddRemoveChildMainScene():
 }
 
 void AddRemoveChildMainScene::onReady() {
+    // add the global environement
+    addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, 0.2f}));
+    // add the Sun
+    const auto directionalLight1 = make_shared<DirectionalLight>(vec4{1.0f, 1.0f, 1.0f, 1.0f});
+    directionalLight1->rotateX(radians(-45.0f));
+    directionalLight1->rotateY(radians(-20.0f));
+    addChild(directionalLight1);
     // create the default scene camera
     camera1 = make_shared<Camera>("Camera 1");
     camera1->setPosition({0.0f, 0.0f, 1.0f});
@@ -26,6 +33,8 @@ void AddRemoveChildMainScene::onReady() {
     // load all the models from files
     sphereModel = Loader::loadModelFromFile("res/models/sphere.glb");
     crateModel  = Loader::loadModelFromFile("res/models/crate.glb");
+
+    onMenuAdd(nullptr);
 }
 
 bool AddRemoveChildMainScene::onInput(InputEvent &event) {
@@ -45,10 +54,10 @@ bool AddRemoveChildMainScene::onInput(InputEvent &event) {
     return consumed;
 }
 
-void AddRemoveChildMainScene::onPhysicsProcess(float delta) {
+void AddRemoveChildMainScene::onPhysicsProcess(const float delta) {
     // rotates all the nodes
     const auto angle = delta * radians(90.0f) / 2;
-    for (auto &crate : rotatingNodes) {
+    for (const auto &crate : rotatingNodes) {
         crate->rotateY(angle);
         crate->rotateX(angle);
     }
@@ -64,17 +73,17 @@ void AddRemoveChildMainScene::onEnterScene() {
     const auto menuAdd = make_shared<GButton>();
     menu->getWidget().add(menuAdd, GWidget::TOPCENTER, "200,40");
     menuAdd->add(make_shared<GText>("[ENTER] Add node"), GWidget::CENTER);
-    menuAdd->connect(GEvent::OnClick, this, Signal::Handler(&AddRemoveChildMainScene::onMenuAdd));
+    menuAdd->connect(GEvent::OnClick, this, SignalHandler(&AddRemoveChildMainScene::onMenuAdd));
     // remove a node button
     const auto menuRemove = make_shared<GButton>();
     menu->getWidget().add(menuRemove, GWidget::TOPCENTER, "200,40");
     menuRemove->add(make_shared<GText>("[BACKSPACE] Remove node"), GWidget::CENTER);
-    menuRemove->connect(GEvent::OnClick, this, Signal::Handler(&AddRemoveChildMainScene::onMenuRemove));
+    menuRemove->connect(GEvent::OnClick, this, SignalHandler(&AddRemoveChildMainScene::onMenuRemove));
     // toggle cameras button
     const auto menuCamera = make_shared<GButton>();
     menu->getWidget().add(menuCamera, GWidget::TOPCENTER, "200,40");
     menuCamera->add(make_shared<GText>("[SPACE] Toggle camera"), GWidget::CENTER);
-    menuCamera->connect(GEvent::OnClick, this, Signal::Handler(&AddRemoveChildMainScene::onMenuCamera));
+    menuCamera->connect(GEvent::OnClick, this, SignalHandler(&AddRemoveChildMainScene::onMenuCamera));
 }
 
 void AddRemoveChildMainScene::onExitScene() {
