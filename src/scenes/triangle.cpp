@@ -33,7 +33,7 @@ void TriangleMainScene::onReady() {
             make_shared<Surface>(0, indices.size())
     };
     // Mesh for the first triangle
-    auto mesh1 = make_shared<Mesh>(vertices, indices, surfaces1);
+    auto mesh1 = Mesh::create(vertices, indices, surfaces1);
     // Standard material for the first triangle
     // With only a color and alpha transparency enabled
     material1 = make_shared<StandardMaterial>();
@@ -52,7 +52,7 @@ void TriangleMainScene::onReady() {
             make_shared<Surface>(0, indices.size())
     };
     // Mesh for the second triangle
-    auto mesh2 = make_shared<Mesh>(vertices, indices, surfaces2);
+    auto mesh2 = Mesh::create(vertices, indices, surfaces2);
     // Shader based material for the second triangle
     // With a fragment shader, a vertex shader and alpha transparency enabled
     material2 = make_shared<ShaderMaterial>(
