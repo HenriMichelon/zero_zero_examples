@@ -16,7 +16,7 @@ void PhysicsMainScene::onReady() {
     // make the scene node not pauseable
     setProcessMode(PROCESS_MODE_ALWAYS);
     // add the global environement
-    addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, 0.1f}));
+    addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, .1f}));
 
     // add a game node and make it pausable since the scene can't be paused
     const auto game = make_shared<Node>("Game");
@@ -25,7 +25,7 @@ void PhysicsMainScene::onReady() {
 
     // add the Sun
     const auto directionalLight1 = make_shared<DirectionalLight>(vec4{1.0f, 1.0f, 1.0f, 0.8f});
-    directionalLight1->rotateX(radians(-25.0f));
+    directionalLight1->rotateX(radians(-45.0f));
     directionalLight1->rotateY(radians(-45.0f));
     directionalLight1->setShadowMapCascadesCount(3);
     directionalLight1->setCastShadows(true);
@@ -33,6 +33,7 @@ void PhysicsMainScene::onReady() {
 
     // add the player
     player = make_shared<Player>();
+    player->setPosition(vec3{0.0f, 0.0f, 10.0f});
     game->addChild(player);
 
     // add an optional spotlight
@@ -48,14 +49,14 @@ void PhysicsMainScene::onReady() {
     player->addChild(raycast);
 
     // generates crates nodes with random positions
-    const auto  crateScene = Loader::loadModelFromFile("res/models/crate.glb", true);
+    const auto &crateScene = Loader::loadModelFromFile("res/models/crate.glb", true);
     const auto &crateModel = crateScene->getChild("Crate");
-    for (int x = 0; x < 5; x++) {
-        for (int z = 0; z < 5; z++) {
+    for (int x = 0; x < 4; x++) {
+        for (int z = 0; z < 4; z++) {
             auto body  = make_shared<Crate>();
             auto model = crateModel->duplicate();
             body->addChild(model);
-            body->setPosition({x * 5 - 1.5 * 5, 1.0 + rand() % 5, -z * 5 - 5});
+            body->setPosition({x * 5 - 1.5 * 5, 1.0 + rand() % 5, -z * 5 + 5});
             game->addChild(body);
         }
     }
@@ -73,27 +74,24 @@ void PhysicsMainScene::onReady() {
     OutlineMaterials::add(collisionOutlineMaterial);
 
     // build the scene floor node and associated static body
-    const auto floorScene = Loader::loadModelFromFile("res/models/floor.glb", true);
-    const auto floorModel = floorScene->findFirstChild<MeshInstance>();
-    if (floorModel != nullptr) {
-        floorScene->removeChild(floorModel);
-        vector<SubShape> floorSubShapes;
-        floorSubShapes.push_back(SubShape{make_shared<ConvexHullShape>(floorModel)});
-        // add virtual walls
-        floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{100.0, 10.0, 1.0}), vec3{0.0, 5.0, -100.0}});
-        floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{100.0, 10.0, 1.0}), vec3{0.0, 5.0, 100.0}});
-        floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{1.0, 10.0, 100.0}), vec3{100.0, 5.0, 0.0}});
-        floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{1.0, 10.0, 100.0}), vec3{-100.0, 5.0, 0.0}});
-        // the static body to make the floor collides with the player and the crates
-        const auto floor = make_shared<StaticBody>(
-                make_shared<StaticCompoundShape>(floorSubShapes),
-                WORLD,
-                "Floor");
-        floor->addChild(floorModel);
-        floor->setPosition({0.0, -1.0, 0.0});
-        game->addChild(floor);
-    }
-    // printTree();
+    const auto& floorScene = Loader::loadModelFromFile("res/models/playground.glb", false);
+    auto floorModel = floorScene->findFirstChild("Box001_asphalt_0");
+    if (floorModel == nullptr) die("Floor not found");
+    vector<SubShape> floorSubShapes;
+    floorSubShapes.push_back(SubShape{make_shared<ConvexHullShape>(floorModel)});
+    // add virtual walls
+    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{25.0, 10.0, 1.0}), vec3{0.0, 5.0, -15.0}});
+    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{25.0, 10.0, 1.0}), vec3{0.0, 5.0, 15.0}});
+    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{1.0, 10.0, 30.0}), vec3{12.5, 5.0, 0.0}});
+    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{1.0, 10.0, 30.0}), vec3{-12.5, 5.0, 0.0}});
+    // the static body to make the floor collides with the player and the crates
+    const auto floor = make_shared<StaticBody>(
+            make_shared<StaticCompoundShape>(floorSubShapes),
+            WORLD,
+            "Floor");
+    floor->addChild(floorScene);
+    // floor->setPosition({0.0f, 5.0f, 0.0f});
+    game->addChild(floor);
 
     // connect the player signals for the "push" and "pull" actions
     player->connect(Player::on_push_pull, this, SignalHandler(&PhysicsMainScene::onPushOrPull));
