@@ -14,8 +14,8 @@ void AddRemoveChildMainScene::onReady() {
     addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, 0.2f}));
     // add the Sun
     const auto directionalLight1 = make_shared<DirectionalLight>(vec4{1.0f, 1.0f, 1.0f, 1.0f});
+    directionalLight1->rotateY(radians(138.0f));
     directionalLight1->rotateX(radians(-45.0f));
-    directionalLight1->rotateY(radians(-20.0f));
     addChild(directionalLight1);
     // create the default scene camera
     camera1 = make_shared<Camera>("Camera 1");

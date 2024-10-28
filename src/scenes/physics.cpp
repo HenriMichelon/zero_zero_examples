@@ -25,9 +25,7 @@ void PhysicsMainScene::onReady() {
 
     // add the Sun
     const auto directionalLight1 = make_shared<DirectionalLight>(vec4{1.0f, 1.0f, 1.0f, 0.8f});
-    directionalLight1->rotateX(radians(-45.0f));
-    directionalLight1->rotateY(radians(-45.0f));
-    directionalLight1->setShadowMapCascadesCount(3);
+    directionalLight1->setRotation(radians(vec3{-45.0f, 138.0f, 0.0f}));
     directionalLight1->setCastShadows(true);
     game->addChild(directionalLight1);
 

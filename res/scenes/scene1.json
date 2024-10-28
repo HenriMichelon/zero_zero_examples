@@ -11,13 +11,20 @@
             "type": "model"
         },
         {
+            "id" : "env",
+            "class": "Environment",
+            "properties": {
+                "ambient_color": "1.0,1.0,1.0,0.2f"
+            }
+        },
+        {
             "id" : "sun",
             "class": "DirectionalLight",
             "properties": {
                 "color": "1.0f, 1.0f, 1.0f, 4.0f",
-                "rotation": "-25.0f, .0f, 0.0f",
+                "rotation": "-45.0f, 138.0f, 0.0f",
                 "cast_shadow" : "true",
-                "shadow_map_cascade_count" : "3"
+                "shadow_map_cascade_count" : "4"
             }
         },
         {
