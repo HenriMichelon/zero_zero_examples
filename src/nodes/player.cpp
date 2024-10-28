@@ -201,7 +201,7 @@ void Player::onReady() {
     captureMouse();
 
     // create the player node
-    model = Loader::loadModelFromFile("res/models/capsule.glb", true);
+    model = Loader::loadModelFromFile("app://res/models/capsule.glb", true);
     model->setPosition({0.0, -1.8 / 2.0, 0.0});
     addChild(model);
 

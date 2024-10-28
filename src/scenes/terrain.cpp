@@ -8,5 +8,5 @@ import :TerrainScene;
 void TerrainScene::onReady() {
     setProcessMode(PROCESS_MODE_ALWAYS);
     log("Loading scene");
-    Loader::addSceneFromFile(this, "res/scenes/scene1.json");
+    Loader::addSceneFromFile(this, "app://res/scenes/scene1.json");
 }

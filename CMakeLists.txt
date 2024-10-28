@@ -36,7 +36,6 @@ add_executable(${PROJECT_NAME}
 		${SRC_DIR}/ui/topbar.cpp
 		${SRC_DIR}/scenes/add_remove_child.cpp
 		${SRC_DIR}/scenes/example.cpp
-		${SRC_DIR}/scenes/platforms.cpp
 		${SRC_DIR}/scenes/physics.cpp
 		${SRC_DIR}/scenes/terrain.cpp
 		${SRC_DIR}/scenes/triangle.cpp
@@ -53,7 +52,6 @@ target_sources(${PROJECT_NAME}
 		${SRC_DIR}/scenes/add_remove_child.cppm
 		${SRC_DIR}/scenes/example.cppm
 		${SRC_DIR}/scenes/physics.cppm
-		${SRC_DIR}/scenes/platforms.cppm
 		${SRC_DIR}/scenes/terrain.cppm
 		${SRC_DIR}/scenes/triangle.cppm
 		${SRC_DIR}/nodes/crate.cppm

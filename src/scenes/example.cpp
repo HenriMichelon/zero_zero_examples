@@ -8,7 +8,6 @@ import :TriangleMainScene;
 import :AddRemoveChildMainScene;
 import :PhysicsMainScene;
 import :TerrainScene;
-import :PlatformsScene;
 
 GMenuEntry::GMenuEntry(const string &_label) :
     label{_label} {
@@ -25,7 +24,7 @@ void ExampleMainScene::onReady() {
     // create a camera to view the skybox
     addChild(make_shared<Camera>("Menu camera"));
     // create a beautiul skybox
-    addChild(make_shared<Skybox>("res/textures/StandardCubeMap.jpg"));
+    addChild(make_shared<Skybox>("app://res/textures/StandardCubeMap.jpg"));
     // create a scene to start the other scenes
     scene = make_shared<Node>();
     addChild(scene);

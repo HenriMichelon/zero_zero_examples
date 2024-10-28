@@ -2,12 +2,12 @@
     "nodes": [
         {
             "id" : "crateModel",
-            "resource": "res/models/crate.glb",
+            "resource": "app://res/models/crate.glb",
             "type": "model"
         },
         {
             "id" : "terrainModel",
-            "resource": "res/models/terrain1.glb",
+            "resource": "app://res/models/terrain1.glb",
             "type": "model"
         },
         {
