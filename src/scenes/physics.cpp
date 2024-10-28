@@ -15,6 +15,8 @@ PhysicsMainScene::PhysicsMainScene():
 void PhysicsMainScene::onReady() {
     // make the scene node not pauseable
     setProcessMode(PROCESS_MODE_ALWAYS);
+    // add the global environement
+    addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, 0.1f}));
 
     // add a game node and make it pausable since the scene can't be paused
     const auto game = make_shared<Node>("Game");
@@ -22,10 +24,10 @@ void PhysicsMainScene::onReady() {
     addChild(game);
 
     // add the Sun
-    const auto directionalLight1 = make_shared<DirectionalLight>(vec4{1.0f, 1.0f, 1.0f, 1.0f});
-    directionalLight1->rotateX(radians(-75.0f));
+    const auto directionalLight1 = make_shared<DirectionalLight>(vec4{1.0f, 1.0f, 1.0f, 0.8f});
+    directionalLight1->rotateX(radians(-25.0f));
     directionalLight1->rotateY(radians(-45.0f));
-    directionalLight1->setShadowMapCascadesCount(4);
+    directionalLight1->setShadowMapCascadesCount(3);
     directionalLight1->setCastShadows(true);
     game->addChild(directionalLight1);
 
@@ -72,23 +74,25 @@ void PhysicsMainScene::onReady() {
 
     // build the scene floor node and associated static body
     const auto floorScene = Loader::loadModelFromFile("res/models/floor.glb", true);
-    const auto floorModel = floorScene->getChild("Cube");
-    floorScene->removeChild(floorModel);
-    vector<SubShape> floorSubShapes;
-    floorSubShapes.push_back(SubShape{make_shared<ConvexHullShape>(floorModel)});
-    // add virtual walls
-    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{100.0, 10.0, 1.0}), vec3{0.0, 5.0, -100.0}});
-    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{100.0, 10.0, 1.0}), vec3{0.0, 5.0, 100.0}});
-    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{1.0, 10.0, 100.0}), vec3{100.0, 5.0, 0.0}});
-    floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{1.0, 10.0, 100.0}), vec3{-100.0, 5.0, 0.0}});
-    // the static body to make the floor collides with the player and the crates
-    const auto floor = make_shared<StaticBody>(
-            make_shared<StaticCompoundShape>(floorSubShapes),
-            WORLD,
-            "Floor");
-    floor->addChild(floorModel);
-    floor->setPosition({0.0, -1.0, 0.0});
-    game->addChild(floor);
+    const auto floorModel = floorScene->findFirstChild<MeshInstance>();
+    if (floorModel != nullptr) {
+        floorScene->removeChild(floorModel);
+        vector<SubShape> floorSubShapes;
+        floorSubShapes.push_back(SubShape{make_shared<ConvexHullShape>(floorModel)});
+        // add virtual walls
+        floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{100.0, 10.0, 1.0}), vec3{0.0, 5.0, -100.0}});
+        floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{100.0, 10.0, 1.0}), vec3{0.0, 5.0, 100.0}});
+        floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{1.0, 10.0, 100.0}), vec3{100.0, 5.0, 0.0}});
+        floorSubShapes.push_back(SubShape{make_shared<BoxShape>(vec3{1.0, 10.0, 100.0}), vec3{-100.0, 5.0, 0.0}});
+        // the static body to make the floor collides with the player and the crates
+        const auto floor = make_shared<StaticBody>(
+                make_shared<StaticCompoundShape>(floorSubShapes),
+                WORLD,
+                "Floor");
+        floor->addChild(floorModel);
+        floor->setPosition({0.0, -1.0, 0.0});
+        game->addChild(floor);
+    }
     // printTree();
 
     // connect the player signals for the "push" and "pull" actions
@@ -107,7 +111,7 @@ void PhysicsMainScene::onProcess(float alpha) {
     // detect if a crate is in front on the player
     if (raycast->isColliding()) {
         const auto &collider     = *(raycast->getCollider());
-        auto *      meshInstance = collider.findFirstChild<MeshInstance>();
+        const auto&       meshInstance = collider.findFirstChild<MeshInstance>();
         // if not already outlined activate and set the outline material
         if (!meshInstance->isOutlined()) {
             meshInstance->setOutlined(true);
@@ -133,7 +137,7 @@ void PhysicsMainScene::onProcess(float alpha) {
                         collision.position);
             }
             // outline the colliding crate
-            auto *meshInstance = collision.object->findFirstChild<MeshInstance>();
+            const auto& meshInstance = collision.object->findFirstChild<MeshInstance>();
             meshInstance->setOutlined(true);
             meshInstance->setOutlineMaterial(collisionOutlineMaterial);
             // save the colliding crate to disable the outline during the next frame

@@ -33,7 +33,7 @@ private:
     // material for the selection outline
     shared_ptr<ShaderMaterial> raycastOutlineMaterial;
     // used to save the currently selected crate to disable the outline
-    MeshInstance *previousSelection{nullptr};
+    shared_ptr<MeshInstance> previousSelection{nullptr};
     // information box used when the player collide with a crate
     shared_ptr<GWindow> infoBox;
     // text displaying the colliding object name
