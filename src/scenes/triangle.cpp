@@ -135,12 +135,12 @@ bool TriangleMainScene::onInput(InputEvent &inputEvent) {
     return false;
 }
 
-void TriangleMainScene::onMenuRotate(GEventClick *e) {
+void TriangleMainScene::onMenuRotate() {
     // stop or restart rotation
     rotate = !rotate;
 }
 
-void TriangleMainScene::onMenuShader(GEventClick *e) const {
+void TriangleMainScene::onMenuShader() const {
     // toggle material of the right triangle
     if (triangle1->getMesh()->getSurfaceMaterial(0).get() == material1.get()) {
         triangle1->getMesh()->setSurfaceMaterial(0, material2);

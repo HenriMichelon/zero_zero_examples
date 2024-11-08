@@ -34,7 +34,7 @@ private:
     bool                         rotate{true}; // true if both the triangles rotates
     shared_ptr<GWindow>          menu; // our scene menu
 
-    void onMenuRotate(GEventClick *e = nullptr);
+    void onMenuRotate();
 
-    void onMenuShader(GEventClick *e = nullptr) const;
+    void onMenuShader() const;
 };

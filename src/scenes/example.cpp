@@ -32,7 +32,7 @@ void ExampleMainScene::onReady() {
 
 // build the main menu and the top bar (displayed in the examples)
 void ExampleMainScene::onEnterScene() {
-    menu = make_shared<GWindow>(Rect{250, 0, 500, 1000});
+    menu = make_shared<GWindow>(Rect{250, 500, 500, 1000});
     Application::get().add(menu);
     menu->getWidget().setFont(make_shared<Font>(menu->getWidget().getFont()->getFontName(), 40));
     menu->getWidget().setDrawBackground(false);
@@ -72,11 +72,10 @@ void ExampleMainScene::onEnterScene() {
 
     // menu->hide();
     // topbar->show();
-    // scene->addChild(make_shared<PlatformsScene>());
-    // onMenuTriangle(nullptr);
-    // onMenuAddRemoveChild(nullptr);
-    // onMenuRaycast(nullptr);
-    // onMenuTerrain(nullptr);
+    // onMenuTriangle();
+    // onMenuAddRemoveChild();
+    // onMenuRaycast();
+    // onMenuTerrain();
 }
 
 void ExampleMainScene::onMenu() {
