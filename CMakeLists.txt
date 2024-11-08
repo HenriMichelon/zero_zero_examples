@@ -94,4 +94,7 @@ if(WIN32)
 	)
 endif()
 
+add_compile_definitions(GLM_ENABLE_EXPERIMENTAL ON)
+add_compile_definitions(GLM_ENABLE_CXX_20 ON)
 include(cmake/libraries.cmake)
+

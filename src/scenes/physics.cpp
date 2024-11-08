@@ -1,4 +1,5 @@
 module;
+#include <glm/gtx/quaternion.hpp>
 #include "libraries.h"
 
 module Example;
