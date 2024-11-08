@@ -1,5 +1,4 @@
 #pragma once
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 import std;
 using namespace std;

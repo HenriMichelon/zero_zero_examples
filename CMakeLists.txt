@@ -74,8 +74,16 @@ target_link_libraries(${PROJECT_NAME} ${Z0_TARGET})
 target_compile_options(${PROJECT_NAME} PRIVATE
 		$<$<CXX_COMPILER_ID:GNU>:-Werror>
 		$<$<CXX_COMPILER_ID:Clang>:-Werror>
-		$<$<CXX_COMPILER_ID:MSVC>:/WX>
 )
+if(MSVC)
+	target_compile_options(${PROJECT_NAME} PRIVATE
+			/nologo
+			/W1
+			/WX
+			/std:c++latest
+			/experimental:module
+	)
+endif()
 
 if(WIN32)
 	if(MINGW)
