@@ -5,7 +5,7 @@ export module Example:TopBar;
 
 class TopBar : public GWindow {
 public:
-    TopBar(Object *obj, const Signal::Handler _onQuit);
+    TopBar(Object *obj, const std::function<void()> &_onQuit);
 
     void onCreate() override;
 
@@ -15,7 +15,7 @@ private:
     uint32_t          fps{0};
     shared_ptr<GText> textFPS;
     Object *          onQuitHandler;
-    Signal::Handler   onQuit;
+    std::function<void()>   onQuit;
 
     void onPauseToggle(GEventClick *event) const;
 };

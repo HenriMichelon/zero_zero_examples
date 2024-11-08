@@ -14,7 +14,7 @@ void TriangleMainScene::onReady() {
     const auto camera = make_shared<Camera>();
     camera->setPosition({0.0f, 0.0f, 2.0f});
     addChild(camera);
-    app().activateCamera(camera);
+    Application::get().activateCamera(camera);
 
     // Our triangles are constructed by code
     const vector<Vertex> vertices{
@@ -37,9 +37,9 @@ void TriangleMainScene::onReady() {
     // Standard material for the first triangle
     // With only a color and alpha transparency enabled
     material1 = make_shared<StandardMaterial>();
-    material1->setAlbedoColor(Color{0.75, 0.75, 0.75, 0.75});
-    material1->setTransparency(TRANSPARENCY_ALPHA);
-    material1->setCullMode(CULLMODE_DISABLED);
+    material1->setAlbedoColor({0.75, 0.75, 0.75, 0.75});
+    material1->setTransparency(Transparency::ALPHA);
+    material1->setCullMode(CullMode::DISABLED);
     // We apply the material to the unique surface
     mesh1->setSurfaceMaterial(0, material1);
     // Create, place and add the Node to the scene
@@ -58,8 +58,8 @@ void TriangleMainScene::onReady() {
     material2 = make_shared<ShaderMaterial>(
             "examples/uv_gradient.frag",
             "examples/scale.vert");
-    material2->setTransparency(TRANSPARENCY_ALPHA);
-    material2->setCullMode(CULLMODE_DISABLED);
+    material2->setTransparency(Transparency::ALPHA);
+    material2->setCullMode(CullMode::DISABLED);
     material2->setParameter(0, vec4{0.0f}); // parameter for the fragment shader
     material2->setParameter(1, vec4{0.0f}); // parameter for the vertex shader
     // We apply the material to the unique surface
@@ -73,7 +73,7 @@ void TriangleMainScene::onReady() {
 void TriangleMainScene::onEnterScene() {
     // Build and display the scene menu
     menu = make_shared<GWindow>(Rect{0, 1000 - 550, 150, 500});
-    app().add(menu);
+    Application::get().add(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setDrawBackground(false);
 
@@ -81,18 +81,18 @@ void TriangleMainScene::onEnterScene() {
     const auto menuRotate = make_shared<GButton>();
     menu->getWidget().add(menuRotate, GWidget::TOPCENTER, "200,40");
     menuRotate->add(make_shared<GText>("[SPACE] Toggle rotation"), GWidget::CENTER);
-    menuRotate->connect(GEvent::OnClick, this, Signal::Handler(&TriangleMainScene::onMenuRotate));
+    menuRotate->connect(GEvent::OnClick, [this]{this->onMenuRotate();});
 
     // Toggle right triangle material button
     const auto menuShader = make_shared<GButton>();
     menu->getWidget().add(menuShader, GWidget::TOPCENTER, "200,40");
     menuShader->add(make_shared<GText>("[ENTER] Toggle Shader"), GWidget::CENTER);
-    menuShader->connect(GEvent::OnClick, this, Signal::Handler(&TriangleMainScene::onMenuShader));
+    menuShader->connect(GEvent::OnClick, [this]{this->onMenuShader();});
 }
 
 void TriangleMainScene::onExitScene() {
     // Remove the scene menu before returning to the main menu
-    app().remove(menu);
+    Application::get().remove(menu);
 }
 
 void TriangleMainScene::onPhysicsProcess(const float delta) {
@@ -125,7 +125,7 @@ void TriangleMainScene::onProcess(const float alpha) {
 
 // Input example with the input event system
 bool TriangleMainScene::onInput(InputEvent &inputEvent) {
-    if (inputEvent.getType() == INPUT_EVENT_KEY) {
+    if (inputEvent.getType() == InputEventType::KEY) {
         const auto &eventKey = dynamic_cast<InputEventKey &>(inputEvent);
         if ((eventKey.getKey() == KEY_SPACE) && !eventKey.isPressed()) {
             onMenuRotate();

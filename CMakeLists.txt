@@ -63,7 +63,7 @@ target_sources(${PROJECT_NAME}
 add_shaders(${PROJECT_NAME}_shaders ${SHADERS_PROJECT_BUILD_DIR} ${Z0_SHADERS_DIR} ${GLSL_SOURCE_FILES})
 add_custom_target(post_build_shaders ALL
 		COMMENT "Copying Shaders [${Z0_TARGET}]"
-		COMMAND ${CMAKE_COMMAND} -E copy_directory "${Z0_SHADERS_BUILD_DIR}" ${SHADERS_BUILD_DIR}
+		COMMAND ${CMAKE_COMMAND} -E copy_directory "../${Z0_SHADERS_BUILD_DIR}" ${SHADERS_BUILD_DIR}
 		BYPRODUCTS ${SHADERS_BUILD_DIR}/default.vert.spv
 )
 add_dependencies(${PROJECT_NAME} post_build_shaders)

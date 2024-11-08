@@ -38,15 +38,15 @@ private:
     shared_ptr<TopBar>  topbar;
     shared_ptr<Node>    scene;
 
-    void onMenu(GEventClick *);
+    void onMenu();
 
-    void onMenuQuit(GEventClick *);
+    void onMenuQuit();
 
-    void onMenuTriangle(GEventClick *) const;
+    void onMenuTriangle() const;
 
-    void onMenuAddRemoveChild(GEventClick *) const;
+    void onMenuAddRemoveChild() const;
 
-    void onMenuRaycast(GEventClick *) const;
+    void onMenuRaycast() const;
 
-    void onMenuTerrain(GEventClick *) const;
+    void onMenuTerrain() const;
 };

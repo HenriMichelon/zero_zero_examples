@@ -5,7 +5,7 @@ module Example;
 
 import :TopBar;
 
-TopBar::TopBar(Object *obj, const Signal::Handler _onQuit):
+TopBar::TopBar(Object *obj, const std::function<void()> &_onQuit):
     GWindow(Rect{0, 800, 1000, 100}),
     onQuitHandler{obj},
     onQuit{_onQuit} {
@@ -24,7 +24,7 @@ void TopBar::onCreate() {
     textFPS->setTextColor(Color{1.0, 1.0, 0.2});
 
     const auto buttonQuit = make_shared<GButton>();
-    buttonQuit->connect(GEvent::OnClick, onQuitHandler, onQuit);
+    buttonQuit->connect(GEvent::OnClick, [this]{ this->onQuit(); });
     getWidget().add(buttonQuit, GWidget::LEFTCENTER);
     const auto textQuit = make_shared<GText>("Menu");
     buttonQuit->add(textQuit, GWidget::CENTER);
@@ -33,7 +33,7 @@ void TopBar::onCreate() {
     setY(1000 - getHeight());
 
     const auto buttonPause = make_shared<GButton>();
-    buttonPause->connect(GEvent::OnClick, this, Signal::Handler(&TopBar::onPauseToggle));
+    buttonPause->connect(GEvent::OnClick, [this](Signal::Parameters* p) { this->onPauseToggle(static_cast<GEventClick *>(p)); });
     getWidget().add(buttonPause, GWidget::LEFTCENTER);
     const auto textPause = make_shared<GText>("Pause");
     buttonPause->add(textPause, GWidget::CENTER);
@@ -44,10 +44,10 @@ void TopBar::onCreate() {
 
 void TopBar::updateFPS() {
     if (isVisible()) {
-        if (app().isPaused()) {
+        if (Application::get().isPaused()) {
             textFPS->setText("Pause");
         } else {
-            const auto newFPS = app().getFPS();
+            const auto newFPS = Application::get().getFPS();
             if (newFPS != fps) {
                 fps = newFPS;
                 textFPS->setText(to_string(fps));
@@ -57,7 +57,7 @@ void TopBar::updateFPS() {
 }
 
 void TopBar::onPauseToggle(GEventClick *event) const {
-    Application::get().setPaused(!app().isPaused());
+    Application::get().setPaused(!Application::get().isPaused());
     log("Pause ", to_string(Application::get().isPaused()));
     event->consumed = true;
 }

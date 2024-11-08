@@ -19,7 +19,7 @@ Player::Player():
 
 bool Player::onInput(InputEvent &event) {
     // if the mouse is captured the player can rotate the view with the mouse
-    if (mouseCaptured && (event.getType() == INPUT_EVENT_MOUSE_MOTION)) {
+    if (mouseCaptured && (event.getType() == InputEventType::MOUSE_MOTION)) {
         const auto &eventMouseMotion = dynamic_cast<InputEventMouseMotion &>(event);
         const auto  yRot             = -eventMouseMotion.getRelativeX() * mouseSensitivity;
         rotateY(yRot);
@@ -28,7 +28,7 @@ bool Player::onInput(InputEvent &event) {
         return true;
     }
     // capture the mouse on the first click if not already captured
-    if ((event.getType() == INPUT_EVENT_MOUSE_BUTTON) && (!mouseCaptured)) {
+    if ((event.getType() == InputEventType::MOUSE_BUTTON) && (!mouseCaptured)) {
         const auto &eventMouseButton = dynamic_cast<InputEventMouseButton &>(event);
         if (!eventMouseButton.isPressed()) {
             captureMouse();
@@ -36,7 +36,7 @@ bool Player::onInput(InputEvent &event) {
         }
     }
     // if the mouse is captured process the player keyboard events
-    if ((event.getType() == INPUT_EVENT_KEY) && mouseCaptured) {
+    if ((event.getType() == InputEventType::KEY) && mouseCaptured) {
         const auto &eventKey = dynamic_cast<InputEventKey &>(event);
         // release the mouse with the ESC key
         if ((eventKey.getKey() == KEY_ESCAPE) && !eventKey.isPressed()) {
@@ -52,18 +52,18 @@ bool Player::onInput(InputEvent &event) {
         emit(on_push_pull, &params);
     }
     // if the mouse is captured process the game pad events
-    if ((event.getType() == INPUT_EVENT_GAMEPAD_BUTTON) && mouseCaptured) {
+    if ((event.getType() == InputEventType::GAMEPAD_BUTTON) && mouseCaptured) {
         const auto &eventGamepadButton = dynamic_cast<InputEventGamepadButton &>(event);
         // release the mouse with the START button
-        if ((eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_START) && !eventGamepadButton.isPressed()) {
+        if ((eventGamepadButton.getGamepadButton() == GamepadButton::START) && !eventGamepadButton.isPressed()) {
             releaseMouse();
             return true;
         }
         // check if the player want to pull a push a crate with RL or RB
         auto params = PushOrPullAction{
-                .push = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_RB) && eventGamepadButton.
+                .push = (eventGamepadButton.getGamepadButton() == GamepadButton::RB) && eventGamepadButton.
                 isPressed(),
-                .pull = (eventGamepadButton.getGamepadButton() == GAMEPAD_BUTTON_LB) && eventGamepadButton.
+                .pull = (eventGamepadButton.getGamepadButton() == GamepadButton::LB) && eventGamepadButton.
                 isPressed()
         };
         // send the push/pull state to the scene
@@ -98,7 +98,7 @@ void Player::onPhysicsProcess(const float delta) {
     // get the input vector, first from the game pad, second for the keyboard
     vec2 input = VEC2ZERO;
     if (gamepad != -1) {
-        input = Input::getGamepadVector(gamepad, GAMEPAD_AXIS_LEFT);
+        input = Input::getGamepadVector(gamepad, GamepadAxisJoystick::LEFT);
     }
     if (input == VEC2ZERO) {
         input = Input::getKeyboardVector(KEY_A, KEY_D, KEY_W, KEY_S);
@@ -111,14 +111,14 @@ void Player::onPhysicsProcess(const float delta) {
         // we move if the player is on the ground or on an object
         currentState.velocity = getGroundVelocity();
         // jump !
-        if (Input::isKeyPressed(KEY_SPACE) || Input::isGamepadButtonPressed(gamepad, GAMEPAD_BUTTON_A)) {
+        if (Input::isKeyPressed(KEY_SPACE) || Input::isGamepadButtonPressed(gamepad, GamepadButton::A)) {
             currentState.velocity += (jumpSpeed + currentMovementSpeed / 2.0f) * getUpVector();
         }
     } else {
         // preserve the vertical velocity if we are in the air
         currentState.velocity = currentVerticalVelocity;
         // we can't escape gravity
-        currentState.velocity += app().getGravity() * getUpVector() * delta;
+        currentState.velocity += Application::get().getGravity() * getUpVector() * delta;
     }
 
     // check if the player want to move
@@ -155,7 +155,7 @@ void Player::onPhysicsProcess(const float delta) {
     if (mouseCaptured) {
         vec2 inputDir = VEC2ZERO;
         if (gamepad != -1) {
-            inputDir = Input::getGamepadVector(gamepad, GAMEPAD_AXIS_RIGHT);
+            inputDir = Input::getGamepadVector(gamepad, GamepadAxisJoystick::RIGHT);
         }
         if (inputDir == VEC2ZERO) {
             inputDir = Input::getKeyboardVector(KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN);
@@ -201,7 +201,7 @@ void Player::onReady() {
     captureMouse();
 
     // create the player node
-    model = Loader::loadModelFromFile("app://res/models/capsule.glb", true);
+    model = Loader::load("app://res/models/capsule.glb");
     model->setPosition({0.0, -1.8 / 2.0, 0.0});
     addChild(model);
 
@@ -221,11 +221,9 @@ void Player::onReady() {
                 );
         cameraCollisionSensor->setPosition({0.0, attachementYOffset, attachementZOffset / 2.0f - 0.5f});
         cameraCollisionSensor->connect(on_collision_starts,
-                                       this,
-                                       Signal::Handler(&Player::onCameraCollision));
+                                       [this](Signal::Parameters*p){this->onCameraCollision((const Collision *)p);});
         cameraCollisionSensor->connect(on_collision_persists,
-                                       this,
-                                       Signal::Handler(&Player::onCameraCollision));
+                                       [this](Signal::Parameters*p){this->onCameraCollision((const Collision *)p);});
         addChild(cameraCollisionSensor);
     }
 
@@ -238,7 +236,7 @@ void Player::onReady() {
     camera->setPerspectiveProjection(75.0, 0.1, 500.0);
     cameraPivot->addChild(camera);
     // replace the current camera with the player camera
-    app().activateCamera(camera);
+    Application::get().activateCamera(camera);
 
     // display information about the game pads
     log(to_string(Input::getConnectedJoypads()), "connected gamepad(s)");
@@ -255,13 +253,13 @@ void Player::onReady() {
 }
 
 void Player::releaseMouse() {
-    Input::setMouseMode(MOUSE_MODE_VISIBLE);
+    Input::setMouseMode(MouseMode::VISIBLE);
     mouseCaptured = false;
 }
 
 void Player::captureMouse() {
     if (!mouseCaptured) {
-        Input::setMouseMode(MOUSE_MODE_HIDDEN_CAPTURED);
+        Input::setMouseMode(MouseMode::HIDDEN_CAPTURED);
         mouseCaptured = true;
     }
 }

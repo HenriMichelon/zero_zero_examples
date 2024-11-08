@@ -27,12 +27,12 @@ void AddRemoveChildMainScene::onReady() {
     camera2->setPosition({0.0f, 10.0f, 1.0f});
     addChild(camera2);
     // replace the main menu camera by the default camera
-    app().activateCamera(camera1);
+    Application::get().activateCamera(camera1);
     currentCamera = camera1;
 
     // load all the models from files
-    sphereModel = Loader::loadModelFromFile("app://res/models/sphere.glb");
-    crateModel  = Loader::loadModelFromFile("app://res/models/crate.glb");
+    sphereModel = Loader::load("app://res/models/sphere.glb");
+    crateModel  = Loader::load("app://res/models/crate.glb");
 
     onMenuAdd(nullptr);
 }
@@ -66,29 +66,29 @@ void AddRemoveChildMainScene::onPhysicsProcess(const float delta) {
 void AddRemoveChildMainScene::onEnterScene() {
     // scene main menu
     menu = make_shared<GWindow>(Rect{0, 1000 - 550, 150, 500});
-    app().add(menu);
+    Application::get().add(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setDrawBackground(false);
     // add a node button
     const auto menuAdd = make_shared<GButton>();
     menu->getWidget().add(menuAdd, GWidget::TOPCENTER, "200,40");
     menuAdd->add(make_shared<GText>("[ENTER] Add node"), GWidget::CENTER);
-    menuAdd->connect(GEvent::OnClick, this, SignalHandler(&AddRemoveChildMainScene::onMenuAdd));
+    menuAdd->connect(GEvent::OnClick, [this]{this->onMenuAdd();});
     // remove a node button
     const auto menuRemove = make_shared<GButton>();
     menu->getWidget().add(menuRemove, GWidget::TOPCENTER, "200,40");
     menuRemove->add(make_shared<GText>("[BACKSPACE] Remove node"), GWidget::CENTER);
-    menuRemove->connect(GEvent::OnClick, this, SignalHandler(&AddRemoveChildMainScene::onMenuRemove));
+    menuRemove->connect(GEvent::OnClick, [this]{this->onMenuRemove();});
     // toggle cameras button
     const auto menuCamera = make_shared<GButton>();
     menu->getWidget().add(menuCamera, GWidget::TOPCENTER, "200,40");
     menuCamera->add(make_shared<GText>("[SPACE] Toggle camera"), GWidget::CENTER);
-    menuCamera->connect(GEvent::OnClick, this, SignalHandler(&AddRemoveChildMainScene::onMenuCamera));
+    menuCamera->connect(GEvent::OnClick, [this]{this->onMenuCamera();});
 }
 
 void AddRemoveChildMainScene::onExitScene() {
     // remove the scene menu before returning to the main menu
-    app().remove(menu);
+    Application::get().remove(menu);
 }
 
 void AddRemoveChildMainScene::onMenuAdd(GEventClick *e) {
@@ -104,9 +104,9 @@ void AddRemoveChildMainScene::onMenuRemove(GEventClick *e) {
 void AddRemoveChildMainScene::onMenuCamera(GEventClick *e) {
     if (camera1->isActive()) {
         currentCamera = camera2;
-        app().activateCamera(camera2);
+        Application::get().activateCamera(camera2);
     } else {
         currentCamera = camera1;
-        app().activateCamera(camera1);
+        Application::get().activateCamera(camera1);
     }
 }

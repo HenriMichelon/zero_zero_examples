@@ -14,13 +14,13 @@ PhysicsMainScene::PhysicsMainScene():
 
 void PhysicsMainScene::onReady() {
     // make the scene node not pauseable
-    setProcessMode(PROCESS_MODE_ALWAYS);
+    setProcessMode(ProcessMode::ALWAYS);
     // add the global environement
     addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, .1f}));
 
     // add a game node and make it pausable since the scene can't be paused
     const auto game = make_shared<Node>("Game");
-    game->setProcessMode(PROCESS_MODE_PAUSABLE);
+    game->setProcessMode(ProcessMode::PAUSABLE);
     addChild(game);
 
     // add the Sun
@@ -47,7 +47,7 @@ void PhysicsMainScene::onReady() {
     player->addChild(raycast);
 
     // generates crates nodes with random positions
-    const auto &crateScene = Loader::loadModelFromFile("app://res/models/crate.glb", true);
+    const auto &crateScene = Loader::load("app://res/models/crate.glb");
     const auto &crateModel = crateScene->getChild("Crate");
     for (int x = 0; x < 4; x++) {
         for (int z = 0; z < 4; z++) {
@@ -72,7 +72,7 @@ void PhysicsMainScene::onReady() {
     OutlineMaterials::add(collisionOutlineMaterial);
 
     // build the scene floor node and associated static body
-    const auto& floorScene = Loader::loadModelFromFile("app://res/models/playground.glb", false);
+    const auto& floorScene = Loader::load("app://res/models/playground.glb");
     auto floorModel = floorScene->findFirstChild("Box001_asphalt_0");
     if (floorModel == nullptr) die("Floor not found");
     vector<SubShape> floorSubShapes;
@@ -92,7 +92,7 @@ void PhysicsMainScene::onReady() {
     game->addChild(floor);
 
     // connect the player signals for the "push" and "pull" actions
-    player->connect(Player::on_push_pull, this, SignalHandler(&PhysicsMainScene::onPushOrPull));
+    player->connect(Player::on_push_pull, [this](Signal::Parameters*p){this->onPushOrPull((Player::PushOrPullAction *)p);});
 }
 
 void PhysicsMainScene::onProcess(float alpha) {
@@ -160,7 +160,7 @@ void PhysicsMainScene::onProcess(float alpha) {
 void PhysicsMainScene::onEnterScene() {
     // add the scene menu
     menu = make_shared<GWindow>(Rect{0, 850, 130, 100});
-    app().add(menu);
+    Application::get().add(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setTransparency(0.2f);
 
@@ -174,7 +174,7 @@ void PhysicsMainScene::onEnterScene() {
     // build the information box dispalyed when we collide a crate
     infoBox = make_shared<GWindow>(Rect{0, 800, 200, 100});
     infoBox->hide();
-    app().add(infoBox);
+    Application::get().add(infoBox);
     infoText = make_shared<GText>("Info---------------------");
     infoText->setTextColor({0.8f, 0.2f, 0.2f, 1.0f});
     infoBox->getWidget().add(infoText, GWidget::TOPCENTER);
@@ -188,8 +188,8 @@ void PhysicsMainScene::onEnterScene() {
 
 void PhysicsMainScene::onExitScene() {
     // remove the scene menu and info box before returning to the main menu
-    app().remove(menu);
-    app().remove(infoBox);
+    Application::get().remove(menu);
+    Application::get().remove(infoBox);
 }
 
 // signal handler called on a player action
