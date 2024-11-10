@@ -24,7 +24,7 @@ void GMenuEntry::onCreate() {
 void ExampleMainScene::onReady() {
     // create a camera to view the skybox
     addChild(make_shared<Camera>("Menu camera"));
-    // create a beautiul skybox
+    // create a beautiful skybox
     addChild(make_shared<Skybox>("app://res/textures/StandardCubeMap.jpg"));
     // create a scene to start the other scenes
     scene = make_shared<Node>();
@@ -75,7 +75,7 @@ void ExampleMainScene::onEnterScene() {
     // topbar->show();
     // onMenuTriangle();
     // onMenuAddRemoveChild();
-    onMenuRaycast();
+    // onMenuRaycast();
     // onMenuTerrain();
 }
 
