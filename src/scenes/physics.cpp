@@ -17,7 +17,7 @@ void PhysicsMainScene::onReady() {
     // make the scene node not pauseable
     setProcessMode(ProcessMode::ALWAYS);
     // add the global environement
-    addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, .1f}));
+    addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, 1.1f}));
 
     // add a game node and make it pausable since the scene can't be paused
     const auto game = make_shared<Node>("Game");
@@ -28,7 +28,7 @@ void PhysicsMainScene::onReady() {
     const auto directionalLight1 = make_shared<DirectionalLight>(vec4{1.0f, 1.0f, 1.0f, 0.8f});
     directionalLight1->setRotation(radians(vec3{-45.0f, 138.0f, 0.0f}));
     directionalLight1->setCastShadows(true);
-    game->addChild(directionalLight1);
+    // game->addChild(directionalLight1);
 
     // add the player
     player = make_shared<Player>();
@@ -41,9 +41,9 @@ void PhysicsMainScene::onReady() {
             vec4{1.0f, 1.0f, 0.0f, 2.0f});
     spotLight1->setPosition({0.0, 1.0, -0.5});
     spotLight1->rotateX(radians(-20.0f));
-    player->addChild(spotLight1);
+    // player->addChild(spotLight1);
 
-    // raycast used to detect crates in front of the palyer
+    // raycast used to detect crates in front of the player
     raycast = make_shared<RayCast>(vec3{0.0f, 0.0f, -100.0f}, BODIES);
     player->addChild(raycast);
 
@@ -64,13 +64,13 @@ void PhysicsMainScene::onReady() {
     auto& outlineMaterials = Application::get().getOutlineMaterials();
     raycastOutlineMaterial = make_shared<ShaderMaterial>(outlineMaterials.get(0));
     raycastOutlineMaterial->setParameter(0, {1.0, 0.0, 0.0, 1.0});
-    raycastOutlineMaterial->setParameter(1, vec4{0.5});
+    raycastOutlineMaterial->setParameter(1, vec4{0.005});
     outlineMaterials.add(raycastOutlineMaterial);
 
     // create material to outline the crate in collision with the player
     collisionOutlineMaterial = make_shared<ShaderMaterial>(outlineMaterials.get(0));
     collisionOutlineMaterial->setParameter(0, {0.0, 1.0, 0.0, 1.0});
-    collisionOutlineMaterial->setParameter(1, vec4{0.2});
+    collisionOutlineMaterial->setParameter(1, vec4{0.02});
     outlineMaterials.add(collisionOutlineMaterial);
 
     // build the scene floor node and associated static body

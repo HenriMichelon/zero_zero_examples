@@ -4,14 +4,15 @@
 import Example;
 
 const ApplicationConfig applicationConfig{
-        .appName = "Example App",
-        .appDir = "..",
-        .windowMode = WindowMode::WINDOWED,
-        .windowWidth = 1280,
-        .windowHeight = 768,
-        .defaultFontName = "app://res/Signwood.ttf",
-        .defaultFontSize = 25,
-        .loggingMode = LOGGING_MODE_FILE | LOGGING_MODE_WINDOW | LOGGING_MODE_STDOUT
+    .appName = "Example App",
+    .appDir = "..",
+    .windowMode = WindowMode::WINDOWED,
+    .windowWidth = 1280,
+    .windowHeight = 768,
+    .defaultFontName = "app://res/Signwood.ttf",
+    .defaultFontSize = 25,
+    .loggingMode = LOGGING_MODE_FILE | LOGGING_MODE_WINDOW | LOGGING_MODE_STDOUT,
+    .useDepthPrepass = true,
 };
 
 // Register the examples node classes for the JSON loading

@@ -71,17 +71,22 @@ add_dependencies(post_build_shaders ${PROJECT_NAME}_shaders)
 add_dependencies(${PROJECT_NAME}_shaders ${Z0_TARGET})
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} ${Z0_TARGET})
-target_compile_options(${PROJECT_NAME} PRIVATE
-		$<$<CXX_COMPILER_ID:GNU>:-Werror>
-		$<$<CXX_COMPILER_ID:Clang>:-Werror>
-)
 if(MSVC)
 	target_compile_options(${PROJECT_NAME} PRIVATE
-			/nologo
-			/W1
-			/WX
-			/std:c++latest
-			/experimental:module
+		/nologo
+		/W1
+		/WX
+		/std:c++latest
+		/experimental:module
+	)
+endif()
+if(Clang)
+	target_compile_options(${Z0_TARGET} PRIVATE
+		-02
+		-d
+		-Wno-deprecated-declarations
+		-Wno-nullability-completeness
+		-Werror
 	)
 endif()
 
@@ -90,11 +95,10 @@ if(WIN32)
 		target_link_options(${PROJECT_NAME} PRIVATE "-mwindows")
 	endif()
 	set_target_properties(${PROJECT_NAME} PROPERTIES
-			WIN32_EXECUTABLE TRUE
+		WIN32_EXECUTABLE TRUE
 	)
 endif()
 
 add_compile_definitions(GLM_ENABLE_EXPERIMENTAL ON)
 add_compile_definitions(GLM_ENABLE_CXX_20 ON)
 include(cmake/libraries.cmake)
-
