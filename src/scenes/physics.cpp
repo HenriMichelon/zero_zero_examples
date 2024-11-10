@@ -61,16 +61,17 @@ void PhysicsMainScene::onReady() {
     }
 
     // create the material to outline the crates in front of the player
-    raycastOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get(0));
+    auto& outlineMaterials = Application::get().getOutlineMaterials();
+    raycastOutlineMaterial = make_shared<ShaderMaterial>(outlineMaterials.get(0));
     raycastOutlineMaterial->setParameter(0, {1.0, 0.0, 0.0, 1.0});
-    raycastOutlineMaterial->setParameter(1, vec4{0.005});
-    OutlineMaterials::add(raycastOutlineMaterial);
+    raycastOutlineMaterial->setParameter(1, vec4{0.5});
+    outlineMaterials.add(raycastOutlineMaterial);
 
     // create material to outline the crate in collision with the player
-    collisionOutlineMaterial = make_shared<ShaderMaterial>(OutlineMaterials::get(0));
+    collisionOutlineMaterial = make_shared<ShaderMaterial>(outlineMaterials.get(0));
     collisionOutlineMaterial->setParameter(0, {0.0, 1.0, 0.0, 1.0});
-    collisionOutlineMaterial->setParameter(1, vec4{0.02});
-    OutlineMaterials::add(collisionOutlineMaterial);
+    collisionOutlineMaterial->setParameter(1, vec4{0.2});
+    outlineMaterials.add(collisionOutlineMaterial);
 
     // build the scene floor node and associated static body
     const auto& floorScene = Loader::load("app://res/models/playground.glb");
@@ -114,6 +115,7 @@ void PhysicsMainScene::onProcess(float alpha) {
             meshInstance->setOutlined(true);
             meshInstance->setOutlineMaterial(raycastOutlineMaterial);
             previousSelection = meshInstance;
+            //log("Collide ", meshInstance->toString(), " ",  to_string(meshInstance->getId()));
         }
     }
     // clear all the previously colliding crates
