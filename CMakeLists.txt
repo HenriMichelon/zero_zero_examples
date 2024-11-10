@@ -4,6 +4,15 @@ cmake_policy(SET CMP0002 NEW)
 project(examples)
 include(.env.cmake)
 
+if(NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE Release)
+endif()
+
+# Auto detect Vulkan SDK, required to compile the shaders
+find_package(Vulkan REQUIRED)
+add_compile_definitions(GLM_ENABLE_EXPERIMENTAL)
+add_compile_definitions(GLM_ENABLE_CXX_20 ON)
+
 # Engine sources
 add_subdirectory(${Z0_PROJECT_DIR} external_lib_build)
 set(Z0_INCLUDE_DIR ${Z0_PROJECT_DIR}/include)
@@ -73,21 +82,45 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DI
 target_link_libraries(${PROJECT_NAME} ${Z0_TARGET})
 if(MSVC)
 	target_compile_options(${PROJECT_NAME} PRIVATE
-		/nologo
-		/W1
-		/WX
-		/std:c++latest
-		/experimental:module
+			/nologo
+			/W2
+			/WX
+			/std:c++latest
+			/experimental:module
+			/fp:fast
 	)
-endif()
-if(Clang)
-	target_compile_options(${Z0_TARGET} PRIVATE
-		-02
-		-d
-		-Wno-deprecated-declarations
-		-Wno-nullability-completeness
-		-Werror
+	if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+		target_compile_options(${PROJECT_NAME} PRIVATE
+				/Od
+				/GS
+				/Ob0
+				/RTC1
+		)
+	else()
+		target_compile_options(${PROJECT_NAME} PRIVATE
+				/O2
+				/GS-
+				/Gy
+				/Oi
+				/Ot
+		)
+	endif()
+	set(USE_STATIC_MSVC_RUNTIME_LIBRARY OFF)
+else()
+	target_compile_options(${PROJECT_NAME} PRIVATE
+			-Wno-deprecated-declarations
+			-Wno-nullability-completeness
+			-Werror
 	)
+	if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+		target_compile_options(${PROJECT_NAME} PRIVATE
+				-O0
+		)
+	else()
+		target_compile_options(${PROJECT_NAME} PRIVATE
+				-O3
+		)
+	endif()
 endif()
 
 if(WIN32)
@@ -99,6 +132,3 @@ if(WIN32)
 	)
 endif()
 
-add_compile_definitions(GLM_ENABLE_EXPERIMENTAL ON)
-add_compile_definitions(GLM_ENABLE_CXX_20 ON)
-include(cmake/libraries.cmake)

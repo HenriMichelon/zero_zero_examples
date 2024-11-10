@@ -5,7 +5,7 @@ import Example;
 
 const ApplicationConfig applicationConfig{
     .appName = "Example App",
-    .appDir = "..",
+    .appDir = ".",
     .windowMode = WindowMode::WINDOWED,
     .windowWidth = 1280,
     .windowHeight = 768,
