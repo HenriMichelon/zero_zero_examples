@@ -9,6 +9,7 @@ const ApplicationConfig applicationConfig{
     .windowMode = WindowMode::WINDOWED,
     .windowWidth = 1280,
     .windowHeight = 768,
+    .windowMonitor = 1,
     .defaultFontName = "app://res/Signwood.ttf",
     .defaultFontSize = 25,
     .loggingMode = LOGGING_MODE_FILE | LOGGING_MODE_WINDOW | LOGGING_MODE_STDOUT,

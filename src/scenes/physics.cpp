@@ -17,7 +17,7 @@ void PhysicsMainScene::onReady() {
     // make the scene node not pauseable
     setProcessMode(ProcessMode::ALWAYS);
     // add the global environement
-    addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, 1.1f}));
+    addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, 0.1f}));
 
     // add a game node and make it pausable since the scene can't be paused
     const auto game = make_shared<Node>("Game");
@@ -28,7 +28,7 @@ void PhysicsMainScene::onReady() {
     const auto directionalLight1 = make_shared<DirectionalLight>(vec4{1.0f, 1.0f, 1.0f, 0.8f});
     directionalLight1->setRotation(radians(vec3{-45.0f, 138.0f, 0.0f}));
     directionalLight1->setCastShadows(true);
-    // game->addChild(directionalLight1);
+    game->addChild(directionalLight1);
 
     // add the player
     player = make_shared<Player>();
