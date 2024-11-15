@@ -48,7 +48,7 @@ void PhysicsMainScene::onReady() {
     player->addChild(raycast);
 
     // generates crates nodes with random positions
-    const auto &crateScene = Loader::load("app://res/models/crate.glb");
+    const auto &crateScene = Loader::load("app://res/models/crate.zscene");
     const auto &crateModel = crateScene->getChild("Crate");
     for (int x = 0; x < 4; x++) {
         for (int z = 0; z < 4; z++) {
@@ -74,7 +74,7 @@ void PhysicsMainScene::onReady() {
     outlineMaterials.add(collisionOutlineMaterial);
 
     // build the scene floor node and associated static body
-    const auto& floorScene = Loader::load("app://res/models/playground.glb");
+    const auto& floorScene = Loader::load("app://res/models/playground.zscene");
     auto floorModel = floorScene->findFirstChild("Box001_asphalt_0");
     if (floorModel == nullptr) die("Floor not found");
     vector<SubShape> floorSubShapes;

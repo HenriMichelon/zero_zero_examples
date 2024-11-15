@@ -33,7 +33,7 @@ include(cmake/shaders.cmake)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_COMPILE_WARNING_AS_ERROR OFF)
+set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 file(GLOB_RECURSE GLSL_SOURCE_FILES
@@ -68,6 +68,7 @@ target_sources(${PROJECT_NAME}
 		${SRC_DIR}/nodes/player.cppm
 		${SRC_DIR}/nodes/terrain.cppm
 )
+compile_options(${PROJECT_NAME})
 
 add_shaders(${PROJECT_NAME}_shaders ${SHADERS_PROJECT_BUILD_DIR} ${Z0_SHADERS_DIR} ${GLSL_SOURCE_FILES})
 add_custom_target(post_build_shaders ALL
@@ -77,51 +78,9 @@ add_custom_target(post_build_shaders ALL
 )
 add_dependencies(${PROJECT_NAME} post_build_shaders)
 add_dependencies(post_build_shaders ${PROJECT_NAME}_shaders)
-add_dependencies(${PROJECT_NAME}_shaders ${Z0_TARGET})
+add_dependencies(${PROJECT_NAME}_shaders ZeroZeroEngine)
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} ${Z0_TARGET})
-if(MSVC)
-	target_compile_options(${PROJECT_NAME} PRIVATE
-			/nologo
-			/W2
-			/WX
-			/std:c++latest
-			/experimental:module
-			/fp:fast
-	)
-	if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-		target_compile_options(${PROJECT_NAME} PRIVATE
-				/Od
-				/GS
-				/Ob0
-				/RTC1
-		)
-	else()
-		target_compile_options(${PROJECT_NAME} PRIVATE
-				/O2
-				/GS-
-				/Gy
-				/Oi
-				/Ot
-		)
-	endif()
-	set(USE_STATIC_MSVC_RUNTIME_LIBRARY OFF)
-else()
-	target_compile_options(${PROJECT_NAME} PRIVATE
-			-Wno-deprecated-declarations
-			-Wno-nullability-completeness
-			-Werror
-	)
-	if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-		target_compile_options(${PROJECT_NAME} PRIVATE
-				-O0
-		)
-	else()
-		target_compile_options(${PROJECT_NAME} PRIVATE
-				-O3
-		)
-	endif()
-endif()
 
 if(WIN32)
 	if(MINGW)

@@ -31,8 +31,8 @@ void AddRemoveChildMainScene::onReady() {
     currentCamera = camera1;
 
     // load all the models from files
-    sphereModel = Loader::load("app://res/models/sphere.glb");
-    crateModel  = Loader::load("app://res/models/crate.glb");
+    sphereModel = Loader::load("app://res/models/sphere.zscene");
+    crateModel  = Loader::load("app://res/models/crate.zscene");
 
     onMenuAdd(nullptr);
 }
