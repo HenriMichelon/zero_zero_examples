@@ -10,7 +10,6 @@ endif()
 
 # Auto detect Vulkan SDK, required to compile the shaders
 find_package(Vulkan REQUIRED)
-#add_compile_definitions(JPH_DEBUG_RENDERER)
 add_compile_definitions(GLM_ENABLE_EXPERIMENTAL)
 add_compile_definitions(GLM_ENABLE_CXX_20 ON)
 
