@@ -10,6 +10,7 @@ endif()
 
 # Auto detect Vulkan SDK, required to compile the shaders
 find_package(Vulkan REQUIRED)
+#add_compile_definitions(JPH_DEBUG_RENDERER)
 add_compile_definitions(GLM_ENABLE_EXPERIMENTAL)
 add_compile_definitions(GLM_ENABLE_CXX_20 ON)
 
@@ -78,7 +79,7 @@ add_custom_target(post_build_shaders ALL
 )
 add_dependencies(${PROJECT_NAME} post_build_shaders)
 add_dependencies(post_build_shaders ${PROJECT_NAME}_shaders)
-add_dependencies(${PROJECT_NAME}_shaders ZeroZeroEngine)
+add_dependencies(${PROJECT_NAME}_shaders ${Z0_TARGET})
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR} ${Z0_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} ${Z0_TARGET})
 

@@ -33,7 +33,7 @@ public:
     void releaseMouse();
 
 protected:
-    bool cameraCollisions{true};
+    bool cameraCollisions{false};
 
 private:
     // movement and view state

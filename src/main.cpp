@@ -14,6 +14,17 @@ const ApplicationConfig applicationConfig{
     .defaultFontSize = 25,
     .loggingMode = LOGGING_MODE_FILE | LOGGING_MODE_WINDOW | LOGGING_MODE_STDOUT,
     .useDepthPrepass = true,
+    .debugPhysics = false,
+    .debugPhysicsConfig = {
+        .updateDelay = 10,
+        .drawCoordinateSystem = true,
+        .drawShape = true,
+        .drawShapeColor = PhysicsDebugColor::ShapeTypeColor,
+        .drawBoundingBox = false,
+        .drawVelocity = false,
+        .drawMassAndInertia = false,
+        .drawSleepStats = false,
+    }
 };
 
 // Register the examples node classes for the JSON loading

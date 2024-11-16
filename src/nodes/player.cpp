@@ -11,7 +11,7 @@ using namespace z0;
 Player::Player():
     // the player have a physic body for the collisions
     Character{
-            make_shared<BoxShape>(vec3{0.8f, 2.0f, 0.8f}),
+            make_shared<BoxShape>(vec3{1.0f, 2.0f, 1.0f}),
             PLAYER,
             WORLD | BODIES
     } {
