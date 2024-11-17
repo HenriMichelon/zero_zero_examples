@@ -14,16 +14,20 @@ const ApplicationConfig applicationConfig{
     .defaultFontSize = 25,
     .loggingMode = LOGGING_MODE_FILE | LOGGING_MODE_WINDOW | LOGGING_MODE_STDOUT,
     .useDepthPrepass = true,
-    .debugPhysics = false,
-    .debugPhysicsConfig = {
+    .debug = true,
+    .debugConfig = {
         .updateDelay = 10,
+        .drawWithDepthTest = true,
         .drawCoordinateSystem = true,
+        .drawCoordinateSystemPosition = vec3{0.0f, 2.0f, 0.0f},
+        .drawCoordinateSystemScale = 5.0f,
         .drawShape = true,
-        .drawShapeColor = PhysicsDebugColor::ShapeTypeColor,
+        .drawShapeColor = DebugShapeColor::ShapeTypeColor,
         .drawBoundingBox = false,
         .drawVelocity = false,
         .drawMassAndInertia = false,
         .drawSleepStats = false,
+        .drawCenterOfMassTransform = false
     }
 };
 
