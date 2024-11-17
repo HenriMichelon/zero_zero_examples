@@ -93,6 +93,9 @@ void PhysicsMainScene::onReady() {
     // floor->setPosition({0.0f, 5.0f, 0.0f});
     game->addChild(floor);
 
+    const auto crates = findAllChildren<RigidBody>();
+    cout << "crates size: " << crates.size() << endl;
+
     // connect the player signals for the "push" and "pull" actions
     player->connect(Player::on_push_pull, [this](Signal::Parameters*p){this->onPushOrPull((Player::PushOrPullAction *)p);});
 }
