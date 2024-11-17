@@ -39,7 +39,7 @@ void TopBar::onCreate() {
     buttonPause->add(textPause, GWidget::CENTER);
     buttonPause->setSize(textPause->getWidth() + 20, textPause->getHeight() + 20);
 
-    //hide();
+    hide();
 }
 
 void TopBar::updateFPS() {

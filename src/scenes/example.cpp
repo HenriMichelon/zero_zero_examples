@@ -75,7 +75,7 @@ void ExampleMainScene::onEnterScene() {
     // topbar->show();
     // onMenuTriangle();
     // onMenuAddRemoveChild();
-    onMenuRaycast();
+    // onMenuRaycast();
     // onMenuTerrain();
 }
 
