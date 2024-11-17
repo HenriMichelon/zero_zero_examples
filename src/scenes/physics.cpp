@@ -16,10 +16,10 @@ PhysicsMainScene::PhysicsMainScene():
 void PhysicsMainScene::onReady() {
     // make the scene node not pauseable
     setProcessMode(ProcessMode::ALWAYS);
-    // add the global environement
+    // add the global environment
     addChild(make_shared<Environment>(vec4{1.0, 1.0, 1.0, 0.1f}));
 
-    // add a game node and make it pausable since the scene can't be paused
+    // add a game node and make it pauseable since the scene can't be paused
     const auto game = make_shared<Node>("Game");
     game->setProcessMode(ProcessMode::PAUSABLE);
     addChild(game);
@@ -44,7 +44,7 @@ void PhysicsMainScene::onReady() {
     // player->addChild(spotLight1);
 
     // raycast used to detect crates in front of the player
-    raycast = make_shared<RayCast>(vec3{0.0f, 0.0f, -100.0f}, BODIES);
+    raycast = make_shared<RayCast>(AXIS_FRONT * 50.0f, BODIES);
     player->addChild(raycast);
 
     // generates crates nodes with random positions

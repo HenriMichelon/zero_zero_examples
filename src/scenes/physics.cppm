@@ -28,7 +28,7 @@ private:
     shared_ptr<GWindow> menu;
     // ou player node
     shared_ptr<Player> player;
-    // raycast used to outline the crate in fron of the player
+    // raycast used to outline the crate in front of the player
     shared_ptr<RayCast> raycast;
     // material for the selection outline
     shared_ptr<ShaderMaterial> raycastOutlineMaterial;
