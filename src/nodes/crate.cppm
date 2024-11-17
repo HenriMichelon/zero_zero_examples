@@ -7,4 +7,5 @@ export module Example:Crate;
 export class Crate : public z0::RigidBody {
 public:
     Crate();
+    Crate(const shared_ptr<Node>& body);
 };

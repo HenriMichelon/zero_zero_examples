@@ -52,8 +52,8 @@ void PhysicsMainScene::onReady() {
     const auto &crateModel = crateScene->getChild("Crate");
     for (int x = 0; x < 4; x++) {
         for (int z = 0; z < 4; z++) {
+            const auto model = crateModel->duplicate();
             auto body  = make_shared<Crate>();
-            auto model = crateModel->duplicate();
             body->addChild(model);
             body->setPosition({x * 5 - 1.5 * 5, 1.0 + rand() % 5, -z * 5 + 5});
             game->addChild(body);
@@ -92,9 +92,6 @@ void PhysicsMainScene::onReady() {
     floor->addChild(floorScene);
     // floor->setPosition({0.0f, 5.0f, 0.0f});
     game->addChild(floor);
-
-    const auto crates = findAllChildren<RigidBody>();
-    cout << "crates size: " << crates.size() << endl;
 
     // connect the player signals for the "push" and "pull" actions
     player->connect(Player::on_push_pull, [this](Signal::Parameters*p){this->onPushOrPull((Player::PushOrPullAction *)p);});

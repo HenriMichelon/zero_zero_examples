@@ -21,6 +21,7 @@ const ApplicationConfig applicationConfig{
         .drawCoordinateSystem = true,
         .drawCoordinateSystemPosition = vec3{0.0f},
         .drawCoordinateSystemScale = 2.0f,
+        .drawRayCast = true,
         .drawGetSupportingFace = false,
         .drawShape = false,
         .drawShapeColor = DebugShapeColor::ShapeTypeColor,

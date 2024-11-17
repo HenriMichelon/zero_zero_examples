@@ -6,6 +6,15 @@ module Example;
 import :Layers;
 import :Crate;
 
+Crate::Crate(const shared_ptr<Node>& body):
+    RigidBody{
+        make_shared<z0::ConvexHullShape>(body),
+            BODIES,
+            WORLD | BODIES | PLAYER,
+            "CrateBody"
+    } {
+}
+
 Crate::Crate():
     RigidBody{
             make_shared<z0::BoxShape>(vec3{2.0f, 2.0f, 2.0f}),
