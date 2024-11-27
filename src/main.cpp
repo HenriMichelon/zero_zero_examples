@@ -14,7 +14,7 @@ const ApplicationConfig applicationConfig{
     .defaultFontSize = 25,
     .loggingMode = LOGGING_MODE_FILE | LOGGING_MODE_WINDOW | LOGGING_MODE_STDOUT,
     .useDepthPrepass = true,
-    .debug = true,
+    .debug = false,
     .debugConfig = {
         .updateDelay = 10,
         .drawWithDepthTest = true,

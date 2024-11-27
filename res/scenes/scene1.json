@@ -2,12 +2,12 @@
     "nodes": [
         {
             "id" : "crateModel",
-            "resource": "app://res/models/crate.zscene",
+            "resource": "app://res/models/crate.zres",
             "type": "model"
         },
         {
             "id" : "terrainModel",
-            "resource": "app://res/models/terrain1.zscene",
+            "resource": "app://res/models/terrain1.zres",
             "type": "model"
         },
         {

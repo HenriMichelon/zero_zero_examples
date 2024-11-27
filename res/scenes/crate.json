@@ -1,0 +1,19 @@
+{
+  "includes": [
+    "app://res/models/crate.json"
+  ],
+  "nodes": [
+    {
+      "id": "Crate",
+      "properties": {
+        "position": "0.0,0.0,-0.0",
+        "rotation": "0.0,0.0,0.0",
+        "scale": "1.0,1.0,1.0"
+      },
+      "child": {
+        "id": "Crate.mesh",
+        "duplicate": "true"
+      }
+    }
+  ]
+}
