@@ -43,17 +43,17 @@ void TopBar::onCreate() {
 }
 
 void TopBar::updateFPS() {
-    if (isVisible()) {
-        if (Application::get().isPaused()) {
-            textFPS->setText("Pause");
-        } else {
-            const auto newFPS = Application::get().getFPS();
-            if (newFPS != fps) {
-                fps = newFPS;
-                textFPS->setText(to_string(fps));
-            }
-        }
-    }
+    // if (isVisible()) {
+    //     if (Application::get().isPaused()) {
+    //         textFPS->setText("Pause");
+    //     } else {
+    //         const auto newFPS = Application::get().getFPS();
+    //         if (newFPS != fps) {
+    //             fps = newFPS;
+    //             textFPS->setText(to_string(fps));
+    //         }
+    //     }
+    // }
 }
 
 void TopBar::onPauseToggle(ui::EventClick *event) const {

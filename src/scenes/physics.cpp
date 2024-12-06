@@ -144,49 +144,49 @@ void PhysicsMainScene::onProcess(float alpha) {
         }
     }
     // if we have collisions we display an information box for the first colliding crate
-    if (!currentCollisions.empty()) {
-        // only change the info box content if not already displayed
-        if (!infoBox->isVisible()) {
-            // name of the colliding object
-            infoText->setText(currentCollisions.front().object->toString());
-            const auto width = std::max(infoText->getWidth(), actionsText->getWidth());
-            // resize and show the info box
-            infoBox->setWidth(width + infoBox->getWidget().getPadding() * 2);
-            infoBox->setX((VECTOR_SCALE.x - infoBox->getWidth()) / 2);
-            infoBox->show();
-        }
-    } else if (infoBox->isVisible()) {
-        infoBox->hide();
-    }
+    // if (!currentCollisions.empty()) {
+    //     // only change the info box content if not already displayed
+    //     if (!infoBox->isVisible()) {
+    //         // name of the colliding object
+    //         infoText->setText(currentCollisions.front().object->toString());
+    //         const auto width = std::max(infoText->getWidth(), actionsText->getWidth());
+    //         // resize and show the info box
+    //         infoBox->setWidth(width + infoBox->getWidget().getPadding() * 2);
+    //         infoBox->setX((VECTOR_SCALE.x - infoBox->getWidth()) / 2);
+    //         infoBox->show();
+    //     }
+    // } else if (infoBox->isVisible()) {
+    //     infoBox->hide();
+    // }
 }
 
 void PhysicsMainScene::onEnterScene() {
     // add the scene menu
-    menu = make_shared<ui::Window>(ui::Rect{0, 850, 130, 100});
-    Application::get().add(menu);
-    menu->getWidget().setPadding(5);
-    menu->getWidget().setTransparency(0.2f);
-
-    // buttons of the scene menu
-    const auto textJump  = make_shared<ui::Text>("[SPACE] Jump");
-    const auto textMouse = make_shared<ui::Text>("[ESC] Toggle mouse");
-    menu->getWidget().add(textJump, ui::Widget::TOP);
-    menu->getWidget().add(textMouse, ui::Widget::TOP);
-    menu->setHeight(textJump->getHeight() + textMouse->getHeight() + menu->getWidget().getPadding() * 3);
-
-    // build the information box dispalyed when we collide a crate
-    infoBox = make_shared<ui::Window>(ui::Rect{0, 800, 200, 100});
-    infoBox->hide();
-    Application::get().add(infoBox);
-    infoText = make_shared<ui::Text>("Info---------------------");
-    infoText->setTextColor({0.8f, 0.2f, 0.2f, 1.0f});
-    infoBox->getWidget().add(infoText, ui::Widget::TOPCENTER);
-    actionsText = make_shared<ui::Text>("[P][RB] : Push   [O][LB] : Pull");
-    actionsText->setTextColor({0.2f, 0.2f, 0.8f, 1.0f});
-    infoBox->getWidget().add(actionsText, ui::Widget::TOPCENTER);
-    infoBox->getWidget().setTransparency(0.8);
-    infoBox->getWidget().setPadding(5);
-    infoBox->setHeight(infoText->getHeight() + actionsText->getHeight() + infoBox->getWidget().getPadding() * 3);
+    // menu = make_shared<ui::Window>(ui::Rect{0, 850, 130, 100});
+    // Application::get().add(menu);
+    // menu->getWidget().setPadding(5);
+    // menu->getWidget().setTransparency(0.2f);
+    //
+    // // buttons of the scene menu
+    // const auto textJump  = make_shared<ui::Text>("[SPACE] Jump");
+    // const auto textMouse = make_shared<ui::Text>("[ESC] Toggle mouse");
+    // menu->getWidget().add(textJump, ui::Widget::TOP);
+    // menu->getWidget().add(textMouse, ui::Widget::TOP);
+    // menu->setHeight(textJump->getHeight() + textMouse->getHeight() + menu->getWidget().getPadding() * 3);
+    //
+    // // build the information box dispalyed when we collide a crate
+    // infoBox = make_shared<ui::Window>(ui::Rect{0, 800, 200, 100});
+    // infoBox->hide();
+    // Application::get().add(infoBox);
+    // infoText = make_shared<ui::Text>("Info---------------------");
+    // infoText->setTextColor({0.8f, 0.2f, 0.2f, 1.0f});
+    // infoBox->getWidget().add(infoText, ui::Widget::TOPCENTER);
+    // actionsText = make_shared<ui::Text>("[P][RB] : Push   [O][LB] : Pull");
+    // actionsText->setTextColor({0.2f, 0.2f, 0.8f, 1.0f});
+    // infoBox->getWidget().add(actionsText, ui::Widget::TOPCENTER);
+    // infoBox->getWidget().setTransparency(0.8);
+    // infoBox->getWidget().setPadding(5);
+    // infoBox->setHeight(infoText->getHeight() + actionsText->getHeight() + infoBox->getWidget().getPadding() * 3);
 }
 
 void PhysicsMainScene::onExitScene() {
