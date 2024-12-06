@@ -3,7 +3,7 @@ module;
 
 export module Example:TopBar;
 
-class TopBar : public GWindow {
+class TopBar : public ui::Window {
 public:
     TopBar(Object *obj, const std::function<void()> &_onQuit);
 
@@ -13,9 +13,9 @@ public:
 
 private:
     uint32_t          fps{0};
-    shared_ptr<GText> textFPS;
+    shared_ptr<ui::Text> textFPS;
     Object *          onQuitHandler;
     std::function<void()>   onQuit;
 
-    void onPauseToggle(GEventClick *event) const;
+    void onPauseToggle(ui::EventClick *event) const;
 };

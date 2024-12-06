@@ -65,25 +65,25 @@ void AddRemoveChildMainScene::onPhysicsProcess(const float delta) {
 
 void AddRemoveChildMainScene::onEnterScene() {
     // scene main menu
-    menu = make_shared<GWindow>(Rect{0, 1000 - 550, 150, 500});
+    menu = make_shared<ui::Window>(ui::Rect{0, 1000 - 550, 150, 500});
     Application::get().add(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setDrawBackground(false);
     // add a node button
-    const auto menuAdd = make_shared<GButton>();
-    menu->getWidget().add(menuAdd, GWidget::TOPCENTER, "200,40");
-    menuAdd->add(make_shared<GText>("[ENTER] Add node"), GWidget::CENTER);
-    menuAdd->connect(GEvent::OnClick, [this]{this->onMenuAdd();});
+    const auto menuAdd = make_shared<ui::Button>();
+    menu->getWidget().add(menuAdd, ui::Widget::TOPCENTER, "200,40");
+    menuAdd->add(make_shared<ui::Text>("[ENTER] Add node"), ui::Widget::CENTER);
+    menuAdd->connect(ui::Event::OnClick, [this]{this->onMenuAdd();});
     // remove a node button
-    const auto menuRemove = make_shared<GButton>();
-    menu->getWidget().add(menuRemove, GWidget::TOPCENTER, "200,40");
-    menuRemove->add(make_shared<GText>("[BACKSPACE] Remove node"), GWidget::CENTER);
-    menuRemove->connect(GEvent::OnClick, [this]{this->onMenuRemove();});
+    const auto menuRemove = make_shared<ui::Button>();
+    menu->getWidget().add(menuRemove, ui::Widget::TOPCENTER, "200,40");
+    menuRemove->add(make_shared<ui::Text>("[BACKSPACE] Remove node"), ui::Widget::CENTER);
+    menuRemove->connect(ui::Event::OnClick, [this]{this->onMenuRemove();});
     // toggle cameras button
-    const auto menuCamera = make_shared<GButton>();
-    menu->getWidget().add(menuCamera, GWidget::TOPCENTER, "200,40");
-    menuCamera->add(make_shared<GText>("[SPACE] Toggle camera"), GWidget::CENTER);
-    menuCamera->connect(GEvent::OnClick, [this]{this->onMenuCamera();});
+    const auto menuCamera = make_shared<ui::Button>();
+    menu->getWidget().add(menuCamera, ui::Widget::TOPCENTER, "200,40");
+    menuCamera->add(make_shared<ui::Text>("[SPACE] Toggle camera"), ui::Widget::CENTER);
+    menuCamera->connect(ui::Event::OnClick, [this]{this->onMenuCamera();});
 }
 
 void AddRemoveChildMainScene::onExitScene() {
@@ -91,17 +91,17 @@ void AddRemoveChildMainScene::onExitScene() {
     Application::get().remove(menu);
 }
 
-void AddRemoveChildMainScene::onMenuAdd(GEventClick *e) {
+void AddRemoveChildMainScene::onMenuAdd(ui::EventClick *e) {
     const auto newNode = (randomi(1) == 0) ? crateModel->duplicate() : sphereModel->duplicate();
     newNode->setPosition({randomf(10.0f) - 5, randomf(10.0f) - 5, -10.0f});
     if (addChild(newNode)) { rotatingNodes.push_back(newNode); }
 }
 
-void AddRemoveChildMainScene::onMenuRemove(GEventClick *e) {
+void AddRemoveChildMainScene::onMenuRemove(ui::EventClick *e) {
     if (removeChild(rotatingNodes.back())) { rotatingNodes.pop_back(); }
 }
 
-void AddRemoveChildMainScene::onMenuCamera(GEventClick *e) {
+void AddRemoveChildMainScene::onMenuCamera(ui::EventClick *e) {
     if (camera1->isActive()) {
         currentCamera = camera2;
         Application::get().activateCamera(camera2);

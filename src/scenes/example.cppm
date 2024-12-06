@@ -10,7 +10,7 @@ export import :PlatformPlayer;
 export import :Terrain;
 
 // class for all the main menu entries
-class GMenuEntry : public GButton {
+class GMenuEntry : public ui::Button {
 public:
     explicit GMenuEntry(const string &_label);
 
@@ -34,7 +34,7 @@ public:
     void onEnterScene() override;
 
 private:
-    shared_ptr<GWindow> menu;
+    shared_ptr<ui::Window> menu;
     shared_ptr<TopBar>  topbar;
     shared_ptr<Node>    scene;
 

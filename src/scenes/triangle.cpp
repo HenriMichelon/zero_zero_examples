@@ -72,22 +72,22 @@ void TriangleMainScene::onReady() {
 
 void TriangleMainScene::onEnterScene() {
     // Build and display the scene menu
-    menu = make_shared<GWindow>(Rect{0, 1000 - 550, 150, 500});
+    menu = make_shared<ui::Window>(ui::Rect{0, 1000 - 550, 150, 500});
     Application::get().add(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setDrawBackground(false);
 
     // Toggle rotation button
-    const auto menuRotate = make_shared<GButton>();
-    menu->getWidget().add(menuRotate, GWidget::TOPCENTER, "200,40");
-    menuRotate->add(make_shared<GText>("[SPACE] Toggle rotation"), GWidget::CENTER);
-    menuRotate->connect(GEvent::OnClick, [this]{this->onMenuRotate();});
+    const auto menuRotate = make_shared<ui::Button>();
+    menu->getWidget().add(menuRotate, ui::Widget::TOPCENTER, "200,40");
+    menuRotate->add(make_shared<ui::Text>("[SPACE] Toggle rotation"), ui::Widget::CENTER);
+    menuRotate->connect(ui::Event::OnClick, [this]{this->onMenuRotate();});
 
     // Toggle right triangle material button
-    const auto menuShader = make_shared<GButton>();
-    menu->getWidget().add(menuShader, GWidget::TOPCENTER, "200,40");
-    menuShader->add(make_shared<GText>("[ENTER] Toggle Shader"), GWidget::CENTER);
-    menuShader->connect(GEvent::OnClick, [this]{this->onMenuShader();});
+    const auto menuShader = make_shared<ui::Button>();
+    menu->getWidget().add(menuShader, ui::Widget::TOPCENTER, "200,40");
+    menuShader->add(make_shared<ui::Text>("[ENTER] Toggle Shader"), ui::Widget::CENTER);
+    menuShader->connect(ui::Event::OnClick, [this]{this->onMenuShader();});
 }
 
 void TriangleMainScene::onExitScene() {

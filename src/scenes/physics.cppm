@@ -25,7 +25,7 @@ private:
     const vec3 force = vec3{7500.0f};
 
     // scene menu
-    shared_ptr<GWindow> menu;
+    shared_ptr<ui::Window> menu;
     // ou player node
     shared_ptr<Player> player;
     // raycast used to outline the crate in front of the player
@@ -35,11 +35,11 @@ private:
     // used to save the currently selected crate to disable the outline
     shared_ptr<MeshInstance> previousSelection{nullptr};
     // information box used when the player collide with a crate
-    shared_ptr<GWindow> infoBox;
+    shared_ptr<ui::Window> infoBox;
     // text displaying the colliding object name
-    shared_ptr<GText> infoText;
+    shared_ptr<ui::Text> infoText;
     // text displaying the actions the player can do when colliding a crate
-    shared_ptr<GText> actionsText;
+    shared_ptr<ui::Text> actionsText;
     // outline material for colliding crates
     shared_ptr<ShaderMaterial> collisionOutlineMaterial;
     // list a colliding crate to reset the outline materials

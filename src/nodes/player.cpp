@@ -11,7 +11,7 @@ using namespace z0;
 Player::Player():
     // the player have a physic body for the collisions
     Character{
-            make_shared<BoxShape>(vec3{1.0f, 2.0f, 1.0f}),
+            1.8, 0.5,
             PLAYER,
             WORLD | BODIES
     } {
@@ -202,7 +202,7 @@ void Player::onReady() {
 
     // create the player node
     model = Loader::load("app://res/models/capsule.glb");
-    model->setPosition({0.0, -1.8 / 2.0, 0.0});
+    // model->setPosition({0.0, -1.8 / 2.0, 0.0});
     addChild(model);
 
     // create the attachement point for the camera pivot

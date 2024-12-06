@@ -32,15 +32,15 @@ private:
     // used to toggle the cameras
     shared_ptr<Camera>     currentCamera;
     // main scene menu
-    shared_ptr<GWindow>    menu;
+    shared_ptr<ui::Window>    menu;
 
     // add a new node into the scene
     // randomly select a model
-    void onMenuAdd(GEventClick *e = nullptr);
+    void onMenuAdd(ui::EventClick *e = nullptr);
 
     // remove the last added node
-    void onMenuRemove(GEventClick *e = nullptr);
+    void onMenuRemove(ui::EventClick *e = nullptr);
 
     // toggle cameras
-    void onMenuCamera(GEventClick *e = nullptr);
+    void onMenuCamera(ui::EventClick *e = nullptr);
 };

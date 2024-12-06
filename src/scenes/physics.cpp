@@ -162,28 +162,28 @@ void PhysicsMainScene::onProcess(float alpha) {
 
 void PhysicsMainScene::onEnterScene() {
     // add the scene menu
-    menu = make_shared<GWindow>(Rect{0, 850, 130, 100});
+    menu = make_shared<ui::Window>(ui::Rect{0, 850, 130, 100});
     Application::get().add(menu);
     menu->getWidget().setPadding(5);
     menu->getWidget().setTransparency(0.2f);
 
     // buttons of the scene menu
-    const auto textJump  = make_shared<GText>("[SPACE] Jump");
-    const auto textMouse = make_shared<GText>("[ESC] Toggle mouse");
-    menu->getWidget().add(textJump, GWidget::TOP);
-    menu->getWidget().add(textMouse, GWidget::TOP);
+    const auto textJump  = make_shared<ui::Text>("[SPACE] Jump");
+    const auto textMouse = make_shared<ui::Text>("[ESC] Toggle mouse");
+    menu->getWidget().add(textJump, ui::Widget::TOP);
+    menu->getWidget().add(textMouse, ui::Widget::TOP);
     menu->setHeight(textJump->getHeight() + textMouse->getHeight() + menu->getWidget().getPadding() * 3);
 
     // build the information box dispalyed when we collide a crate
-    infoBox = make_shared<GWindow>(Rect{0, 800, 200, 100});
+    infoBox = make_shared<ui::Window>(ui::Rect{0, 800, 200, 100});
     infoBox->hide();
     Application::get().add(infoBox);
-    infoText = make_shared<GText>("Info---------------------");
+    infoText = make_shared<ui::Text>("Info---------------------");
     infoText->setTextColor({0.8f, 0.2f, 0.2f, 1.0f});
-    infoBox->getWidget().add(infoText, GWidget::TOPCENTER);
-    actionsText = make_shared<GText>("[P][RB] : Push   [O][LB] : Pull");
+    infoBox->getWidget().add(infoText, ui::Widget::TOPCENTER);
+    actionsText = make_shared<ui::Text>("[P][RB] : Push   [O][LB] : Pull");
     actionsText->setTextColor({0.2f, 0.2f, 0.8f, 1.0f});
-    infoBox->getWidget().add(actionsText, GWidget::TOPCENTER);
+    infoBox->getWidget().add(actionsText, ui::Widget::TOPCENTER);
     infoBox->getWidget().setTransparency(0.8);
     infoBox->getWidget().setPadding(5);
     infoBox->setHeight(infoText->getHeight() + actionsText->getHeight() + infoBox->getWidget().getPadding() * 3);
