@@ -23,9 +23,9 @@ public:
 
     bool onInput(InputEvent &event) override;
 
-    void onPhysicsProcess(const float delta) override;
+    void onPhysicsProcess(float delta) override;
 
-    void onProcess(const float alpha) override;
+    void onProcess(float alpha) override;
 
     void onReady() override;
 
@@ -33,7 +33,7 @@ public:
     void releaseMouse();
 
 protected:
-    bool cameraCollisions{false};
+    bool cameraCollisions{true};
 
 private:
     // movement and view state

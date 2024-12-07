@@ -208,23 +208,23 @@ void Player::onReady() {
     // create the attachement point for the camera pivot
     cameraAttachement       = make_shared<Node>("cameraAttachement");
     auto attachementZOffset = 2.0f;
-    auto attachementYOffset = 1.6f;
+    auto attachementYOffset = 2.0f;
     cameraAttachement->setPosition({0.0, attachementYOffset, attachementZOffset});
     addChild(cameraAttachement);
 
     // create the collision sensor used to detect if the camera view area collide with something
     if (cameraCollisions) {
         cameraCollisionSensor = make_shared<CollisionArea>(
-                make_shared<SphereShape>(attachementZOffset - 0.6f),
+                make_shared<SphereShape>(0.25f),
                 WORLD | BODIES,
                 "cameraCollisionNode"
                 );
-        cameraCollisionSensor->setPosition({0.0, attachementYOffset, attachementZOffset / 2.0f - 0.5f});
+        // cameraCollisionSensor->setPosition({0.0, attachementYOffset, attachementZOffset / 2.0f - 0.5f});
         cameraCollisionSensor->connect(on_collision_starts,
                                        [this](Signal::Parameters*p){this->onCameraCollision((const Collision *)p);});
         cameraCollisionSensor->connect(on_collision_persists,
                                        [this](Signal::Parameters*p){this->onCameraCollision((const Collision *)p);});
-        addChild(cameraCollisionSensor);
+        cameraAttachement->addChild(cameraCollisionSensor);
     }
 
     // create the pivot used to rotate the camera
