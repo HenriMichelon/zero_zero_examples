@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    {
+      "id": "resources",
+      "type": "resource",
+      "resource": "app://res/models/crate.zres"
+    },
+    {
+      "id": "Crate.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Crate"
+    }
+  ]
+}
