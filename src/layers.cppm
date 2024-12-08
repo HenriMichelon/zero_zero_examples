@@ -6,6 +6,7 @@ export enum Layers {
     WORLD       = 1,
     BODIES      = 2,
     PLAYER      = 3,
-    LAYERS_COUNT= PLAYER+1,
+    PLAYER_RAYCAST     = 4,
+    LAYERS_COUNT= PLAYER_RAYCAST+1,
 };
 

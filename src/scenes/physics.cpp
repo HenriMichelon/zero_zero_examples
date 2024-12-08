@@ -44,7 +44,8 @@ void PhysicsMainScene::onReady() {
     // player->addChild(spotLight1);
 
     // raycast used to detect crates in front of the player
-    raycast = make_shared<RayCast>(AXIS_FRONT * 50.0f, BODIES);
+    raycast = make_shared<RayCast>(AXIS_FRONT * 50.0f, PLAYER_RAYCAST);
+    raycast->setPosition(vec3{0.0f, 0.5f, 0.0f});
     player->addChild(raycast);
 
     // generates crates nodes with random positions

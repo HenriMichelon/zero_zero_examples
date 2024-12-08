@@ -11,6 +11,7 @@ const ApplicationConfig applicationConfig{
         {
                 { PLAYER, { WORLD, BODIES }},
                 { BODIES, { WORLD, BODIES, PLAYER }},
+                { PLAYER_RAYCAST, { BODIES }},
         }
     },
     .windowMode = WindowMode::WINDOWED,
