@@ -6,6 +6,13 @@ import Example;
 const ApplicationConfig applicationConfig{
     .appName = "Example App",
     .appDir = ".",
+    .layerCollisionTable = LayerCollisionTable{
+        LAYERS_COUNT,
+        {
+                { PLAYER, { WORLD, BODIES }},
+                { BODIES, { WORLD, BODIES, PLAYER }},
+        }
+    },
     .windowMode = WindowMode::WINDOWED,
     .windowWidth = 1280,
     .windowHeight = 720,

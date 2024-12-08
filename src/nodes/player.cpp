@@ -13,7 +13,6 @@ Player::Player():
     Character{
             1.8, 0.5,
             PLAYER,
-            WORLD | BODIES
     } {
 }
 
@@ -220,9 +219,9 @@ void Player::onReady() {
                 "cameraCollisionNode"
                 );
         // cameraCollisionSensor->setPosition({0.0, attachementYOffset, attachementZOffset / 2.0f - 0.5f});
-        cameraCollisionSensor->connect(on_collision_starts,
+        cameraCollisionSensor->connect(on_collision_added,
                                        [this](Signal::Parameters*p){this->onCameraCollision((const Collision *)p);});
-        cameraCollisionSensor->connect(on_collision_persists,
+        cameraCollisionSensor->connect(on_collision_persisted,
                                        [this](Signal::Parameters*p){this->onCameraCollision((const Collision *)p);});
         cameraAttachement->addChild(cameraCollisionSensor);
     }

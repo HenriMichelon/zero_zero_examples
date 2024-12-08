@@ -5,6 +5,7 @@ export module Example;
 
 import :TopBar;
 export import :Crate;
+export import :Layers;
 export import :Player;
 export import :PlatformPlayer;
 export import :Terrain;
