@@ -95,7 +95,7 @@ void PhysicsMainScene::onReady() {
     game->addChild(floor);
 
     // connect the player signals for the "push" and "pull" actions
-    player->connect(Player::on_push_pull, [this](Signal::Parameters*p){this->onPushOrPull((Player::PushOrPullAction *)p);});
+    player->connect(Player::on_push_pull, [this](void*p){this->onPushOrPull((Player::PushOrPullAction *)p);});
 }
 
 void PhysicsMainScene::onProcess(float alpha) {

@@ -14,7 +14,7 @@ public:
     static const Signal::signal on_push_pull;
 
     // parameters for the above signal
-    struct PushOrPullAction : Signal::Parameters {
+    struct PushOrPullAction {
         bool push; // player want to push a crate
         bool pull; // player want to pull a crate
     };

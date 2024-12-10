@@ -219,10 +219,10 @@ void Player::onReady() {
                 "cameraCollisionNode"
                 );
         // cameraCollisionSensor->setPosition({0.0, attachementYOffset, attachementZOffset / 2.0f - 0.5f});
-        cameraCollisionSensor->connect(on_collision_added,
-                                       [this](Signal::Parameters*p){this->onCameraCollision((const Collision *)p);});
-        cameraCollisionSensor->connect(on_collision_persisted,
-                                       [this](Signal::Parameters*p){this->onCameraCollision((const Collision *)p);});
+        cameraCollisionSensor->connect(on_collision_starts,
+                                       [this](void*p){this->onCameraCollision((const Collision *)p);});
+        cameraCollisionSensor->connect(on_collision_persists,
+                                       [this](void*p){this->onCameraCollision((const Collision *)p);});
         cameraAttachement->addChild(cameraCollisionSensor);
     }
 

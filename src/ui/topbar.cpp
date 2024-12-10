@@ -33,7 +33,7 @@ void TopBar::onCreate() {
     setY(1000 - getHeight());
 
     const auto buttonPause = make_shared<ui::Button>();
-    buttonPause->connect(ui::Event::OnClick, [this](Signal::Parameters* p) { this->onPauseToggle(static_cast<ui::EventClick *>(p)); });
+    buttonPause->connect(ui::Event::OnClick, [this](void* p) { this->onPauseToggle(static_cast<ui::EventClick *>(p)); });
     getWidget().add(buttonPause, ui::Widget::LEFTCENTER);
     const auto textPause = make_shared<ui::Text>("Pause");
     buttonPause->add(textPause, ui::Widget::CENTER);
@@ -43,17 +43,17 @@ void TopBar::onCreate() {
 }
 
 void TopBar::updateFPS() {
-    // if (isVisible()) {
-    //     if (Application::get().isPaused()) {
-    //         textFPS->setText("Pause");
-    //     } else {
-    //         const auto newFPS = Application::get().getFPS();
-    //         if (newFPS != fps) {
-    //             fps = newFPS;
-    //             textFPS->setText(to_string(fps));
-    //         }
-    //     }
-    // }
+    if (isVisible()) {
+        if (Application::get().isPaused()) {
+            textFPS->setText("Pause");
+        } else {
+            const auto newFPS = Application::get().getFPS();
+            if (newFPS != fps) {
+                fps = newFPS;
+                textFPS->setText(to_string(fps));
+            }
+        }
+    }
 }
 
 void TopBar::onPauseToggle(ui::EventClick *event) const {
