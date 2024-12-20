@@ -1,9 +1,7 @@
 module;
 #include "libraries.h"
 
-module Example;
-
-import :TriangleMainScene;
+module example.TriangleMainScene;
 
 TriangleMainScene::TriangleMainScene():
     Node{"Main Scene"} {

@@ -2,12 +2,10 @@ module;
 #include <glm/gtx/quaternion.hpp>
 #include "libraries.h"
 
-module Example;
-
-import :PhysicsMainScene;
-import :Player;
-import :Crate;
-import :Layers;
+module example.PhysicsMainScene;
+import example.Player;
+import example.Crate;
+import example.Layers;
 
 PhysicsMainScene::PhysicsMainScene():
     Node{"Main Scene"} {

@@ -1,7 +1,7 @@
 module;
 #include "libraries.h"
 
-export module Example:AddRemoveChildMainScene;
+export module example.AddRemoveChildMainScene;
 
 export class AddRemoveChildMainScene : public Node {
 public:

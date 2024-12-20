@@ -1,10 +1,9 @@
 module;
 #include "libraries.h"
 
-module Example;
+module example.Crate;
 
-import :Layers;
-import :Crate;
+import example.Layers;
 
 Crate::Crate(const shared_ptr<Node>& body):
     RigidBody{

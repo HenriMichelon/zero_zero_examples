@@ -1,7 +1,7 @@
 module;
 #include "libraries.h"
 
-export module Example:Crate;
+export module example.Crate;
 
 // a crate with a colliding body
 export class Crate : public z0::RigidBody {

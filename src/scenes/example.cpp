@@ -1,13 +1,13 @@
 module;
 #include "libraries.h"
 
-module Example;
+module example.MainScene;
 
-import :TopBar;
-import :TriangleMainScene;
-import :AddRemoveChildMainScene;
-import :PhysicsMainScene;
-import :TerrainScene;
+import example.TopBar;
+import example.TriangleMainScene;
+import example.AddRemoveChildMainScene;
+import example.PhysicsMainScene;
+
 
 GMenuEntry::GMenuEntry(const string &_label) :
     label{_label} {
@@ -107,7 +107,7 @@ void ExampleMainScene::onMenuRaycast() const {
 }
 
 void ExampleMainScene::onMenuTerrain() const {
-    menu->hide();
-    topbar->show();
-    scene->addChild(make_shared<TerrainScene>());
+    // menu->hide();
+    // topbar->show();
+    // scene->addChild(make_shared<TerrainScene>());
 }

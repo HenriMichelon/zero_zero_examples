@@ -1,9 +1,9 @@
 module;
 #include "../libraries.h"
 
-export module Example:TopBar;
+export module example.TopBar;
 
-class TopBar : public ui::Window {
+export class TopBar : public ui::Window {
 public:
     TopBar(Object *obj, const std::function<void()> &_onQuit);
 

@@ -1,10 +1,9 @@
 module;
 #include "libraries.h"
 
-module Example;
+module example.Player;
 
-import :Layers;
-import :Player;
+import example.Layers;
 
 using namespace z0;
 

@@ -1,8 +1,8 @@
 module;
 
-export module Example:PlatformPlayer;
+export module example.PlatformPlayer;
 
-import :Player;
+import example.Player;
 
 export class PlatformPlayer : public Player {
 public:

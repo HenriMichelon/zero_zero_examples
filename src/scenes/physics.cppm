@@ -2,11 +2,11 @@ module;
 #include <simdjson.h>
 #include "libraries.h"
 
-export module Example:PhysicsMainScene;
+export module example.PhysicsMainScene;
 
-import :Player;
-import :Crate;
-import :Layers;
+import example.Player;
+import example.Crate;
+import example.Layers;
 
 export class PhysicsMainScene : public Node {
 public:

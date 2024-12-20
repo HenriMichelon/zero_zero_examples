@@ -1,9 +1,7 @@
 module;
 #include "libraries.h"
 
-module Example;
-
-import :AddRemoveChildMainScene;
+module example.AddRemoveChildMainScene;
 
 AddRemoveChildMainScene::AddRemoveChildMainScene():
     Node{"Main Scene"} {

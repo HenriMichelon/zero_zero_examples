@@ -1,7 +1,7 @@
 module;
 #include "libraries.h"
 
-export module Example:TriangleMainScene;
+export module example.TriangleMainScene;
 
 using namespace z0;
 

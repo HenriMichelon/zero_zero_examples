@@ -1,9 +1,7 @@
 module;
 #include "libraries.h"
 
-module Example;
-
-import :TopBar;
+module example.TopBar;
 
 TopBar::TopBar(Object *obj, const std::function<void()> &_onQuit):
     ui::Window(ui::Rect{0, 800, 1000, 100}),

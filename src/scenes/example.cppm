@@ -1,14 +1,9 @@
 module;
 #include "../libraries.h"
 
-export module Example;
+export module example.MainScene;
 
-import :TopBar;
-export import :Crate;
-export import :Layers;
-export import :Player;
-export import :PlatformPlayer;
-export import :Terrain;
+import example.TopBar;
 
 // class for all the main menu entries
 class GMenuEntry : public ui::Button {
