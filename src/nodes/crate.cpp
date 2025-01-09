@@ -3,7 +3,7 @@ module;
 
 module example.Crate;
 
-import example.Layers;
+import layers;
 
 Crate::Crate(const shared_ptr<Node>& body):
     RigidBody{

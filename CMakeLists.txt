@@ -49,6 +49,14 @@ add_executable(${PROJECT_NAME}
 		${SRC_DIR}/scenes/triangle.cpp
 		${SRC_DIR}/nodes/crate.cpp
 		${SRC_DIR}/nodes/player.cpp
+
+		${SRC_DIR}/space_station/nodes/doors.cpp
+		${SRC_DIR}/space_station/nodes/interactions.cpp
+		${SRC_DIR}/space_station/nodes/level.cpp
+		${SRC_DIR}/space_station/nodes/player.cpp
+		${SRC_DIR}/space_station/scenes/main.cpp
+		${SRC_DIR}/space_station/states/game_state.cpp
+		${SRC_DIR}/space_station/states/state.cpp
 )
 target_sources(${PROJECT_NAME}
 	PUBLIC
@@ -63,6 +71,16 @@ target_sources(${PROJECT_NAME}
 		${SRC_DIR}/scenes/triangle.cppm
 		${SRC_DIR}/nodes/crate.cppm
 		${SRC_DIR}/nodes/player.cppm
+
+		${SRC_DIR}/space_station/game.cppm
+		${SRC_DIR}/space_station/nodes/doors.cppm
+		${SRC_DIR}/space_station/nodes/interactions.cppm
+		${SRC_DIR}/space_station/nodes/level.cppm
+		${SRC_DIR}/space_station/nodes/player.cppm
+		${SRC_DIR}/space_station/scenes/main.cppm
+		${SRC_DIR}/space_station/states/game_state.cppm
+		${SRC_DIR}/space_station/states/state.cppm
+
 )
 compile_options(${PROJECT_NAME})
 

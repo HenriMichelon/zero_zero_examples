@@ -3,7 +3,7 @@ module;
 
 export module example.Player;
 
-import example.Layers;
+import layers;
 
 using namespace z0;
 

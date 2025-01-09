@@ -8,6 +8,7 @@ import example.TriangleMainScene;
 import example.AddRemoveChildMainScene;
 import example.PhysicsMainScene;
 
+import game;
 
 GMenuEntry::GMenuEntry(const string &_label) :
     label{_label} {
@@ -19,7 +20,6 @@ void GMenuEntry::onCreate() {
     add(textLabel, CENTER);
     setSize(500, textLabel->getHeight() + 20);
 }
-
 
 void ExampleMainScene::onReady() {
     // create a camera to view the skybox
@@ -107,7 +107,7 @@ void ExampleMainScene::onMenuRaycast() const {
 }
 
 void ExampleMainScene::onMenuTerrain() const {
-    // menu->hide();
-    // topbar->show();
-    // scene->addChild(make_shared<TerrainScene>());
+    menu->hide();
+    topbar->show();
+    scene->addChild(make_shared<space_station::MainScene>());
 }

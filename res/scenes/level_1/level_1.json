@@ -1,0 +1,2205 @@
+{
+  "includes": [
+    "app://res/models/interior_station_pack.json"
+  ],
+  "nodes": [
+    {
+      "id": "Entrance",
+      "properties": {
+        "position": "0.0,-1.0,5.0",
+        "rotation": "0.0,0.0,0.0",
+        "scale": "1.0,1.0,1.0"
+      },
+      "children": [
+        {
+          "id": "box_1",
+          "properties": {
+            "shape": "AABBShape",
+            "layer": "2",
+            "mass": "0.5",
+            "position": "-3.2482521533966064,0.3380000591278076,2.431981086730957",
+            "rotation": "0.0,-34.75163025171511,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "class": "RigidBody",
+          "child": {
+            "id": "box_1.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "box_1.001",
+          "properties": {
+            "shape": "AABBShape",
+            "layer": "2",
+            "mass": "0.5",
+            "position": "-2.8358144760131836,0.3380000591278076,2.9505910873413086",
+            "rotation": "0.0,-31.002201321931196,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "class": "RigidBody",
+          "child": {
+            "id": "box_1.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "box_2",
+          "properties": {
+            "shape": "AABBShape",
+            "layer": "2",
+            "mass": "0.5",
+            "position": "-3.948570489883423,0.24500000476837158,2.2842273712158203",
+            "rotation": "0.0,-9.619661478934407,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "class": "RigidBody",
+          "child": {
+            "id": "box_2.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "box_2.001",
+          "properties": {
+            "shape": "AABBShape",
+            "layer": "2",
+            "mass": "0.5",
+            "position": "-2.1846585273742676,0.24500000476837158,3.1528377532958984",
+            "rotation": "0.0,-45.56238536811959,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "class": "RigidBody",
+          "child": {
+            "id": "box_2.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "ceil_entrance",
+          "properties": {
+            "position": "0.0,1.0,-5.0",
+            "rotation": "0.0,0.0,0.0",
+            "scale": "1.0,1.0,1.0",
+            "visible": "false"
+          },
+          "children": [
+            {
+              "id": "floor_tile_1.019",
+              "properties": {
+                "position": "-5.0,6.5,1.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.020",
+              "properties": {
+                "position": "-3.0,6.5,1.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.021",
+              "properties": {
+                "position": "-1.0,6.5,1.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.022",
+              "properties": {
+                "position": "1.0,6.5,1.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.023",
+              "properties": {
+                "position": "3.0,6.5,1.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.024",
+              "properties": {
+                "position": "5.0,6.5,1.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.025",
+              "properties": {
+                "position": "-5.0,6.5,3.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.026",
+              "properties": {
+                "position": "-3.0,6.5,3.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.027",
+              "properties": {
+                "position": "-1.0,6.5,3.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.028",
+              "properties": {
+                "position": "1.0,6.5,3.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.029",
+              "properties": {
+                "position": "3.0,6.5,3.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.030",
+              "properties": {
+                "position": "5.0,6.5,3.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.031",
+              "properties": {
+                "position": "-5.0,6.5,5.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.032",
+              "properties": {
+                "position": "-3.0,6.5,5.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.033",
+              "properties": {
+                "position": "-1.0,6.5,5.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.034",
+              "properties": {
+                "position": "1.0,6.5,5.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.035",
+              "properties": {
+                "position": "3.0,6.5,5.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.036",
+              "properties": {
+                "position": "5.0,6.5,5.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.037",
+              "properties": {
+                "position": "-5.0,6.5,7.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.038",
+              "properties": {
+                "position": "-3.0,6.5,7.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.039",
+              "properties": {
+                "position": "-1.0,6.5,7.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.040",
+              "properties": {
+                "position": "1.0,6.5,7.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.041",
+              "properties": {
+                "position": "3.0,6.5,7.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.042",
+              "properties": {
+                "position": "5.0,6.5,7.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.043",
+              "properties": {
+                "position": "-5.0,6.5,9.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.044",
+              "properties": {
+                "position": "-3.0,6.5,9.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.045",
+              "properties": {
+                "position": "-1.0,6.5,9.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.046",
+              "properties": {
+                "position": "1.0,6.5,9.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.047",
+              "properties": {
+                "position": "3.0,6.5,9.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.048",
+              "properties": {
+                "position": "5.0,6.5,9.0",
+                "rotation": "0.0,-0.0,179.999991348578",
+                "scale": "1.0,1.0,1.0",
+                "visible": "false"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            }
+          ]
+        },
+        {
+          "id": "entrance_omnilight",
+          "properties": {
+            "color": "1.0,1.0,1.0,1.0",
+            "range": "10",
+            "cast_shadows": "true",
+            "position": "0.0,7.299997806549072,-0.5",
+            "rotation": "0.0,0.0,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "class": "OmniLight"
+        },
+        {
+          "id": "floor_entrance",
+          "properties": {
+            "position": "0.0,1.0,-5.0",
+            "rotation": "0.0,0.0,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "children": [
+            {
+              "id": "floor_entrance_body",
+              "properties": {
+                "shape": "BoxShape;12.0,0.2,10.0",
+                "layer": "1",
+                "position": "0.0,-1.100000023841858,5.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody"
+            },
+            {
+              "id": "floor_tile_1.001",
+              "properties": {
+                "position": "-1.0,-1.0,1.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.002",
+              "properties": {
+                "position": "1.0,-1.0,1.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.003",
+              "properties": {
+                "position": "-1.0,-1.0,9.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.004",
+              "properties": {
+                "position": "1.0,-1.0,9.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.005",
+              "properties": {
+                "position": "3.0,-1.0,9.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.006",
+              "properties": {
+                "position": "5.0,-1.0,9.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.007",
+              "properties": {
+                "position": "5.0,-1.0,7.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.008",
+              "properties": {
+                "position": "5.0,-1.0,5.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.009",
+              "properties": {
+                "position": "5.0,-1.0,3.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.010",
+              "properties": {
+                "position": "5.0,-1.0,1.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.011",
+              "properties": {
+                "position": "3.0,-1.0,1.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.012",
+              "properties": {
+                "position": "-3.0,-1.0,1.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.013",
+              "properties": {
+                "position": "-5.0,-1.0,1.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.014",
+              "properties": {
+                "position": "-5.0,-1.0,3.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.015",
+              "properties": {
+                "position": "-5.0,-1.0,5.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.016",
+              "properties": {
+                "position": "-5.0,-1.0,7.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.017",
+              "properties": {
+                "position": "-5.0,-1.0,9.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1.018",
+              "properties": {
+                "position": "-3.0,-1.0,9.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.001",
+              "properties": {
+                "position": "-1.0,-1.0,5.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.002",
+              "properties": {
+                "position": "1.0,-1.0,5.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.003",
+              "properties": {
+                "position": "-1.0,-1.0,3.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.004",
+              "properties": {
+                "position": "1.0,-1.0,3.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.005",
+              "properties": {
+                "position": "-1.0,-1.0,7.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.006",
+              "properties": {
+                "position": "1.0,-1.0,7.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.007",
+              "properties": {
+                "position": "3.0,-1.0,5.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.008",
+              "properties": {
+                "position": "3.0,-1.0,3.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.009",
+              "properties": {
+                "position": "3.0,-1.0,7.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.010",
+              "properties": {
+                "position": "-3.0,-1.0,5.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.011",
+              "properties": {
+                "position": "-3.0,-1.0,3.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "floor_tile_1_grid.012",
+              "properties": {
+                "position": "-3.0,-1.0,7.0",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "child": {
+                "id": "floor_tile_1_grid.mesh",
+                "duplicate": "true"
+              }
+            }
+          ]
+        },
+        {
+          "id": "light_2",
+          "properties": {
+            "groups": "light",
+            "position": "0.0,7.5,-0.5",
+            "rotation": "90.00000933466734,0.0,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "child": {
+            "id": "light_2.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "panel_2",
+          "properties": {
+            "position": "-0.00970458984375,5.099733352661133,-4.570651054382324",
+            "rotation": "0.0,0.0,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "child": {
+            "id": "panel_2.mesh",
+            "duplicate": "true",
+            "children": [
+              {
+                "id": "letter_a",
+                "properties": {
+                  "position": "-0.18598072230815887,0.05106639862060547,0.11322823166847229",
+                  "rotation": "0.0,0.0,0.0",
+                  "scale": "1.0,1.0,1.0"
+                },
+                "child": {
+                  "id": "letter_a.mesh",
+                  "duplicate": "true"
+                }
+              },
+              {
+                "id": "letter_h",
+                "properties": {
+                  "position": "-0.5638117790222168,0.05106639862060547,0.11322823166847229",
+                  "rotation": "0.0,0.0,0.0",
+                  "scale": "1.0,1.0,1.0"
+                },
+                "child": {
+                  "id": "letter_h.mesh",
+                  "duplicate": "true"
+                }
+              },
+              {
+                "id": "letter_l",
+                "properties": {
+                  "position": "0.20462647080421448,0.05106639862060547,0.11322823166847229",
+                  "rotation": "0.0,0.0,0.0",
+                  "scale": "1.0,1.0,1.0"
+                },
+                "child": {
+                  "id": "letter_l.mesh",
+                  "duplicate": "true"
+                }
+              },
+              {
+                "id": "letter_l.001",
+                "properties": {
+                  "position": "0.5859837532043457,0.05106639862060547,0.11322823166847229",
+                  "rotation": "0.0,0.0,0.0",
+                  "scale": "1.0,1.0,1.0"
+                },
+                "child": {
+                  "id": "letter_l.mesh",
+                  "duplicate": "true"
+                }
+              },
+              {
+                "id": "panel_light",
+                "properties": {
+                  "color": "1,0.98,0.365,1.0",
+                  "range": "3.0",
+                  "position": "0.0,-0.40000009536743164,-8.940696716308594e-08",
+                  "rotation": "0.0,0.0,0.0",
+                  "scale": "1.0,1.0,1.0"
+                },
+                "class": "OmniLight"
+              }
+            ]
+          }
+        },
+        {
+          "id": "pillard_2",
+          "properties": {
+            "shape": "MeshShape",
+            "layer": "1",
+            "position": "-2.5999999046325684,6.400000095367432,-3.799999952316284",
+            "rotation": "0.0,0.0,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "class": "StaticBody",
+          "child": {
+            "id": "pillard_2.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "pillard_2.001",
+          "properties": {
+            "shape": "MeshShape",
+            "layer": "1",
+            "position": "2.6000003814697266,6.400000095367432,-3.799999952316284",
+            "rotation": "0.0,0.0,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "class": "StaticBody",
+          "child": {
+            "id": "pillard_2.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "pipe_1",
+          "properties": {
+            "shape": "MeshShape",
+            "layer": "1",
+            "position": "4.742602825164795,1.2000000476837158,-3.415571928024292",
+            "rotation": "90.00000250447816,0.0,90.00000250447816",
+            "scale": "1.0,1.0,1.0"
+          },
+          "class": "StaticBody",
+          "child": {
+            "id": "pipe_1.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "pipe_1.001",
+          "properties": {
+            "position": "4.741325855255127,5.759096622467041,-2.5796117782592773",
+            "rotation": "0.0,-90.00000933466734,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "child": {
+            "id": "pipe_1.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "pipe_3",
+          "properties": {
+            "position": "4.741495132446289,6.178223609924316,2.6403698921203613",
+            "rotation": "0.0,90.00000933466734,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "child": {
+            "id": "pipe_3.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "pipe_5",
+          "properties": {
+            "shape": "MeshShape",
+            "layer": "1",
+            "position": "4.742825031280518,3.432328701019287,-2.99519681930542",
+            "rotation": "-90.00000250447816,0.0,-90.00000250447816",
+            "scale": "1.0,1.0,1.0"
+          },
+          "class": "StaticBody",
+          "child": {
+            "id": "pipe_5.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "prop_11",
+          "properties": {
+            "shape": "AABBShape",
+            "position": "1.4999998807907104,0.800000011920929,4.0",
+            "rotation": "0.0,-135.00000034162267,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "class": "Console",
+          "child": {
+            "id": "prop_11.mesh",
+            "duplicate": "true"
+          }
+        },
+        {
+          "id": "stair_1",
+          "properties": {
+            "shape": "MeshShape",
+            "layer": "1",
+            "position": "-0.0097037423402071,0.5997328758239746,-2.370650291442871",
+            "rotation": "0.0,0.0,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "class": "StaticBody",
+          "child": {
+            "id": "stair_1.mesh",
+            "duplicate": "true",
+            "children": [
+              {
+                "id": "stair_1.001",
+                "properties": {
+                  "shape": "BoxShape;1.8,1.0,2.0",
+                  "layer": "1",
+                  "groups": "stairs",
+                  "position": "0.009515762329101562,-0.49973300099372864,-0.1361539363861084",
+                  "rotation": "25.00000012650595,0.0,0.0",
+                  "scale": "1.0,1.0,1.0"
+                },
+                "class": "StaticBody"
+              }
+            ]
+          }
+        },
+        {
+          "id": "walls",
+          "properties": {
+            "position": "0.0,1.0,-5.0",
+            "rotation": "0.0,0.0,0.0",
+            "scale": "1.0,1.0,1.0"
+          },
+          "children": [
+            {
+              "id": "wall_2_1",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-2.001000165939331,0.7294625639915466,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.001",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-4.00100040435791,0.7294625639915466,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.002",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "1.9989995956420898,0.7294625639915466,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.003",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,0.7294625639915466,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.004",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,0.7294625639915466,8.830428123474121",
+                "rotation": "0.0,-270.000028004002,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.005",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,0.7294625639915466,6.830428123474121",
+                "rotation": "0.0,-270.000028004002,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.006",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,0.7294625639915466,4.830428123474121",
+                "rotation": "0.0,-270.000028004002,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.007",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,0.7294625639915466,2.830428123474121",
+                "rotation": "0.0,-270.000028004002,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.008",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,0.7294625639915466,0.8304281234741211",
+                "rotation": "0.0,-270.000028004002,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.009",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-4.8035569190979,1.851193904876709,0.03042811155319214",
+                "rotation": "0.0,-360.00003733866936,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.010",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-2.9035568237304688,1.851193904876709,0.03042811155319214",
+                "rotation": "0.0,-360.00003733866936,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.011",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "2.8964433670043945,1.851193904876709,0.03042811155319214",
+                "rotation": "0.0,-360.00003733866936,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.012",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "4.8964433670043945,1.851193904876709,0.03042811155319214",
+                "rotation": "0.0,-360.00003733866936,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.013",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "3.99899959564209,0.7294625639915466,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.014",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,0.7294625639915466,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.015",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,0.7294625639915466,8.820428848266602",
+                "rotation": "0.0,-90.0000161648565,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.016",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,0.7294625639915466,6.820428848266602",
+                "rotation": "0.0,-90.0000161648565,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.017",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,0.7294625639915466,4.820428848266602",
+                "rotation": "0.0,-90.0000161648565,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.018",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,0.7294625639915466,2.8204288482666016",
+                "rotation": "0.0,-90.0000161648565,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.019",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,0.7294625639915466,0.8204288482666016",
+                "rotation": "0.0,-90.0000161648565,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.020",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,4.729462623596191,8.820428848266602",
+                "rotation": "0.0,-90.0000161648565,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.021",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,4.729462623596191,6.820428848266602",
+                "rotation": "0.0,-90.0000161648565,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.022",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,4.729462623596191,4.820428848266602",
+                "rotation": "0.0,-90.0000161648565,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.023",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,4.729462623596191,2.8204288482666016",
+                "rotation": "0.0,-90.0000161648565,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.024",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,4.729462623596191,0.8204288482666016",
+                "rotation": "0.0,-90.0000161648565,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.025",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,4.729462623596191,8.830428123474121",
+                "rotation": "0.0,-270.000028004002,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.026",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,4.729462623596191,6.830428123474121",
+                "rotation": "0.0,-270.000028004002,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.027",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,4.729462623596191,4.830428123474121",
+                "rotation": "0.0,-270.000028004002,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.028",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,4.729462623596191,2.830428123474121",
+                "rotation": "0.0,-270.000028004002,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.029",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,4.729462623596191,0.8304281234741211",
+                "rotation": "0.0,-270.000028004002,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.030",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-2.001000165939331,4.729462623596191,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.031",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-4.00100040435791,4.729462623596191,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.032",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "1.9989995956420898,4.729462623596191,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.033",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-6.00100040435791,4.729462623596191,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.034",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "3.99899959564209,4.729462623596191,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.035",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "5.99899959564209,4.729462623596191,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.036",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-0.0010001659393310547,4.729462623596191,10.020428657531738",
+                "rotation": "0.0,-180.00001866933468,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.037",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-4.8035569190979,5.951193809509277,0.03042811155319214",
+                "rotation": "0.0,-360.00003733866936,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.038",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-2.9035568237304688,5.951193809509277,0.03042811155319214",
+                "rotation": "0.0,-360.00003733866936,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.039",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "2.8964433670043945,5.951193809509277,0.03042811155319214",
+                "rotation": "0.0,-360.00003733866936,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.040",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "4.8964433670043945,5.951193809509277,0.03042811155319214",
+                "rotation": "0.0,-360.00003733866936,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.041",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "0.9964433908462524,5.951193809509277,0.03042811155319214",
+                "rotation": "0.0,-360.00003733866936,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_1.042",
+              "properties": {
+                "shape": "AABBShape",
+                "layer": "1",
+                "position": "-0.9035565853118896,5.951193809509277,0.03042811155319214",
+                "rotation": "0.0,-360.00003733866936,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_2_1.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_2_door_1_",
+              "properties": {
+                "position": "-0.00022340752184391022,-1.100000023841858,9.998506546020508",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "children": [
+                {
+                  "id": "wall_2_door_1",
+                  "properties": {
+                    "shape": "AABBShape",
+                    "layer": "1",
+                    "position": "-0.0047600590623915195,2.2286272048950195,0.019402503967285156",
+                    "rotation": "0.0,0.0,0.0",
+                    "scale": "1.0,1.0,1.0"
+                  },
+                  "class": "StaticBody",
+                  "child": {
+                    "id": "wall_2_door_1.mesh",
+                    "duplicate": "true"
+                  }
+                },
+                {
+                  "id": "wall_2_door_1_dorm",
+                  "properties": {
+                    "position": "-6.946356734260917e-06,1.249606728553772,-0.0024442672729492188",
+                    "rotation": "0.0,0.0,0.0",
+                    "scale": "1.0,1.0,1.0"
+                  },
+                  "child": {
+                    "id": "wall_2_door_1_dorm.mesh",
+                    "duplicate": "true"
+                  }
+                },
+                {
+                  "id": "wall_2_door_1_l",
+                  "properties": {
+                    "position": "-0.33125999569892883,1.037312626838684,-0.0023870468139648438",
+                    "rotation": "0.0,0.0,0.0",
+                    "scale": "1.0,1.0,1.0"
+                  },
+                  "child": {
+                    "id": "wall_2_door_1_l.mesh",
+                    "duplicate": "true"
+                  }
+                },
+                {
+                  "id": "wall_2_door_1_r",
+                  "properties": {
+                    "position": "0.3308264911174774,1.0389868021011353,-0.0024557113647460938",
+                    "rotation": "0.0,0.0,0.0",
+                    "scale": "1.0,1.0,1.0"
+                  },
+                  "child": {
+                    "id": "wall_2_door_1_r.mesh",
+                    "duplicate": "true"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "wall_prop_3",
+              "properties": {
+                "shape": "MeshShape",
+                "layer": "1",
+                "position": "-4.000187873840332,-0.5899999737739563,0.23676876723766327",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_prop_3.mesh",
+                "duplicate": "true"
+              }
+            },
+            {
+              "id": "wall_prop_3.001",
+              "properties": {
+                "shape": "MeshShape",
+                "layer": "1",
+                "position": "4.0,-0.5899999737739563,0.2435731142759323",
+                "rotation": "0.0,0.0,0.0",
+                "scale": "1.0,1.0,1.0"
+              },
+              "class": "StaticBody",
+              "child": {
+                "id": "wall_prop_3.mesh",
+                "duplicate": "true"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "corridor_tube",
+      "properties": {
+        "shape": "MeshShape",
+        "layer": "1",
+        "position": "-0.008758544921875,1.7000000476837158,-4.295595645904541",
+        "rotation": "0.0,0.0,0.0",
+        "scale": "1.0,1.0,1.0"
+      },
+      "class": "StaticBody",
+      "child": {
+        "id": "corridor_tube.mesh",
+        "duplicate": "true",
+        "children": [
+          {
+            "id": "corridor_tube_ceil_omnilight",
+            "properties": {
+              "color": "1.0,0.0,0.0,1.0",
+              "range": "4.0",
+              "cast_shadows": "false",
+              "position": "0.008757591247558594,1.0999999046325684,-0.06440401077270508",
+              "rotation": "0.0,0.0,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "class": "OmniLight"
+          },
+          {
+            "id": "light_2.red.001",
+            "properties": {
+              "position": "0.008757591247558594,1.809999942779541,-4.291534423828125e-06",
+              "rotation": "90.00000250447816,90.00000250447816,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "light_2.red.mesh",
+              "duplicate": "true"
+            }
+          },
+          {
+            "id": "light_2.red.002",
+            "properties": {
+              "position": "0.008758544921875,1.809999942779541,-4.291534423828125e-06",
+              "rotation": "90.00000250447816,90.00000250447816,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "light_2.red.mesh",
+              "duplicate": "true"
+            }
+          },
+          {
+            "id": "light_2.red.003",
+            "properties": {
+              "position": "0.008758544921875,1.809999942779541,-4.291534423828125e-06",
+              "rotation": "90.00000250447816,90.00000250447816,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "light_2.red.mesh",
+              "duplicate": "true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "corridor_tube_door",
+      "properties": {
+        "position": "-0.0097037423402071,3.009732961654663,0.029349446296691895",
+        "rotation": "0.0,0.0,0.0",
+        "scale": "1.0,1.0,1.0"
+      },
+      "class": "TunnelDoor",
+      "child": {
+        "id": "corridor_tube_door.mesh",
+        "duplicate": "true",
+        "children": [
+          {
+            "id": "corridor_tube_door_dorm",
+            "properties": {
+              "position": "0.009005652740597725,-5.929329872131348,2.2394347190856934",
+              "rotation": "0.0,0.0,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "corridor_tube_door_dorm.mesh",
+              "duplicate": "true"
+            }
+          },
+          {
+            "id": "corridor_tube_door_l",
+            "properties": {
+              "position": "-0.6506298780441284,-1.2802056074142456,0.003509521484375",
+              "rotation": "0.0,0.0,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "corridor_tube_door_l.mesh",
+              "duplicate": "true",
+              "children": [
+                {
+                  "id": "corridor_tube_door_dorm_body_l",
+                  "properties": {
+                    "shape": "BoxShape;2.0,4.0,0.5",
+                    "layer": "1",
+                    "position": "-0.3398551940917969,0.2104727029800415,0.06033670902252197",
+                    "rotation": "0.0,0.0,0.0",
+                    "scale": "1.0,1.0,1.0"
+                  },
+                  "class": "StaticBody"
+                }
+              ]
+            }
+          },
+          {
+            "id": "corridor_tube_door_r",
+            "properties": {
+              "position": "0.6089011430740356,-1.2738643884658813,0.00372314453125",
+              "rotation": "0.0,0.0,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "corridor_tube_door_r.mesh",
+              "duplicate": "true",
+              "children": [
+                {
+                  "id": "corridor_tube_door_dorm_body_r",
+                  "properties": {
+                    "shape": "BoxShape;2.0,4.0,0.5",
+                    "layer": "1",
+                    "position": "0.40061378479003906,0.20413148403167725,0.06012308597564697",
+                    "rotation": "0.0,0.0,0.0",
+                    "scale": "1.0,1.0,1.0"
+                  },
+                  "class": "StaticBody"
+                }
+              ]
+            }
+          },
+          {
+            "id": "corridor_tube_door_stair",
+            "properties": {
+              "shape": "BoxShape;1.8,0.2,1.5",
+              "layer": "1",
+              "groups": "stairs",
+              "position": "-7.086154073476791e-05,-3.1197328567504883,0.9181456565856934",
+              "rotation": "0.0,0.0,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "class": "StaticBody"
+          },
+          {
+            "id": "corridor_tube_door_stair.001",
+            "properties": {
+              "shape": "BoxShape;1.8,0.2,0.75",
+              "layer": "1",
+              "groups": "stairs",
+              "position": "-0.005126798525452614,-2.9947328567504883,0.5768699645996094",
+              "rotation": "0.0,0.0,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "class": "StaticBody"
+          }
+        ]
+      }
+    },
+    {
+      "id": "corridor_tube.001",
+      "properties": {
+        "shape": "MeshShape",
+        "layer": "1",
+        "position": "-0.008758544921875,1.7000000476837158,-12.2955961227417",
+        "rotation": "0.0,0.0,0.0",
+        "scale": "1.0,1.0,1.0"
+      },
+      "class": "StaticBody",
+      "child": {
+        "id": "corridor_tube.mesh",
+        "duplicate": "true",
+        "children": [
+          {
+            "id": "light_2.red.004",
+            "properties": {
+              "position": "0.008757591247558594,1.809999942779541,-4.76837158203125e-06",
+              "rotation": "90.00000250447816,90.00000250447816,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "light_2.red.mesh",
+              "duplicate": "true"
+            }
+          },
+          {
+            "id": "light_2.red.005",
+            "properties": {
+              "position": "0.008758544921875,1.809999942779541,-3.814697265625e-06",
+              "rotation": "90.00000250447816,90.00000250447816,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "light_2.red.mesh",
+              "duplicate": "true"
+            }
+          },
+          {
+            "id": "light_2.red.006",
+            "properties": {
+              "position": "0.008758544921875,1.809999942779541,-3.814697265625e-06",
+              "rotation": "90.00000250447816,90.00000250447816,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "light_2.red.mesh",
+              "duplicate": "true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "corridor_tube.002",
+      "properties": {
+        "shape": "MeshShape",
+        "layer": "1",
+        "position": "-0.008758544921875,1.7000000476837158,-20.295595169067383",
+        "rotation": "0.0,0.0,0.0",
+        "scale": "1.0,1.0,1.0"
+      },
+      "class": "StaticBody",
+      "child": {
+        "id": "corridor_tube.mesh",
+        "duplicate": "true",
+        "children": [
+          {
+            "id": "corridor_tube_ceil_omnilight.002",
+            "properties": {
+              "color": "1.0,0.0,0.0,2.0",
+              "range": "15.0",
+              "cast_shadows": "true",
+              "position": "0.008757591247558594,1.0999999046325684,-0.06440353393554688",
+              "rotation": "0.0,0.0,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "class": "OmniLight"
+          },
+          {
+            "id": "light_2.red.007",
+            "properties": {
+              "position": "0.008757591247558594,1.809999942779541,-3.814697265625e-06",
+              "rotation": "90.00000250447816,90.00000250447816,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "light_2.red.mesh",
+              "duplicate": "true"
+            }
+          },
+          {
+            "id": "light_2.red.008",
+            "properties": {
+              "position": "0.008758544921875,1.809999942779541,-3.814697265625e-06",
+              "rotation": "90.00000250447816,90.00000250447816,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "light_2.red.mesh",
+              "duplicate": "true"
+            }
+          },
+          {
+            "id": "light_2.red.009",
+            "properties": {
+              "position": "0.008758544921875,1.809999942779541,-3.814697265625e-06",
+              "rotation": "90.00000250447816,90.00000250447816,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "light_2.red.mesh",
+              "duplicate": "true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "corridor_tube_corner",
+      "properties": {
+        "shape": "MeshShape",
+        "layer": "1",
+        "position": "2.853184223175049,1.7152479887008667,-33.42964172363281",
+        "rotation": "0.0,-180.00000500895632,0.0",
+        "scale": "1.0,1.0,1.0"
+      },
+      "class": "StaticBody",
+      "child": {
+        "id": "corridor_tube_corner.mesh",
+        "duplicate": "true",
+        "children": [
+          {
+            "id": "corridor_tube_corner_omnilight",
+            "properties": {
+              "color": "1.0,0.0,0.0,1.0",
+              "range": "4.0",
+              "cast_shadows": "false",
+              "position": "2.87076473236084,1.0847519636154175,-2.9444026947021484",
+              "rotation": "0.0,0.0,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "class": "OmniLight"
+          },
+          {
+            "id": "corridor_tube_corner_omnilight.001",
+            "properties": {
+              "color": "1.0,0.0,0.0,1.0",
+              "range": "4.0",
+              "cast_shadows": "false",
+              "position": "-3.049947738647461,1.0847519636154175,2.9397850036621094",
+              "rotation": "0.0,0.0,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "class": "OmniLight"
+          },
+          {
+            "id": "light_2.red",
+            "properties": {
+              "position": "2.87076473236084,1.7847520112991333,-2.9444026947021484",
+              "rotation": "0.0,90.00000250447816,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "light_2.red.mesh",
+              "duplicate": "true"
+            }
+          },
+          {
+            "id": "light_2.red.010",
+            "properties": {
+              "position": "-3.049947738647461,1.7847520112991333,2.9397850036621094",
+              "rotation": "0.0,0.0,0.0",
+              "scale": "1.0,1.0,1.0"
+            },
+            "child": {
+              "id": "light_2.red.mesh",
+              "duplicate": "true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "level_1_1_load",
+      "properties": {
+        "shape": "SphereShape;2.0f",
+        "layer": "4",
+        "position": "0.007934093475341797,1.600000023841858,-20.99250030517578",
+        "rotation": "0.0,0.0,0.0",
+        "scale": "1.0,1.0,1.0"
+      },
+      "class": "CollisionArea"
+    },
+    {
+      "id": "level_1_1_unload",
+      "properties": {
+        "shape": "SphereShape;2.0f",
+        "layer": "4",
+        "position": "-0.0446246862411499,1.600000023841858,-15.320383071899414",
+        "rotation": "0.0,0.0,0.0",
+        "scale": "1.0,1.0,1.0"
+      },
+      "class": "CollisionArea"
+    }
+  ]
+}

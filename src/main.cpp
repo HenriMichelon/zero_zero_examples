@@ -2,6 +2,9 @@
 #include "libraries.h"
 
 import example;
+import game;
+import layers;
+using namespace space_station;
 
 const ApplicationConfig applicationConfig{
     .appName = "Example App",
@@ -9,15 +12,16 @@ const ApplicationConfig applicationConfig{
     .layerCollisionTable = LayerCollisionTable{
         LAYERS_COUNT,
         {
-        { PLAYER, { WORLD, BODIES }},
-        { BODIES, { WORLD, BODIES, PLAYER }},
-        { PLAYER_RAYCAST, { BODIES }},
+           { PLAYER, { WORLD, BODIES, USABLE_PROP }},
+           { BODIES, { WORLD, BODIES, PLAYER, USABLE_PROP }},
+           { PLAYER_RAYCAST, { BODIES }},
            { TRIGGERS, { PLAYER }},
+        { INTERACTIONS, { USABLE_PROP }},
         }
     },
     .windowMode = WindowMode::WINDOWED,
-    .windowWidth = 1280,
-    .windowHeight = 720,
+    .windowWidth = 800,
+    .windowHeight = 600,
     .windowMonitor = 0,
     .defaultFontName = "app://res/Signwood.ttf",
     .defaultFontSize = 25,
@@ -49,5 +53,9 @@ const ApplicationConfig applicationConfig{
 // Register the examples node classes for the JSON loading
 Z0_REGISTER_TYPE(Crate)
 Z0_REGISTER_TYPE(Player)
+
+Z0_REGISTER_TYPE(TunnelDoor)
+Z0_REGISTER_TYPE(SlideDoor)
+Z0_REGISTER_TYPE(Console)
 
 Z0_APP(applicationConfig, make_shared<ExampleMainScene>())

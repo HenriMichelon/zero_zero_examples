@@ -1,4 +1,4 @@
-export module example.Layers;
+export module layers;
 
 // values used in the layers & masks for the collisions detection
 export enum Layers {
@@ -6,8 +6,10 @@ export enum Layers {
     WORLD       = 1,
     BODIES      = 2,
     PLAYER      = 3,
-    PLAYER_RAYCAST     = 4,
-    TRIGGERS    = 5,
-    LAYERS_COUNT= TRIGGERS+1,
+    TRIGGERS    = 4,
+    USABLE_PROP = 5,
+    INTERACTIONS= 6,
+    PLAYER_RAYCAST     = 7,
+    LAYERS_COUNT= PLAYER_RAYCAST+1,
 };
 

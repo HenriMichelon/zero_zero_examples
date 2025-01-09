@@ -1,0 +1,1503 @@
+{
+  "nodes": [
+    {
+      "id": "resources",
+      "type": "resource",
+      "resource": "app://res/models/interior_station_pack.zres"
+    },
+    {
+      "id": "banister_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.013/banister_2"
+    },
+    {
+      "id": "wall_2_corner.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.026/wall_2_corner"
+    },
+    {
+      "id": "wall_2_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.010/wall_2_1"
+    },
+    {
+      "id": "floor_tile_1_riveted.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.062/floor_tile_1_riveted"
+    },
+    {
+      "id": "floor_tile_1_grid.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.108/floor_tile_1_grid"
+    },
+    {
+      "id": "wall_2_window.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.112/wall_2_window"
+    },
+    {
+      "id": "wall_2_window_window.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.112/wall_2_window_window"
+    },
+    {
+      "id": "wall_2_t_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.061/wall_2_t_1"
+    },
+    {
+      "id": "baseboard_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.001/baseboard_1"
+    },
+    {
+      "id": "wall_2_t_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.167/wall_2_t_2"
+    },
+    {
+      "id": "baseboard_1_corner.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.039/baseboard_1_corner"
+    },
+    {
+      "id": "wall_2_door_1_r.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.058/Cube.059/Cube.056/wall_2_door_1_r"
+    },
+    {
+      "id": "wall_2_door_1_l.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.058/Cube.059/Cube.113/wall_2_door_1_l"
+    },
+    {
+      "id": "wall_2_door_1_dorm.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.058/Cube.059/wall_2_door_1_dorm"
+    },
+    {
+      "id": "wall_2_door_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.058/wall_2_door_1"
+    },
+    {
+      "id": "prop_22.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.008/Plane.014/prop_22"
+    },
+    {
+      "id": "prop_21.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.008/prop_21"
+    },
+    {
+      "id": "floor_tile_1_trap.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.326/floor_tile_1_trap"
+    },
+    {
+      "id": "wall_3_door_2_top.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.175/Cube.327/Cube.328/wall_3_door_2_top"
+    },
+    {
+      "id": "wall_3_door_2_bottom.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.175/Cube.327/Cube.329/wall_3_door_2_bottom"
+    },
+    {
+      "id": "wall_3_door_2_dorm.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.175/Cube.327/wall_3_door_2_dorm"
+    },
+    {
+      "id": "wall_3_door_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.175/wall_3_door_2"
+    },
+    {
+      "id": "pipe_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.014/pipe_3"
+    },
+    {
+      "id": "pipe_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Pipe_Corner/pipe_2"
+    },
+    {
+      "id": "pipe_4.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.013/pipe_4"
+    },
+    {
+      "id": "pipe_5.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.015/pipe_5"
+    },
+    {
+      "id": "pipe_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Pipe_Corner.001/pipe_1"
+    },
+    {
+      "id": "floor_tile_1_transp_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.334/floor_tile_1_transp_2"
+    },
+    {
+      "id": "floor_tile_1_transp_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.336/floor_tile_1_transp_1"
+    },
+    {
+      "id": "floor_tile_1_transp_corner.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.337/floor_tile_1_transp_corner"
+    },
+    {
+      "id": "prop_9.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.678/prop_9"
+    },
+    {
+      "id": "prop_7.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.688/prop_7"
+    },
+    {
+      "id": "box_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.689/box_3"
+    },
+    {
+      "id": "pillard_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1315/pillard_3"
+    },
+    {
+      "id": "pillard_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1322/pillard_1"
+    },
+    {
+      "id": "pillard_4.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1323/pillard_4"
+    },
+    {
+      "id": "pillard_5.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1325/pillard_5"
+    },
+    {
+      "id": "wall_2_vent_vent.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1329/Cylinder.028/wall_2_vent_vent"
+    },
+    {
+      "id": "wall_2_vent.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1329/wall_2_vent"
+    },
+    {
+      "id": "floor_tile_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1411/floor_tile_1"
+    },
+    {
+      "id": "wall_2_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1420/wall_2_2"
+    },
+    {
+      "id": "wall_1_vent_vent.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.738/Cylinder.011/wall_1_vent_vent"
+    },
+    {
+      "id": "wall_1_vent.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.738/wall_1_vent"
+    },
+    {
+      "id": "wall_1_corner.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.002/wall_1_corner"
+    },
+    {
+      "id": "wall_1_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.117/wall_1_1"
+    },
+    {
+      "id": "wall_1_t_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.712/wall_1_t_1"
+    },
+    {
+      "id": "wall_1_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.736/wall_1_2"
+    },
+    {
+      "id": "wall_1_t_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.053/wall_1_t_2"
+    },
+    {
+      "id": "pillard_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.681/pillard_2"
+    },
+    {
+      "id": "prop_17.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1808/prop_17"
+    },
+    {
+      "id": "prop_18.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1809/prop_18"
+    },
+    {
+      "id": "grid_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1810/grid_2"
+    },
+    {
+      "id": "grid_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1811/grid_3"
+    },
+    {
+      "id": "wall_prop_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1816/wall_prop_3"
+    },
+    {
+      "id": "wall_prop_4.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1817/wall_prop_4"
+    },
+    {
+      "id": "prop_19.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.718/prop_19"
+    },
+    {
+      "id": "Cube.971_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.971/Cube.971_Texture_Atlas1_0"
+    },
+    {
+      "id": "stair_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.722/stair_2"
+    },
+    {
+      "id": "stair_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1834/stair_1"
+    },
+    {
+      "id": "banister_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.017/banister_1"
+    },
+    {
+      "id": "stair_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.014/stair_3"
+    },
+    {
+      "id": "banister_prop_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1849/banister_prop_2"
+    },
+    {
+      "id": "banister_prop_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1850/banister_prop_1"
+    },
+    {
+      "id": "banister_prop_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.173/banister_prop_3"
+    },
+    {
+      "id": "Cube.735_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.735/Cube.735_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cube.168_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.168/Cube.168_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cube.701_Texture_Atlas1_0.002.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.701/Cube.701_Texture_Atlas1_0.002"
+    },
+    {
+      "id": "structure_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.701/structure_1"
+    },
+    {
+      "id": "structure_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.701/structure_2"
+    },
+    {
+      "id": "wall_prop_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.924/wall_prop_2"
+    },
+    {
+      "id": "wall_prop_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1853/wall_prop_1"
+    },
+    {
+      "id": "wall_5_corner.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1871/wall_5_corner"
+    },
+    {
+      "id": "baseboard_2_corner.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1872/baseboard_2_corner"
+    },
+    {
+      "id": "wall_5.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1873/wall_5"
+    },
+    {
+      "id": "baseboard_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1874/baseboard_2"
+    },
+    {
+      "id": "wall_4.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1875/wall_4"
+    },
+    {
+      "id": "wall_4_corner.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1876/wall_4_corner"
+    },
+    {
+      "id": "corridor_tube_door_dorm.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.737/Circle.017/corridor_tube_door_dorm"
+    },
+    {
+      "id": "corridor_tube_door_r.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.737/Circle.019/corridor_tube_door_r"
+    },
+    {
+      "id": "corridor_tube_door_l.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.737/Circle.020/corridor_tube_door_l"
+    },
+    {
+      "id": "corridor_tube_door.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.737/corridor_tube_door"
+    },
+    {
+      "id": "corridor_tube.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Circle.018/corridor_tube"
+    },
+    {
+      "id": "corridor_tube_corner.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Circle.021/corridor_tube_corner"
+    },
+    {
+      "id": "corridor_tube_t.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Circle.022/corridor_tube_t"
+    },
+    {
+      "id": "wall_3_corner.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.331/wall_3_corner"
+    },
+    {
+      "id": "wall_3_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1919/wall_3_1"
+    },
+    {
+      "id": "wall_3_window.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1920/wall_3_window"
+    },
+    {
+      "id": "wall_3_window_window.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1920/wall_3_window_window"
+    },
+    {
+      "id": "wall_3_t_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1921/wall_3_t_1"
+    },
+    {
+      "id": "wall_3_t_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1922/wall_3_t_2"
+    },
+    {
+      "id": "wall_3_door_dorm.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1923/Cube.2287/wall_3_door_dorm"
+    },
+    {
+      "id": "wall_3_door_l.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1923/Cube.2288/wall_3_door_l"
+    },
+    {
+      "id": "wall_3_door_r.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1923/Cube.974/wall_3_door_r"
+    },
+    {
+      "id": "wall_3_door.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1923/wall_3_door"
+    },
+    {
+      "id": "wall_3_vent_vent.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1924/Cylinder.032/wall_3_vent_vent"
+    },
+    {
+      "id": "wall_3_vent.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1924/wall_3_vent"
+    },
+    {
+      "id": "wall_3_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1925/wall_3_2"
+    },
+    {
+      "id": "wall_2_door_2_t.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1926/Cube.1927/Cube.1928/wall_2_door_2_t"
+    },
+    {
+      "id": "wall_2_door_2_b.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1926/Cube.1927/Cube.1929/wall_2_door_2_b"
+    },
+    {
+      "id": "wall_2_door_2_dorm.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1926/Cube.1927/wall_2_door_2_dorm"
+    },
+    {
+      "id": "wall_2_door_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1926/wall_2_door_2"
+    },
+    {
+      "id": "pipe_6.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.044/pipe_6"
+    },
+    {
+      "id": "pipe_7.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.034/pipe_7"
+    },
+    {
+      "id": "pipe_small_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.046/pipe_small_3"
+    },
+    {
+      "id": "pipe_small_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Pipe_Corner.004/pipe_small_2"
+    },
+    {
+      "id": "pipe_small_6.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.047/pipe_small_6"
+    },
+    {
+      "id": "pipe_small_5.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.048/pipe_small_5"
+    },
+    {
+      "id": "pipe_small_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Pipe_Corner.008/pipe_small_1"
+    },
+    {
+      "id": "pipe_small_4.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.049/pipe_small_4"
+    },
+    {
+      "id": "pipe_small_7.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.055/pipe_small_7"
+    },
+    {
+      "id": "pipe_8.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.056/pipe_8"
+    },
+    {
+      "id": "pipe_small_8.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.057/pipe_small_8"
+    },
+    {
+      "id": "stair_prop_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1931/stair_prop_1"
+    },
+    {
+      "id": "stair_prop_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1932/stair_prop_2"
+    },
+    {
+      "id": "stair_prop_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1933/stair_prop_3"
+    },
+    {
+      "id": "stair_prop_4.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1934/stair_prop_4"
+    },
+    {
+      "id": "floor_tile_2_border.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1935/floor_tile_2_border"
+    },
+    {
+      "id": "Cube.1936_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1936/Cube.1936_Texture_Atlas1_0"
+    },
+    {
+      "id": "prop_20.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1937/prop_20"
+    },
+    {
+      "id": "floor_tile_2_corner.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1955/floor_tile_2_corner"
+    },
+    {
+      "id": "floor_tile_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1956/floor_tile_2"
+    },
+    {
+      "id": "Cube.1958_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1957/Cube.1958/Cube.1958_Texture_Atlas1_0"
+    },
+    {
+      "id": "grid_door.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1957/Cube.1958/Cylinder.058/grid_door"
+    },
+    {
+      "id": "grid_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1957/grid_1"
+    },
+    {
+      "id": "floor_tile_2_corner_round.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1959/floor_tile_2_corner_round"
+    },
+    {
+      "id": "light_tube_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Plane.030/light_tube_1"
+    },
+    {
+      "id": "light_tube_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Plane.031/light_tube_2"
+    },
+    {
+      "id": "light_tube_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Plane.032/light_tube_3"
+    },
+    {
+      "id": "light_tube_4.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Plane.033/light_tube_4"
+    },
+    {
+      "id": "light_tube_5.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Plane.034/light_tube_5"
+    },
+    {
+      "id": "corridor_tube_closing.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Circle.024/corridor_tube_closing"
+    },
+    {
+      "id": "Cube.856_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.856/Cube.856_Texture_Atlas1_0"
+    },
+    {
+      "id": "prop_6.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1930/prop_6"
+    },
+    {
+      "id": "prop_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1984/prop_1"
+    },
+    {
+      "id": "wall_3_pillard.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1992/wall_3_pillard"
+    },
+    {
+      "id": "stain_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Plane.017/stain_2"
+    },
+    {
+      "id": "stain_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Plane.018/stain_1"
+    },
+    {
+      "id": "box_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1994/box_2"
+    },
+    {
+      "id": "box_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2005/box_1"
+    },
+    {
+      "id": "prop_10.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2056/prop_10"
+    },
+    {
+      "id": "Cube.2057__0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2057/Cube.2057__0"
+    },
+    {
+      "id": "wall_glass_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2324/wall_glass_1"
+    },
+    {
+      "id": "wall_glass_1_glass.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2324/wall_glass_1_glass"
+    },
+    {
+      "id": "wall_glass_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2325/wall_glass_2"
+    },
+    {
+      "id": "wall_glass_2_glass.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2325/wall_glass_2_glass"
+    },
+    {
+      "id": "wall_glass_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2326/wall_glass_3"
+    },
+    {
+      "id": "wall_glass_3_glass.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2326/wall_glass_3_glass"
+    },
+    {
+      "id": "Cube.2509_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2508/Cube.2509/Cube.2509_Texture_Atlas1_0"
+    },
+    {
+      "id": "wall_glass_4_door.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2508/Cube.2509/Cube.2510/wall_glass_4_door"
+    },
+    {
+      "id": "wall_glass_4_door_glass.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2508/Cube.2509/Cube.2510/wall_glass_4_door_glass"
+    },
+    {
+      "id": "wall_glass_4.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2508/wall_glass_4"
+    },
+    {
+      "id": "wall_glass_4_glass.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2508/wall_glass_4_glass"
+    },
+    {
+      "id": "Cube.2512_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2512/Cube.2512_Texture_Atlas1_0"
+    },
+    {
+      "id": "floor_corner.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2780/floor_corner"
+    },
+    {
+      "id": "wall_glass_5.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2813/wall_glass_5"
+    },
+    {
+      "id": "wall_glass_5_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2813/wall_glass_5_1"
+    },
+    {
+      "id": "prop_12.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3248/prop_12"
+    },
+    {
+      "id": "wall_1_door_1_r.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3521/Cube.3522/wall_1_door_1_r"
+    },
+    {
+      "id": "wall_1_door_1_dorm.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3521/Cube.3523/wall_1_door_1_dorm"
+    },
+    {
+      "id": "wall_1_door_1_l.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3521/Cube.3524/wall_1_door_1_l"
+    },
+    {
+      "id": "wall_1_door_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3521/wall_1_door_1"
+    },
+    {
+      "id": "wall_1_window_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3525/wall_1_window_1"
+    },
+    {
+      "id": "wall_1_window_1_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3525/wall_1_window_1_2"
+    },
+    {
+      "id": "prop_15.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3558/prop_15"
+    },
+    {
+      "id": "Cylinder.074_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.074/Cylinder.074_Glass_0"
+    },
+    {
+      "id": "Cylinder.074_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.074/Cylinder.074_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.075_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.075/Cylinder.075_Glass_0"
+    },
+    {
+      "id": "Cylinder.075_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.075/Cylinder.075_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.076_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.076/Cylinder.076_Glass_0"
+    },
+    {
+      "id": "Cylinder.076_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.076/Cylinder.076_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.077_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.077/Cylinder.077_Glass_0"
+    },
+    {
+      "id": "Cylinder.077_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.077/Cylinder.077_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.078_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.078/Cylinder.078_Glass_0"
+    },
+    {
+      "id": "Cylinder.078_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.078/Cylinder.078_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.079_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.079/Cylinder.079_Glass_0"
+    },
+    {
+      "id": "Cylinder.079_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.079/Cylinder.079_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.080_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.080/Cylinder.080_Glass_0"
+    },
+    {
+      "id": "Cylinder.080_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.080/Cylinder.080_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.081_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.081/Cylinder.081_Glass_0"
+    },
+    {
+      "id": "Cylinder.081_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.081/Cylinder.081_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.082_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.082/Cylinder.082_Glass_0"
+    },
+    {
+      "id": "Cylinder.082_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.082/Cylinder.082_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.083_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.083/Cylinder.083_Glass_0"
+    },
+    {
+      "id": "Cylinder.083_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.083/Cylinder.083_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.084_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.084/Cylinder.084_Glass_0"
+    },
+    {
+      "id": "Cylinder.084_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.084/Cylinder.084_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.085_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.085/Cylinder.085_Glass_0"
+    },
+    {
+      "id": "Cylinder.085_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.085/Cylinder.085_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.093_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.093/Cylinder.093_Glass_0"
+    },
+    {
+      "id": "Cylinder.093_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.093/Cylinder.093_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.109_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.109/Cylinder.109_Glass_0"
+    },
+    {
+      "id": "Cylinder.109_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.109/Cylinder.109_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.098_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.098/Cylinder.098_Glass_0"
+    },
+    {
+      "id": "Cylinder.098_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.098/Cylinder.098_Texture_Atlas1_0"
+    },
+    {
+      "id": "Cylinder.099_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.099/Cylinder.099_Glass_0"
+    },
+    {
+      "id": "Cylinder.099_Texture_Atlas1_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.099/Cylinder.099_Texture_Atlas1_0"
+    },
+    {
+      "id": "prop_13.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3559/prop_13"
+    },
+    {
+      "id": "prop_16.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3560/prop_16"
+    },
+    {
+      "id": "Cube.3561_Glass_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3561/Cube.3561_Glass_0"
+    },
+    {
+      "id": "prop_14.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3561/prop_14"
+    },
+    {
+      "id": "prop_8.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3569/prop_8"
+    },
+    {
+      "id": "letter_a.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3590/letter_a"
+    },
+    {
+      "id": "letter_b.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3591/letter_b"
+    },
+    {
+      "id": "letter_c.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3592/letter_c"
+    },
+    {
+      "id": "letter_d.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3593/letter_d"
+    },
+    {
+      "id": "letter_e.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3594/letter_e"
+    },
+    {
+      "id": "letter_f.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3595/letter_f"
+    },
+    {
+      "id": "letter_g.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3596/letter_g"
+    },
+    {
+      "id": "letter_h.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3597/letter_h"
+    },
+    {
+      "id": "letter_i.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3598/letter_i"
+    },
+    {
+      "id": "letter_j.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3599/letter_j"
+    },
+    {
+      "id": "letter_k.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3600/letter_k"
+    },
+    {
+      "id": "letter_l.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3601/letter_l"
+    },
+    {
+      "id": "letter_m.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3602/letter_m"
+    },
+    {
+      "id": "letter_n.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3603/letter_n"
+    },
+    {
+      "id": "letter_o.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3604/letter_o"
+    },
+    {
+      "id": "letter_p.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3605/letter_p"
+    },
+    {
+      "id": "letter_q.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3606/letter_q"
+    },
+    {
+      "id": "letter_r.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3607/letter_r"
+    },
+    {
+      "id": "letter_s.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3608/letter_s"
+    },
+    {
+      "id": "letter_t.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3609/letter_t"
+    },
+    {
+      "id": "letter_u.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3610/letter_u"
+    },
+    {
+      "id": "letter_v.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3611/letter_v"
+    },
+    {
+      "id": "letter_w.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3612/letter_w"
+    },
+    {
+      "id": "letter_x.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3613/letter_x"
+    },
+    {
+      "id": "letter_y.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3614/letter_y"
+    },
+    {
+      "id": "letter_z.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3615/letter_z"
+    },
+    {
+      "id": "letter_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3616/letter_1"
+    },
+    {
+      "id": "letter_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3617/letter_2"
+    },
+    {
+      "id": "letter_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3618/letter_3"
+    },
+    {
+      "id": "letter_4.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3619/letter_4"
+    },
+    {
+      "id": "letter_5.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3620/letter_5"
+    },
+    {
+      "id": "letter_6.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3621/letter_6"
+    },
+    {
+      "id": "letter_7.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3622/letter_7"
+    },
+    {
+      "id": "letter_8.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3623/letter_8"
+    },
+    {
+      "id": "letter_9.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3624/letter_9"
+    },
+    {
+      "id": "letter_0.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3625/letter_0"
+    },
+    {
+      "id": "panel.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3626/panel"
+    },
+    {
+      "id": "panel_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.3626/panel_2"
+    },
+    {
+      "id": "prop_11.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.1890/prop_11"
+    },
+    {
+      "id": "prop_4.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder/prop_4"
+    },
+    {
+      "id": "prop_5.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.907/prop_5"
+    },
+    {
+      "id": "prop_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cylinder.063/prop_2"
+    },
+    {
+      "id": "prop_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.244/prop_3"
+    },
+    {
+      "id": "light_2.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.268/light_2"
+    },
+    {
+      "id": "light_2.red.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.268/light_2.red"
+    },
+    {
+      "id": "light_1.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.386/light_1"
+    },
+    {
+      "id": "light_4.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2028/light_4"
+    },
+    {
+      "id": "light_3.mesh",
+      "type": "mesh",
+      "resource": "resources",
+      "path": "Cube.2031/light_3"
+    }
+  ]
+}

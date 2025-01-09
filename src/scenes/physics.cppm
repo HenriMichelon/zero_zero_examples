@@ -6,7 +6,7 @@ export module example.PhysicsMainScene;
 
 import example.Player;
 import example.Crate;
-import example.Layers;
+import layers;
 
 export class PhysicsMainScene : public Node {
 public:
