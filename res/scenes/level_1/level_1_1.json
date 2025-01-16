@@ -388,6 +388,7 @@
         {
           "id": "room_floor_tiles",
           "properties": {
+            "cast_shadows": "false",
             "position": "-24.0,1.899999976158142,10.0",
             "rotation": "0.0,0.0,0.0",
             "scale": "1.0,1.0,1.0"
@@ -3968,6 +3969,7 @@
         {
           "id": "walls",
           "properties": {
+            "cast_shadows": "false",
             "position": "0.0,2.0,3.0",
             "rotation": "0.0,0.0,0.0",
             "scale": "1.0,1.0,1.0"
@@ -6769,6 +6771,7 @@
     {
       "id": "ceiling",
       "properties": {
+        "cast_shadows": "false",
         "position": "28.367582321166992,-3.7699999809265137,-14.550000190734863",
         "rotation": "0.0,0.0,0.0",
         "scale": "1.0,1.0,1.0",
