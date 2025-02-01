@@ -20,8 +20,8 @@ const ApplicationConfig applicationConfig{
         }
     },
     .windowMode = WindowMode::WINDOWED,
-    .windowWidth = 800,
-    .windowHeight = 600,
+    .windowWidth = 1280,
+    .windowHeight = 720,
     .windowMonitor = 1,
     .defaultFontName = "app://res/Signwood.ttf",
     .defaultFontSize = 25,
