@@ -71,11 +71,11 @@ void ExampleMainScene::onEnterScene() {
     topbar = make_shared<TopBar>(this, [this]{this->onMenu(); });
     Application::get().add(topbar);
 
-    //menu->hide();
-    //topbar->show();
+    // menu->hide();
+    // topbar->show();
     // onMenuTriangle();
     // onMenuAddRemoveChild();
-    //onMenuRaycast();
+    // onMenuRaycast();
     // onMenuTerrain();
 }
 

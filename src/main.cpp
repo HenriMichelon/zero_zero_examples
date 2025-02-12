@@ -20,8 +20,8 @@ const ApplicationConfig applicationConfig{
         }
     },
     .windowMode = WindowMode::WINDOWED,
-    .windowWidth = 800,
-    .windowHeight = 600,
+    .windowWidth = 1280,
+    .windowHeight = 720,
     .windowMonitor = 1,
     .defaultFontName = "app://res/Signwood.ttf",
     .defaultFontSize = 25,
@@ -35,10 +35,10 @@ const ApplicationConfig applicationConfig{
     .pointLightShadowMapSize = 1024,
     .debug = false,
     .debugConfig = {
-        .displayAtStartup = false,
+        .displayAtStartup = true,
         .updateDelay = 5,
         .drawWithDepthTest = true,
-        .drawCoordinateSystem = false,
+        .drawCoordinateSystem = true,
         .drawCoordinateSystemPosition = vec3{0.0f, 1.0f, 0.0f},
         .drawCoordinateSystemScale = 2.0f,
         .drawRayCast = true,

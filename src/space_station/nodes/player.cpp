@@ -80,7 +80,7 @@ namespace space_station {
         const auto currentVerticalVelocity = dot(getVelocity(), getUpVector()) * getUpVector();
         if (onGround) {
             // we move if the player is on the ground or on an object
-            currentState.velocity = getGroundVelocity();
+            currentState.velocity = getGroundVelocity() * mat3{getTransformGlobal()};
             // jump !
             if (Input::isKeyPressed(KEY_SPACE) || Input::isGamepadButtonPressed(gamepad, GamepadButton::A)) {
                 currentState.velocity += (jumpSpeed + currentMovementSpeed / 2.0f) * getUpVector();

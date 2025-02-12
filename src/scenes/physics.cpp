@@ -130,7 +130,7 @@ void PhysicsMainScene::onProcess(float alpha) {
             (collision.normal.y < 0.8))) {
             // push or pull the colliding crate in the colliding direction
             if (pushing || pulling) {
-                collision.object->applyForce(
+                (dynamic_cast<RigidBody*>(collision.object))->applyForce(
                         force * collision.normal * (pushing ? -1.0f : 1.0f),
                         collision.position);
             }
