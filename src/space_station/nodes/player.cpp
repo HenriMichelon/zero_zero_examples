@@ -211,8 +211,8 @@ namespace space_station {
 
         // create the raycast used to detect interactions
         const auto interactions = make_shared<Interactions>(camera);
-        interactions->setPosition({0.0f, 1.5f, -0.5});
-        addChild(interactions);
+        // interactions->setPosition({0.0f, 1.5f, -0.5});
+        camera->addChild(interactions);
         interactions->connect(Interactions::on_display_info, [this](void*param) {
             const auto* node = static_cast<Node*>(param);
             displayInfoText->setText("[E] " + node->getName());
