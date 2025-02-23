@@ -126,7 +126,7 @@ void PhysicsMainScene::onProcess(float alpha) {
     // detect all the colliding crates
     for (const auto &collision : player->getCollisions()) {
         // only if the player is not on top of a crate
-        if ((!player->isGround(collision.object) &&
+        if ((!player->isGround(*collision.object) &&
             (collision.normal.y < 0.8))) {
             if (const auto* crate = dynamic_cast<Crate*>(collision.object)) {
                 // push or pull the colliding crate in the colliding direction

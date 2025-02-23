@@ -55,7 +55,6 @@ void TopBar::updateFPS() {
 }
 
 void TopBar::onPauseToggle(ui::EventClick *event) const {
-    Application::get().setPaused(!Application::get().isPaused());
-    log("Pause ", to_string(Application::get().isPaused()));
+    app().setPaused(!app().isPaused());
     event->consumed = true;
 }

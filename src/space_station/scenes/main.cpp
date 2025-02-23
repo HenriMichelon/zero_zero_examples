@@ -57,7 +57,6 @@ namespace space_station {
                     return true;
                 }
                 case KEY_F5 : {
-                    log(to_string(player->getPositionGlobal()));
                     return true;
                 }
                 default:
@@ -130,7 +129,7 @@ namespace space_station {
         auto onLevelLoaded = [this](void* param) {
             const auto level = static_cast<Level*>(param);
             gameState.levelsLoadingState[level->getName()] = true;
-            log("loaded", level->getName());
+            Log::game1 << "loaded " << level->getName() << endl;
             for (const auto & animPlayer :  level->findAllChildren<AnimationPlayer>()) {
                 if (animPlayer->getCurrentAnimation() == "ventilation") {
                     animPlayer->getAnimation()->setLoopMode(AnimationLoopMode::LINEAR);
@@ -189,7 +188,7 @@ namespace space_station {
                 if (gameState.levelsLoadingState[level_1_1_name]) { addChild(level1_1); }
                 app().setPaused(false);
                 const auto usage = (app().getVideoMemoryUsage() / static_cast<float>(app().getDedicatedVideoMemory())) * 100.0f;
-                log("VRAM usage after loadScene():", to_string(usage)+"%");
+                Log::game1 << "VRAM usage after loadScene(): " << usage << "%" << endl;
                 screenWindow->remove(textLoading);
 //                menu->setVisible(true);
                 isLoading= false;
