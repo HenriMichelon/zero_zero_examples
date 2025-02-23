@@ -128,20 +128,18 @@ void PhysicsMainScene::onProcess(float alpha) {
         // only if the player is not on top of a crate
         if ((!player->isGround(*collision.object) &&
             (collision.normal.y < 0.8))) {
-            if (const auto* crate = dynamic_cast<Crate*>(collision.object)) {
-                // push or pull the colliding crate in the colliding direction
-                if (pushing || pulling) {
-                    crate->applyForce(
-                            force * collision.normal * (pushing ? -1.0f : 1.0f),
-                            collision.position);
-                }
-                // outline the colliding crate
-                const auto& meshInstance = crate->findFirstChild<MeshInstance>();
-                meshInstance->setOutlined(true);
-                meshInstance->setOutlineMaterial(collisionOutlineMaterial);
-                // save the colliding crate to disable the outline during the next frame
-                currentCollisions.push_back(collision);
+            // push or pull the colliding crate in the colliding direction
+            if (pushing || pulling) {
+                (dynamic_cast<RigidBody*>(collision.object))->applyForce(
+                        force * collision.normal * (pushing ? -1.0f : 1.0f),
+                        collision.position);
             }
+            // outline the colliding crate
+            const auto& meshInstance = collision.object->findFirstChild<MeshInstance>();
+            meshInstance->setOutlined(true);
+            meshInstance->setOutlineMaterial(collisionOutlineMaterial);
+            // save the colliding crate to disable the outline during the next frame
+            currentCollisions.push_back(collision);
         }
     }
     // if we have collisions we display an information box for the first colliding crate

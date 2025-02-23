@@ -21,7 +21,7 @@ namespace space_station {
 
     void Interactions::onReady() {
         setCollisionLayer(INTERACTIONS);
-        setTarget({0.0, 0.0, -0.5f});
+        setTarget({0.0, 0.0, -1.0f});
     }
 
     bool Interactions::onInput(InputEvent &inputEvent) {
