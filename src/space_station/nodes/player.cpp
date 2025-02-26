@@ -11,7 +11,7 @@ namespace space_station {
         Character{
             1.8f, 0.5f,
             PLAYER,
-            "Player"
+            "MyPlayer"
     } {
     }
 
@@ -210,8 +210,7 @@ namespace space_station {
         app().activateCamera(camera);
 
         // create the raycast used to detect interactions
-        const auto interactions = make_shared<Interactions>(camera);
-        // interactions->setPosition({0.0f, 1.5f, -0.5});
+        const auto interactions = make_shared<Interactions>();
         camera->addChild(interactions);
         interactions->connect(Interactions::on_display_info, [this](void*param) {
             const auto* node = static_cast<Node*>(param);
@@ -223,7 +222,7 @@ namespace space_station {
         });
 
         // display information about the game pads
-        Log::game1 << Input::getConnectedJoypads() << " connected gamepad(s)" << endl;
+        GAME1(Input::getConnectedJoypads(), " connected gamepad(s)");
         for (int i = 0; i < Input::getConnectedJoypads(); i++) {
             if (Input::isGamepad(i)) {
                 gamepad = i;
@@ -231,7 +230,7 @@ namespace space_station {
             }
         }
         if (gamepad != -1) {
-            Log::game1 << "Using gamepad " << Input::getJoypadName(gamepad) << endl;
+            GAME1("Using gamepad ", Input::getJoypadName(gamepad));
         }
         //printTree();
 
@@ -239,9 +238,13 @@ namespace space_station {
         app().add(hud);
         hud->getWidget().setPadding(10.0f);
 
-        displayInfoText =  make_shared<ui::Text>("XXXXXXXXXXXXXXXXX");
+        displayInfoText = make_shared<ui::Text>("XXXXXXXXXXXXXXXXX");
         displayInfoText->setFont(make_shared<Font>(displayInfoText->getFont(), 40));
         displayInfoText->setTextColor(vec4{0.3, 0.3, 1.0, 1.0f});
+    }
+
+    void MyPlayer::onExitScene() {
+        hud->remove(displayInfoText);
     }
 
     void MyPlayer::releaseMouse() {

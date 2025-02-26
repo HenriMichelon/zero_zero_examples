@@ -32,7 +32,7 @@ private:
     float                        gradient{0.0f}; // color gradient and scale for the triangles, used by the shaders
     float                        gradientSpeed{0.5f}; // speed for the gradient change
     bool                         rotate{true}; // true if both the triangles rotates
-    shared_ptr<ui::Window>          menu; // our scene menu
+    shared_ptr<ui::Window>       menu; // our scene menu
 
     void onMenuRotate();
 

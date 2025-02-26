@@ -12,6 +12,7 @@ Player::Player():
     Character{
             1.8, 0.5,
             PLAYER,
+        "Player"
     } {
 }
 
@@ -237,7 +238,7 @@ void Player::onReady() {
     Application::get().activateCamera(camera);
 
     // display information about the game pads
-    Log::game1 << Input::getConnectedJoypads() << " connected gamepad(s)" << endl;
+    GAME1(Input::getConnectedJoypads(), " connected gamepad(s)");
     for (int i = 0; i < Input::getConnectedJoypads(); i++) {
         if (Input::isGamepad(i)) {
             gamepad = i;
@@ -245,7 +246,7 @@ void Player::onReady() {
         }
     }
     if (gamepad != -1) {
-        Log::game1 << "Using gamepad " << Input::getJoypadName(gamepad) << endl;
+        GAME1("Using gamepad ", Input::getJoypadName(gamepad));
     }
     //printTree();
 }

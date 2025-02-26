@@ -16,7 +16,7 @@ namespace space_station {
         }
     }
 
-    Interactions::Interactions(const shared_ptr<Node> &camera): camera{camera} {
+    Interactions::Interactions(): RayCast("interactions") {
     }
 
     void Interactions::onReady() {
@@ -28,7 +28,7 @@ namespace space_station {
         if (targetNode && inputEvent.getType() == InputEventType::KEY) {
             const auto &event = dynamic_cast<InputEventKey &>(inputEvent);
             if ((event.getKey() == KEY_E) && event.isPressed()) {
-                if (auto* usable = dynamic_cast<UsableProp*>(targetNode)) {
+                if (const auto& usable = dynamic_pointer_cast<UsableProp>(targetNode)) {
                     usable->use();
                     return true;
                 }
@@ -43,7 +43,7 @@ namespace space_station {
             if (object != targetNode) {
                 // log("interaction detected", object->getName());
                 targetNode = object;
-                emit(on_display_info, targetNode);
+                emit(on_display_info, targetNode.get());
             }
         } else if (targetNode) {
             targetNode = nullptr;

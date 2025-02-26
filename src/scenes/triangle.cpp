@@ -4,7 +4,7 @@ module;
 module example.TriangleMainScene;
 
 TriangleMainScene::TriangleMainScene():
-    Node{"Main Scene"} {
+    Node{"Triangle Main Scene"} {
 }
 
 void TriangleMainScene::onReady() {

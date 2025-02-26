@@ -20,14 +20,13 @@ export namespace space_station {
         static inline Signal::signal on_display_info = "on_interactions_display_info";
         static inline Signal::signal on_hide_info = "on_interactions_hide_info";
 
-        Interactions(const shared_ptr<Node> &camera);
-        void onReady() override;
-        void onProcess(float alpha) override;
-        bool onInput(InputEvent &inputEvent) override;
+        explicit Interactions();
+        void     onReady() override;
+        void     onProcess(float alpha) override;
+        bool     onInput(InputEvent &inputEvent) override;
 
     private:
-        shared_ptr<Node> camera;
-        Node* targetNode;
+        shared_ptr<Node> targetNode;
     };
 
     class Console : public UsableProp {

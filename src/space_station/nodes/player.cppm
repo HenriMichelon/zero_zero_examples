@@ -19,6 +19,8 @@ export namespace space_station {
 
         void onReady() override;
 
+        void onExitScene() override;
+
         void releaseMouse();
 
     protected:
