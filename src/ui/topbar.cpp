@@ -10,6 +10,7 @@ TopBar::TopBar(Object *obj, const std::function<void()> &_onQuit):
 }
 
 void TopBar::onCreate() {
+    getWidget().setPadding(2.0f);
     getWidget().setDrawBackground(false);
     getWidget().setFont(make_shared<Font>(getWidget().getFont().getFontName(), 30));
 
